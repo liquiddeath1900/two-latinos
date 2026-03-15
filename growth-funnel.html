@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Growth Funnel — Two Latinos</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f7f8;--card:#fff;--border:#e5e5e5;--text:#1a1a1a;--dim:#666;--muted:#999;--purple:#534AB7;--purple-bg:#EEEDFE;--purple-dark:#26215C;--green:#0F6E56;--green-bg:#E1F5EE;--green-dark:#04342C;--orange:#854F0B;--orange-bg:#FEF3C7;--orange-dark:#78350F;--red:#993C1D;--red-bg:#FAECE7;--blue:#0C4A6E;--blue-bg:#E0F2FE}
+body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);min-height:100vh}
+.app{max-width:640px;margin:0 auto;padding:16px}
+
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;padding:16px 0;margin-bottom:8px}
+.header-left{display:flex;align-items:center;gap:12px}
+.logo{font-size:20px;font-weight:700}
+.header-tag{background:var(--purple-bg);color:var(--purple-dark);font-size:10px;font-weight:600;padding:2px 8px;border-radius:6px}
+.btn{padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:var(--card);font-size:12px;font-weight:600;color:var(--text);cursor:pointer;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--purple);background:var(--purple-bg)}
+
+/* Intro */
+.intro{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px}
+.intro-title{font-size:18px;font-weight:700;margin-bottom:8px}
+.intro-sub{font-size:13px;color:var(--dim);line-height:1.6}
+.intro-sub strong{color:var(--text)}
+
+/* Funnel */
+.funnel{display:flex;flex-direction:column;gap:0;margin-bottom:24px}
+.funnel-stage{background:var(--card);border:1px solid var(--border);padding:20px;position:relative}
+.funnel-stage:first-child{border-radius:12px 12px 0 0}
+.funnel-stage:last-child{border-radius:0 0 12px 12px}
+.funnel-stage:not(:last-child){border-bottom:none}
+.funnel-num{position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff}
+.funnel-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-bottom:4px}
+.funnel-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.funnel-desc{font-size:12px;color:var(--dim);line-height:1.6;margin-bottom:10px}
+.funnel-actions{display:flex;flex-wrap:wrap;gap:6px}
+.funnel-action{font-size:11px;padding:4px 10px;border-radius:6px;font-weight:600}
+.funnel-arrow{text-align:center;font-size:16px;color:var(--muted);padding:0}
+
+/* Connector between stages */
+.funnel-connector{background:var(--card);border-left:1px solid var(--border);border-right:1px solid var(--border);padding:0 20px;text-align:center}
+.funnel-connector-dot{width:2px;height:20px;background:var(--border);margin:0 auto}
+
+/* Lesson cards */
+.section-title{font-size:14px;font-weight:700;margin:24px 0 12px;display:flex;align-items:center;gap:8px}
+.section-badge{font-size:9px;padding:2px 7px;border-radius:6px;font-weight:700;letter-spacing:.5px}
+.lesson-grid{display:grid;gap:12px;margin-bottom:24px}
+.lesson-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+.lesson-icon{font-size:18px;margin-bottom:6px}
+.lesson-title{font-size:13px;font-weight:600;margin-bottom:4px}
+.lesson-body{font-size:12px;color:var(--dim);line-height:1.6}
+.lesson-body strong{color:var(--text)}
+.lesson-source{font-size:10px;color:var(--muted);margin-top:6px;font-style:italic}
+
+/* Timeline */
+.timeline{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.tl-header{padding:14px 18px;border-bottom:1px solid var(--border);font-size:14px;font-weight:600}
+.tl-item{padding:14px 18px;border-bottom:1px solid #f0f0f0;display:flex;gap:14px}
+.tl-item:last-child{border-bottom:none}
+.tl-marker{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:#fff}
+.tl-content{flex:1}
+.tl-period{font-size:12px;font-weight:600;margin-bottom:2px}
+.tl-goal{font-size:12px;color:var(--dim);line-height:1.5}
+.tl-metric{font-size:11px;color:var(--muted);margin-top:4px;font-style:italic}
+
+/* Reality check */
+.reality{background:var(--bg);border-left:3px solid var(--purple);padding:14px 16px;border-radius:0 8px 8px 0;margin-bottom:24px}
+.reality-title{font-size:12px;font-weight:600;margin-bottom:4px}
+.reality-body{font-size:12px;color:var(--dim);line-height:1.6}
+.reality-body strong{color:var(--text)}
+
+/* Membership callout */
+.membership{background:var(--purple-bg);border:1px solid #c9c4e8;border-radius:12px;padding:20px;margin-bottom:24px}
+.membership-badge{font-size:9px;background:var(--purple);color:#fff;padding:2px 8px;border-radius:6px;font-weight:700;letter-spacing:.5px;display:inline-block;margin-bottom:8px}
+.membership-title{font-size:15px;font-weight:700;color:var(--purple-dark);margin-bottom:6px}
+.membership-body{font-size:12px;color:var(--purple-dark);line-height:1.6;opacity:.8}
+.membership-list{list-style:none;padding:0;margin-top:10px}
+.membership-list li{font-size:12px;color:var(--purple-dark);padding:3px 0;display:flex;gap:8px;align-items:flex-start}
+.membership-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:5px}
+
+/* Footer */
+.footer{text-align:center;padding:20px 0;font-size:11px;color:var(--muted);line-height:1.6}
+
+@media(max-width:640px){
+  .header{flex-direction:column;gap:12px;align-items:flex-start}
+  .lesson-grid{grid-template-columns:1fr}
+  .app{padding:12px}
+}
+@media(min-width:500px){
+  .lesson-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <div class="logo">Two Latinos</div>
+    <span class="header-tag">Growth Strategy</span>
+  </div>
+  <div>
+    <a href="index.html" class="btn">Home</a>
+    <a href="dashboard.html" class="btn" style="margin-left:6px">Dashboard</a>
+  </div>
+</div>
+
+<!-- Intro -->
+<div class="intro">
+  <div class="intro-title">The Growth Funnel</div>
+  <div class="intro-sub">
+    How we scale from zero to a real travel content business. This isn't a "get rich quick" plan — it's a <strong>value-first funnel</strong> built on what actually works for travel creators. Every stage feeds the next.
+  </div>
+</div>
+
+<!-- THE FUNNEL -->
+<div class="funnel">
+
+  <!-- Stage 1 -->
+  <div class="funnel-stage">
+    <div class="funnel-num" style="background:var(--purple)">1</div>
+    <div class="funnel-label" style="color:var(--purple)">Foundation</div>
+    <div class="funnel-title">Create Value-First Content</div>
+    <div class="funnel-desc">
+      Every video must teach, reveal, or save the viewer something. "Would I watch this if I didn't make it?" If no, don't post it. Start with what you know: NYC food, budget travel, Latino culture. <strong>Don't chase trends — build a library.</strong>
+    </div>
+    <div class="funnel-actions">
+      <span class="funnel-action" style="background:var(--purple-bg);color:var(--purple-dark)">3 videos/week minimum</span>
+      <span class="funnel-action" style="background:var(--purple-bg);color:var(--purple-dark)">60-90 second TikToks</span>
+      <span class="funnel-action" style="background:var(--purple-bg);color:var(--purple-dark)">1 YouTube vlog/week</span>
+    </div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div class="funnel-stage">
+    <div class="funnel-num" style="background:var(--green)">2</div>
+    <div class="funnel-label" style="color:var(--green)">Discovery</div>
+    <div class="funnel-title">Find Your Format</div>
+    <div class="funnel-desc">
+      You won't know what works until you've posted 50+ videos. The format that blows up might surprise you. Lisa & Josh posted for <strong>2 years</strong> before "3 Days in X on a Budget" became their thing. Test hooks, test lengths, test pillars — let analytics tell you.
+    </div>
+    <div class="funnel-actions">
+      <span class="funnel-action" style="background:var(--green-bg);color:var(--green-dark)">Study analytics weekly</span>
+      <span class="funnel-action" style="background:var(--green-bg);color:var(--green-dark)">Double down on what hits</span>
+      <span class="funnel-action" style="background:var(--green-bg);color:var(--green-dark)">Kill what doesn't</span>
+    </div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div class="funnel-stage">
+    <div class="funnel-num" style="background:var(--orange)">3</div>
+    <div class="funnel-label" style="color:var(--orange)">Audience</div>
+    <div class="funnel-title">Build Community, Not Just Followers</div>
+    <div class="funnel-desc">
+      Reply to every comment for the first year. Ask questions in videos. Make viewers feel like they're part of the trip. <strong>1,000 true fans who share your videos > 100K passive followers.</strong> Engaged audiences = brand deal leverage.
+    </div>
+    <div class="funnel-actions">
+      <span class="funnel-action" style="background:var(--orange-bg);color:var(--orange-dark)">Reply to all comments</span>
+      <span class="funnel-action" style="background:var(--orange-bg);color:var(--orange-dark)">Build email list early</span>
+      <span class="funnel-action" style="background:var(--orange-bg);color:var(--orange-dark)">Cross-post everywhere</span>
+    </div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div class="funnel-stage">
+    <div class="funnel-num" style="background:var(--blue)">4</div>
+    <div class="funnel-label" style="color:var(--blue)">Monetization</div>
+    <div class="funnel-title">Stack Revenue Streams</div>
+    <div class="funnel-desc">
+      Don't depend on one income source. AdSense alone won't pay rent — Lisa & Josh made <strong>$5.74/hour</strong> from YouTube over 4 years. Stack: affiliate links in every description, comp stays for content, brand deals once you have data to show, and digital products.
+    </div>
+    <div class="funnel-actions">
+      <span class="funnel-action" style="background:var(--blue-bg);color:var(--blue)">Affiliate links day 1</span>
+      <span class="funnel-action" style="background:var(--blue-bg);color:var(--blue)">Comp pitches at 1K+</span>
+      <span class="funnel-action" style="background:var(--blue-bg);color:var(--blue)">Brand deals at 10K+</span>
+      <span class="funnel-action" style="background:var(--blue-bg);color:var(--blue)">Digital products</span>
+    </div>
+  </div>
+
+  <!-- Stage 5 -->
+  <div class="funnel-stage">
+    <div class="funnel-num" style="background:var(--red)">5</div>
+    <div class="funnel-label" style="color:var(--red)">Scale</div>
+    <div class="funnel-title">Own Your Platform</div>
+    <div class="funnel-desc">
+      Social media is rented land — the algorithm can change tomorrow. Build something you own: a membership site, downloadable guides, an email list. Convert followers into paying members. This is the long game.
+    </div>
+    <div class="funnel-actions">
+      <span class="funnel-action" style="background:var(--red-bg);color:var(--red)">Membership site</span>
+      <span class="funnel-action" style="background:var(--red-bg);color:var(--red)">Downloadable guides</span>
+      <span class="funnel-action" style="background:var(--red-bg);color:var(--red)">Courses & templates</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- LESSONS FROM CREATORS -->
+<div class="section-title">Real Talk From Creators Who've Done It <span class="section-badge" style="background:var(--green-bg);color:var(--green-dark)">Research</span></div>
+
+<div class="lesson-grid">
+  <div class="lesson-card">
+    <div class="lesson-icon">&#128161;</div>
+    <div class="lesson-title">Quality > Quantity (After the First 50)</div>
+    <div class="lesson-body">
+      Post a lot early to find your format. But once you know what works, <strong>slow down and make each video better</strong>. One great video beats five mediocre ones. Invest time in better audio, better hooks, better editing.
+    </div>
+    <div class="lesson-source">Lisa & Josh — shifted from daily to 2x/month and views went UP</div>
+  </div>
+
+  <div class="lesson-card">
+    <div class="lesson-icon">&#128200;</div>
+    <div class="lesson-title">Analytics Are Your Boss</div>
+    <div class="lesson-body">
+      Check what's working every week. <strong>Average view duration</strong> is the #1 metric — not views, not likes. If people watch 80%+ of your video, the algorithm pushes it. If they drop at 3 seconds, your hook is broken.
+    </div>
+    <div class="lesson-source">India — "let data decide your content, not your ego"</div>
+  </div>
+
+  <div class="lesson-card">
+    <div class="lesson-icon">&#127793;</div>
+    <div class="lesson-title">Niche Down, Then Niche Down Again</div>
+    <div class="lesson-body">
+      "Travel content" is too broad. "Budget travel for Latinos" is better. <strong>"3 days in [city] on a budget — two NYC Latinos"</strong> is a format people recognize and come back for. Own a very specific thing.
+    </div>
+    <div class="lesson-source">India — "become the go-to person for one specific thing"</div>
+  </div>
+
+  <div class="lesson-card">
+    <div class="lesson-icon">&#128176;</div>
+    <div class="lesson-title">Viral ≠ Money</div>
+    <div class="lesson-body">
+      Lisa & Josh got <strong>8 million views on one Short — and made $300</strong>. A 600K-view documentary made $8,000. Long-form + engaged audience = real money. Shorts build awareness, long-form builds income.
+    </div>
+    <div class="lesson-source">Lisa & Josh — "Shorts are marketing for your long-form"</div>
+  </div>
+
+  <div class="lesson-card">
+    <div class="lesson-icon">&#128293;</div>
+    <div class="lesson-title">Burnout Is the Real Killer</div>
+    <div class="lesson-body">
+      Most creators don't fail — they quit. Posting daily will burn you out in 6 months. <strong>Find a sustainable pace and protect it.</strong> Take breaks. Batch content. Remember why you started.
+    </div>
+    <div class="lesson-source">Lisa & Josh — almost quit at year 2, took a break, came back stronger</div>
+  </div>
+
+  <div class="lesson-card">
+    <div class="lesson-icon">&#127908;</div>
+    <div class="lesson-title">Value First, Always</div>
+    <div class="lesson-body">
+      Every video should answer a question the viewer has: "Is this worth the money?" "How do I get there cheap?" "What should I order?" <strong>If they learn something, they'll follow.</strong> If they don't, they'll scroll.
+    </div>
+    <div class="lesson-source">India — "if the viewer doesn't gain something, you failed"</div>
+  </div>
+
+  <div class="lesson-card">
+    <div class="lesson-icon">&#128640;</div>
+    <div class="lesson-title">Show Brands ROI, Not Followers</div>
+    <div class="lesson-body">
+      When pitching hotels/brands, show them: "Our last hotel video got 50K views, 3,200 saves, and drove 140 clicks to the booking link." <strong>Conversion data wins over follower count.</strong> Track everything in your dashboard.
+    </div>
+    <div class="lesson-source">India — "brands care about sales, not your follower count"</div>
+  </div>
+
+  <div class="lesson-card">
+    <div class="lesson-icon">&#128247;</div>
+    <div class="lesson-title">Nobody Knows the Algorithm</div>
+    <div class="lesson-body">
+      Even YouTube employees don't fully understand it. <strong>Stop trying to "hack" the algorithm.</strong> Make content real people want to watch and share. The algorithm follows human behavior — not the other way around.
+    </div>
+    <div class="lesson-source">Lisa & Josh — "every 'algorithm hack' we tried made things worse"</div>
+  </div>
+</div>
+
+<!-- Reality check -->
+<div class="reality">
+  <div class="reality-title">The Honest Timeline</div>
+  <div class="reality-body">
+    Lisa & Josh calculated they made <strong>$5.74/hour</strong> over 4 years of YouTube. India was creating for <strong>3 years</strong> before content became a real income. This is a business — treat the first year as an investment. The people who win are the ones who <strong>don't quit in year one</strong>.
+  </div>
+</div>
+
+<!-- Timeline -->
+<div class="timeline">
+  <div class="tl-header">Your 12-Month Roadmap</div>
+
+  <div class="tl-item">
+    <div class="tl-marker" style="background:var(--purple)">1-3</div>
+    <div class="tl-content">
+      <div class="tl-period">Months 1-3: Volume & Discovery</div>
+      <div class="tl-goal">Post 3-5x/week on TikTok + 1 YouTube vlog/week. Test every format. NYC local content is free. Build accounts on all platforms. Set up affiliate links from day 1.</div>
+      <div class="tl-metric">Target: 50+ videos posted, identify top 3 performing formats</div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-marker" style="background:var(--green)">4-6</div>
+    <div class="tl-content">
+      <div class="tl-period">Months 4-6: Double Down</div>
+      <div class="tl-goal">Focus on the format(s) that work. Improve production quality on those. Start pitching local NYC restaurants/hotels for comp stays. First budget trip outside NYC for content.</div>
+      <div class="tl-metric">Target: 1-2K followers, first comp deal, first affiliate income</div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-marker" style="background:var(--orange)">7-9</div>
+    <div class="tl-content">
+      <div class="tl-period">Months 7-9: Monetize & Community</div>
+      <div class="tl-goal">Pitch hotels/cruise lines with your media kit + real analytics. Launch email newsletter. Create first downloadable guide (e.g., "NYC Budget Food Guide"). Start building membership site concept.</div>
+      <div class="tl-metric">Target: 5-10K followers, 2-3 brand deals, first digital product sale</div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-marker" style="background:var(--red)">10-12</div>
+    <div class="tl-content">
+      <div class="tl-period">Months 10-12: Scale & Own</div>
+      <div class="tl-goal">Launch membership site with exclusive guides, behind-the-scenes, and trip itineraries. Pitch bigger brands with proven ROI data. Expand content to international destinations. Explore course creation.</div>
+      <div class="tl-metric">Target: 10K+ followers, recurring membership revenue, 3+ revenue streams active</div>
+    </div>
+  </div>
+</div>
+
+<!-- Membership Site Callout -->
+<div class="membership">
+  <div class="membership-badge">FUTURE BUILD</div>
+  <div class="membership-title">Two Latinos Membership Site</div>
+  <div class="membership-body">
+    Once we have an audience and proven content, we build our own platform (not Patreon — we own it). Members pay a monthly fee for exclusive access:
+  </div>
+  <ul class="membership-list">
+    <li>Downloadable trip itineraries with exact costs, restaurants, hotels</li>
+    <li>Budget travel guides by destination (PDF + interactive)</li>
+    <li>Behind-the-scenes content and filming breakdowns</li>
+    <li>Early access to videos before they go public</li>
+    <li>Private community for travel tips and deals</li>
+    <li>"How we got comped" playbooks with real email templates</li>
+    <li>Monthly live Q&A / planning sessions</li>
+  </ul>
+</div>
+
+<div class="footer">
+  <a href="index.html" class="btn" style="margin-bottom:12px">Back to Home</a><br>
+  Built March 2026 &middot; Strategy based on real creator journeys
+</div>
+
+</div>
+</body>
+</html>
