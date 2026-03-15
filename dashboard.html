@@ -87,6 +87,34 @@ tr:hover{background:#fafafe}
 .empty-title{font-size:14px;font-weight:600;margin-bottom:4px}
 .empty-desc{font-size:12px;color:var(--dim)}
 
+/* Shot List */
+.shot-section{margin-bottom:16px}
+.shot-section-head{padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);cursor:pointer;-webkit-user-select:none;user-select:none}
+.shot-section-head:hover{background:var(--bg)}
+.shot-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.shot-section-title{font-size:13px;font-weight:600;color:var(--text)}
+.shot-section-count{font-size:11px;color:var(--dim);margin-left:auto;background:var(--bg);padding:2px 8px;border-radius:6px}
+.shot-section-arrow{font-size:10px;color:var(--dim);transition:transform .2s}
+.shot-section-arrow.open{transform:rotate(90deg)}
+.shot-body{display:none;padding:0}
+.shot-body.open{display:block}
+.shot-category{padding:10px 18px;border-bottom:1px solid #f0f0f0}
+.shot-category-title{font-size:11px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.shot-item{display:flex;align-items:flex-start;gap:8px;padding:4px 0;font-size:12px;color:var(--text);cursor:pointer;-webkit-user-select:none;user-select:none}
+.shot-item:hover{color:var(--purple)}
+.shot-cb{width:15px;height:15px;border-radius:3px;border:1.5px solid #ccc;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.shot-cb.checked{background:var(--purple);border-color:var(--purple)}
+.shot-cb.checked::after{content:'';display:block;width:4px;height:7px;border:1.5px solid #fff;border-top:none;border-left:none;transform:rotate(45deg) translate(-1px,-1px)}
+.shot-text{line-height:1.4}
+.shot-text.done{text-decoration:line-through;color:var(--dim)}
+.shot-tip{font-size:11px;color:var(--dim);font-style:italic;margin-top:1px}
+.shot-callout{background:var(--bg);border-left:3px solid var(--purple);padding:12px 14px;margin:0 18px 14px;font-size:11px;color:var(--dim);line-height:1.6;border-radius:0 8px 8px 0}
+.shot-callout strong{color:var(--text)}
+.shot-rules{padding:14px 18px;border-top:1px solid var(--border)}
+.shot-rules-title{font-size:12px;font-weight:600;margin-bottom:8px}
+.shot-rule{font-size:11px;color:var(--dim);padding:3px 0;display:flex;gap:6px;line-height:1.4}
+.shot-rule-num{color:var(--purple);font-weight:700;flex-shrink:0}
+
 /* Mobile */
 @media(max-width:640px){
   .stats{grid-template-columns:repeat(2,1fr)}
@@ -150,6 +178,7 @@ tr:hover{background:#fafafe}
   <button class="nav-tab" onclick="switchTab('people')">People</button>
   <button class="nav-tab" onclick="switchTab('expenses')">Expenses</button>
   <button class="nav-tab" onclick="switchTab('content')">Content</button>
+  <button class="nav-tab" onclick="switchTab('shots')">Shot List</button>
 </div>
 
 <!-- TRIPS PANEL -->
@@ -215,6 +244,260 @@ tr:hover{background:#fafafe}
       <div class="table-count" id="count-content">0 entries</div>
     </div>
     <div id="table-content"></div>
+  </div>
+</div>
+
+<!-- SHOT LIST PANEL -->
+<div class="panel" id="panel-shots">
+
+  <div class="shot-callout">
+    <strong>How to use this:</strong> Before every trip, hotel stay, or restaurant visit — open this tab and check off the shots as you get them. Reset the checkboxes each time. Think in sequences: wide &rarr; medium &rarr; close-up of the same subject. Hold every shot 5-10 seconds minimum.
+  </div>
+
+  <!-- HOTEL SHOTS -->
+  <div class="table-wrap shot-section">
+    <div class="shot-section-head" onclick="toggleShotSection(this)">
+      <div class="shot-icon" style="background:var(--purple-bg);color:var(--purple)">&#127976;</div>
+      <div class="shot-section-title">Hotel / Resort</div>
+      <div class="shot-section-count">34 shots</div>
+      <div class="shot-section-arrow">&#9654;</div>
+    </div>
+    <div class="shot-body">
+      <div class="shot-category">
+        <div class="shot-category-title">Exterior & Arrival</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Facade straight-on — daytime</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Facade at twilight / night (lit up)</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Entrance / porte-cochere with signage</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Surrounding area / neighborhood context</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Lobby & Common Areas</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Wide establishing shot of lobby</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Reception / check-in desk</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Lobby details: flowers, art, design elements</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Hallway / corridor (leading lines)</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Room Tour (the money shots)</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Wide shot from doorway entering — the reveal</div><div class="shot-tip">This is the first thing people see. Slow push-in from the door.</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Wide shot from window looking back into room</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Bed straight-on, symmetrical pillows</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Bed detail: texture of linens, turndown details</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Window view (both inside framing and the actual view)</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Desk / workspace area</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">In-room amenities: minibar, coffee maker, TV, safe</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Welcome amenities / gift basket close-up</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Bathroom</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Wide shot from doorway</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Vanity / mirror shot</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Shower / tub detail (rainfall head, freestanding tub)</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Branded toiletries close-up</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Amenities & Facilities</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Pool — wide shot at angle parallel to skyline</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Spa / treatment area</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Gym / fitness center</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Restaurant setup (breakfast + dinner configs)</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Bar area</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Garden / outdoor lounge</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Lifestyle / Experience</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Sunset by the pool</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Cocktail at rooftop / bar at dusk</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Lounging / reading poolside</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Room service / in-bed breakfast</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Walking through property (tracking shot)</div></div></div>
+      </div>
+      <div class="shot-rules">
+        <div class="shot-rules-title">Prep before filming</div>
+        <div class="shot-rule"><span class="shot-rule-num">1.</span> Hide cables, trash bins, ironing boards, hair dryers</div>
+        <div class="shot-rule"><span class="shot-rule-num">2.</span> Iron bedspreads, fluff pillows symmetrically</div>
+        <div class="shot-rule"><span class="shot-rule-num">3.</span> Remove personal items unless styled</div>
+        <div class="shot-rule"><span class="shot-rule-num">4.</span> Close all closet doors, toilet lid down</div>
+        <div class="shot-rule"><span class="shot-rule-num">5.</span> Consistent light — open all curtains or use lamps only, don't mix</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOD SHOTS -->
+  <div class="table-wrap shot-section">
+    <div class="shot-section-head" onclick="toggleShotSection(this)">
+      <div class="shot-icon" style="background:var(--green-bg);color:var(--green)">&#127869;</div>
+      <div class="shot-section-title">Restaurant / Food</div>
+      <div class="shot-section-count">26 shots</div>
+      <div class="shot-section-arrow">&#9654;</div>
+    </div>
+    <div class="shot-body">
+      <div class="shot-category">
+        <div class="shot-category-title">Establishing / Ambiance</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Exterior restaurant sign</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Interior wide shot of dining room</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Bar area</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Table settings / cutlery close-up</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Lighting / candles / ambiance details</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Kitchen pass / open kitchen activity</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Food Shots (the money shots)</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Overhead / top-down of plated dish</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">45-degree angle — the "diner's perspective"</div><div class="shot-tip">Most versatile food angle. Shoot this for every dish.</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Extreme close-up: texture, crust, grill marks, glaze</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Steam rising from hot dish</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Cheese pull / stretch shot</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Sauce pour or drizzle</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Cross-section / cut-into reveal</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Full spread — multiple dishes on table</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Action / Process</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Chef cooking — flames, tossing pan</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Bartender shaking / pouring cocktail</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Dish being placed on table — the presentation</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Reaction / Human Element</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">First bite reaction — genuine, not scripted</div><div class="shot-tip">The most important shot. Don't fake it. People can tell.</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Candid "wow" moment or smile</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Clinking glasses / cheers</div></div></div>
+      </div>
+      <div class="shot-rules">
+        <div class="shot-rules-title">Food filming tips</div>
+        <div class="shot-rule"><span class="shot-rule-num">1.</span> Slow push-in toward food creates drama</div>
+        <div class="shot-rule"><span class="shot-rule-num">2.</span> Shoot at 60fps for slight slow-mo on texture shots</div>
+        <div class="shot-rule"><span class="shot-rule-num">3.</span> Sit near a window — natural side-light is gold</div>
+        <div class="shot-rule"><span class="shot-rule-num">4.</span> Avoid overhead fluorescents — bounce light off walls instead</div>
+        <div class="shot-rule"><span class="shot-rule-num">5.</span> Film BEFORE you eat — food looks best in the first 30 seconds</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRAVEL DAY SHOTS -->
+  <div class="table-wrap shot-section">
+    <div class="shot-section-head" onclick="toggleShotSection(this)">
+      <div class="shot-icon" style="background:var(--orange-bg);color:var(--orange)">&#9992;</div>
+      <div class="shot-section-title">Travel Day / Destination</div>
+      <div class="shot-section-count">28 shots</div>
+      <div class="shot-section-arrow">&#9654;</div>
+    </div>
+    <div class="shot-body">
+      <div class="shot-category">
+        <div class="shot-category-title">Airport / Transit</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Packed bags at home — the "we're going" shot</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Airport terminal signage</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Boarding pass close-up</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Walking through terminal — tracking shot</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Window seat: clouds, takeoff, landing</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Arrival signs / stepping off the plane</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Landmarks & Scenery</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Wide establishing shot — where are we</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Landmark with person for scale</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Close-up architectural details</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Same spot from multiple angles</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Sunrise or sunset timelapse</div><div class="shot-tip">Need a tripod. Even 30 seconds of timelapse is gold for transitions.</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Water: ocean, rivers, fountains, rain</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Street Scenes & Culture</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Busy street with motion — panning shot</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Local vendors / market stalls</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Street food being prepared</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Signage in local language</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Local transportation: taxis, scooters, bikes</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Musicians / performers / artisans</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Transition B-Roll (the glue)</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Feet walking on different surfaces</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Hands touching textures — walls, fabrics, water</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Driving footage / road ahead</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Doors opening — hotel, restaurant, car</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Maps / navigation screens</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Sky, clouds, trees — scene-linking B-roll</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Souvenir shopping / market browsing</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Packing / unpacking — bookend the trip</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRUISE SHOTS -->
+  <div class="table-wrap shot-section">
+    <div class="shot-section-head" onclick="toggleShotSection(this)">
+      <div class="shot-icon" style="background:var(--blue-bg);color:var(--blue)">&#128674;</div>
+      <div class="shot-section-title">Cruise Ship</div>
+      <div class="shot-section-count">24 shots</div>
+      <div class="shot-section-arrow">&#9654;</div>
+    </div>
+    <div class="shot-body">
+      <div class="shot-category">
+        <div class="shot-category-title">Embarkation Day</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Ship exterior from port terminal</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Terminal check-in and signage</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">First step onto the ship — the moment</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Atrium / main lobby first impression</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Cabin Tour</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Cabin number + location context</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Slow steady pan of entire cabin</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Bed, storage, bathroom, fridge, outlets</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Balcony view — check wind for audio</div><div class="shot-tip">Wind kills audio on balconies. Use voiceover or cover the mic.</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">Ship Exploration</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Grand staircase / atrium from above</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Pool deck: wide shot with water features</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Buffet spread — overview shot</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Specialty restaurant setup</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Theater / entertainment venue</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Sports deck / activities (waterslides, climbing)</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Spa / gym facilities</div></div></div>
+      </div>
+      <div class="shot-category">
+        <div class="shot-category-title">At Sea & Ports</div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Sunset / sunrise from deck timelapse</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Wake shot from stern</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Ocean panorama — endless water</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Ship from shore at port (with city in frame)</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Port excursion highlights</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Buffet plate — curated, natural light at table</div><div class="shot-tip">Take your plate near a window. Cruise buffet lighting is terrible.</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Cocktail with ocean backdrop</div></div></div>
+        <div class="shot-item" onclick="toggleShot(this)"><div class="shot-cb"></div><div><div class="shot-text">Themed party night / dressed-up event</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILMING RULES -->
+  <div class="table-wrap">
+    <div class="shot-section-head" style="border-bottom:none">
+      <div class="shot-icon" style="background:var(--red-bg);color:var(--red)">&#127915;</div>
+      <div class="shot-section-title">Golden Rules — Every Shoot</div>
+    </div>
+    <div class="shot-rules" style="border-top:1px solid var(--border)">
+      <div class="shot-rules-title">The 5 Essential B-Roll Types (get all 5 at every location)</div>
+      <div class="shot-rule"><span class="shot-rule-num">1.</span> <strong>Wide / Establishing</strong> — sets the scene, shows where you are</div>
+      <div class="shot-rule"><span class="shot-rule-num">2.</span> <strong>Close-up / Detail</strong> — textures, food, hands, objects</div>
+      <div class="shot-rule"><span class="shot-rule-num">3.</span> <strong>Action / Movement</strong> — people doing things, cooking, walking</div>
+      <div class="shot-rule"><span class="shot-rule-num">4.</span> <strong>Transition</strong> — shared elements between scenes (sky, water, feet walking)</div>
+      <div class="shot-rule"><span class="shot-rule-num">5.</span> <strong>Reaction / Emotion</strong> — genuine human responses, smiles, awe</div>
+    </div>
+    <div class="shot-rules">
+      <div class="shot-rules-title">Filming rules from creators who do this for a living</div>
+      <div class="shot-rule"><span class="shot-rule-num">&#8226;</span> Think in sequences: wide &rarr; medium &rarr; close-up of the same subject</div>
+      <div class="shot-rule"><span class="shot-rule-num">&#8226;</span> Hold every shot at least 5-10 seconds of stable footage</div>
+      <div class="shot-rule"><span class="shot-rule-num">&#8226;</span> Keep each clip 10-20 seconds for editing flexibility</div>
+      <div class="shot-rule"><span class="shot-rule-num">&#8226;</span> Shoot at 60fps for anything with movement (slow-mo option)</div>
+      <div class="shot-rule"><span class="shot-rule-num">&#8226;</span> Use rule of thirds grid on your phone camera</div>
+      <div class="shot-rule"><span class="shot-rule-num">&#8226;</span> Get the shot FIRST, then enjoy the moment</div>
+      <div class="shot-rule"><span class="shot-rule-num">&#8226;</span> Vertical (9:16) for TikTok/Reels, horizontal for YouTube — or shoot wide enough to crop both</div>
+      <div class="shot-rule"><span class="shot-rule-num">&#8226;</span> Natural light wins every time. Sit near windows, shoot during golden hour</div>
+      <div class="shot-rule"><span class="shot-rule-num">&#8226;</span> Audio matters as much as video — wind, crowd noise, and AC ruin takes. Use the DJI Mic.</div>
+    </div>
   </div>
 </div>
 
@@ -639,6 +922,38 @@ function seedDemo() {
 
 seedDemo();
 render();
+
+// Shot list functions
+const SHOT_KEY = 'two-latinos-shots-v1';
+let shotChecks = JSON.parse(localStorage.getItem(SHOT_KEY) || '[]');
+
+// Restore shot checkboxes
+document.querySelectorAll('.shot-item').forEach((item, i) => {
+  if (shotChecks.includes(i)) {
+    item.querySelector('.shot-cb').classList.add('checked');
+    const txt = item.querySelector('.shot-text');
+    if (txt) txt.classList.add('done');
+  }
+});
+
+function toggleShot(el) {
+  const items = [...document.querySelectorAll('.shot-item')];
+  const i = items.indexOf(el);
+  const cb = el.querySelector('.shot-cb');
+  const txt = el.querySelector('.shot-text');
+  const on = cb.classList.toggle('checked');
+  if (txt) txt.classList.toggle('done', on);
+  if (on) { if (!shotChecks.includes(i)) shotChecks.push(i); }
+  else { shotChecks = shotChecks.filter(x => x !== i); }
+  localStorage.setItem(SHOT_KEY, JSON.stringify(shotChecks));
+}
+
+function toggleShotSection(head) {
+  const body = head.nextElementSibling;
+  const arrow = head.querySelector('.shot-section-arrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
 </script>
 </body>
 </html>
