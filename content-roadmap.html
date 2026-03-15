@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Content Roadmap — Two Latinos</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;padding:16px;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto;padding:1.25rem 0}
+.hero{text-align:center;margin-bottom:2rem;padding:2rem 1.5rem;background:#fff;border-radius:16px;border:1px solid #e5e5e5}
+.hero-tag{display:inline-block;background:#E1F5EE;color:#04342C;font-size:11px;font-weight:600;padding:3px 10px;border-radius:8px;margin-bottom:12px}
+.hero-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:8px;line-height:1.3}
+.hero-sub{font-size:13px;color:#666;line-height:1.7;max-width:500px;margin:0 auto}
+.section{margin-bottom:1.25rem;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;background:#fff}
+.sec-head{padding:14px 18px;display:flex;align-items:center;gap:10px}
+.sec-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.sec-title{font-size:14px;font-weight:600;color:#1a1a1a}
+.sec-desc{font-size:12px;color:#666;margin-top:2px}
+.badge{font-size:11px;padding:2px 9px;border-radius:10px;font-weight:600;margin-left:auto;white-space:nowrap}
+.callout{background:#f9f9fb;border-left:3px solid #534AB7;border-radius:0 8px 8px 0;padding:12px 14px;margin:0 18px 14px;font-size:12px;color:#666;line-height:1.6}
+.callout strong{color:#1a1a1a;font-weight:600}
+.callout.green{border-left-color:#0F6E56}
+.callout.orange{border-left-color:#854F0B}
+.callout.red{border-left-color:#993C1D}
+.callout.purple{border-left-color:#7C3AED}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 18px;border-top:1px solid #eee}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:14px 18px;border-top:1px solid #eee}
+.mini-card{background:#f9f9fb;border-radius:10px;padding:12px}
+.mini-title{font-size:12px;font-weight:600;color:#1a1a1a;margin-bottom:6px}
+.mini-row{font-size:11px;color:#666;padding:3px 0;display:flex;justify-content:space-between;border-bottom:1px solid #eee}
+.mini-row:last-child{border-bottom:none}
+.mini-val{font-weight:600;color:#534AB7}
+.idea{padding:12px 18px;border-top:1px solid #eee}
+.idea-title{font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:3px}
+.idea-desc{font-size:11px;color:#666;line-height:1.5}
+.idea-tags{margin-top:5px;display:flex;gap:5px;flex-wrap:wrap}
+.tag{font-size:10px;padding:1px 7px;border-radius:8px;font-weight:600}
+.tag-tt{background:#E0F2FE;color:#0C4A6E}
+.tag-yt{background:#FEE2E2;color:#991B1B}
+.tag-ig{background:#F3E8FF;color:#6B21A8}
+.tag-viral{background:#FEF3C7;color:#78350F}
+.tag-food{background:#E1F5EE;color:#04342C}
+.tag-travel{background:#EEEDFE;color:#3C3489}
+.tag-biz{background:#FAECE7;color:#4A1B0C}
+.ladder{padding:14px 18px;border-top:1px solid #eee}
+.ladder-step{display:flex;gap:12px;align-items:flex-start;padding:8px 0;position:relative}
+.ladder-step:not(:last-child)::after{content:'';position:absolute;left:13px;top:28px;bottom:-4px;width:2px;background:#e5e5e5}
+.ladder-dot{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;position:relative;z-index:1}
+.ladder-title{font-size:12px;font-weight:600;color:#1a1a1a}
+.ladder-desc{font-size:11px;color:#666;margin-top:2px;line-height:1.5}
+.divider{border-top:1px solid #eee;margin:0 18px}
+.week{padding:14px 18px;border-top:1px solid #eee}
+.week-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.week-num{font-size:11px;font-weight:700;color:#534AB7}
+.week-title{font-size:12px;font-weight:600;color:#1a1a1a}
+.week-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.week-item{background:#f9f9fb;border-radius:8px;padding:8px 10px}
+.week-item-title{font-size:11px;font-weight:600;color:#1a1a1a}
+.week-item-desc{font-size:10px;color:#666;margin-top:2px;line-height:1.4}
+.stat-row{display:flex;gap:12px;padding:14px 18px;border-top:1px solid #eee;flex-wrap:wrap}
+.stat{flex:1;min-width:120px;text-align:center;padding:10px;background:#f9f9fb;border-radius:10px}
+.stat-num{font-size:18px;font-weight:700}
+.stat-label{font-size:10px;color:#666;margin-top:2px}
+.footer{text-align:center;margin-top:2rem;padding:1rem;font-size:11px;color:#999;line-height:1.6}
+@media(max-width:480px){
+  .two-col,.three-col{grid-template-columns:1fr}
+  .week-grid{grid-template-columns:1fr}
+  .stat-row{flex-direction:column}
+  .hero-title{font-size:19px}
+  body{padding:12px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <div class="hero-tag">Research + Roadmap</div>
+  <div class="hero-title">Content strategy — what to make, when, and why it'll work</div>
+  <div class="hero-sub">Based on what's actually working on TikTok, YouTube, and Instagram right now. Built around our unique angle: two NYC Latinos turning everyday life into a content business.</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- WHY THIS NICHE WORKS                    -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="sec-head" style="background:#EEEDFE">
+    <div class="sec-num" style="background:#CECBF6;color:#26215C">1</div>
+    <div>
+      <div class="sec-title">Why this niche works — the research</div>
+      <div class="sec-desc">Data-backed reasons this isn't just a dream</div>
+    </div>
+    <span class="badge" style="background:#CECBF6;color:#26215C">Research</span>
+  </div>
+  <div class="stat-row">
+    <div class="stat"><div class="stat-num" style="color:#534AB7">$56B</div><div class="stat-label">Latino leisure travel spend/year</div></div>
+    <div class="stat"><div class="stat-num" style="color:#0F6E56">82%</div><div class="stat-label">Trust micro-influencers over celebs</div></div>
+    <div class="stat"><div class="stat-num" style="color:#993C1D">~0</div><div class="stat-label">NYC Latino duo travel channels</div></div>
+  </div>
+  <div class="callout"><strong>The gap is massive.</strong> Latinos are the largest minority group in the US and spend $56 billion a year on leisure travel — but there's almost zero representation in the travel content space. The few Latino travel creators are mostly solo women. A duo channel from NYC doing "life as content" doesn't exist yet.</div>
+  <div class="two-col">
+    <div class="mini-card">
+      <div class="mini-title">What's in our favor</div>
+      <div class="mini-row"><span>No direct competition</span><span class="mini-val">Blue ocean</span></div>
+      <div class="mini-row"><span>Micro-influencers preferred</span><span class="mini-val">By 82% of users</span></div>
+      <div class="mini-row"><span>Authenticity trending</span><span class="mini-val">#1 on TikTok</span></div>
+      <div class="mini-row"><span>POV/vlog format rising</span><span class="mini-val">Hottest format</span></div>
+      <div class="mini-row"><span>NYC = content goldmine</span><span class="mini-val">Endless material</span></div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-title">What's working in 2026</div>
+      <div class="mini-row"><span>Voiceover storytelling</span><span class="mini-val">Top format</span></div>
+      <div class="mini-row"><span>Series/recurring themes</span><span class="mini-val">Builds loyalty</span></div>
+      <div class="mini-row"><span>First-person POV</span><span class="mini-val">Immersive</span></div>
+      <div class="mini-row"><span>Unpolished > polished</span><span class="mini-val">More trust</span></div>
+      <div class="mini-row"><span>Food close-ups + ASMR</span><span class="mini-val">High shares</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- OUR 3 CONTENT PILLARS                   -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="sec-head" style="background:#E1F5EE">
+    <div class="sec-num" style="background:#9FE1CB;color:#04342C">2</div>
+    <div>
+      <div class="sec-title">The 3 content pillars</div>
+      <div class="sec-desc">Every video falls into one of these buckets. This is our brand identity.</div>
+    </div>
+    <span class="badge" style="background:#9FE1CB;color:#04342C">Identity</span>
+  </div>
+  <div class="three-col">
+    <div class="mini-card">
+      <div class="mini-title" style="color:#534AB7">Pillar 1: Travel</div>
+      <div class="mini-row"><span>First-time trips</span></div>
+      <div class="mini-row"><span>Weekend getaways</span></div>
+      <div class="mini-row"><span>Airport/flight tips</span></div>
+      <div class="mini-row"><span>Hotel reviews</span></div>
+      <div class="mini-row"><span>Cruise experiences</span></div>
+      <div class="mini-row"><span>Hidden local gems</span></div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-title" style="color:#0F6E56">Pillar 2: Food</div>
+      <div class="mini-row"><span>$1 vs $500 meals</span></div>
+      <div class="mini-row"><span>Buffet reviews</span></div>
+      <div class="mini-row"><span>NYC food spots</span></div>
+      <div class="mini-row"><span>First time trying X</span></div>
+      <div class="mini-row"><span>Comped restaurant reviews</span></div>
+      <div class="mini-row"><span>Street food abroad</span></div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-title" style="color:#993C1D">Pillar 3: The Business</div>
+      <div class="mini-row"><span>Building credit on camera</span></div>
+      <div class="mini-row"><span>How we travel free</span></div>
+      <div class="mini-row"><span>LLC / tax write-offs</span></div>
+      <div class="mini-row"><span>Getting comped</span></div>
+      <div class="mini-row"><span>Points stacking</span></div>
+      <div class="mini-row"><span>Monthly income reports</span></div>
+    </div>
+  </div>
+  <div class="callout green"><strong>Why 3 pillars?</strong> Brands want to know exactly what you do. When a hotel or restaurant sees our page, they immediately understand: these guys cover travel, food, and the business of doing both. Three pillars = clear identity = easier to pitch = more collabs.</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- VIRAL VIDEO IDEAS                       -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="sec-head" style="background:#FEF3C7">
+    <div class="sec-num" style="background:#FCD34D;color:#78350F">3</div>
+    <div>
+      <div class="sec-title">50 video ideas — ranked by viral potential</div>
+      <div class="sec-desc">Organized by pillar. Start with the ones marked "viral" — those have proven formats.</div>
+    </div>
+    <span class="badge" style="background:#FCD34D;color:#78350F">Content bank</span>
+  </div>
+
+  <!-- Travel ideas -->
+  <div class="callout" style="margin-top:14px"><strong>Travel pillar</strong> — "first time" + genuine reactions = the highest-performing travel format on TikTok right now</div>
+
+  <div class="idea"><div class="idea-title">"We've never left the country — here's day 1"</div><div class="idea-desc">Film the full journey: packing, airport anxiety, boarding, landing, first reaction stepping off the plane. Raw and real.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-viral">Viral format</span><span class="tag tag-travel">Travel</span></div></div>
+
+  <div class="idea"><div class="idea-title">"How we flew to [country] for $0 using credit card points"</div><div class="idea-desc">Screen recording of booking + the actual trip. Show the points balance, the redemption, the flight. People lose their minds over free flights.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-ig">Instagram</span><span class="tag tag-viral">Viral format</span><span class="tag tag-biz">Business</span></div></div>
+
+  <div class="idea"><div class="idea-title">"$50 hotel vs $500 hotel in [city]"</div><div class="idea-desc">Side-by-side comparison. Film both. Honest reactions. The contrast is the content. Works in any city, endlessly repeatable.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-viral">Viral format</span><span class="tag tag-travel">Travel</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Things nobody tells you about flying for the first time"</div><div class="idea-desc">Listicle format. Ears popping, turbulence, tiny bathrooms, how to find your gate. Massive search volume, zero Latino-focused versions exist.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-viral">Viral format</span><span class="tag tag-travel">Travel</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Exploring [neighborhood] like a tourist vs like a local"</div><div class="idea-desc">NYC neighborhoods first — then replicate in every city we visit. Two perspectives, one video. Great recurring series.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-ig">Instagram</span><span class="tag tag-travel">Travel</span></div></div>
+
+  <div class="idea"><div class="idea-title">"We got a free hotel room — here's exactly how"</div><div class="idea-desc">Show the pitch email, the media kit, the hotel's response, and the room. Transparency content performs insanely well.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-viral">Viral format</span><span class="tag tag-biz">Business</span></div></div>
+
+  <div class="idea"><div class="idea-title">"24 hours in [city] with only $50"</div><div class="idea-desc">Budget challenge format. What can you do, eat, and see? Relatable to our audience. Repeatable in every destination.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-viral">Viral format</span><span class="tag tag-travel">Travel</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Our first cruise ever — is it worth it?"</div><div class="idea-desc">Full cruise vlog: boarding, cabin tour, buffet, ports, honest pros/cons. First-timer POV is the hook.</div><div class="idea-tags"><span class="tag tag-yt">YouTube</span><span class="tag tag-tt">TikTok</span><span class="tag tag-travel">Travel</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Pack with us" — POV packing for a weekend trip</div><div class="idea-desc">ASMR-style, satisfying packing shots. What we bring, what we leave. Simple to film, high watch time.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-ig">Instagram</span><span class="tag tag-travel">Travel</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Best cheap flights from NYC this month"</div><div class="idea-desc">Monthly recurring series. Screen-record deals from Google Flights. Position as the go-to NYC flight deals page.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-ig">Instagram</span><span class="tag tag-travel">Travel</span></div></div>
+
+  <div class="divider"></div>
+
+  <!-- Food ideas -->
+  <div class="callout green" style="margin-top:14px"><strong>Food pillar</strong> — close-up shots, first bites, and price comparisons dominate food TikTok. "Swicy" (sweet + spicy) mashups are trending hard in 2026.</div>
+
+  <div class="idea"><div class="idea-title">"$1 street food vs $100 restaurant in NYC"</div><div class="idea-desc">The price comparison format never dies. Film both in one day. Cinematic close-ups of the food, honest reaction to both.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-viral">Viral format</span><span class="tag tag-food">Food</span></div></div>
+
+  <div class="idea"><div class="idea-title">"We tried the #1 rated [food] in NYC"</div><div class="idea-desc">Google Maps → sort by rating → go try it. Endless series. Pizza, tacos, dumplings, bagels — one per video.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-ig">Instagram</span><span class="tag tag-viral">Viral format</span><span class="tag tag-food">Food</span></div></div>
+
+  <div class="idea"><div class="idea-title">"All-you-can-eat buffet challenge — was it worth it?"</div><div class="idea-desc">Film the full experience: the price, the spread, the plates, the damage. Calculate cost per plate. People love buffet math.</div><div class="idea-tags"><span class="tag tag-yt">YouTube</span><span class="tag tag-tt">TikTok</span><span class="tag tag-viral">Viral format</span><span class="tag tag-food">Food</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Rating every food at [restaurant/buffet] out of 10"</div><div class="idea-desc">Quick-cut format. Bite → score → next. Fast-paced, shareable, easy to watch. Works for any restaurant.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-ig">Instagram</span><span class="tag tag-food">Food</span></div></div>
+
+  <div class="idea"><div class="idea-title">"First time trying [cuisine] — honest reaction"</div><div class="idea-desc">Ethiopian, Korean BBQ, dim sum, omakase — whatever's new to us. Genuine reactions + cultural appreciation = engagement.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-food">Food</span></div></div>
+
+  <div class="idea"><div class="idea-title">"The restaurant gave us a free meal — here's what happened"</div><div class="idea-desc">Show the pitch, the acceptance, the meal, the content we created for them. Behind-the-scenes of the influencer game.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-viral">Viral format</span><span class="tag tag-biz">Business</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Eating at every food stall in [market/festival]"</div><div class="idea-desc">Smorgasburg, Night Market, Chelsea Market, or any market abroad. One bite from every stall. Marathon format = long watch time.</div><div class="idea-tags"><span class="tag tag-yt">YouTube</span><span class="tag tag-tt">TikTok</span><span class="tag tag-food">Food</span></div></div>
+
+  <div class="idea"><div class="idea-title">"I let a stranger pick my food for the day"</div><div class="idea-desc">Ask random people on the street what to eat. Go wherever they say. Unexpected, funny, shareable.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-viral">Viral format</span><span class="tag tag-food">Food</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Recreating abuela's [dish] at a 5-star restaurant"</div><div class="idea-desc">Cultural angle. Compare the homemade version to the fancy version. Which is better? The story writes itself.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-viral">Viral format</span><span class="tag tag-food">Food</span></div></div>
+
+  <div class="idea"><div class="idea-title">"NYC's most expensive meal vs cheapest — same cuisine"</div><div class="idea-desc">$3 taco truck vs $85 taco tasting menu. $2 pizza slice vs $45 Neapolitan. Same food, different worlds.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-viral">Viral format</span><span class="tag tag-food">Food</span></div></div>
+
+  <div class="divider"></div>
+
+  <!-- Business/behind-the-scenes ideas -->
+  <div class="callout red" style="margin-top:14px"><strong>Business pillar</strong> — transparency + finance content is underserved in the Latino creator space. Showing the business behind the content builds trust and a second audience.</div>
+
+  <div class="idea"><div class="idea-title">"We started a travel business with $0 — month 1 update"</div><div class="idea-desc">Monthly series. Revenue, expenses, what worked, what didn't. Radical transparency. People follow the journey.</div><div class="idea-tags"><span class="tag tag-yt">YouTube</span><span class="tag tag-tt">TikTok</span><span class="tag tag-viral">Viral format</span><span class="tag tag-biz">Business</span></div></div>
+
+  <div class="idea"><div class="idea-title">"My credit score was 631 — here's month [X] of fixing it"</div><div class="idea-desc">Screenshot the score each month. Show what changed. Credit content for Latinos is nearly non-existent.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-ig">Instagram</span><span class="tag tag-viral">Viral format</span><span class="tag tag-biz">Business</span></div></div>
+
+  <div class="idea"><div class="idea-title">"How to file an LLC in New York — in 10 minutes"</div><div class="idea-desc">Screen recording + voiceover walkthrough. Evergreen content that ranks on YouTube forever. High search volume.</div><div class="idea-tags"><span class="tag tag-yt">YouTube</span><span class="tag tag-tt">TikTok</span><span class="tag tag-biz">Business</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Everything I wrote off on my taxes as a content creator"</div><div class="idea-desc">Go through the list: flights, hotels, gear, meals, phone bill. People don't know what's deductible. This educates.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-viral">Viral format</span><span class="tag tag-biz">Business</span></div></div>
+
+  <div class="idea"><div class="idea-title">"How much we made this month from content — honest breakdown"</div><div class="idea-desc">Ad revenue, affiliate links, comped stays, sponsored posts. Show the real numbers. Builds massive trust.</div><div class="idea-tags"><span class="tag tag-yt">YouTube</span><span class="tag tag-tt">TikTok</span><span class="tag tag-viral">Viral format</span><span class="tag tag-biz">Business</span></div></div>
+
+  <div class="idea"><div class="idea-title">"The credit card that pays for our flights (and how to get it)"</div><div class="idea-desc">Chase Sapphire walkthrough. How to apply, hit the bonus, transfer to Hyatt. Simple financial education.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-ig">Instagram</span><span class="tag tag-biz">Business</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Day in the life of a content creator — the part nobody shows"</div><div class="idea-desc">The editing, the pitching, the rejections, the accounting. Real behind-the-scenes, not the glamorous version.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-biz">Business</span></div></div>
+
+  <div class="idea"><div class="idea-title">"We pitched 20 hotels — here's who said yes (and why)"</div><div class="idea-desc">Show the emails, the responses, the rejection rate. Educational and motivating for aspiring creators.</div><div class="idea-tags"><span class="tag tag-yt">YouTube</span><span class="tag tag-tt">TikTok</span><span class="tag tag-viral">Viral format</span><span class="tag tag-biz">Business</span></div></div>
+
+  <div class="divider"></div>
+
+  <!-- NYC / Lifestyle -->
+  <div class="callout purple" style="margin-top:14px"><strong>Bonus: NYC lifestyle</strong> — these fill the gaps between trips and keep content flowing even when we're home. NYC is always content.</div>
+
+  <div class="idea"><div class="idea-title">"Things to do in NYC this weekend (that are actually free)"</div><div class="idea-desc">Weekly series. Events, parks, pop-ups, street fairs. Positions us as the NYC go-to page. Drives local following.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-ig">Instagram</span><span class="tag tag-travel">Travel</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Hidden spots in NYC even New Yorkers don't know about"</div><div class="idea-desc">Speakeasies, rooftop views, secret parks, underground restaurants. The "hidden gem" format consistently performs.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-ig">Instagram</span><span class="tag tag-viral">Viral format</span><span class="tag tag-travel">Travel</span></div></div>
+
+  <div class="idea"><div class="idea-title">"Best day trips from NYC under $30"</div><div class="idea-desc">Train to Beacon, bus to Philly, ferry to Governors Island. Accessible, relatable, repeatable.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-travel">Travel</span></div></div>
+
+  <div class="idea"><div class="idea-title">"NYC subway guide for people who've never taken it"</div><div class="idea-desc">MetroCard vs OMNY, which lines go where, common mistakes. Tourists AND new residents search for this constantly.</div><div class="idea-tags"><span class="tag tag-tt">TikTok</span><span class="tag tag-yt">YouTube</span><span class="tag tag-travel">Travel</span></div></div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- FIRST 90 DAYS                           -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="sec-head" style="background:#F3E8FF">
+    <div class="sec-num" style="background:#D8B4FE;color:#3B0764">4</div>
+    <div>
+      <div class="sec-title">The first 90 days — week by week</div>
+      <div class="sec-desc">3 phases: Launch (build the library), Stabilize (find the rhythm), Optimize (double down on what works)</div>
+    </div>
+    <span class="badge" style="background:#D8B4FE;color:#3B0764">Calendar</span>
+  </div>
+  <div class="callout purple"><strong>The formula:</strong> One anchor video per week (YouTube vlog, 5–10 min). Chop it into 3–4 short clips for TikTok/Reels. Post 1 original short per day on TikTok. That's the rhythm — film once, post everywhere.</div>
+
+  <!-- Phase 1 -->
+  <div class="ladder">
+    <div class="ladder-step">
+      <div class="ladder-dot" style="background:#FEF3C7;color:#78350F">P1</div>
+      <div><div class="ladder-title">Weeks 1–4: LAUNCH — Build the library</div><div class="ladder-desc">Goal: 20+ pieces of content live. Post daily on TikTok. Upload 1 YouTube video/week. Focus on NYC content (free, no travel budget needed yet).</div></div>
+    </div>
+  </div>
+  <div class="week">
+    <div class="week-head"><span class="week-num">WEEK 1</span><span class="week-title">Channel setup + first 5 videos</span></div>
+    <div class="week-grid">
+      <div class="week-item"><div class="week-item-title">Film channel trailer</div><div class="week-item-desc">60 seconds: who we are, what we do, why follow us</div></div>
+      <div class="week-item"><div class="week-item-title">"We're starting a travel business from scratch"</div><div class="week-item-desc">The origin story. Film it raw, no script.</div></div>
+      <div class="week-item"><div class="week-item-title">NYC food spot review #1</div><div class="week-item-desc">Pick something iconic. Pizza, chopped cheese, halal cart.</div></div>
+      <div class="week-item"><div class="week-item-title">Gear unboxing</div><div class="week-item-desc">Unbox the DJI Osmo + Mic 3. First impressions.</div></div>
+    </div>
+  </div>
+  <div class="week">
+    <div class="week-head"><span class="week-num">WEEK 2</span><span class="week-title">Food content + first TikTok push</span></div>
+    <div class="week-grid">
+      <div class="week-item"><div class="week-item-title">"#1 rated [food] in NYC — is it worth it?"</div><div class="week-item-desc">Google Maps top pick. Full review.</div></div>
+      <div class="week-item"><div class="week-item-title">3 TikToks from Week 1 footage</div><div class="week-item-desc">Chop, add voiceover, post daily</div></div>
+      <div class="week-item"><div class="week-item-title">Behind-the-scenes: how we edit</div><div class="week-item-desc">Show the workflow. Relatable for aspiring creators.</div></div>
+      <div class="week-item"><div class="week-item-title">NYC hidden gem #1</div><div class="week-item-desc">A spot even locals don't know about</div></div>
+    </div>
+  </div>
+  <div class="week">
+    <div class="week-head"><span class="week-num">WEEK 3–4</span><span class="week-title">First day trip + content rhythm</span></div>
+    <div class="week-grid">
+      <div class="week-item"><div class="week-item-title">Day trip vlog (Beacon, Philly, or Atlantic City)</div><div class="week-item-desc">Full YouTube vlog + 4 TikTok clips from the footage</div></div>
+      <div class="week-item"><div class="week-item-title">Buffet review #1</div><div class="week-item-desc">All-you-can-eat, calculate cost per plate</div></div>
+      <div class="week-item"><div class="week-item-title">"Things nobody tells you about [first experience]"</div><div class="week-item-desc">First time at a Korean BBQ, first time on Metro-North, etc.</div></div>
+      <div class="week-item"><div class="week-item-title">Credit score update #1</div><div class="week-item-desc">Screenshot the score. Show what's changing.</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Phase 2 -->
+  <div class="ladder" style="border-top:none">
+    <div class="ladder-step">
+      <div class="ladder-dot" style="background:#E1F5EE;color:#04342C">P2</div>
+      <div><div class="ladder-title">Weeks 5–8: STABILIZE — Find the rhythm</div><div class="ladder-desc">Goal: Consistent schedule locked. Analytics tell us what's working. Start pitching restaurants. Build the media kit.</div></div>
+    </div>
+  </div>
+  <div class="week">
+    <div class="week-head"><span class="week-num">WEEK 5–6</span><span class="week-title">Media kit + first restaurant pitches</span></div>
+    <div class="week-grid">
+      <div class="week-item"><div class="week-item-title">Build media kit in Canva</div><div class="week-item-desc">Use real stats from first month. Even small numbers work.</div></div>
+      <div class="week-item"><div class="week-item-title">Pitch 10 NYC restaurants</div><div class="week-item-desc">New restaurants, soft openings, local spots. Attach media kit.</div></div>
+      <div class="week-item"><div class="week-item-title">"$1 vs $100" food video</div><div class="week-item-desc">The comparison format. First attempt at a proven viral format.</div></div>
+      <div class="week-item"><div class="week-item-title">Monthly income/expense report #1</div><div class="week-item-desc">Even if it's $0 revenue — show the journey honestly.</div></div>
+    </div>
+  </div>
+  <div class="week">
+    <div class="week-head"><span class="week-num">WEEK 7–8</span><span class="week-title">Double down on winners</span></div>
+    <div class="week-grid">
+      <div class="week-item"><div class="week-item-title">Check analytics: what got the most views?</div><div class="week-item-desc">Make more of that. Kill what didn't work. Data over feelings.</div></div>
+      <div class="week-item"><div class="week-item-title">Film a comped restaurant meal (if any said yes)</div><div class="week-item-desc">Document the whole process for a BTS video</div></div>
+      <div class="week-item"><div class="week-item-title">Apply to Circle Line influencer program</div><div class="week-item-desc">NYC cruise collab. Low barrier, great first partnership.</div></div>
+      <div class="week-item"><div class="week-item-title">Set up affiliate links</div><div class="week-item-desc">Amazon (gear), Booking.com (hotels), CapCut (editing). Passive income starts.</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Phase 3 -->
+  <div class="ladder" style="border-top:none">
+    <div class="ladder-step">
+      <div class="ladder-dot" style="background:#EEEDFE;color:#26215C">P3</div>
+      <div><div class="ladder-title">Weeks 9–12: OPTIMIZE — Scale what works</div><div class="ladder-desc">Goal: First real trip. First hotel pitch. File the LLC (if test run passed). Revenue streams opening.</div></div>
+    </div>
+  </div>
+  <div class="week">
+    <div class="week-head"><span class="week-num">WEEK 9–10</span><span class="week-title">First real trip + hotel pitching</span></div>
+    <div class="week-grid">
+      <div class="week-item"><div class="week-item-title">Book first trip using points</div><div class="week-item-desc">DR, PR, or a cheap domestic flight. This is the big content moment.</div></div>
+      <div class="week-item"><div class="week-item-title">Pitch 5 hotels at destination</div><div class="week-item-desc">Boutique hotels, Airbnb superhosts. "We're coming to [city], here's what we offer."</div></div>
+      <div class="week-item"><div class="week-item-title">"How we flew for $0" content</div><div class="week-item-desc">The screen recording + trip combo. Show the redemption.</div></div>
+      <div class="week-item"><div class="week-item-title">Full trip vlog (YouTube)</div><div class="week-item-desc">10+ minute vlog. This becomes the portfolio piece for future pitches.</div></div>
+    </div>
+  </div>
+  <div class="week">
+    <div class="week-head"><span class="week-num">WEEK 11–12</span><span class="week-title">Assess, plan, and level up</span></div>
+    <div class="week-grid">
+      <div class="week-item"><div class="week-item-title">90-day analytics review</div><div class="week-item-desc">Total followers, top videos, engagement rate, revenue. What's the trajectory?</div></div>
+      <div class="week-item"><div class="week-item-title">File the LLC (if ready)</div><div class="week-item-desc">Test run passed? Go to Section 1 of the partner pitch.</div></div>
+      <div class="week-item"><div class="week-item-title">Pitch tourism boards</div><div class="week-item-desc">NYC, Caribbean, Latin America. Get on their media lists.</div></div>
+      <div class="week-item"><div class="week-item-title">Plan next 90 days</div><div class="week-item-desc">Bigger trips, cruise pitches, sponsored content outreach. Level 2 begins.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- POSTING SCHEDULE                        -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="sec-head" style="background:#FAECE7">
+    <div class="sec-num" style="background:#F5C4B3;color:#4A1B0C">5</div>
+    <div>
+      <div class="sec-title">Weekly posting schedule</div>
+      <div class="sec-desc">The minimum viable rhythm. Sustainable > ambitious.</div>
+    </div>
+    <span class="badge" style="background:#F5C4B3;color:#4A1B0C">Rhythm</span>
+  </div>
+  <div class="two-col">
+    <div class="mini-card">
+      <div class="mini-title">TikTok (daily)</div>
+      <div class="mini-row"><span>Mon</span><span class="mini-val">Food clip</span></div>
+      <div class="mini-row"><span>Tue</span><span class="mini-val">Travel tip or story</span></div>
+      <div class="mini-row"><span>Wed</span><span class="mini-val">Biz/credit update</span></div>
+      <div class="mini-row"><span>Thu</span><span class="mini-val">NYC hidden gem</span></div>
+      <div class="mini-row"><span>Fri</span><span class="mini-val">Best of / reaction</span></div>
+      <div class="mini-row"><span>Sat–Sun</span><span class="mini-val">Film new content</span></div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-title">YouTube (weekly)</div>
+      <div class="mini-row"><span>Upload day</span><span class="mini-val">Wednesday</span></div>
+      <div class="mini-row"><span>Format</span><span class="mini-val">5–12 min vlog</span></div>
+      <div class="mini-row"><span>Shorts</span><span class="mini-val">Cross-post TikToks</span></div>
+      <div class="mini-row"><span>Thumbnail</span><span class="mini-val">Custom every time</span></div>
+      <div class="mini-title" style="margin-top:10px">Instagram (3x/week)</div>
+      <div class="mini-row"><span>Reels</span><span class="mini-val">Best TikToks</span></div>
+      <div class="mini-row"><span>Stories</span><span class="mini-val">Daily behind-scenes</span></div>
+      <div class="mini-row"><span>Feed posts</span><span class="mini-val">Photo carousels</span></div>
+    </div>
+  </div>
+  <div class="callout red"><strong>The repurpose loop:</strong> Film one anchor piece on the weekend. Edit the YouTube vlog Monday–Tuesday. Chop it into 3–4 TikToks. Cross-post the best ones to Reels. One filming session = 5–7 pieces of content across 3 platforms. Work smarter.</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- MONETIZATION TIMELINE                   -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="sec-head" style="background:#E1F5EE">
+    <div class="sec-num" style="background:#9FE1CB;color:#04342C">6</div>
+    <div>
+      <div class="sec-title">How the money comes in — timeline</div>
+      <div class="sec-desc">Multiple revenue streams. None depend on being famous.</div>
+    </div>
+    <span class="badge" style="background:#9FE1CB;color:#04342C">Revenue</span>
+  </div>
+  <div class="ladder">
+    <div class="ladder-step">
+      <div class="ladder-dot" style="background:#FEF3C7;color:#78350F">1</div>
+      <div><div class="ladder-title">Month 1–2: Affiliate links (passive)</div><div class="ladder-desc">Amazon gear links, Booking.com hotel links, CapCut referrals. Earn commission on every click that converts. No follower minimum. Set up on day one.</div></div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-dot" style="background:#E1F5EE;color:#04342C">2</div>
+      <div><div class="ladder-title">Month 2–3: Comped meals + experiences</div><div class="ladder-desc">Not cash, but free food/experiences = content without spending money. Every comped meal is a video we didn't have to fund.</div></div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-dot" style="background:#EEEDFE;color:#26215C">3</div>
+      <div><div class="ladder-title">Month 3–6: Comped hotel stays + TikTok Creator Fund</div><div class="ladder-desc">Free stays = free trips = more content. TikTok pays creators directly once eligible (10k followers, 100k views/30 days).</div></div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-dot" style="background:#F3E8FF;color:#3B0764">4</div>
+      <div><div class="ladder-title">Month 6–9: Sponsored posts + YouTube ad revenue</div><div class="ladder-desc">Brands pay $200–$500/post at 5k–10k followers. YouTube ads kick in at 1k subs + 4k watch hours. Both compound over time.</div></div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-dot" style="background:#FAEEDA;color:#412402">5</div>
+      <div><div class="ladder-title">Month 9–12: Cruise comps + tourism board trips + brand deals</div><div class="ladder-desc">Full trips funded by partners. Sponsored rates $500–$2,000/video. Multiple income streams running simultaneously.</div></div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-dot" style="background:#FAECE7;color:#4A1B0C">6</div>
+      <div><div class="ladder-title">Year 2+: Display ads + premium partnerships</div><div class="ladder-desc">Mediavine/Raptive display ads ($1,000+/mo at 50k sessions). Luxury hotel partnerships. Speaking gigs. Course/ebook if we want. Full-time viable.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Built March 2026 &middot; Research from TikTok, The Points Guy, NerdWallet, Travelpayouts, TravelCollabs, Wanderful, Podcastle<br>
+  Part of the <a href="partner-pitch.html" style="color:#534AB7">Two Latinos</a> business plan
+</div>
+
+</div>
+</body>
+</html>
