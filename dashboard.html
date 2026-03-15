@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Dashboard — Two Latinos</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f7f8;--card:#fff;--border:#e5e5e5;--text:#1a1a1a;--dim:#666;--muted:#999;--purple:#534AB7;--purple-bg:#EEEDFE;--purple-dark:#26215C;--green:#0F6E56;--green-bg:#E1F5EE;--green-dark:#04342C;--orange:#854F0B;--orange-bg:#FEF3C7;--orange-dark:#78350F;--red:#993C1D;--red-bg:#FAECE7;--red-dark:#4A1B0C;--blue:#0C4A6E;--blue-bg:#E0F2FE;--pink:#6B21A8;--pink-bg:#F3E8FF}
+body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);min-height:100vh}
+.app{max-width:800px;margin:0 auto;padding:16px}
+
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;padding:16px 0;margin-bottom:8px}
+.header-left{display:flex;align-items:center;gap:12px}
+.logo{font-size:20px;font-weight:700}
+.header-tag{background:var(--green-bg);color:var(--green-dark);font-size:10px;font-weight:600;padding:2px 8px;border-radius:6px}
+.header-right{display:flex;gap:8px}
+.btn{padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:var(--card);font-size:12px;font-weight:600;color:var(--text);cursor:pointer;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--purple);background:var(--purple-bg)}
+.btn-primary{background:var(--purple);color:#fff;border-color:var(--purple)}
+.btn-primary:hover{background:#4338a8}
+
+/* Stats Row */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-align:center}
+.stat-num{font-size:22px;font-weight:700;line-height:1.2}
+.stat-label{font-size:11px;color:var(--dim);margin-top:4px}
+
+/* Nav Tabs */
+.nav{display:flex;gap:4px;padding:4px;background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:16px;overflow-x:auto}
+.nav-tab{padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;color:var(--dim);cursor:pointer;transition:all .15s;white-space:nowrap;border:none;background:none}
+.nav-tab.active{background:var(--purple);color:#fff}
+.nav-tab:hover:not(.active){background:var(--purple-bg);color:var(--purple-dark)}
+
+/* Panels */
+.panel{display:none}
+.panel.active{display:block}
+
+/* Table */
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.table-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border)}
+.table-title{font-size:14px;font-weight:600}
+.table-count{font-size:11px;color:var(--dim);background:var(--bg);padding:2px 8px;border-radius:6px}
+table{width:100%;border-collapse:collapse}
+th{background:var(--bg);padding:10px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)}
+td{padding:12px 14px;border-bottom:1px solid #f0f0f0;font-size:12px;color:var(--text);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover{background:#fafafe}
+.tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:6px;font-weight:600}
+.tag-comped{background:var(--green-bg);color:var(--green-dark)}
+.tag-paid{background:var(--orange-bg);color:var(--orange-dark)}
+.tag-points{background:var(--purple-bg);color:var(--purple-dark)}
+.tag-pending{background:var(--orange-bg);color:var(--orange-dark)}
+.tag-posted{background:var(--green-bg);color:var(--green-dark)}
+.tag-filmed{background:var(--blue-bg);color:var(--blue)}
+.tag-idea{background:var(--bg);color:var(--dim)}
+.tag-warm{background:var(--green-bg);color:var(--green-dark)}
+.tag-cold{background:var(--bg);color:var(--dim)}
+.tag-hot{background:var(--red-bg);color:var(--red-dark)}
+.rating{display:inline-flex;align-items:center;gap:4px;font-weight:600}
+.rating-high{color:var(--green)}
+.rating-mid{color:var(--orange)}
+.rating-low{color:var(--red)}
+.cell-title{font-weight:600;color:var(--text)}
+.cell-sub{font-size:11px;color:var(--dim);margin-top:2px}
+.cell-mono{font-family:monospace;font-size:11px;color:var(--dim)}
+
+/* Add Entry Form */
+.form-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:100;align-items:center;justify-content:center;padding:16px}
+.form-overlay.open{display:flex}
+.form-card{background:var(--card);border-radius:16px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;padding:24px}
+.form-title{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+.form-close{width:28px;height:28px;border-radius:50%;border:none;background:var(--bg);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.form-group{margin-bottom:14px}
+.form-label{font-size:12px;font-weight:600;margin-bottom:4px;display:block}
+.form-input,.form-select,.form-textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;color:var(--text);background:var(--card)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--purple)}
+.form-textarea{min-height:60px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-actions{display:flex;gap:8px;margin-top:18px}
+.form-actions .btn{flex:1;justify-content:center;padding:10px}
+
+/* Empty State */
+.empty{padding:40px 20px;text-align:center}
+.empty-icon{font-size:32px;margin-bottom:8px}
+.empty-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.empty-desc{font-size:12px;color:var(--dim)}
+
+/* Mobile */
+@media(max-width:640px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .header{flex-direction:column;gap:12px;align-items:flex-start}
+  .header-right{width:100%}
+  .header-right .btn{flex:1;justify-content:center}
+  .form-row{grid-template-columns:1fr}
+  table{font-size:11px}
+  th,td{padding:8px 10px}
+  .nav{gap:2px;padding:3px}
+  .nav-tab{padding:6px 10px;font-size:11px}
+  .app{padding:12px}
+}
+@media(max-width:400px){
+  .stats{grid-template-columns:1fr 1fr}
+  .stat-card{padding:10px 12px}
+  .stat-num{font-size:18px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <div class="logo">Two Latinos</div>
+    <span class="header-tag">Travel Dashboard</span>
+  </div>
+  <div class="header-right">
+    <a href="index.html" class="btn">Home</a>
+    <button class="btn btn-primary" onclick="openForm()">+ Add Entry</button>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stat-card">
+    <div class="stat-num" style="color:var(--purple)" id="stat-trips">0</div>
+    <div class="stat-label">Trips</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color:var(--green)" id="stat-hotels">0</div>
+    <div class="stat-label">Hotels</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color:var(--orange)" id="stat-restaurants">0</div>
+    <div class="stat-label">Restaurants</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" style="color:var(--red)" id="stat-contacts">0</div>
+    <div class="stat-label">Contacts</div>
+  </div>
+</div>
+
+<!-- Nav Tabs -->
+<div class="nav">
+  <button class="nav-tab active" onclick="switchTab('trips')">Trips</button>
+  <button class="nav-tab" onclick="switchTab('hotels')">Hotels & Stays</button>
+  <button class="nav-tab" onclick="switchTab('food')">Food</button>
+  <button class="nav-tab" onclick="switchTab('people')">People</button>
+  <button class="nav-tab" onclick="switchTab('expenses')">Expenses</button>
+  <button class="nav-tab" onclick="switchTab('content')">Content</button>
+</div>
+
+<!-- TRIPS PANEL -->
+<div class="panel active" id="panel-trips">
+  <div class="table-wrap">
+    <div class="table-header">
+      <div class="table-title">All Trips</div>
+      <div class="table-count" id="count-trips">0 entries</div>
+    </div>
+    <div id="table-trips"></div>
+  </div>
+</div>
+
+<!-- HOTELS PANEL -->
+<div class="panel" id="panel-hotels">
+  <div class="table-wrap">
+    <div class="table-header">
+      <div class="table-title">Hotels & Stays</div>
+      <div class="table-count" id="count-hotels">0 entries</div>
+    </div>
+    <div id="table-hotels"></div>
+  </div>
+</div>
+
+<!-- FOOD PANEL -->
+<div class="panel" id="panel-food">
+  <div class="table-wrap">
+    <div class="table-header">
+      <div class="table-title">Restaurants & Food</div>
+      <div class="table-count" id="count-food">0 entries</div>
+    </div>
+    <div id="table-food"></div>
+  </div>
+</div>
+
+<!-- PEOPLE PANEL -->
+<div class="panel" id="panel-people">
+  <div class="table-wrap">
+    <div class="table-header">
+      <div class="table-title">People & Contacts</div>
+      <div class="table-count" id="count-people">0 entries</div>
+    </div>
+    <div id="table-people"></div>
+  </div>
+</div>
+
+<!-- EXPENSES PANEL -->
+<div class="panel" id="panel-expenses">
+  <div class="table-wrap">
+    <div class="table-header">
+      <div class="table-title">Expenses</div>
+      <div class="table-count" id="count-expenses">0 entries</div>
+    </div>
+    <div id="table-expenses"></div>
+  </div>
+</div>
+
+<!-- CONTENT PANEL -->
+<div class="panel" id="panel-content">
+  <div class="table-wrap">
+    <div class="table-header">
+      <div class="table-title">Content Log</div>
+      <div class="table-count" id="count-content">0 entries</div>
+    </div>
+    <div id="table-content"></div>
+  </div>
+</div>
+
+<!-- ADD ENTRY FORM -->
+<div class="form-overlay" id="formOverlay" onclick="if(event.target===this)closeForm()">
+  <div class="form-card">
+    <div class="form-title">
+      <span id="formTitle">Add Entry</span>
+      <button class="form-close" onclick="closeForm()">&times;</button>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Type</label>
+      <select class="form-select" id="f-type" onchange="updateFormFields()">
+        <option value="trips">Trip</option>
+        <option value="hotels">Hotel / Stay</option>
+        <option value="food">Restaurant / Food</option>
+        <option value="people">Person / Contact</option>
+        <option value="expenses">Expense</option>
+        <option value="content">Content</option>
+      </select>
+    </div>
+
+    <div id="formFields"></div>
+
+    <div class="form-actions">
+      <button class="btn" onclick="closeForm()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveEntry()">Save Entry</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const STORAGE_KEY = 'two-latinos-dashboard-v1';
+
+// Field definitions per tab
+const FIELDS = {
+  trips: [
+    {key:'name',label:'Trip Name',type:'text',placeholder:'DR First Trip',required:true},
+    {key:'dates',label:'Dates',type:'text',placeholder:'Apr 12-16, 2026'},
+    {key:'destination',label:'Destination',type:'text',placeholder:'Punta Cana, DR'},
+    {key:'purpose',label:'Purpose',type:'text',placeholder:'Content trip — hotel review + food series'},
+    {key:'transport',label:'How We Got There',type:'text',placeholder:'Points — Chase Sapphire, 45k pts'},
+    {key:'comped',label:'Comped?',type:'select',options:['No','Partially','Fully comped']},
+    {key:'cost',label:'Total Out-of-Pocket',type:'text',placeholder:'$340'},
+    {key:'content_created',label:'Content Created',type:'text',placeholder:'2 YT vlogs, 8 TikToks, 3 Reels'},
+    {key:'highlights',label:'Highlights',type:'textarea',placeholder:'Best moments, tips, what to skip...'},
+    {key:'return',label:'Would Return?',type:'select',options:['Yes','Maybe','No']},
+  ],
+  hotels: [
+    {key:'name',label:'Hotel / Property Name',type:'text',placeholder:'Hotel Catalonia Royal',required:true},
+    {key:'location',label:'Location',type:'text',placeholder:'Punta Cana, DR'},
+    {key:'dates',label:'Dates',type:'text',placeholder:'Apr 12-16, 2026'},
+    {key:'room',label:'Room Type & Number',type:'text',placeholder:'Ocean view suite, 4th floor, room 412'},
+    {key:'rate',label:'Rate / Comped?',type:'text',placeholder:'Comped — 4 nights for content'},
+    {key:'manager',label:'Manager / PR Contact',type:'text',placeholder:'Maria Santos — maria@hotel.com'},
+    {key:'booking_method',label:'How We Booked',type:'text',placeholder:'Pitched via email with media kit'},
+    {key:'amenities',label:'Amenities & Notes',type:'textarea',placeholder:'Pool, gym, breakfast 7-10am...'},
+    {key:'rating',label:'Rating (1-10)',type:'number',placeholder:'8'},
+    {key:'return',label:'Would Return?',type:'select',options:['Yes','Maybe','No']},
+    {key:'content_posted',label:'Content Posted',type:'text',placeholder:'YT vlog + 3 TikToks'},
+  ],
+  food: [
+    {key:'name',label:'Restaurant Name',type:'text',placeholder:'Fogo de Chao',required:true},
+    {key:'location',label:'Address',type:'text',placeholder:'252 E 51st St, NYC'},
+    {key:'date',label:'Date',type:'text',placeholder:'Mar 22, 2026'},
+    {key:'cuisine',label:'Cuisine',type:'text',placeholder:'Brazilian steakhouse'},
+    {key:'ordered',label:'What We Ordered',type:'textarea',placeholder:'Full rodizio, caipirinhas, flan'},
+    {key:'cost',label:'Cost (total)',type:'text',placeholder:'$156 for two'},
+    {key:'comped',label:'Comped?',type:'select',options:['No','Partially','Fully comped']},
+    {key:'manager',label:'Manager / Contact',type:'text',placeholder:'Diego — floor manager'},
+    {key:'rating',label:'Rating (1-10)',type:'number',placeholder:'9'},
+    {key:'best_dish',label:'Best Dish',type:'text',placeholder:'Picanha was insane'},
+    {key:'content',label:'Content Created?',type:'text',placeholder:'TikTok review posted Mar 23'},
+    {key:'purpose',label:'Business Purpose',type:'text',placeholder:'Filmed for NYC Steakhouse Series ep 3'},
+    {key:'return',label:'Would Return?',type:'select',options:['Yes','Maybe','No']},
+  ],
+  people: [
+    {key:'name',label:'Name',type:'text',placeholder:'Maria Santos',required:true},
+    {key:'role',label:'Role / Title',type:'text',placeholder:'PR Manager'},
+    {key:'company',label:'Company / Property',type:'text',placeholder:'Hotel Catalonia Royal'},
+    {key:'email',label:'Email',type:'text',placeholder:'maria@catalonia.com'},
+    {key:'phone_ig',label:'Phone / IG Handle',type:'text',placeholder:'@mariasantos_pr'},
+    {key:'how_met',label:'How We Met',type:'text',placeholder:'She approved our comp stay pitch'},
+    {key:'status',label:'Relationship Status',type:'select',options:['Cold','Warm','Hot']},
+    {key:'followup',label:'Follow-up Needed?',type:'text',placeholder:'Send thank-you by Apr 25'},
+    {key:'notes',label:'Notes',type:'textarea',placeholder:'She knows the GM at another property...'},
+  ],
+  expenses: [
+    {key:'date',label:'Date',type:'text',placeholder:'Mar 22, 2026',required:true},
+    {key:'description',label:'Description',type:'text',placeholder:'Dinner at Fogo de Chao',required:true},
+    {key:'category',label:'Category',type:'select',options:['Meals — Content','Travel — Flights','Travel — Hotels','Travel — Transportation','Equipment — Camera/Gear','Software — Editing/Tools','Marketing — Ads/Promos','Business — Legal/Fees','Phone/Internet']},
+    {key:'amount',label:'Amount ($)',type:'text',placeholder:'156.00'},
+    {key:'payment',label:'Payment Method',type:'text',placeholder:'Chase Sapphire ****4521'},
+    {key:'purpose',label:'Business Purpose',type:'text',placeholder:'Filmed review for ep 3'},
+    {key:'deductible',label:'Deductible %',type:'select',options:['100%','80%','50%']},
+    {key:'receipt',label:'Receipt Photo Link',type:'text',placeholder:'Google Drive link'},
+    {key:'trip',label:'Trip (if applicable)',type:'text',placeholder:'NYC local'},
+  ],
+  content: [
+    {key:'date',label:'Date Posted',type:'text',placeholder:'Mar 23, 2026',required:true},
+    {key:'platform',label:'Platform',type:'select',options:['TikTok','YouTube','Instagram Reel','Instagram Post','YouTube Short']},
+    {key:'title',label:'Title / Hook',type:'text',placeholder:'$156 all-you-can-eat — worth it?',required:true},
+    {key:'pillar',label:'Content Pillar',type:'select',options:['Travel','Food','Business','NYC Local']},
+    {key:'trip',label:'Related Trip',type:'text',placeholder:'NYC local'},
+    {key:'brand',label:'Brand/Partner Tagged?',type:'text',placeholder:'@fogodechao'},
+    {key:'views',label:'Views (7 day)',type:'text',placeholder:'12,400'},
+    {key:'engagement',label:'Engagement',type:'text',placeholder:'843 likes, 67 comments'},
+    {key:'link',label:'Link',type:'text',placeholder:'tiktok.com/@twolatinos/video/123'},
+    {key:'status',label:'Status',type:'select',options:['Idea','Filmed','Editing','Posted']},
+    {key:'notes',label:'Notes',type:'textarea',placeholder:'Close-up food shots performed best'},
+  ]
+};
+
+// Load data
+let data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+if (!data.trips) data = {trips:[],hotels:[],food:[],people:[],expenses:[],content:[]};
+
+let currentTab = 'trips';
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('panel-' + tab).classList.add('active');
+}
+
+function openForm() {
+  document.getElementById('f-type').value = currentTab;
+  updateFormFields();
+  document.getElementById('formOverlay').classList.add('open');
+}
+
+function closeForm() {
+  document.getElementById('formOverlay').classList.remove('open');
+}
+
+function updateFormFields() {
+  const type = document.getElementById('f-type').value;
+  const fields = FIELDS[type];
+  let html = '';
+  for (let i = 0; i < fields.length; i += 2) {
+    const f1 = fields[i];
+    const f2 = fields[i + 1];
+    if (f2) {
+      html += '<div class="form-row">';
+      html += renderField(f1);
+      html += renderField(f2);
+      html += '</div>';
+    } else {
+      html += renderField(f1);
+    }
+  }
+  document.getElementById('formFields').innerHTML = html;
+}
+
+function renderField(f) {
+  let input = '';
+  if (f.type === 'select') {
+    input = `<select class="form-select" id="f-${f.key}">
+      <option value="">Select...</option>
+      ${f.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+    </select>`;
+  } else if (f.type === 'textarea') {
+    input = `<textarea class="form-textarea" id="f-${f.key}" placeholder="${f.placeholder || ''}"></textarea>`;
+  } else {
+    input = `<input class="form-input" type="${f.type === 'number' ? 'number' : 'text'}" id="f-${f.key}" placeholder="${f.placeholder || ''}">`;
+  }
+  return `<div class="form-group">
+    <label class="form-label">${f.label}${f.required ? ' *' : ''}</label>
+    ${input}
+  </div>`;
+}
+
+function saveEntry() {
+  const type = document.getElementById('f-type').value;
+  const fields = FIELDS[type];
+  const entry = {id: Date.now(), created: new Date().toISOString()};
+  let hasRequired = true;
+
+  fields.forEach(f => {
+    const el = document.getElementById('f-' + f.key);
+    if (el) {
+      entry[f.key] = el.value;
+      if (f.required && !el.value.trim()) hasRequired = false;
+    }
+  });
+
+  if (!hasRequired) {
+    alert('Please fill in required fields');
+    return;
+  }
+
+  data[type].unshift(entry);
+  save();
+  closeForm();
+  render();
+  // Switch to the tab of the entry we just added
+  currentTab = type;
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => {
+    if (t.textContent.toLowerCase().includes(type === 'food' ? 'food' : type === 'people' ? 'people' : type)) t.classList.add('active');
+  });
+  document.getElementById('panel-' + type).classList.add('active');
+}
+
+function deleteEntry(type, id) {
+  if (!confirm('Delete this entry?')) return;
+  data[type] = data[type].filter(e => e.id !== id);
+  save();
+  render();
+}
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function getTagClass(val) {
+  if (!val) return 'tag-idea';
+  const v = val.toLowerCase();
+  if (v.includes('comped') || v.includes('fully') || v === 'yes' || v === 'posted' || v === 'warm' || v === 'hot') return v === 'hot' ? 'tag-hot' : v === 'warm' ? 'tag-warm' : 'tag-comped';
+  if (v.includes('point')) return 'tag-points';
+  if (v.includes('paid') || v === 'no' || v === 'maybe' || v === 'pending' || v === 'filming' || v === 'cold') return 'tag-paid';
+  if (v === 'filmed' || v === 'editing') return 'tag-filmed';
+  return 'tag-idea';
+}
+
+function ratingClass(r) {
+  const n = parseInt(r);
+  if (n >= 8) return 'rating-high';
+  if (n >= 5) return 'rating-mid';
+  return 'rating-low';
+}
+
+function renderEmpty(icon, title, desc) {
+  return `<div class="empty"><div class="empty-icon">${icon}</div><div class="empty-title">${title}</div><div class="empty-desc">${desc}</div></div>`;
+}
+
+function render() {
+  // Stats
+  document.getElementById('stat-trips').textContent = data.trips.length;
+  document.getElementById('stat-hotels').textContent = data.hotels.length;
+  document.getElementById('stat-restaurants').textContent = data.food.length;
+  document.getElementById('stat-contacts').textContent = data.people.length;
+
+  // Counts
+  ['trips','hotels','food','people','expenses','content'].forEach(t => {
+    const el = document.getElementById('count-' + t);
+    if (el) el.textContent = data[t].length + ' entries';
+  });
+
+  // Trips table
+  const tripsEl = document.getElementById('table-trips');
+  if (data.trips.length === 0) {
+    tripsEl.innerHTML = renderEmpty('&#9992;', 'No trips yet', 'Add your first trip to start tracking');
+  } else {
+    tripsEl.innerHTML = `<table>
+      <tr><th>Trip</th><th>Dates</th><th>Destination</th><th>Cost</th><th>Comped</th><th>Return?</th><th></th></tr>
+      ${data.trips.map(e => `<tr>
+        <td><div class="cell-title">${esc(e.name)}</div><div class="cell-sub">${esc(e.purpose || '')}</div></td>
+        <td>${esc(e.dates || '')}</td>
+        <td>${esc(e.destination || '')}</td>
+        <td><strong>${esc(e.cost || '-')}</strong></td>
+        <td><span class="tag ${getTagClass(e.comped)}">${esc(e.comped || '-')}</span></td>
+        <td><span class="tag ${getTagClass(e.return)}">${esc(e.return || '-')}</span></td>
+        <td><button class="btn" onclick="deleteEntry('trips',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+      </tr>`).join('')}
+    </table>`;
+  }
+
+  // Hotels table
+  const hotelsEl = document.getElementById('table-hotels');
+  if (data.hotels.length === 0) {
+    hotelsEl.innerHTML = renderEmpty('&#127976;', 'No hotels logged', 'Add a hotel stay to track rooms, managers, and ratings');
+  } else {
+    hotelsEl.innerHTML = `<table>
+      <tr><th>Hotel</th><th>Dates</th><th>Room</th><th>Rate</th><th>Rating</th><th>Contact</th><th></th></tr>
+      ${data.hotels.map(e => `<tr>
+        <td><div class="cell-title">${esc(e.name)}</div><div class="cell-sub">${esc(e.location || '')}</div></td>
+        <td>${esc(e.dates || '')}</td>
+        <td class="cell-mono">${esc(e.room || '-')}</td>
+        <td><span class="tag ${getTagClass(e.rate)}">${esc(e.rate || '-')}</span></td>
+        <td>${e.rating ? `<span class="rating ${ratingClass(e.rating)}">${e.rating}/10</span>` : '-'}</td>
+        <td><div class="cell-sub">${esc(e.manager || '-')}</div></td>
+        <td><button class="btn" onclick="deleteEntry('hotels',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+      </tr>`).join('')}
+    </table>`;
+  }
+
+  // Food table
+  const foodEl = document.getElementById('table-food');
+  if (data.food.length === 0) {
+    foodEl.innerHTML = renderEmpty('&#127869;', 'No restaurants yet', 'Log your first meal to build your food diary');
+  } else {
+    foodEl.innerHTML = `<table>
+      <tr><th>Restaurant</th><th>Date</th><th>Best Dish</th><th>Cost</th><th>Rating</th><th>Comped</th><th></th></tr>
+      ${data.food.map(e => `<tr>
+        <td><div class="cell-title">${esc(e.name)}</div><div class="cell-sub">${esc(e.cuisine || '')} &middot; ${esc(e.location || '')}</div></td>
+        <td>${esc(e.date || '')}</td>
+        <td>${esc(e.best_dish || '-')}</td>
+        <td><strong>${esc(e.cost || '-')}</strong></td>
+        <td>${e.rating ? `<span class="rating ${ratingClass(e.rating)}">${e.rating}/10</span>` : '-'}</td>
+        <td><span class="tag ${getTagClass(e.comped)}">${esc(e.comped || '-')}</span></td>
+        <td><button class="btn" onclick="deleteEntry('food',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+      </tr>`).join('')}
+    </table>`;
+  }
+
+  // People table
+  const peopleEl = document.getElementById('table-people');
+  if (data.people.length === 0) {
+    peopleEl.innerHTML = renderEmpty('&#128101;', 'No contacts yet', 'Add people you meet — managers, PR reps, other creators');
+  } else {
+    peopleEl.innerHTML = `<table>
+      <tr><th>Name</th><th>Role</th><th>Company</th><th>Contact</th><th>Status</th><th>Follow-up</th><th></th></tr>
+      ${data.people.map(e => `<tr>
+        <td class="cell-title">${esc(e.name)}</td>
+        <td>${esc(e.role || '-')}</td>
+        <td>${esc(e.company || '-')}</td>
+        <td><div class="cell-sub">${esc(e.email || '')}</div><div class="cell-sub">${esc(e.phone_ig || '')}</div></td>
+        <td><span class="tag ${getTagClass(e.status)}">${esc(e.status || '-')}</span></td>
+        <td class="cell-sub">${esc(e.followup || '-')}</td>
+        <td><button class="btn" onclick="deleteEntry('people',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+      </tr>`).join('')}
+    </table>`;
+  }
+
+  // Expenses table
+  const expEl = document.getElementById('table-expenses');
+  if (data.expenses.length === 0) {
+    expEl.innerHTML = renderEmpty('&#128176;', 'No expenses logged', 'Track every business expense for tax write-offs');
+  } else {
+    let total = 0;
+    data.expenses.forEach(e => { total += parseFloat(e.amount) || 0; });
+    expEl.innerHTML = `<div style="padding:10px 14px;background:var(--bg);font-size:12px;display:flex;justify-content:space-between">
+      <span style="color:var(--dim)">Total expenses</span>
+      <strong style="color:var(--purple)">$${total.toFixed(2)}</strong>
+    </div>
+    <table>
+      <tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Deductible</th><th>Payment</th><th></th></tr>
+      ${data.expenses.map(e => `<tr>
+        <td>${esc(e.date || '')}</td>
+        <td><div class="cell-title">${esc(e.description)}</div><div class="cell-sub">${esc(e.purpose || '')}</div></td>
+        <td><span class="tag tag-idea">${esc(e.category || '-')}</span></td>
+        <td><strong>$${esc(e.amount || '0')}</strong></td>
+        <td>${esc(e.deductible || '-')}</td>
+        <td class="cell-mono">${esc(e.payment || '-')}</td>
+        <td><button class="btn" onclick="deleteEntry('expenses',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+      </tr>`).join('')}
+    </table>`;
+  }
+
+  // Content table
+  const contentEl = document.getElementById('table-content');
+  if (data.content.length === 0) {
+    contentEl.innerHTML = renderEmpty('&#127909;', 'No content logged', 'Track every video, reel, and post you create');
+  } else {
+    contentEl.innerHTML = `<table>
+      <tr><th>Content</th><th>Platform</th><th>Pillar</th><th>Views</th><th>Status</th><th></th></tr>
+      ${data.content.map(e => `<tr>
+        <td><div class="cell-title">${esc(e.title)}</div><div class="cell-sub">${esc(e.date || '')} ${e.brand ? '&middot; ' + esc(e.brand) : ''}</div></td>
+        <td><span class="tag tag-idea">${esc(e.platform || '-')}</span></td>
+        <td><span class="tag tag-idea">${esc(e.pillar || '-')}</span></td>
+        <td>${esc(e.views || '-')}</td>
+        <td><span class="tag ${getTagClass(e.status)}">${esc(e.status || '-')}</span></td>
+        <td><button class="btn" onclick="deleteEntry('content',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+      </tr>`).join('')}
+    </table>`;
+  }
+}
+
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// Seed demo data if empty
+function seedDemo() {
+  if (data.trips.length > 0 || data.hotels.length > 0 || data.food.length > 0) return;
+
+  data.trips = [
+    {id:1,name:'NYC Local — Launch Week',dates:'Apr 1-7, 2026',destination:'New York City',purpose:'First 5 videos — food spots + hidden gems',transport:'Subway + walking',comped:'No',cost:'$85',content_created:'5 TikToks, 1 YT vlog',highlights:'Chopped cheese video got most engagement. Washington Heights food walk was gold.',return:'Yes'},
+    {id:2,name:'Atlantic City Test Run',dates:'Apr 19-20, 2026',destination:'Atlantic City, NJ',purpose:'Day trip content — boardwalk + buffet review',transport:'NJ Transit — $32 round trip',comped:'No',cost:'$210',content_created:'3 TikToks, 1 YT short',highlights:'Borgata buffet was insane. Caesar\'s pool area good for B-roll.',return:'Maybe'},
+  ];
+
+  data.hotels = [
+    {id:1,name:'Borgata Hotel Casino & Spa',location:'Atlantic City, NJ',dates:'Apr 19-20, 2026',room:'Standard king, tower 2, room 1847',rate:'$149/night — paid',manager:'—',booking_method:'Booking.com (earned 2x points)',amenities:'Pool, spa, 3 buffets, parking $10/day. Room was clean, view of the marina.',rating:'7',return:'Yes',content_posted:'1 TikTok room tour'},
+  ];
+
+  data.food = [
+    {id:1,name:'Lechonera La Piraña',location:'6086 Broadway, NYC',date:'Apr 2, 2026',cuisine:'Puerto Rican',ordered:'Pernil plate, tostones, rice & beans, mofongo',cost:'$18 for two',comped:'No',manager:'—',rating:'9',best_dish:'Pernil — crispy skin, falling apart',content:'TikTok posted Apr 3',purpose:'NYC Food Series ep 1',return:'Yes'},
+    {id:2,name:'Borgata Buffet',location:'Atlantic City, NJ',date:'Apr 19, 2026',cuisine:'All-you-can-eat buffet',ordered:'Everything — crab legs, prime rib, sushi, dessert bar',cost:'$65 for two',comped:'No',manager:'Diego — floor supervisor, friendly',rating:'8',best_dish:'Crab legs were unlimited and fresh',content:'TikTok "Was this $32 buffet worth it?"',purpose:'Buffet Review Series ep 1',return:'Yes'},
+    {id:3,name:'Chopped Cheese Spot (no name)',location:'Broadway & 159th, NYC',date:'Apr 1, 2026',cuisine:'NYC street food',ordered:'2 chopped cheese, Arizona iced teas',cost:'$14',comped:'No',manager:'—',rating:'8',best_dish:'Classic chopped cheese — the bodega one',content:'First TikTok ever posted',purpose:'NYC Hidden Gems series',return:'Yes'},
+  ];
+
+  data.people = [
+    {id:1,name:'Diego',role:'Floor Supervisor',company:'Borgata Buffet, Atlantic City',email:'—',phone_ig:'—',how_met:'Chatted during our buffet visit — super friendly, showed us the VIP section',status:'Warm',followup:'DM if we go back — he said he can get us a table near the crab station',notes:'Mentioned they do influencer comps sometimes — need 5k+ followers'},
+  ];
+
+  data.expenses = [
+    {id:1,date:'Apr 1, 2026',description:'NJ Transit to Atlantic City',category:'Travel — Transportation',amount:'32.00',payment:'Chase Sapphire',purpose:'Day trip content — AC boardwalk + buffet',deductible:'100%',trip:'Atlantic City Test Run'},
+    {id:2,date:'Apr 2, 2026',description:'Lunch at Lechonera La Piraña',category:'Meals — Content',amount:'18.00',payment:'Chase Sapphire',purpose:'Filmed for NYC Food Series ep 1',deductible:'50%',trip:'NYC Local'},
+    {id:3,date:'Apr 19, 2026',description:'Borgata Buffet dinner',category:'Meals — Content',amount:'65.00',payment:'Chase Sapphire',purpose:'Filmed buffet review for TikTok',deductible:'50%',trip:'Atlantic City Test Run'},
+    {id:4,date:'Apr 19, 2026',description:'Borgata Hotel — 1 night',category:'Travel — Hotels',amount:'149.00',payment:'Chase Sapphire',purpose:'Overnight for AC content trip',deductible:'100%',trip:'Atlantic City Test Run'},
+  ];
+
+  data.content = [
+    {id:1,date:'Apr 1, 2026',platform:'TikTok',title:'"The $7 chopped cheese that started it all"',pillar:'Food',trip:'NYC Local',brand:'—',views:'2,340',engagement:'187 likes, 23 comments',status:'Posted',notes:'First video ever. Raw iPhone footage. Comments loved the authenticity.'},
+    {id:2,date:'Apr 3, 2026',platform:'TikTok',title:'"$18 for two — best Puerto Rican food in NYC"',pillar:'Food',trip:'NYC Local',brand:'@lechoneralapirana',views:'4,890',engagement:'412 likes, 67 comments, 89 shares',status:'Posted',notes:'Food close-ups performed way better than wide shots. Do more of this.'},
+    {id:3,date:'Apr 20, 2026',platform:'TikTok',title:'"$32 all-you-can-eat — was this AC buffet worth it?"',pillar:'Food',trip:'Atlantic City Test Run',brand:'@borgaborgatata',views:'—',engagement:'—',status:'Editing',notes:'Need to add the cost-per-plate calculation overlay'},
+    {id:4,date:'—',platform:'YouTube',title:'"We started a travel business with $0 — here\'s week 1"',pillar:'Business',trip:'NYC Local',brand:'—',views:'—',engagement:'—',status:'Idea',notes:'Combine week 1 footage into a 10-min origin story vlog'},
+  ];
+
+  save();
+}
+
+seedDemo();
+render();
+</script>
+</body>
+</html>

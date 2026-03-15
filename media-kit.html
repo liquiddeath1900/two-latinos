@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Media Kit — Two Latinos</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0a;--card:#141414;--card2:#1a1a1a;--border:#2a2a2a;--text:#f5f5f5;--dim:#999;--accent:#c4a265;--accent2:#e8d5a8;--green:#4ade80;--white:#fff}
+body{background:var(--bg);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--text);min-height:100vh}
+
+/* Page 1: Hero */
+.page{max-width:640px;margin:0 auto;padding:40px 24px;min-height:100vh;position:relative}
+.page-label{position:absolute;top:16px;right:24px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);opacity:.5}
+
+.kit-header{text-align:center;padding:60px 0 40px}
+.kit-logo{font-size:36px;font-weight:700;letter-spacing:-1px;margin-bottom:8px}
+.kit-tagline{font-size:14px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;font-weight:300;margin-bottom:24px}
+.kit-divider{width:60px;height:1px;background:var(--accent);margin:0 auto 24px}
+.kit-bio{font-size:14px;color:var(--dim);line-height:1.8;max-width:460px;margin:0 auto 32px}
+.kit-bio strong{color:var(--text);font-weight:500}
+
+/* Social handles row */
+.socials{display:flex;justify-content:center;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.social{text-align:center}
+.social-platform{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.social-handle{font-size:13px;font-weight:600;color:var(--accent2)}
+.social-count{font-size:11px;color:var(--dim);margin-top:2px}
+
+/* Photo grid placeholder */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-bottom:48px;border-radius:12px;overflow:hidden}
+.photo-cell{aspect-ratio:1;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--dim);text-align:center;padding:12px;line-height:1.4}
+.photo-cell.tall{grid-row:span 2}
+.photo-cell.wide{grid-column:span 2}
+
+/* Stats grid */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin-bottom:48px}
+.stat-box{background:var(--card);padding:24px 16px;text-align:center}
+.stat-num{font-size:28px;font-weight:700;color:var(--accent2);line-height:1}
+.stat-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-top:8px}
+
+/* Page 2: Audience */
+.section-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:24px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px}
+.demo-card{background:var(--card);border-radius:12px;padding:20px}
+.demo-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.demo-bar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.demo-bar-label{font-size:11px;color:var(--dim);width:60px;flex-shrink:0}
+.demo-bar-track{flex:1;height:6px;background:var(--card2);border-radius:3px;overflow:hidden}
+.demo-bar-fill{height:100%;background:var(--accent);border-radius:3px}
+.demo-bar-val{font-size:11px;color:var(--accent2);font-weight:600;width:35px;text-align:right}
+
+/* Page 3: What we offer */
+.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px}
+.offer-card{background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border)}
+.offer-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.offer-desc{font-size:11px;color:var(--dim);line-height:1.5}
+.offer-count{font-size:24px;font-weight:700;color:var(--accent);margin-bottom:4px}
+
+/* Package */
+.package{background:var(--card);border:1px solid var(--accent);border-radius:12px;padding:24px;margin-bottom:40px}
+.package-title{font-size:14px;font-weight:600;color:var(--accent2);margin-bottom:4px}
+.package-sub{font-size:11px;color:var(--dim);margin-bottom:16px}
+.package-items{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.package-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--dim)}
+.package-check{color:var(--green);font-weight:700;font-size:14px}
+
+/* Past work */
+.past-work{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:40px}
+.work-card{background:var(--card);border-radius:10px;padding:16px;text-align:center;border:1px solid var(--border)}
+.work-metric{font-size:20px;font-weight:700;color:var(--accent2)}
+.work-label{font-size:10px;color:var(--dim);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+.work-context{font-size:11px;color:var(--dim);margin-top:8px;line-height:1.4}
+
+/* Contact */
+.contact{text-align:center;padding:40px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border)}
+.contact-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
+.contact-email{font-size:14px;color:var(--accent2);font-weight:500;margin-bottom:4px}
+.contact-sub{font-size:11px;color:var(--dim)}
+
+/* Annotation callouts (tutorial mode) */
+.annotation{background:#1a1a0a;border:1px solid #3a3a1a;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 14px;margin:0 0 16px;font-size:11px;color:#cca;line-height:1.6}
+.annotation strong{color:var(--accent2)}
+.annotation-tag{display:inline-block;background:var(--accent);color:var(--bg);font-size:9px;font-weight:700;padding:1px 6px;border-radius:4px;margin-right:6px;letter-spacing:1px}
+
+.page-break{border-top:1px dashed var(--border);margin:48px 0;position:relative}
+.page-break::after{content:'PAGE BREAK';position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--bg);padding:0 12px;font-size:9px;letter-spacing:2px;color:var(--dim)}
+
+/* footer */
+.footer{text-align:center;padding:32px 0;font-size:11px;color:var(--dim);line-height:1.8}
+.footer a{color:var(--accent)}
+
+@media(max-width:480px){
+  .page{padding:24px 16px}
+  .kit-logo{font-size:28px}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .demo-grid,.offer-grid,.package-items{grid-template-columns:1fr}
+  .past-work{grid-template-columns:1fr}
+  .photo-grid{grid-template-columns:1fr 1fr}
+  .socials{gap:16px}
+  .stat-num{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 1: THE HOOK                            -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-label">Page 1 of 3</div>
+
+  <div class="annotation">
+    <span class="annotation-tag">EXAMPLE</span>
+    <strong>This is a working template.</strong> Replace the placeholder stats, photos, and handles with your real ones. The layout, colors, and structure are ready to screenshot or export as a PDF from your browser (File → Print → Save as PDF). Hotels skim these in under 30 seconds — every section earns its space.
+  </div>
+
+  <div class="kit-header">
+    <div class="kit-logo">Two Latinos</div>
+    <div class="kit-tagline">Travel &middot; Food &middot; The Business</div>
+    <div class="kit-divider"></div>
+    <div class="kit-bio">
+      Two NYC Latinos documenting <strong>first-time travel experiences</strong>, food adventures from <strong>$1 street food to $500 tasting menus</strong>, and the business of turning everyday life into content. We show our audience how to <strong>travel smarter, eat better, and build credit</strong> — because nobody in our community was doing it.
+    </div>
+  </div>
+
+  <div class="socials">
+    <div class="social">
+      <div class="social-platform">TikTok</div>
+      <div class="social-handle">@TwoLatinos</div>
+      <div class="social-count">2,400 followers</div>
+    </div>
+    <div class="social">
+      <div class="social-platform">YouTube</div>
+      <div class="social-handle">Two Latinos</div>
+      <div class="social-count">890 subscribers</div>
+    </div>
+    <div class="social">
+      <div class="social-platform">Instagram</div>
+      <div class="social-handle">@TwoLatinos</div>
+      <div class="social-count">1,600 followers</div>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <span class="annotation-tag">TIP</span>
+    <strong>Photo grid below:</strong> Replace these with your 5 best travel/food photos. The tall left photo should be your strongest hero shot (hotel room tour, scenic view, or food close-up). Hotels judge your photography quality in seconds.
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-cell tall" style="background:#1a2a1a">Your best travel photo<br>(hero shot — vertical)</div>
+    <div class="photo-cell" style="background:#1a1a2a">Food close-up</div>
+    <div class="photo-cell" style="background:#2a1a1a">Hotel room tour</div>
+    <div class="photo-cell" style="background:#1a2a2a">City skyline / destination</div>
+    <div class="photo-cell" style="background:#2a2a1a">Both of you — personality shot</div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-box">
+      <div class="stat-num">4.9K</div>
+      <div class="stat-label">Total followers</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">7.2%</div>
+      <div class="stat-label">Engagement rate</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">12K</div>
+      <div class="stat-label">Avg views / video</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">84%</div>
+      <div class="stat-label">US-based audience</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">68%</div>
+      <div class="stat-label">Age 21–34</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">NYC</div>
+      <div class="stat-label">Top city</div>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <span class="annotation-tag">WHY THIS WORKS</span>
+    <strong>Engagement rate > follower count.</strong> Hotels and cruise lines have learned that 2K followers with 7% engagement outperforms 100K with 0.5%. Lead with engagement rate — it's your biggest selling point as a micro-influencer. Pull these numbers from TikTok/IG analytics.
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 2: THE PROOF                           -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-label">Page 2 of 3</div>
+
+  <div class="section-title">Audience Demographics</div>
+
+  <div class="annotation">
+    <span class="annotation-tag">KEY INSIGHT</span>
+    <strong>Audience location is the #1 filter for hotels.</strong> A resort in Cancun doesn't care about followers in Pakistan. They want to see your audience is in markets that actually travel to their property. This section is what gets you past the first scan.
+  </div>
+
+  <div class="demo-grid">
+    <div class="demo-card">
+      <div class="demo-label">Age breakdown</div>
+      <div class="demo-bar"><span class="demo-bar-label">18–24</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:22%"></div></div><span class="demo-bar-val">22%</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">25–34</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:46%"></div></div><span class="demo-bar-val">46%</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">35–44</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:20%"></div></div><span class="demo-bar-val">20%</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">45+</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:12%"></div></div><span class="demo-bar-val">12%</span></div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-label">Top locations</div>
+      <div class="demo-bar"><span class="demo-bar-label">NYC</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:38%"></div></div><span class="demo-bar-val">38%</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">NJ/CT</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:18%"></div></div><span class="demo-bar-val">18%</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">FL/TX</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:14%"></div></div><span class="demo-bar-val">14%</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">Other US</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:14%"></div></div><span class="demo-bar-val">14%</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">LATAM</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:16%"></div></div><span class="demo-bar-val">16%</span></div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-label">Gender</div>
+      <div class="demo-bar"><span class="demo-bar-label">Female</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:55%"></div></div><span class="demo-bar-val">55%</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">Male</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:43%"></div></div><span class="demo-bar-val">43%</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">Other</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:2%"></div></div><span class="demo-bar-val">2%</span></div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-label">Content performance</div>
+      <div class="demo-bar"><span class="demo-bar-label">Avg reach</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:70%"></div></div><span class="demo-bar-val">12K</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">Avg saves</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:25%"></div></div><span class="demo-bar-val">340</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">Avg shares</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:20%"></div></div><span class="demo-bar-val">180</span></div>
+      <div class="demo-bar"><span class="demo-bar-label">Watch %</span><div class="demo-bar-track"><div class="demo-bar-fill" style="width:62%"></div></div><span class="demo-bar-val">62%</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">Past Collaborations</div>
+
+  <div class="annotation">
+    <span class="annotation-tag">STARTING OUT</span>
+    <strong>When you have zero collabs:</strong> Replace this section with "Content Samples" — screenshots of your 3 best-performing posts with view counts. Once you have 2-3 restaurant or hotel collabs done, switch to this format showing results.
+  </div>
+
+  <div class="past-work">
+    <div class="work-card">
+      <div class="work-metric">4,890</div>
+      <div class="work-label">Views</div>
+      <div class="work-context">Lechonera La Piraña<br>NYC food review</div>
+    </div>
+    <div class="work-card">
+      <div class="work-metric">89</div>
+      <div class="work-label">Shares</div>
+      <div class="work-context">Borgata Buffet<br>Atlantic City review</div>
+    </div>
+    <div class="work-card">
+      <div class="work-metric">7.2%</div>
+      <div class="work-label">Eng. Rate</div>
+      <div class="work-context">Average across<br>all content</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 3: WHAT YOU GET                        -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-label">Page 3 of 3</div>
+
+  <div class="section-title">What your property gets</div>
+
+  <div class="package">
+    <div class="package-title">Standard Content Package</div>
+    <div class="package-sub">Included with every collaboration — hotel, restaurant, or experience</div>
+    <div class="package-items">
+      <div class="package-item"><span class="package-check">&#10003;</span> 1 YouTube vlog (5–12 min)</div>
+      <div class="package-item"><span class="package-check">&#10003;</span> 3 TikTok videos</div>
+      <div class="package-item"><span class="package-check">&#10003;</span> 2 Instagram Reels</div>
+      <div class="package-item"><span class="package-check">&#10003;</span> Instagram Stories coverage</div>
+      <div class="package-item"><span class="package-check">&#10003;</span> 10 edited photos (brand use OK)</div>
+      <div class="package-item"><span class="package-check">&#10003;</span> Tagged posts on all platforms</div>
+      <div class="package-item"><span class="package-check">&#10003;</span> Honest, authentic review</div>
+      <div class="package-item"><span class="package-check">&#10003;</span> 30-day performance report</div>
+    </div>
+  </div>
+
+  <div class="annotation">
+    <span class="annotation-tag">STRATEGY</span>
+    <strong>Hotels value the photo rights.</strong> "10 edited photos (brand use OK)" is often worth more to a hotel than the social posts — they use them on their website, booking pages, and ads. Always include this as a deliverable, it costs you nothing.
+  </div>
+
+  <div class="section-title">Content styles we create</div>
+
+  <div class="offer-grid">
+    <div class="offer-card">
+      <div class="offer-count">&#127909;</div>
+      <div class="offer-title">Room Tours & Property Walk-throughs</div>
+      <div class="offer-desc">Full video tour of the room, amenities, pool, lobby. The format that sells rooms.</div>
+    </div>
+    <div class="offer-card">
+      <div class="offer-count">&#127869;</div>
+      <div class="offer-title">Restaurant & Food Reviews</div>
+      <div class="offer-desc">Cinematic close-ups, honest reactions, price breakdowns. Our most-shared format.</div>
+    </div>
+    <div class="offer-card">
+      <div class="offer-count">&#128247;</div>
+      <div class="offer-title">Destination Vlogs</div>
+      <div class="offer-desc">Full-day experience videos showing everything a visitor would see and do.</div>
+    </div>
+    <div class="offer-card">
+      <div class="offer-count">&#128200;</div>
+      <div class="offer-title">Behind-the-Scenes & Business</div>
+      <div class="offer-desc">How we booked, what it cost, the credit card points breakdown. Transparency content.</div>
+    </div>
+  </div>
+
+  <div class="section-title">Why work with us</div>
+
+  <div class="demo-grid" style="margin-bottom:40px">
+    <div class="demo-card" style="border:1px solid var(--border)">
+      <div class="demo-label">Our unique angle</div>
+      <div style="font-size:12px;color:var(--dim);line-height:1.7">
+        <strong style="color:var(--text)">Latino representation in travel content is nearly zero.</strong> We're filling a $56B/year market gap. Our audience trusts us because we're genuine first-timers — not polished travel vloggers. Every reaction is real.
+      </div>
+    </div>
+    <div class="demo-card" style="border:1px solid var(--border)">
+      <div class="demo-label">What brands tell us</div>
+      <div style="font-size:12px;color:var(--dim);line-height:1.7">
+        <strong style="color:var(--text)">Micro-influencers deliver 60% higher engagement</strong> than accounts with 100K+ followers. Our audience actually books — they're working-class 20s-30s who save up for trips and follow recommendations from people who look like them.
+      </div>
+    </div>
+  </div>
+
+  <div class="contact">
+    <div class="contact-title">Let's create something together</div>
+    <div class="contact-email">hello@twolatinos.com</div>
+    <div class="contact-sub">Based in New York City &middot; Available for travel worldwide</div>
+  </div>
+
+  <div class="footer">
+    <strong>Two Latinos</strong> &middot; Travel &middot; Food &middot; The Business<br>
+    <a href="index.html">twolatinos.com</a> &middot; @TwoLatinos on all platforms<br><br>
+    <span style="font-size:10px;color:#555">This is a template example — replace placeholder stats and photos with your real data.<br>
+    Export as PDF: File &rarr; Print &rarr; Save as PDF (use dark background for best results).<br>
+    Or recreate this layout in <a href="https://canva.com" style="color:var(--accent)">Canva</a> with your brand photos.</span>
+  </div>
+</div>
+
+</body>
+</html>

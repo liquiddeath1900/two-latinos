@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Travel Log — Two Latinos</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;padding:16px;min-height:100vh}
+.wrap{max-width:700px;margin:0 auto;padding:1.25rem 0}
+.hero{text-align:center;margin-bottom:2rem;padding:2rem 1.5rem;background:#fff;border-radius:16px;border:1px solid #e5e5e5}
+.hero-tag{display:inline-block;background:#E1F5EE;color:#04342C;font-size:11px;font-weight:600;padding:3px 10px;border-radius:8px;margin-bottom:12px}
+.hero-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:8px;line-height:1.3}
+.hero-sub{font-size:13px;color:#666;line-height:1.7;max-width:540px;margin:0 auto}
+.section{margin-bottom:1.25rem;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;background:#fff}
+.sec-head{padding:14px 18px;display:flex;align-items:center;gap:10px}
+.sec-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.sec-title{font-size:14px;font-weight:600;color:#1a1a1a}
+.sec-desc{font-size:12px;color:#666;margin-top:2px}
+.badge{font-size:11px;padding:2px 9px;border-radius:10px;font-weight:600;margin-left:auto;white-space:nowrap}
+.callout{background:#f9f9fb;border-left:3px solid #534AB7;border-radius:0 8px 8px 0;padding:12px 14px;margin:0 18px 14px;font-size:12px;color:#666;line-height:1.6}
+.callout strong{color:#1a1a1a;font-weight:600}
+.callout.green{border-left-color:#0F6E56}
+.callout.orange{border-left-color:#854F0B}
+.tab-row{display:flex;gap:8px;padding:14px 18px;border-top:1px solid #eee;flex-wrap:wrap}
+.tab{background:#f3f3f5;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:#1a1a1a;cursor:pointer;border:2px solid transparent;transition:all .15s}
+.tab.active{background:#EEEDFE;border-color:#534AB7;color:#3C3489}
+.tab:hover{background:#EEEDFE}
+.sheet{display:none;padding:0 18px 18px}
+.sheet.active{display:block}
+.sheet-table{width:100%;border-collapse:collapse;font-size:11px}
+.sheet-table th{background:#f9f9fb;padding:8px 10px;text-align:left;font-weight:600;color:#1a1a1a;border-bottom:2px solid #e5e5e5;white-space:nowrap}
+.sheet-table td{padding:8px 10px;border-bottom:1px solid #eee;color:#666;vertical-align:top}
+.sheet-table tr:last-child td{border-bottom:none}
+.col-label{font-weight:600;color:#1a1a1a;white-space:nowrap}
+.col-example{color:#999;font-style:italic}
+.col-why{color:#534AB7;font-size:10px;font-weight:600}
+.mini-card{background:#f9f9fb;border-radius:10px;padding:12px;margin:0 18px 14px}
+.mini-title{font-size:12px;font-weight:600;color:#1a1a1a;margin-bottom:6px}
+.mini-row{font-size:11px;color:#666;padding:3px 0;display:flex;justify-content:space-between;border-bottom:1px solid #eee}
+.mini-row:last-child{border-bottom:none}
+.mini-val{font-weight:600;color:#534AB7}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 18px;border-top:1px solid #eee}
+.footer{text-align:center;margin-top:2rem;padding:1rem;font-size:11px;color:#999;line-height:1.6}
+.tip{background:#FEF3C7;border-radius:8px;padding:10px 14px;margin:0 18px 14px;font-size:11px;color:#78350F;line-height:1.5}
+.tip strong{color:#412402}
+@media(max-width:480px){
+  .two-col{grid-template-columns:1fr}
+  .hero-title{font-size:19px}
+  body{padding:12px}
+  .sheet-table{font-size:10px}
+  .sheet-table th,.sheet-table td{padding:6px 8px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <div class="hero-tag">Shared Reference</div>
+  <div class="hero-title">Travel Log — our shared brain for trips, contacts, and tax records</div>
+  <div class="hero-sub">This is the template for our Google Sheet. Both of us can edit from our phones. Everything we need to remember — managers, rooms, restaurants, receipts — lives here. Copy this structure into a shared Google Sheet.</div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- HOW TO SET UP                           -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="sec-head" style="background:#FEF3C7">
+    <div class="sec-num" style="background:#FCD34D;color:#78350F">!</div>
+    <div>
+      <div class="sec-title">Setup — 5 minutes, one time</div>
+      <div class="sec-desc">Create the Google Sheet, share it, and you're done forever</div>
+    </div>
+    <span class="badge" style="background:#FCD34D;color:#78350F">Do first</span>
+  </div>
+  <div class="callout orange"><strong>Why Google Sheets?</strong> Free, works offline on both phones, real-time sync, searchable, exportable for your accountant at tax time. No app to download. Both of you can edit simultaneously while sitting in the same hotel room or on different sides of the city.</div>
+  <div class="mini-card">
+    <div class="mini-title">Steps</div>
+    <div class="mini-row"><span>1. Go to sheets.google.com</span></div>
+    <div class="mini-row"><span>2. Create new → Name it "Two Latinos — Travel Log"</span></div>
+    <div class="mini-row"><span>3. Create 6 tabs (see below for each tab's columns)</span></div>
+    <div class="mini-row"><span>4. Share with your partner (Editor access)</span></div>
+    <div class="mini-row"><span>5. Both: "Make available offline" in Google Sheets app</span></div>
+    <div class="mini-row"><span>6. Pin it to your home screen on both phones</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- THE 6 TABS                              -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="sec-head" style="background:#EEEDFE">
+    <div class="sec-num" style="background:#CECBF6;color:#26215C">1</div>
+    <div>
+      <div class="sec-title">The 6 tabs — each one serves a purpose</div>
+      <div class="sec-desc">Click each tab below to see the exact columns to create</div>
+    </div>
+    <span class="badge" style="background:#CECBF6;color:#26215C">Template</span>
+  </div>
+
+  <div class="tab-row">
+    <div class="tab active" onclick="showTab('trips')">Trips</div>
+    <div class="tab" onclick="showTab('hotels')">Hotels & Stays</div>
+    <div class="tab" onclick="showTab('food')">Food & Restaurants</div>
+    <div class="tab" onclick="showTab('people')">People & Contacts</div>
+    <div class="tab" onclick="showTab('expenses')">Expenses (Tax)</div>
+    <div class="tab" onclick="showTab('content')">Content Log</div>
+  </div>
+
+  <!-- TAB: Trips -->
+  <div class="sheet active" id="tab-trips">
+    <div class="tip"><strong>Purpose:</strong> High-level overview of every trip. One row per trip. This is your master timeline — when you need to remember "that trip we took in August," start here.</div>
+    <table class="sheet-table">
+      <tr><th>Column</th><th>Example</th><th>Why</th></tr>
+      <tr><td class="col-label">Trip Name</td><td class="col-example">DR First Trip</td><td class="col-why">Quick reference</td></tr>
+      <tr><td class="col-label">Dates</td><td class="col-example">Apr 12–16, 2026</td><td class="col-why">Tax records + memories</td></tr>
+      <tr><td class="col-label">Destination</td><td class="col-example">Punta Cana, DR</td><td class="col-why">Location reference</td></tr>
+      <tr><td class="col-label">Purpose</td><td class="col-example">Content trip — hotel review + food series</td><td class="col-why">Tax justification</td></tr>
+      <tr><td class="col-label">How We Got There</td><td class="col-example">Points — Chase Sapphire, 45k pts</td><td class="col-why">Track points usage</td></tr>
+      <tr><td class="col-label">Comped?</td><td class="col-example">Hotel comped, flights on points</td><td class="col-why">Track comp value</td></tr>
+      <tr><td class="col-label">Total Out-of-Pocket</td><td class="col-example">$340</td><td class="col-why">Budget tracking</td></tr>
+      <tr><td class="col-label">Content Created</td><td class="col-example">2 YT vlogs, 8 TikToks, 3 Reels</td><td class="col-why">Portfolio + tax proof</td></tr>
+      <tr><td class="col-label">Highlights</td><td class="col-example">Waterfall hike was incredible, skip the tourist beach</td><td class="col-why">Future reference</td></tr>
+      <tr><td class="col-label">Would Return?</td><td class="col-example">Yes — want to try the south coast next</td><td class="col-why">Future trip planning</td></tr>
+    </table>
+  </div>
+
+  <!-- TAB: Hotels -->
+  <div class="sheet" id="tab-hotels">
+    <div class="tip"><strong>Purpose:</strong> Every place we stayed. One row per hotel/Airbnb. When a hotel was great, we come back. When it was bad, we remember why. The manager's name is gold for return visits and referrals.</div>
+    <table class="sheet-table">
+      <tr><th>Column</th><th>Example</th><th>Why</th></tr>
+      <tr><td class="col-label">Hotel/Property Name</td><td class="col-example">Hotel Catalonia Royal</td><td class="col-why">Quick lookup</td></tr>
+      <tr><td class="col-label">Location</td><td class="col-example">Punta Cana, DR</td><td class="col-why">Destination reference</td></tr>
+      <tr><td class="col-label">Dates</td><td class="col-example">Apr 12–16, 2026</td><td class="col-why">Cross-reference trips tab</td></tr>
+      <tr><td class="col-label">Room Type</td><td class="col-example">Ocean view suite, 4th floor, room 412</td><td class="col-why">Request same room next time</td></tr>
+      <tr><td class="col-label">Rate / Comped?</td><td class="col-example">Comped — 4 nights in exchange for content</td><td class="col-why">Tax + comp tracking</td></tr>
+      <tr><td class="col-label">Manager / Contact</td><td class="col-example">Maria Santos — PR Manager, maria@catalonia.com</td><td class="col-why">Follow up, referrals, return visits</td></tr>
+      <tr><td class="col-label">How We Booked</td><td class="col-example">Pitched via email — media kit attached</td><td class="col-why">Track what pitch worked</td></tr>
+      <tr><td class="col-label">Amenities Notes</td><td class="col-example">Pool was great, gym small, breakfast buffet 7-10am</td><td class="col-why">Content notes + personal ref</td></tr>
+      <tr><td class="col-label">Rating (1-10)</td><td class="col-example">8</td><td class="col-why">Quick comparison</td></tr>
+      <tr><td class="col-label">Would Return?</td><td class="col-example">Yes — ask for building B next time, quieter</td><td class="col-why">Future planning</td></tr>
+      <tr><td class="col-label">Content Posted?</td><td class="col-example">YT vlog + 3 TikToks + tagged IG post</td><td class="col-why">Track deliverables fulfilled</td></tr>
+      <tr><td class="col-label">Photos/Links</td><td class="col-example">Google Drive folder link</td><td class="col-why">Quick access to raw footage</td></tr>
+    </table>
+  </div>
+
+  <!-- TAB: Food -->
+  <div class="sheet" id="tab-food">
+    <div class="tip"><strong>Purpose:</strong> Every restaurant, street stall, buffet, and food experience. "What was that amazing place we ate at in Brooklyn?" — this is the answer. Also tracks comped meals for tax purposes.</div>
+    <table class="sheet-table">
+      <tr><th>Column</th><th>Example</th><th>Why</th></tr>
+      <tr><td class="col-label">Restaurant Name</td><td class="col-example">Fogo de Chao</td><td class="col-why">Quick lookup</td></tr>
+      <tr><td class="col-label">Location</td><td class="col-example">252 E 51st St, NYC</td><td class="col-why">Address for return visits</td></tr>
+      <tr><td class="col-label">Date</td><td class="col-example">Mar 22, 2026</td><td class="col-why">Tax records</td></tr>
+      <tr><td class="col-label">Cuisine</td><td class="col-example">Brazilian steakhouse / churrascaria</td><td class="col-why">Organize by type</td></tr>
+      <tr><td class="col-label">What We Ordered</td><td class="col-example">Full rodizio, caipirinhas, flan</td><td class="col-why">Content reference + reorder faves</td></tr>
+      <tr><td class="col-label">Cost (total)</td><td class="col-example">$156 for two</td><td class="col-why">Budget + expense tracking</td></tr>
+      <tr><td class="col-label">Comped?</td><td class="col-example">No — paid out of pocket</td><td class="col-why">Tax: comped = not deductible as expense</td></tr>
+      <tr><td class="col-label">Manager / Contact</td><td class="col-example">Diego — floor manager, super friendly</td><td class="col-why">Relationship building</td></tr>
+      <tr><td class="col-label">Rating (1-10)</td><td class="col-example">9</td><td class="col-why">Quick comparison</td></tr>
+      <tr><td class="col-label">Best Dish</td><td class="col-example">Picanha was insane, skip the chicken</td><td class="col-why">Recommendations + content</td></tr>
+      <tr><td class="col-label">Content Created?</td><td class="col-example">TikTok review posted Mar 23</td><td class="col-why">Track what we've covered</td></tr>
+      <tr><td class="col-label">Business Purpose</td><td class="col-example">Filmed review for "NYC Steakhouse Series" ep 3</td><td class="col-why">Tax write-off justification</td></tr>
+      <tr><td class="col-label">Would Return?</td><td class="col-example">Yes — want to try the Saturday brunch</td><td class="col-why">Future planning</td></tr>
+    </table>
+  </div>
+
+  <!-- TAB: People -->
+  <div class="sheet" id="tab-people">
+    <div class="tip"><strong>Purpose:</strong> Every meaningful contact we make. Hotel PR managers, restaurant owners, tourism board reps, other creators, anyone. This is your relationship CRM. When you need to pitch someone again or ask for a referral, it's here.</div>
+    <table class="sheet-table">
+      <tr><th>Column</th><th>Example</th><th>Why</th></tr>
+      <tr><td class="col-label">Name</td><td class="col-example">Maria Santos</td><td class="col-why">Who</td></tr>
+      <tr><td class="col-label">Role / Title</td><td class="col-example">PR Manager</td><td class="col-why">Context</td></tr>
+      <tr><td class="col-label">Company / Property</td><td class="col-example">Hotel Catalonia Royal, Punta Cana</td><td class="col-why">Where they work</td></tr>
+      <tr><td class="col-label">Email</td><td class="col-example">maria@catalonia.com</td><td class="col-why">Direct contact</td></tr>
+      <tr><td class="col-label">Phone / IG</td><td class="col-example">@mariasantos_pr</td><td class="col-why">Alt contact</td></tr>
+      <tr><td class="col-label">How We Met</td><td class="col-example">She approved our comp stay pitch — Apr 2026</td><td class="col-why">Context for follow-up</td></tr>
+      <tr><td class="col-label">Relationship Status</td><td class="col-example">Warm — delivered content, she loved it</td><td class="col-why">Know where you stand</td></tr>
+      <tr><td class="col-label">Follow-up Needed?</td><td class="col-example">Send thank-you + content links by Apr 25</td><td class="col-why">Don't drop the ball</td></tr>
+      <tr><td class="col-label">Notes</td><td class="col-example">She knows the GM at Catalonia Santo Domingo — ask for intro</td><td class="col-why">Referral opportunities</td></tr>
+    </table>
+  </div>
+
+  <!-- TAB: Expenses -->
+  <div class="sheet" id="tab-expenses">
+    <div class="tip"><strong>Purpose:</strong> Every business expense, logged for tax time. Your accountant will love this. Take a photo of every receipt and link it here. At tax time, export this tab as CSV and hand it over. Done.</div>
+    <table class="sheet-table">
+      <tr><th>Column</th><th>Example</th><th>Why</th></tr>
+      <tr><td class="col-label">Date</td><td class="col-example">Mar 22, 2026</td><td class="col-why">IRS requirement</td></tr>
+      <tr><td class="col-label">Description</td><td class="col-example">Dinner at Fogo de Chao</td><td class="col-why">What was it</td></tr>
+      <tr><td class="col-label">Category</td><td class="col-example">Meals — Content</td><td class="col-why">Tax category</td></tr>
+      <tr><td class="col-label">Amount</td><td class="col-example">$156.00</td><td class="col-why">Dollar amount</td></tr>
+      <tr><td class="col-label">Payment Method</td><td class="col-example">Chase Sapphire ****4521</td><td class="col-why">Match to statements</td></tr>
+      <tr><td class="col-label">Business Purpose</td><td class="col-example">Filmed review for NYC Steakhouse Series ep 3</td><td class="col-why">IRS requires this</td></tr>
+      <tr><td class="col-label">Deductible %</td><td class="col-example">50%</td><td class="col-why">Meals = 50%, gear = 100%</td></tr>
+      <tr><td class="col-label">Receipt Photo</td><td class="col-example">Link to Google Drive photo</td><td class="col-why">Proof for audit</td></tr>
+      <tr><td class="col-label">Trip (if applicable)</td><td class="col-example">NYC — not a trip</td><td class="col-why">Group by trip</td></tr>
+    </table>
+    <div class="mini-card" style="margin-top:14px">
+      <div class="mini-title">Categories to use (keep consistent)</div>
+      <div class="mini-row"><span>Meals — Content</span><span class="mini-val">50%</span></div>
+      <div class="mini-row"><span>Travel — Flights</span><span class="mini-val">100%</span></div>
+      <div class="mini-row"><span>Travel — Hotels</span><span class="mini-val">100%</span></div>
+      <div class="mini-row"><span>Travel — Transportation</span><span class="mini-val">100%</span></div>
+      <div class="mini-row"><span>Equipment — Camera/Gear</span><span class="mini-val">100%</span></div>
+      <div class="mini-row"><span>Software — Editing/Tools</span><span class="mini-val">100%</span></div>
+      <div class="mini-row"><span>Marketing — Ads/Promos</span><span class="mini-val">100%</span></div>
+      <div class="mini-row"><span>Business — Legal/Fees</span><span class="mini-val">100%</span></div>
+      <div class="mini-row"><span>Phone/Internet</span><span class="mini-val">50-80%</span></div>
+    </div>
+  </div>
+
+  <!-- TAB: Content -->
+  <div class="sheet" id="tab-content">
+    <div class="tip"><strong>Purpose:</strong> Track what content was created, posted, and how it performed. This feeds your media kit stats and helps you see what's working. Also proves to the IRS that trips were business-related.</div>
+    <table class="sheet-table">
+      <tr><th>Column</th><th>Example</th><th>Why</th></tr>
+      <tr><td class="col-label">Date Posted</td><td class="col-example">Mar 23, 2026</td><td class="col-why">Timeline</td></tr>
+      <tr><td class="col-label">Platform</td><td class="col-example">TikTok</td><td class="col-why">Where it lives</td></tr>
+      <tr><td class="col-label">Title / Hook</td><td class="col-example">"$156 all-you-can-eat — was it worth it?"</td><td class="col-why">Quick reference</td></tr>
+      <tr><td class="col-label">Content Pillar</td><td class="col-example">Food</td><td class="col-why">Track pillar balance</td></tr>
+      <tr><td class="col-label">Related Trip</td><td class="col-example">NYC local</td><td class="col-why">Link to trips tab</td></tr>
+      <tr><td class="col-label">Brand/Partner Tagged?</td><td class="col-example">@fogodechao</td><td class="col-why">Track deliverables</td></tr>
+      <tr><td class="col-label">Views (7 day)</td><td class="col-example">12,400</td><td class="col-why">Performance tracking</td></tr>
+      <tr><td class="col-label">Engagement</td><td class="col-example">843 likes, 67 comments, 120 shares</td><td class="col-why">Media kit stats</td></tr>
+      <tr><td class="col-label">Link</td><td class="col-example">tiktok.com/@twolatinos/video/123</td><td class="col-why">Quick access</td></tr>
+      <tr><td class="col-label">Notes</td><td class="col-example">The close-up food shots performed best, do more of those</td><td class="col-why">Learn what works</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- QUICK-LOG WORKFLOW                      -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="sec-head" style="background:#E1F5EE">
+    <div class="sec-num" style="background:#9FE1CB;color:#04342C">2</div>
+    <div>
+      <div class="sec-title">The quick-log workflow — do this every day on a trip</div>
+      <div class="sec-desc">Takes 2 minutes. Do it while you're still at the restaurant or in the hotel.</div>
+    </div>
+    <span class="badge" style="background:#9FE1CB;color:#04342C">Habit</span>
+  </div>
+  <div class="callout green"><strong>The rule:</strong> Log it while it's fresh. If you wait until you get home, you'll forget the manager's name, the room number, and what you ordered. Two minutes now saves 20 minutes of "what was that place called?" later.</div>
+  <div class="two-col">
+    <div class="mini-card">
+      <div class="mini-title">At a restaurant</div>
+      <div class="mini-row"><span>1.</span><span>Photo the receipt</span></div>
+      <div class="mini-row"><span>2.</span><span>Open sheet → Food tab</span></div>
+      <div class="mini-row"><span>3.</span><span>Log: name, what you ate, cost, rating</span></div>
+      <div class="mini-row"><span>4.</span><span>Ask manager's name before leaving</span></div>
+      <div class="mini-row"><span>5.</span><span>Add to Expenses tab</span></div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-title">At a hotel</div>
+      <div class="mini-row"><span>1.</span><span>Photo the room key (has room #)</span></div>
+      <div class="mini-row"><span>2.</span><span>Open sheet → Hotels tab</span></div>
+      <div class="mini-row"><span>3.</span><span>Log: name, room, rate, amenity notes</span></div>
+      <div class="mini-row"><span>4.</span><span>Get PR/manager contact at front desk</span></div>
+      <div class="mini-row"><span>5.</span><span>People tab: log the contact</span></div>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="mini-card">
+      <div class="mini-title">Meeting someone useful</div>
+      <div class="mini-row"><span>1.</span><span>Get their card or IG handle</span></div>
+      <div class="mini-row"><span>2.</span><span>Open sheet → People tab</span></div>
+      <div class="mini-row"><span>3.</span><span>Log: name, role, how you met</span></div>
+      <div class="mini-row"><span>4.</span><span>Note any follow-up needed</span></div>
+      <div class="mini-row"><span>5.</span><span>Follow them on IG within 24hrs</span></div>
+    </div>
+    <div class="mini-card">
+      <div class="mini-title">End of each day</div>
+      <div class="mini-row"><span>1.</span><span>Upload receipt photos to Drive</span></div>
+      <div class="mini-row"><span>2.</span><span>Add links in Expenses tab</span></div>
+      <div class="mini-row"><span>3.</span><span>Quick note in Trips tab highlights</span></div>
+      <div class="mini-row"><span>4.</span><span>Back up footage to cloud</span></div>
+      <div class="mini-row"><span>5.</span><span>Review tomorrow's plan together</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PRO TIPS                                -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section">
+  <div class="sec-head" style="background:#F3E8FF">
+    <div class="sec-num" style="background:#D8B4FE;color:#3B0764">3</div>
+    <div>
+      <div class="sec-title">Pro tips for the sheet</div>
+      <div class="sec-desc">Little things that make it 10x more useful over time</div>
+    </div>
+    <span class="badge" style="background:#D8B4FE;color:#3B0764">Level up</span>
+  </div>
+  <div class="mini-card">
+    <div class="mini-title">Google Sheets tricks</div>
+    <div class="mini-row"><span>Use Data Validation dropdowns for Category and Platform columns</span></div>
+    <div class="mini-row"><span>Conditional formatting: green rows = comped, yellow = paid</span></div>
+    <div class="mini-row"><span>Filter views so each person can sort without messing up the other's view</span></div>
+    <div class="mini-row"><span>Create a "Dashboard" tab with =SUMIF formulas for total expenses by category</span></div>
+    <div class="mini-row"><span>Use =COUNTA to track total restaurants visited, hotels stayed, content posted</span></div>
+    <div class="mini-row"><span>Star/bookmark the sheet in Google Drive so it's always at the top</span></div>
+  </div>
+  <div class="callout"><strong>Tax time shortcut:</strong> At the end of the year, filter the Expenses tab by category, export each as CSV, and hand them to your accountant. You'll save hours and look extremely organized. Accountants charge less when your books are clean.</div>
+</div>
+
+<div class="footer">
+  Built March 2026 &middot; Part of the <a href="index.html" style="color:#534AB7">Two Latinos</a> business plan<br>
+  Copy this structure into a shared Google Sheet → both pin it to your home screens → log everything
+</div>
+
+</div>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.sheet').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

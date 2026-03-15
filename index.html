@@ -10,29 +10,61 @@ body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
 .wrap{max-width:480px;width:100%;text-align:center}
 .logo{font-size:28px;font-weight:700;margin-bottom:6px}
 .sub{font-size:13px;color:#666;line-height:1.6;margin-bottom:2rem}
-.links{display:flex;flex-direction:column;gap:12px}
-a{display:block;padding:16px 20px;background:#fff;border:1px solid #e5e5e5;border-radius:12px;text-decoration:none;color:#1a1a1a;transition:all .15s}
+.section-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#999;font-weight:600;margin:24px 0 10px;text-align:left}
+.section-label:first-of-type{margin-top:0}
+.links{display:flex;flex-direction:column;gap:10px}
+a{display:block;padding:14px 18px;background:#fff;border:1px solid #e5e5e5;border-radius:12px;text-decoration:none;color:#1a1a1a;transition:all .15s;text-align:left}
 a:hover{border-color:#534AB7;background:#EEEDFE}
-.link-title{font-size:14px;font-weight:600;margin-bottom:4px}
-.link-desc{font-size:12px;color:#666}
-.footer{margin-top:2rem;font-size:11px;color:#999}
+.link-title{font-size:14px;font-weight:600;margin-bottom:3px;display:flex;align-items:center;gap:8px}
+.link-desc{font-size:12px;color:#666;line-height:1.4}
+.link-badge{font-size:9px;padding:2px 7px;border-radius:6px;font-weight:700;letter-spacing:.5px}
+.badge-new{background:#E1F5EE;color:#04342C}
+.badge-core{background:#EEEDFE;color:#3C3489}
+.footer{margin-top:2rem;font-size:11px;color:#999;line-height:1.6}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="logo">Two Latinos</div>
   <div class="sub">Two NYC Latinos turning everyday life into a travel content business.</div>
+
+  <div class="section-label">Strategy & Planning</div>
   <div class="links">
     <a href="partner-pitch.html">
-      <div class="link-title">The Business Plan</div>
-      <div class="link-desc">LLC, credit strategy, media kit, comp playbook, tax write-offs, growth roadmap — with interactive checklist</div>
+      <div class="link-title">The Business Plan <span class="link-badge badge-core">Core</span></div>
+      <div class="link-desc">LLC, credit strategy, comp playbook, tax write-offs, growth roadmap — with interactive checklist</div>
     </a>
     <a href="content-roadmap.html">
-      <div class="link-title">Content Roadmap</div>
+      <div class="link-title">Content Roadmap <span class="link-badge badge-core">Core</span></div>
       <div class="link-desc">50 video ideas, 90-day week-by-week calendar, posting schedule, monetization timeline</div>
     </a>
+    <a href="accounts.html">
+      <div class="link-title">Accounts to Create <span class="link-badge badge-new">New</span></div>
+      <div class="link-desc">Every social media, travel platform, affiliate program, and creator network to sign up for — with checklist</div>
+    </a>
   </div>
-  <div class="footer">Built March 2026</div>
+
+  <div class="section-label">Tools & Tracking</div>
+  <div class="links">
+    <a href="dashboard.html">
+      <div class="link-title">Travel Dashboard <span class="link-badge badge-new">New</span></div>
+      <div class="link-desc">Track trips, hotels, restaurants, contacts, expenses, and content — shared log for both of you on the road</div>
+    </a>
+    <a href="travel-log.html">
+      <div class="link-title">Google Sheets Template <span class="link-badge badge-new">New</span></div>
+      <div class="link-desc">Column-by-column template for setting up a shared Google Sheet — trips, food, people, expenses, content</div>
+    </a>
+  </div>
+
+  <div class="section-label">Pitching & Outreach</div>
+  <div class="links">
+    <a href="media-kit.html">
+      <div class="link-title">Media Kit Example <span class="link-badge badge-new">New</span></div>
+      <div class="link-desc">3-page template showing exactly what hotels and cruise lines want to see — with annotations explaining why each section matters</div>
+    </a>
+  </div>
+
+  <div class="footer">Built March 2026 &middot; Everything in one place</div>
 </div>
 </body>
 </html>
