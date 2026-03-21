@@ -965,5 +965,48 @@ function toggleShotSection(head) {
   arrow.classList.toggle('open');
 }
 </script>
+
+<!-- Supabase Sync -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-sync.js"></script>
+<script src="js/supabase-auth-ui.js"></script>
+<script>
+// Override save to also push to Supabase
+const _origDashSave = save;
+save = function() {
+  _origDashSave();
+  pushDashboard(STORAGE_KEY, data).catch(() => {});
+};
+
+// Override toggleShot to also push shot checklist
+const _origToggleShot = toggleShot;
+toggleShot = function(el) {
+  _origToggleShot(el);
+  pushChecklist(SHOT_KEY, shotChecks).catch(() => {});
+};
+
+async function onAuthSync() {
+  // Sync dashboard data
+  const r1 = await syncDashboard(STORAGE_KEY);
+  if (r1 === 'pulled') {
+    data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    render();
+  }
+  // Sync shot checklist
+  const r2 = await syncChecklist(SHOT_KEY);
+  if (r2 === 'pulled') {
+    shotChecks = JSON.parse(localStorage.getItem(SHOT_KEY) || '[]');
+    document.querySelectorAll('.shot-item').forEach((item, i) => {
+      const cb = item.querySelector('.shot-cb');
+      const txt = item.querySelector('.shot-text');
+      const on = shotChecks.includes(i);
+      cb.classList.toggle('checked', on);
+      if (txt) txt.classList.toggle('done', on);
+    });
+  }
+}
+getSession().then(s => { if (s?.user) onAuthSync(); });
+</script>
 </body>
 </html>

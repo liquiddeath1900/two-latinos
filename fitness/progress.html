@@ -267,9 +267,45 @@ function clearData() {
   render();
 }
 
+// Override saveData to also push to Supabase
+const _origSaveData = saveData;
+saveData = function(d) {
+  _origSaveData(d);
+  // Push newest entry
+  if (d.length > 0) {
+    pushProgressEntry(getKey(), currentPerson, d[0]).catch(() => {});
+  }
+};
+
+// Override deleteEntry to also delete from Supabase
+const _origDeleteEntry = deleteEntry;
+deleteEntry = function(i) {
+  if (!confirm('Delete this entry?')) return;
+  const data = getData();
+  const entry = data[i];
+  data.splice(i, 1);
+  _origSaveData(data);
+  if (entry) deleteProgressEntry(currentPerson, entry.date).catch(() => {});
+  render();
+};
+
 // Init
 document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
 render();
+</script>
+
+<!-- Supabase Sync -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/supabase-sync.js"></script>
+<script src="../js/supabase-auth-ui.js"></script>
+<script>
+async function onAuthSync() {
+  await syncProgress('gym-progress-his', 'his');
+  await syncProgress('gym-progress-hers', 'hers');
+  render();
+}
+getSession().then(s => { if (s?.user) onAuthSync(); });
 </script>
 </body>
 </html>

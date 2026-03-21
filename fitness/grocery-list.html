@@ -12,6 +12,10 @@ body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
 .back:hover{text-decoration:underline}
 h1{font-size:24px;font-weight:700;margin-bottom:6px}
 .sub{font-size:13px;color:#666;line-height:1.6;margin-bottom:1rem}
+.tabs{display:flex;gap:0;margin-bottom:1rem;border-radius:10px;overflow:hidden;border:1px solid #e5e5e5}
+.tab{flex:1;padding:10px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#666;transition:all .15s;border:none}
+.tab.active-shared{background:#534AB7;color:#fff}
+.tab.active-hers{background:#43A047;color:#fff}
 .toolbar{display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap}
 .toolbar button{font-size:12px;padding:8px 14px;border-radius:8px;border:1px solid #e5e5e5;background:#fff;color:#1a1a1a;cursor:pointer;font-weight:600;transition:all .15s}
 .toolbar button:hover{border-color:#534AB7;background:#EEEDFE}
@@ -22,10 +26,17 @@ h2{font-size:14px;font-weight:700;margin:1.5rem 0 .5rem;padding-bottom:4px;borde
 .item.checked{opacity:.5;text-decoration:line-through;background:#fafafa}
 .item.checked .checkbox{background:#534AB7;border-color:#534AB7}
 .item.checked .checkbox::after{content:'✓';color:#fff;font-size:11px}
+.item-hers.checked .checkbox{background:#43A047;border-color:#43A047}
+.item-hers:hover{border-color:#43A047}
 .checkbox{width:22px;height:22px;border:2px solid #ccc;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .item-text{font-size:13px;flex:1}
+.item-qty{font-size:11px;color:#534AB7;font-weight:600;white-space:nowrap}
+.item-hers .item-qty{color:#43A047}
 .item-note{font-size:11px;color:#999}
 .counter{font-size:12px;color:#666;margin-bottom:1.5rem}
+.note{padding:12px 14px;border-radius:10px;font-size:12px;margin-bottom:1rem}
+.note-green{background:#E1F5EE;color:#04342C}
+.note-purple{background:#EEEDFE;color:#3C3489}
 .footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
 </style>
 </head>
@@ -33,7 +44,12 @@ h2{font-size:14px;font-weight:700;margin:1.5rem 0 .5rem;padding-bottom:4px;borde
 <div class="wrap">
   <a href="index.html" class="back">&larr; Back to Gym Partners</a>
   <h1>Grocery List</h1>
-  <div class="sub">Combined Aldi-optimized list for both of you. Tap items to check off — saves automatically.</div>
+  <div class="sub">2-week bulk buy. Tap items to check off — saves automatically.</div>
+
+  <div class="tabs">
+    <button class="tab active-shared" id="tab-shared" onclick="switchList('shared')">Shared List</button>
+    <button class="tab" id="tab-hers" onclick="switchList('hers')">Her Gains List</button>
+  </div>
 
   <div class="toolbar">
     <button class="active" onclick="filterItems('all')">All</button>
@@ -48,60 +64,100 @@ h2{font-size:14px;font-weight:700;margin:1.5rem 0 .5rem;padding-bottom:4px;borde
 </div>
 
 <script>
-const ITEMS = [
-  { cat: "Proteins", name: "Chicken breast (family pack)", note: "Both — meal prep staple" },
-  { cat: "Proteins", name: "Ground turkey 93/7", note: "Him — tacos, bowls" },
-  { cat: "Proteins", name: "Eggs (18-pack)", note: "Both — breakfast, snacks" },
-  { cat: "Proteins", name: "Greek yogurt (plain, large tub)", note: "Both — protein snack, smoothies" },
-  { cat: "Proteins", name: "Canned tuna (4-pack)", note: "Quick protein, salads" },
-  { cat: "Proteins", name: "Black beans (canned, 4-pack)", note: "Both — rice bowls, tacos" },
+const SHARED_ITEMS = [
+  { cat: "Proteins", name: "Chicken breast family pack", qty: "10 lbs", note: "Both — meal prep staple" },
+  { cat: "Proteins", name: "Ground turkey 93/7", qty: "12 lbs", note: "Both — tacos, bowls, cat food" },
+  { cat: "Proteins", name: "Eggs", qty: "5 dozen", note: "Both — breakfast, snacks" },
+  { cat: "Proteins", name: "Greek yogurt (plain)", qty: "2 large tubs", note: "Both — protein snack, smoothies" },
+  { cat: "Proteins", name: "Canned tuna", qty: "8 cans (2x 4-pack)", note: "Quick protein, salads" },
+  { cat: "Proteins", name: "Black beans (canned)", qty: "8 cans (2x 4-pack)", note: "Both — rice bowls, tacos" },
 
-  { cat: "Produce", name: "Mangos (3-4)", note: "Pre-workout — split rule" },
-  { cat: "Produce", name: "Bananas (bunch)", note: "Both — pre-workout, smoothies" },
-  { cat: "Produce", name: "Grapes (bag)", note: "Her — quick carbs" },
-  { cat: "Produce", name: "Pineapple (whole or pre-cut)", note: "Anti-inflammatory boost" },
-  { cat: "Produce", name: "Mixed berries (frozen bag)", note: "Her — shake add-in" },
-  { cat: "Produce", name: "Broccoli (fresh or frozen)", note: "Both — dinner side" },
-  { cat: "Produce", name: "Spinach (baby, bag)", note: "Both — salads, smoothies" },
-  { cat: "Produce", name: "Sweet potatoes (4-5)", note: "Both — post-workout carbs" },
-  { cat: "Produce", name: "Avocados (3-4)", note: "Both — healthy fats" },
-  { cat: "Produce", name: "Onions & garlic", note: "Cooking basics" },
-  { cat: "Produce", name: "Limes (bag)", note: "Flavor everything" },
+  { cat: "Produce", name: "Mangos", qty: "6-8", note: "Pre-workout — split rule" },
+  { cat: "Produce", name: "Bananas", qty: "2 bunches (~14)", note: "Both — pre-workout, smoothies" },
+  { cat: "Produce", name: "Grapes", qty: "2 bags", note: "Her — quick carbs" },
+  { cat: "Produce", name: "Pineapple", qty: "2 (whole or pre-cut)", note: "Anti-inflammatory boost" },
+  { cat: "Produce", name: "Mixed berries (frozen)", qty: "2 bags", note: "Both — shakes, oats" },
+  { cat: "Produce", name: "Broccoli", qty: "4 lbs (fresh/frozen mix)", note: "Both — dinner side" },
+  { cat: "Produce", name: "Spinach (baby)", qty: "2 large bags", note: "Both — salads, smoothies" },
+  { cat: "Produce", name: "Sweet potatoes", qty: "10 lbs", note: "Both — post-workout carbs" },
+  { cat: "Produce", name: "Avocados", qty: "8", note: "Both — healthy fats" },
+  { cat: "Produce", name: "Onions", qty: "3 lb bag", note: "Cooking basics" },
+  { cat: "Produce", name: "Garlic", qty: "2 heads", note: "Cooking basics" },
+  { cat: "Produce", name: "Limes", qty: "1 bag (~6)", note: "Flavor everything" },
 
-  { cat: "Carbs & Pantry", name: "Jasmine rice (5 lb bag)", note: "Both — meal prep base" },
-  { cat: "Carbs & Pantry", name: "Oats (large canister)", note: "Both — breakfast, overnight oats" },
-  { cat: "Carbs & Pantry", name: "Rice cakes", note: "Pre-workout carb base" },
-  { cat: "Carbs & Pantry", name: "Whole wheat tortillas", note: "Both — wraps, quick meals" },
-  { cat: "Carbs & Pantry", name: "Peanut butter (natural)", note: "Both — snack, rice cakes" },
-  { cat: "Carbs & Pantry", name: "Honey", note: "Pre-workout drizzle" },
-  { cat: "Carbs & Pantry", name: "Olive oil", note: "Cooking staple" },
-  { cat: "Carbs & Pantry", name: "Oat milk (him) / Almond milk (her)", note: "Shake bases" },
-  { cat: "Carbs & Pantry", name: "Hot sauce / Salsa", note: "Flavor, zero cal" },
+  { cat: "Carbs & Pantry", name: "Jasmine rice", qty: "10 lb bag", note: "Both — meal prep base" },
+  { cat: "Carbs & Pantry", name: "Oats", qty: "1 large canister", note: "Both — breakfast, overnight oats" },
+  { cat: "Carbs & Pantry", name: "Rice cakes", qty: "2 packs", note: "Pre-workout carb base" },
+  { cat: "Carbs & Pantry", name: "Whole wheat tortillas", qty: "2 packs", note: "Both — wraps, quick meals" },
+  { cat: "Carbs & Pantry", name: "Peanut butter (natural)", qty: "1 large jar", note: "Both — snack, rice cakes" },
+  { cat: "Carbs & Pantry", name: "Honey", qty: "1 bottle", note: "Pre-workout drizzle" },
+  { cat: "Carbs & Pantry", name: "Olive oil", qty: "1 bottle", note: "Cooking staple" },
+  { cat: "Carbs & Pantry", name: "Oat milk (him)", qty: "2 cartons", note: "His shake base" },
+  { cat: "Carbs & Pantry", name: "Almond milk (her)", qty: "2 cartons", note: "Her shake base" },
+  { cat: "Carbs & Pantry", name: "Hot sauce / Salsa", qty: "1 each", note: "Flavor, zero cal" },
+  { cat: "Carbs & Pantry", name: "Bread (Powerseed)", qty: "1 loaf", note: "Quick toast option" },
+  { cat: "Carbs & Pantry", name: "Zevia", qty: "24-pack", note: "Zero sugar soda swap" },
 
-  { cat: "Supplements", name: "Creatine Monohydrate (micronized)", note: "Both — daily" },
-  { cat: "Supplements", name: "Vega Sport Premium Plant Protein", note: "Him — post-workout" },
-  { cat: "Supplements", name: "Whey Protein Isolate (any brand)", note: "Her — post-workout" }
+  { cat: "Supplements", name: "Creatine Monohydrate (micronized)", qty: "1 tub", note: "Both — daily (lasts 2+ weeks)" },
+  { cat: "Supplements", name: "Vega Sport Premium Plant Protein", qty: "1 tub", note: "Him — post-workout" },
+  { cat: "Supplements", name: "Whey Protein Isolate", qty: "1 tub", note: "Her — post-workout + mid-day" }
 ];
 
-const STORAGE_KEY = 'gym-grocery-checked';
+const HERS_ITEMS = [
+  { cat: "Protein (Gains)", name: "Chicken thighs", qty: "8 lbs", note: "Higher cal than breast — muscle fuel" },
+  { cat: "Protein (Gains)", name: "Ground beef 85/15", qty: "6 lbs", note: "Calorie-dense, iron-rich" },
+  { cat: "Protein (Gains)", name: "Greek yogurt (full-fat)", qty: "2 large tubs", note: "Extra calories + protein" },
+  { cat: "Protein (Gains)", name: "Eggs (extra)", qty: "3 dozen", note: "In addition to shared list" },
 
-function getChecked() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-  catch { return []; }
-}
-function saveChecked(arr) { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }
+  { cat: "Carbs (Gains)", name: "Sweet potatoes / red potatoes", qty: "10 lbs", note: "Dense energy source" },
+  { cat: "Carbs (Gains)", name: "Quinoa or brown rice", qty: "2 lb bag", note: "Variety from jasmine rice" },
+  { cat: "Carbs (Gains)", name: "Bananas (extra)", qty: "1 extra bunch", note: "Shakes + snacks" },
+  { cat: "Carbs (Gains)", name: "Frozen berries (extra)", qty: "1 extra bag", note: "Gains shake add-in" },
 
+  { cat: "Fats (Gains)", name: "Avocados", qty: "4-5", note: "In addition to shared list" },
+  { cat: "Fats (Gains)", name: "Nut butter (almond or PB)", qty: "1 large jar", note: "Calorie-dense healthy fat" },
+
+  { cat: "Veggies (Gains)", name: "Spinach / kale", qty: "2 large bags", note: "Micronutrient base" },
+  { cat: "Veggies (Gains)", name: "Asparagus or zucchini", qty: "4-5 bundles", note: "Low-cal volume + fiber" }
+];
+
+const STORAGE_SHARED = 'gym-grocery-checked';
+const STORAGE_HERS = 'gym-grocery-hers';
+
+let currentList = 'shared';
 let currentFilter = 'all';
 
+function getItems() { return currentList === 'shared' ? SHARED_ITEMS : HERS_ITEMS; }
+function getKey() { return currentList === 'shared' ? STORAGE_SHARED : STORAGE_HERS; }
+
+function getChecked() {
+  try { return JSON.parse(localStorage.getItem(getKey())) || []; }
+  catch { return []; }
+}
+function saveChecked(arr) { localStorage.setItem(getKey(), JSON.stringify(arr)); }
+
+function switchList(list) {
+  currentList = list;
+  currentFilter = 'all';
+  document.getElementById('tab-shared').className = list === 'shared' ? 'tab active-shared' : 'tab';
+  document.getElementById('tab-hers').className = list === 'hers' ? 'tab active-hers' : 'tab';
+  document.querySelectorAll('.toolbar button').forEach((b, i) => {
+    b.classList.toggle('active', i === 0);
+  });
+  render();
+}
+
 function render() {
+  const items = getItems();
   const checked = getChecked();
   const list = document.getElementById('list');
+  const isHers = currentList === 'hers';
   let html = '';
   let currentCat = '';
-  let total = ITEMS.length;
+  let total = items.length;
   let done = checked.length;
 
-  ITEMS.forEach((item, i) => {
+  items.forEach((item, i) => {
     const isChecked = checked.includes(i);
     if (currentFilter === 'unchecked' && isChecked) return;
 
@@ -109,9 +165,10 @@ function render() {
       currentCat = item.cat;
       html += `<h2>${currentCat}</h2>`;
     }
-    html += `<div class="item ${isChecked ? 'checked' : ''}" onclick="toggle(${i})">
-      <div class="checkbox">${isChecked ? '' : ''}</div>
+    html += `<div class="item ${isHers ? 'item-hers' : ''} ${isChecked ? 'checked' : ''}" onclick="toggle(${i})">
+      <div class="checkbox"></div>
       <div class="item-text">${item.name}</div>
+      <div class="item-qty">${item.qty}</div>
       <div class="item-note">${item.note}</div>
     </div>`;
   });
@@ -146,6 +203,28 @@ function clearAll() {
 }
 
 render();
+</script>
+<!-- Supabase Sync -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/supabase-sync.js"></script>
+<script src="../js/supabase-auth-ui.js"></script>
+<script>
+async function onAuthSync() {
+  const r1 = await syncChecklist(STORAGE_SHARED);
+  const r2 = await syncChecklist(STORAGE_HERS);
+  if (r1 === 'pulled' || r2 === 'pulled') render();
+}
+
+// Override saveChecked to also push to Supabase
+const _origSaveChecked = saveChecked;
+saveChecked = function(arr) {
+  _origSaveChecked(arr);
+  pushChecklist(getKey(), arr).catch(() => {});
+};
+
+// Initial sync on load
+getSession().then(s => { if (s?.user) onAuthSync(); });
 </script>
 </body>
 </html>

@@ -232,5 +232,31 @@ function upd(){
   document.getElementById('pb').style.width=(d/total*100)+'%';
 }
 </script>
+
+<!-- Supabase Sync -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-sync.js"></script>
+<script src="js/supabase-auth-ui.js"></script>
+<script>
+const _origToggleAcct = toggle;
+toggle = function(el) {
+  _origToggleAcct(el);
+  pushChecklist(K, ck).catch(() => {});
+};
+async function onAuthSync() {
+  const r = await syncChecklist(K);
+  if (r === 'pulled') {
+    ck = JSON.parse(localStorage.getItem(K) || '[]');
+    items.forEach((item, i) => {
+      const on = ck.includes(i);
+      item.querySelector('.cb').classList.toggle('checked', on);
+      item.querySelector('.item-text').classList.toggle('done', on);
+    });
+    upd();
+  }
+}
+getSession().then(s => { if (s?.user) onAuthSync(); });
+</script>
 </body>
 </html>
