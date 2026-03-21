@@ -44,6 +44,11 @@ ol{margin:0 0 .75rem 18px;font-size:12px;color:#555;line-height:1.8}
 .step-time{font-size:11px;font-weight:700;color:#F57C00;margin-bottom:2px}
 .step-text{font-size:13px;color:#444;line-height:1.5}
 .footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
+.tabs{display:flex;gap:0;margin-bottom:2rem;border-radius:10px;overflow:hidden;border:1px solid #e5e5e5}
+.tab{flex:1;padding:12px 0;text-align:center;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s,color .2s;background:#fff;color:#999;border:none;outline:none}
+.tab-his{border-right:1px solid #e5e5e5}
+.tab-his.active{background:#F57C00;color:#fff}
+.tab-hers.active{background:#43A047;color:#fff}
 </style>
 </head>
 <body>
@@ -51,6 +56,11 @@ ol{margin:0 0 .75rem 18px;font-size:12px;color:#555;line-height:1.8}
   <a href="index.html" class="back">&larr; Back to Gym Partners</a>
   <h1>Meal Prep</h1>
   <div class="sub">Two quick preps per week — food always tastes fresh. Everything comes from the <a href="grocery-list.html" style="color:#534AB7">grocery list</a>.</div>
+
+  <div class="tabs">
+    <button class="tab tab-his active" onclick="switchTab('his')">His Portions</button>
+    <button class="tab tab-hers" onclick="switchTab('hers')">Her Portions</button>
+  </div>
 
   <div class="note note-purple">
     <strong>The system:</strong> Prep twice a week, 3 days at a time. Sunday covers Mon–Wed. Wednesday covers Thu–Sat. Food never sits more than 3 days — always fresh, always hits different. His containers are bigger, hers are smaller. Same base meals, just scaled.
@@ -268,6 +278,7 @@ ol{margin:0 0 .75rem 18px;font-size:12px;color:#555;line-height:1.8}
   </div>
 
   <!-- CAT MEAL PREP -->
+  <div id="cat-section">
   <h2>Cat Meal Prep</h2>
   <div class="note note-purple">
     <strong>Yes, we meal prep for the cat too.</strong> Homemade raw diet — portioned and frozen for the week.
@@ -292,7 +303,20 @@ ol{margin:0 0 .75rem 18px;font-size:12px;color:#555;line-height:1.8}
     <strong>Important: Let the meat cool before adding supplements.</strong> Heat destroys taurine and degrades krill oil. Cook the meat, let it reach room temp, THEN mix in the supplements. Portion into daily containers and freeze what you won't use within 3 days.
   </div>
 
+  </div><!-- /cat-section -->
+
   <div class="footer">Two Latinos &middot; Gym Partners</div>
 </div>
+<script>
+function switchTab(who){
+  document.querySelector('.tab-his').classList.toggle('active',who==='his');
+  document.querySelector('.tab-hers').classList.toggle('active',who==='hers');
+  document.querySelectorAll('.his').forEach(function(el){el.style.display=who==='his'?'block':'none';if(who==='his')el.style.width='100%'});
+  document.querySelectorAll('.hers').forEach(function(el){el.style.display=who==='hers'?'block':'none';if(who==='hers')el.style.width='100%'});
+  document.querySelectorAll('.split').forEach(function(el){el.style.gridTemplateColumns='1fr'});
+  document.getElementById('cat-section').style.display=who==='his'?'block':'none';
+}
+switchTab('his');
+</script>
 </body>
 </html>

@@ -24,13 +24,19 @@ tr:last-child td{border-bottom:none}
 .card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:14px 18px;margin-bottom:10px}
 .card-title{font-size:14px;font-weight:600;margin-bottom:4px}
 .card-detail{font-size:12px;color:#666;line-height:1.5}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-@media(max-width:500px){.split{grid-template-columns:1fr}}
+.split{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:10px}
 .his{border-left:3px solid #F57C00}
 .hers{border-left:3px solid #43A047}
 .tag{font-size:9px;font-weight:700;letter-spacing:.5px;padding:2px 7px;border-radius:6px;display:inline-block;margin-bottom:6px}
 .tag-his{background:#FFF3E0;color:#7A4A00}
 .tag-hers{background:#E1F5EE;color:#04342C}
+.tabs{display:flex;gap:0;margin-bottom:1rem;border-radius:10px;overflow:hidden;border:1px solid #e5e5e5}
+.tab{flex:1;padding:10px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#666;transition:all .15s;border:none}
+.tab.active-his{background:#F57C00;color:#fff}
+.tab.active-hers{background:#43A047;color:#fff}
+.hers{display:none}
+body.show-hers .hers{display:block}
+body.show-hers .his{display:none}
 .footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
 </style>
 </head>
@@ -39,6 +45,11 @@ tr:last-child td{border-bottom:none}
   <a href="index.html" class="back">&larr; Back to Gym Partners</a>
   <h1>Pre-Workout Nutrition</h1>
   <div class="sub">What to eat, how much, and when — scaled for both of you.</div>
+
+  <div class="tabs">
+    <button class="tab active-his" onclick="switchTab('his')">His Nutrition</button>
+    <button class="tab" onclick="switchTab('hers')">Her Nutrition</button>
+  </div>
 
   <h2>Carb Targets</h2>
   <p>Pre-workout carbs fuel your session. Too little = gassed out. Too much = sluggish. Here's your sweet spot:</p>
@@ -102,5 +113,13 @@ tr:last-child td{border-bottom:none}
 
   <div class="footer">Two Latinos &middot; Gym Partners</div>
 </div>
+<script>
+function switchTab(who){
+  var tabs=document.querySelectorAll('.tab');
+  tabs[0].className='tab'+(who==='his'?' active-his':'');
+  tabs[1].className='tab'+(who==='hers'?' active-hers':'');
+  document.body.className=who==='hers'?'show-hers':'';
+}
+</script>
 </body>
 </html>

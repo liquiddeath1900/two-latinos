@@ -47,6 +47,10 @@ tr:last-child td{border-bottom:none}
 .schedule-meal{color:#555;line-height:1.5}
 .schedule-cals{font-size:10px;color:#999;margin-top:2px}
 .footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
+.tabs{display:flex;gap:0;margin-bottom:1.5rem;border-radius:10px;overflow:hidden;border:1px solid #e5e5e5}
+.tab{flex:1;padding:12px;text-align:center;font-size:14px;font-weight:600;cursor:pointer;background:#fff;color:#666;transition:all .15s;border:none}
+.tab.active-his{background:#F57C00;color:#fff}
+.tab.active-hers{background:#43A047;color:#fff}
 </style>
 </head>
 <body>
@@ -55,10 +59,15 @@ tr:last-child td{border-bottom:none}
   <h1>Eating Guide</h1>
   <div class="sub">When to eat, how much, what — like a recipe for results. Follow this and the workouts handle themselves.</div>
 
+  <div class="tabs">
+    <button class="tab active-his" id="tab-his" onclick="switchPlan('his')">His Plan</button>
+    <button class="tab" id="tab-hers" onclick="switchPlan('hers')">Her Plan</button>
+  </div>
+
   <!-- DAILY TARGETS -->
   <h2>Daily Targets</h2>
 
-  <div class="split">
+  <div class="his-content">
     <div class="card his">
       <span class="tag tag-his">Him — 285 lbs, recomp</span>
       <div style="text-align:center;margin:8px 0">
@@ -73,30 +82,34 @@ tr:last-child td{border-bottom:none}
         <strong>Window:</strong> IF 12 PM – 8 PM
       </div>
     </div>
+  </div>
+
+  <div class="hers-content" style="display:none">
     <div class="card hers">
-      <span class="tag tag-hers">Her — 145 lbs, toning</span>
+      <span class="tag tag-hers">Her — 145 lbs, muscle gain</span>
       <div style="text-align:center;margin:8px 0">
-        <div class="big-num" style="color:#43A047">~1,600</div>
+        <div class="big-num" style="color:#43A047">~1,900</div>
         <div class="big-label">calories/day</div>
       </div>
       <div class="card-detail">
-        <strong>Protein:</strong> 120-145g<br>
-        <strong>Carbs:</strong> 150-170g<br>
-        <strong>Fat:</strong> 45-55g<br>
+        <strong>Protein:</strong> 130-145g<br>
+        <strong>Carbs:</strong> 180-210g<br>
+        <strong>Fat:</strong> 55-65g<br>
         <strong>Water:</strong> 80+ oz<br>
-        <strong>Window:</strong> Regular meals, 3 + snacks
+        <strong>Window:</strong> Regular meals, 3 + snacks + gains shake
       </div>
     </div>
   </div>
 
   <div class="note note-purple">
-    <strong>Why these numbers?</strong> His calories = ~500 under maintenance (~3,300) for slow fat loss while preserving muscle. Going lower than 2,800 risks muscle loss and metabolic slowdown — exactly what we're avoiding. Her calories = slight surplus/maintenance to fuel muscle building for shape. Both prioritize protein above everything else.
+    <strong>Why these numbers?</strong> His calories = ~500 under maintenance (~3,300) for slow fat loss while preserving muscle. Going lower than 2,800 risks muscle loss and metabolic slowdown — exactly what we're avoiding. Her calories = ~200-300 above maintenance to fuel muscle growth — she's building, not cutting. Both prioritize protein above everything else.
   </div>
 
   <!-- WEEKDAY EVENING GYM -->
   <h2>Weekday Schedule (Evening Gym)</h2>
   <p>Most days you train in the evening. Here's how the eating maps around that:</p>
 
+  <div class="his-content">
   <div class="schedule">
     <div class="schedule-header" style="background:#F57C00">His Day — IF (12–10 PM Window)</div>
     <div class="schedule-row">
@@ -132,7 +145,9 @@ tr:last-child td{border-bottom:none}
   <div class="note note-orange">
     <strong>Late gym = shifted IF window.</strong> A 12–10:30 PM eating window gives you ~13.5 hours of fasting. That's still effective for fat loss. The alternative (skipping post-workout nutrition) is worse — your muscles need protein after training. Don't skip the shake to close the window earlier.
   </div>
+  </div>
 
+  <div class="hers-content" style="display:none">
   <div class="schedule">
     <div class="schedule-header" style="background:#43A047">Her Day — Regular Eating</div>
     <div class="schedule-row">
@@ -164,11 +179,13 @@ tr:last-child td{border-bottom:none}
       <div class="schedule-meal"><strong>Post-workout shake.</strong> 1.5 scoops whey + 1 scoop (5g) creatine + berries. Then done for the night.<div class="schedule-cals">~200 cal</div></div>
     </div>
   </div>
+  </div>
 
   <!-- WEEKEND EVENING GYM -->
   <h2>Weekend Schedule (5-7 PM Gym)</h2>
   <p>Weekends you hit the gym at 5 PM. Meals shift to fuel that window:</p>
 
+  <div class="his-content">
   <div class="schedule">
     <div class="schedule-header" style="background:#F57C00">His Weekend — IF + 5-7 PM Gym</div>
     <div class="schedule-row">
@@ -196,7 +213,9 @@ tr:last-child td{border-bottom:none}
       <div class="schedule-meal"><strong>Window closes.</strong> Shake + earlier meals covered your cals. Water only after this. Clean 8-hour window.<div class="schedule-cals">Window closed</div></div>
     </div>
   </div>
+  </div>
 
+  <div class="hers-content" style="display:none">
   <div class="schedule">
     <div class="schedule-header" style="background:#43A047">Her Weekend — 5-7 PM Gym</div>
     <div class="schedule-row">
@@ -228,11 +247,13 @@ tr:last-child td{border-bottom:none}
       <div class="schedule-meal"><strong>Dinner.</strong> Salmon + sweet potato + spinach salad. Last meal of the day.<div class="schedule-cals">~400-450 cal</div></div>
     </div>
   </div>
+  </div>
 
   <!-- MEAL ROTATION -->
   <h2>Meal Rotation — Pick One Per Slot</h2>
   <p>Same calories, different flavors. Pick one option from each meal slot — rotate daily so you don't get bored.</p>
 
+  <div class="his-content">
   <h3 style="color:#F57C00">His Meals</h3>
 
   <div class="card his">
@@ -257,7 +278,9 @@ tr:last-child td{border-bottom:none}
     <span class="tag tag-his">Post-Workout — 10:30 PM weekday / 7 PM weekend</span>
     <div class="card-detail">2 scoops Vega + 5-10g creatine + banana — this is fuel, not a meal. Same every time. <span style="color:#999;font-size:10px">~450 cal</span></div>
   </div>
+  </div>
 
+  <div class="hers-content" style="display:none">
   <h3 style="color:#43A047">Her Meals</h3>
 
   <div class="card hers">
@@ -320,6 +343,7 @@ tr:last-child td{border-bottom:none}
   <div class="note note-purple">
     <strong>Non-training days:</strong> She still takes 1 scoop creatine (any time with a meal) + 1 extra scoop whey mid-day to hit protein targets. See <a href="supplements.html" style="color:#534AB7">Supplement Guide</a> for the full protocol.
   </div>
+  </div>
 
   <!-- RULES -->
   <h2>The Non-Negotiable Rules</h2>
@@ -357,5 +381,13 @@ tr:last-child td{border-bottom:none}
 
   <div class="footer">Two Latinos &middot; Gym Partners</div>
 </div>
+<script>
+function switchPlan(plan) {
+  document.getElementById('tab-his').className = plan === 'his' ? 'tab active-his' : 'tab';
+  document.getElementById('tab-hers').className = plan === 'hers' ? 'tab active-hers' : 'tab';
+  document.querySelectorAll('.his-content').forEach(el => el.style.display = plan === 'his' ? 'block' : 'none');
+  document.querySelectorAll('.hers-content').forEach(el => el.style.display = plan === 'hers' ? 'block' : 'none');
+}
+</script>
 </body>
 </html>

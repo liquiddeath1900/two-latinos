@@ -26,14 +26,22 @@ tr:last-child td{border-bottom:none}
 .card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:14px 18px;margin-bottom:10px}
 .card-title{font-size:14px;font-weight:600;margin-bottom:4px}
 .card-detail{font-size:12px;color:#666;line-height:1.5}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-@media(max-width:500px){.split{grid-template-columns:1fr}}
-.his{border-left:3px solid #F57C00}
-.hers{border-left:3px solid #43A047}
 .tag{font-size:9px;font-weight:700;letter-spacing:.5px;padding:2px 7px;border-radius:6px;display:inline-block;margin-bottom:6px}
 .tag-his{background:#FFF3E0;color:#7A4A00}
 .tag-hers{background:#E1F5EE;color:#04342C}
 .footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
+
+/* Tabs */
+.tabs{display:flex;gap:0;margin-bottom:1rem;border-radius:10px;overflow:hidden;border:1px solid #e5e5e5}
+.tab{flex:1;padding:10px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#666;transition:all .15s;border:none}
+.tab.active-his{background:#F57C00;color:#fff}
+.tab.active-hers{background:#43A047;color:#fff}
+
+/* Tab content visibility */
+.his-content{display:none}
+.hers-content{display:none}
+.his-content.active{display:block}
+.hers-content.active{display:block}
 </style>
 </head>
 <body>
@@ -42,16 +50,36 @@ tr:last-child td{border-bottom:none}
   <h1>Supplement Guide</h1>
   <div class="sub">Creatine & protein dosing for both — no overthinking, just the protocol.</div>
 
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active-his" id="tab-his" onclick="switchTab('his')">His Protocol</button>
+    <button class="tab" id="tab-hers" onclick="switchTab('hers')">Her Protocol</button>
+  </div>
+
   <h2>Creatine</h2>
   <p>Creatine monohydrate. The most researched, most proven supplement. Helps with strength, recovery, and muscle fullness.</p>
 
-  <table>
-    <tr><th></th><th>Him (285 lbs)</th><th>Her (145 lbs)</th></tr>
-    <tr><td><strong>Daily Dose</strong></td><td>5-10g (1-2 scoops)</td><td>5g (1 scoop)</td></tr>
-    <tr><td><strong>Timing</strong></td><td>Post-workout with protein shake</td><td>Post-workout with protein shake</td></tr>
-    <tr><td><strong>Rest Days</strong></td><td>5g with any meal</td><td>5g (1 scoop) with any meal</td></tr>
-    <tr><td><strong>Type</strong></td><td>Monohydrate (micronized)</td><td>Monohydrate (micronized)</td></tr>
-  </table>
+  <!-- His Creatine Table -->
+  <div class="his-content active">
+    <table>
+      <tr><th></th><th>Him (285 lbs)</th></tr>
+      <tr><td><strong>Daily Dose</strong></td><td>5-10g (1-2 scoops)</td></tr>
+      <tr><td><strong>Timing</strong></td><td>Post-workout with protein shake</td></tr>
+      <tr><td><strong>Rest Days</strong></td><td>5g with any meal</td></tr>
+      <tr><td><strong>Type</strong></td><td>Monohydrate (micronized)</td></tr>
+    </table>
+  </div>
+
+  <!-- Her Creatine Table -->
+  <div class="hers-content">
+    <table>
+      <tr><th></th><th>Her (145 lbs)</th></tr>
+      <tr><td><strong>Daily Dose</strong></td><td>5g (1 scoop)</td></tr>
+      <tr><td><strong>Timing</strong></td><td>Post-workout with protein shake</td></tr>
+      <tr><td><strong>Rest Days</strong></td><td>5g (1 scoop) with any meal</td></tr>
+      <tr><td><strong>Type</strong></td><td>Monohydrate (micronized)</td></tr>
+    </table>
+  </div>
 
   <div class="note note-purple">
     <strong>Skip the loading phase.</strong> You don't need 20g/day for a week. Just take your daily dose consistently. You'll be fully saturated in 3-4 weeks. Less bloating, same result.
@@ -59,13 +87,18 @@ tr:last-child td{border-bottom:none}
 
   <h2>Protein</h2>
 
-  <div class="split">
-    <div class="card his">
+  <!-- His Protein Card -->
+  <div class="his-content active">
+    <div class="card" style="border-left:3px solid #F57C00">
       <span class="tag tag-his">Him — Vega Plant Protein</span>
       <div class="card-title">2 scoops post-workout</div>
       <div class="card-detail">~60g protein (Vega Sport = 30g per scoop). Mix with water or oat milk. Take within 30 min of finishing your workout. Add creatine to the same shake.</div>
     </div>
-    <div class="card hers">
+  </div>
+
+  <!-- Her Protein Card -->
+  <div class="hers-content">
+    <div class="card" style="border-left:3px solid #43A047">
       <span class="tag tag-hers">Her — Whey Protein</span>
       <div class="card-title">1.5 scoops post-workout</div>
       <div class="card-detail">~30g protein. Mix with water or almond milk, or blend into her <a href="eating-guide.html#gains-shake" style="color:#534AB7">Weight Gain Shake</a> on training days. <strong>Non-training days:</strong> 1 extra scoop whey mid-day to stay on protein target.</div>
@@ -75,8 +108,9 @@ tr:last-child td{border-bottom:none}
   <h2>Post-Workout Power Stack</h2>
   <p>Right after the gym — this is the one you don't skip:</p>
 
-  <div class="split">
-    <div class="card his">
+  <!-- His Post-Workout Stack -->
+  <div class="his-content active">
+    <div class="card" style="border-left:3px solid #F57C00">
       <span class="tag tag-his">His Stack</span>
       <div class="card-detail">
         <strong>2 scoops</strong> Vega Plant Protein<br>
@@ -85,7 +119,11 @@ tr:last-child td{border-bottom:none}
         <strong>Optional:</strong> banana blended in
       </div>
     </div>
-    <div class="card hers">
+  </div>
+
+  <!-- Her Post-Workout Stack -->
+  <div class="hers-content">
+    <div class="card" style="border-left:3px solid #43A047">
       <span class="tag tag-hers">Her Stack</span>
       <div class="card-detail">
         <strong>1.5 scoops</strong> Whey Protein<br>
@@ -98,13 +136,31 @@ tr:last-child td{border-bottom:none}
 
   <h2>Daily Protocol</h2>
 
-  <table>
-    <tr><th>Time</th><th>Him</th><th>Her</th></tr>
-    <tr><td><strong>Morning</strong></td><td>—</td><td>Optional 1 scoop whey (if breakfast is low protein)</td></tr>
-    <tr><td><strong>Pre-Workout</strong></td><td>Fruit snack (see <a href="nutrition.html" style="color:#534AB7">Nutrition</a>)</td><td>Fruit snack (see <a href="nutrition.html" style="color:#534AB7">Nutrition</a>)</td></tr>
-    <tr><td><strong>Post-Workout</strong></td><td>2 scoops Vega + 5-10g creatine</td><td>1.5 scoops whey + 1 scoop (5g) creatine</td></tr>
-    <tr><td><strong>Non-Training Days</strong></td><td>5g creatine with lunch or dinner</td><td>1 scoop (5g) creatine with any meal + 1 extra scoop whey mid-day (to hit protein targets)</td></tr>
-  </table>
+  <!-- His Daily Protocol Table -->
+  <div class="his-content active">
+    <table>
+      <tr><th>Time</th><th>Him</th></tr>
+      <tr><td><strong>Morning</strong></td><td>—</td></tr>
+      <tr><td><strong>Pre-Workout</strong></td><td>Fruit snack (see <a href="nutrition.html" style="color:#534AB7">Nutrition</a>)</td></tr>
+      <tr><td><strong>Post-Workout</strong></td><td>2 scoops Vega + 5-10g creatine</td></tr>
+      <tr><td><strong>Non-Training Days</strong></td><td>5g creatine with lunch or dinner</td></tr>
+    </table>
+  </div>
+
+  <!-- Her Daily Protocol Table -->
+  <div class="hers-content">
+    <table>
+      <tr><th>Time</th><th>Her</th></tr>
+      <tr><td><strong>Morning</strong></td><td>Optional 1 scoop whey (if breakfast is low protein)</td></tr>
+      <tr><td><strong>Pre-Workout</strong></td><td>Fruit snack (see <a href="nutrition.html" style="color:#534AB7">Nutrition</a>)</td></tr>
+      <tr><td><strong>Post-Workout</strong></td><td>1.5 scoops whey + 1 scoop (5g) creatine — or <a href="eating-guide.html#gains-shake" style="color:#534AB7">Gains Shake</a> on training days</td></tr>
+      <tr><td><strong>Non-Training Days</strong></td><td>1 scoop (5g) creatine with any meal + 1 extra scoop whey mid-day (to hit protein targets)</td></tr>
+    </table>
+
+    <div class="note note-green">
+      <strong>Weight gain goal?</strong> Check out the <a href="eating-guide.html#gains-shake" style="color:#04342C;font-weight:600">Weight Gain Shake recipe</a> in the Eating Guide — designed for her calorie and protein targets.
+    </div>
+  </div>
 
   <h2>What to Buy</h2>
   <div class="note note-green">
@@ -113,5 +169,26 @@ tr:last-child td{border-bottom:none}
 
   <div class="footer">Two Latinos &middot; Gym Partners</div>
 </div>
+
+<script>
+function switchTab(who) {
+  var hisTab = document.getElementById('tab-his');
+  var hersTab = document.getElementById('tab-hers');
+  var hisBlocks = document.querySelectorAll('.his-content');
+  var hersBlocks = document.querySelectorAll('.hers-content');
+
+  if (who === 'his') {
+    hisTab.className = 'tab active-his';
+    hersTab.className = 'tab';
+    for (var i = 0; i < hisBlocks.length; i++) hisBlocks[i].classList.add('active');
+    for (var i = 0; i < hersBlocks.length; i++) hersBlocks[i].classList.remove('active');
+  } else {
+    hersTab.className = 'tab active-hers';
+    hisTab.className = 'tab';
+    for (var i = 0; i < hersBlocks.length; i++) hersBlocks[i].classList.add('active');
+    for (var i = 0; i < hisBlocks.length; i++) hisBlocks[i].classList.remove('active');
+  }
+}
+</script>
 </body>
 </html>
