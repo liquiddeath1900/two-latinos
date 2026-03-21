@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Fitness Calculator — Gym Partners</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;padding:16px;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto}
+.back{display:inline-block;font-size:12px;color:#534AB7;text-decoration:none;margin-bottom:1.5rem}
+.back:hover{text-decoration:underline}
+h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.sub{font-size:13px;color:#666;line-height:1.6;margin-bottom:2rem}
+h2{font-size:16px;font-weight:700;margin:2rem 0 .75rem;padding-bottom:6px;border-bottom:2px solid #EEEDFE}
+p{font-size:13px;color:#444;line-height:1.6;margin-bottom:.75rem}
+.note{padding:12px 14px;border-radius:10px;font-size:12px;margin-bottom:10px}
+.note-purple{background:#EEEDFE;color:#3C3489}
+.note-orange{background:#FFF3E0;color:#7A4A00}
+.note-green{background:#E1F5EE;color:#04342C}
+
+/* Form */
+.form-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+@media(max-width:450px){.form-row{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:4px}
+.form-group label{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group select{padding:10px 12px;border:1px solid #e5e5e5;border-radius:8px;font-size:14px;font-family:inherit;outline:none;transition:border .15s;background:#fff}
+.form-group input:focus,.form-group select:focus{border-color:#534AB7}
+.btn{padding:14px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .15s;width:100%;background:#534AB7;color:#fff}
+.btn:hover{background:#3C3489}
+.btn:active{transform:scale(.98)}
+
+/* Presets */
+.presets{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.preset{padding:8px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:2px solid #e5e5e5;background:#fff;transition:all .15s}
+.preset:hover{border-color:#534AB7}
+.preset.active{border-color:#534AB7;background:#EEEDFE;color:#3C3489}
+.preset-his{border-color:#F57C00;background:#FFF3E0;color:#7A4A00}
+.preset-hers{border-color:#43A047;background:#E1F5EE;color:#04342C}
+
+/* Results */
+.results{display:none}
+.results.show{display:block}
+.result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+@media(max-width:400px){.result-grid{grid-template-columns:1fr}}
+.result-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:14px;text-align:center}
+.result-card.highlight{border-color:#534AB7;background:#EEEDFE}
+.result-num{font-size:28px;font-weight:700;color:#534AB7;margin-bottom:2px}
+.result-label{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px}
+.result-sub{font-size:11px;color:#666;margin-top:4px}
+.macro-bar{display:flex;height:24px;border-radius:8px;overflow:hidden;margin-bottom:16px}
+.macro-bar div{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff}
+.bar-protein{background:#534AB7}
+.bar-carbs{background:#F57C00}
+.bar-fat{background:#43A047}
+.macro-legend{display:flex;gap:16px;justify-content:center;margin-bottom:16px;font-size:11px;color:#666}
+.macro-legend span{display:flex;align-items:center;gap:4px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+/* Meal breakdown */
+.meal-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:14px 16px;margin-bottom:8px}
+.meal-name{font-size:13px;font-weight:600;margin-bottom:4px}
+.meal-macros{font-size:12px;color:#666;display:flex;gap:12px;flex-wrap:wrap}
+
+.footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="back">&larr; Back to Gym Partners</a>
+  <h1>Fitness Calculator</h1>
+  <div class="sub">Enter your stats, get your numbers. Calories, protein, carbs, fat — personalized to your body and goals.</div>
+
+  <!-- Quick Presets -->
+  <p style="font-weight:600;font-size:13px;margin-bottom:8px">Quick fill:</p>
+  <div class="presets">
+    <button class="preset" id="pre-his" onclick="fillPreset('his')">Him (285 lbs)</button>
+    <button class="preset" id="pre-hers" onclick="fillPreset('hers')">Her (145 lbs)</button>
+    <button class="preset" onclick="clearForm()">Clear</button>
+  </div>
+
+  <!-- Input Form -->
+  <div class="form-card">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Gender</label>
+        <select id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Age</label>
+        <input type="number" id="age" placeholder="28" min="14" max="80">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Weight (lbs)</label>
+        <input type="number" id="weight" placeholder="285" min="80" max="500">
+      </div>
+      <div class="form-group">
+        <label>Height</label>
+        <select id="height">
+          <option value="">Select...</option>
+          <option value="60">5'0" (152 cm)</option>
+          <option value="61">5'1" (155 cm)</option>
+          <option value="62">5'2" (157 cm)</option>
+          <option value="63">5'3" (160 cm)</option>
+          <option value="64">5'4" (163 cm)</option>
+          <option value="65">5'5" (165 cm)</option>
+          <option value="66">5'6" (168 cm)</option>
+          <option value="67">5'7" (170 cm)</option>
+          <option value="68">5'8" (173 cm)</option>
+          <option value="69">5'9" (175 cm)</option>
+          <option value="70">5'10" (178 cm)</option>
+          <option value="71">5'11" (180 cm)</option>
+          <option value="72">6'0" (183 cm)</option>
+          <option value="73">6'1" (185 cm)</option>
+          <option value="74">6'2" (188 cm)</option>
+          <option value="75">6'3" (191 cm)</option>
+          <option value="76">6'4" (193 cm)</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Activity Level</label>
+        <select id="activity">
+          <option value="1.2">Sedentary (desk job)</option>
+          <option value="1.375">Light (1-2 days/week)</option>
+          <option value="1.55" selected>Moderate (3-4 days/week)</option>
+          <option value="1.725">Active (5-6 days/week)</option>
+          <option value="1.9">Very Active (2x/day)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Goal</label>
+        <select id="goal">
+          <option value="recomp">Body Recomp (lose fat, build muscle)</option>
+          <option value="cut">Cut (lose fat, keep muscle)</option>
+          <option value="maintain">Maintain</option>
+          <option value="bulk">Lean Bulk (build muscle)</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn" onclick="calculate()">Calculate My Numbers</button>
+  </div>
+
+  <!-- Results -->
+  <div class="results" id="results">
+    <h2>Your Numbers</h2>
+
+    <div class="result-grid">
+      <div class="result-card highlight">
+        <div class="result-num" id="r-cal">—</div>
+        <div class="result-label">Daily Calories</div>
+        <div class="result-sub" id="r-cal-sub"></div>
+      </div>
+      <div class="result-card">
+        <div class="result-num" id="r-tdee" style="color:#999;font-size:20px">—</div>
+        <div class="result-label">Maintenance (TDEE)</div>
+        <div class="result-sub" id="r-tdee-sub">before adjustment</div>
+      </div>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-card">
+        <div class="result-num" id="r-protein" style="color:#534AB7">—</div>
+        <div class="result-label">Protein (g)</div>
+        <div class="result-sub" id="r-protein-sub"></div>
+      </div>
+      <div class="result-card">
+        <div class="result-num" id="r-carbs" style="color:#F57C00">—</div>
+        <div class="result-label">Carbs (g)</div>
+        <div class="result-sub" id="r-carbs-sub"></div>
+      </div>
+    </div>
+    <div class="result-grid">
+      <div class="result-card">
+        <div class="result-num" id="r-fat" style="color:#43A047">—</div>
+        <div class="result-label">Fat (g)</div>
+        <div class="result-sub" id="r-fat-sub"></div>
+      </div>
+      <div class="result-card">
+        <div class="result-num" id="r-water" style="color:#0288D1">—</div>
+        <div class="result-label">Water (oz)</div>
+        <div class="result-sub">minimum daily</div>
+      </div>
+    </div>
+
+    <!-- Macro Bar -->
+    <div class="macro-bar" id="macro-bar"></div>
+    <div class="macro-legend">
+      <span><span class="dot" style="background:#534AB7"></span> Protein</span>
+      <span><span class="dot" style="background:#F57C00"></span> Carbs</span>
+      <span><span class="dot" style="background:#43A047"></span> Fat</span>
+    </div>
+
+    <!-- Per Meal -->
+    <h2>Per Meal Breakdown</h2>
+    <div class="note note-purple" id="meal-note"></div>
+    <div id="meal-list"></div>
+
+    <!-- Pre-workout -->
+    <h2>Pre-Workout Snack</h2>
+    <div class="meal-card">
+      <div class="meal-name" id="preworkout-title">—</div>
+      <div class="meal-macros" id="preworkout-macros"></div>
+    </div>
+
+    <!-- Creatine -->
+    <h2>Your Creatine Dose</h2>
+    <div class="meal-card">
+      <div class="meal-name" id="creatine-dose">—</div>
+      <div class="meal-macros" id="creatine-detail"></div>
+    </div>
+  </div>
+
+  <div class="note note-orange" style="margin-top:1.5rem">
+    <strong>These are starting points.</strong> Track for 2-3 weeks, then adjust. If you're losing more than 2 lbs/week, eat more. If the scale isn't moving at all, drop 100-200 cal. The calculator gives you a foundation — your body gives you the real data.
+  </div>
+
+  <div class="footer">Two Latinos &middot; Gym Partners</div>
+</div>
+
+<script>
+function fillPreset(who) {
+  document.querySelectorAll('.preset').forEach(p => p.className = 'preset');
+  if (who === 'his') {
+    document.getElementById('gender').value = 'male';
+    document.getElementById('age').value = '28';
+    document.getElementById('weight').value = '285';
+    document.getElementById('height').value = '70';
+    document.getElementById('activity').value = '1.55';
+    document.getElementById('goal').value = 'recomp';
+    document.getElementById('pre-his').className = 'preset preset-his';
+  } else {
+    document.getElementById('gender').value = 'female';
+    document.getElementById('age').value = '28';
+    document.getElementById('weight').value = '145';
+    document.getElementById('height').value = '64';
+    document.getElementById('activity').value = '1.55';
+    document.getElementById('goal').value = 'bulk';
+    document.getElementById('pre-hers').className = 'preset preset-hers';
+  }
+}
+
+function clearForm() {
+  document.querySelectorAll('.preset').forEach(p => p.className = 'preset');
+  ['age','weight'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('height').value = '';
+  document.getElementById('results').className = 'results';
+}
+
+function calculate() {
+  const gender = document.getElementById('gender').value;
+  const age = parseInt(document.getElementById('age').value);
+  const weightLbs = parseFloat(document.getElementById('weight').value);
+  const heightIn = parseInt(document.getElementById('height').value);
+  const activity = parseFloat(document.getElementById('activity').value);
+  const goal = document.getElementById('goal').value;
+
+  if (!age || !weightLbs || !heightIn) {
+    alert('Fill in all fields first');
+    return;
+  }
+
+  // Convert to metric
+  const weightKg = weightLbs * 0.453592;
+  const heightCm = heightIn * 2.54;
+
+  // Mifflin-St Jeor BMR
+  let bmr;
+  if (gender === 'male') {
+    bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) + 5;
+  } else {
+    bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) - 161;
+  }
+
+  // TDEE
+  const tdee = Math.round(bmr * activity);
+
+  // Goal adjustment
+  let targetCal, goalLabel;
+  switch (goal) {
+    case 'recomp':
+      targetCal = Math.round(tdee - 500);
+      goalLabel = '500 cal deficit for recomp';
+      break;
+    case 'cut':
+      targetCal = Math.round(tdee - 600);
+      goalLabel = '600 cal deficit for cutting';
+      break;
+    case 'maintain':
+      targetCal = tdee;
+      goalLabel = 'eating at maintenance';
+      break;
+    case 'bulk':
+      targetCal = Math.round(tdee + 250);
+      goalLabel = '250 cal surplus for lean bulk';
+      break;
+  }
+
+  // Macros
+  // Protein: 1g per lb bodyweight (for recomp/cut) or 0.8g (maintain/bulk)
+  let proteinPerLb = (goal === 'recomp' || goal === 'cut') ? 1.0 : 0.8;
+  const protein = Math.round(weightLbs * proteinPerLb);
+  const proteinCal = protein * 4;
+
+  // Fat: 25% of total calories
+  const fatCal = Math.round(targetCal * 0.25);
+  const fat = Math.round(fatCal / 9);
+
+  // Carbs: remaining calories
+  const carbsCal = targetCal - proteinCal - fatCal;
+  const carbs = Math.round(carbsCal / 4);
+
+  // Water: ~0.5 oz per lb bodyweight, minimum 80
+  const water = Math.max(80, Math.round(weightLbs * 0.5));
+
+  // Display
+  document.getElementById('r-cal').textContent = targetCal.toLocaleString();
+  document.getElementById('r-cal-sub').textContent = goalLabel;
+  document.getElementById('r-tdee').textContent = tdee.toLocaleString();
+  document.getElementById('r-protein').textContent = protein + 'g';
+  document.getElementById('r-protein-sub').textContent = `${proteinPerLb}g/lb × ${weightLbs} lbs = ${proteinCal} cal`;
+  document.getElementById('r-carbs').textContent = carbs + 'g';
+  document.getElementById('r-carbs-sub').textContent = `${carbsCal} cal (remaining)`;
+  document.getElementById('r-fat').textContent = fat + 'g';
+  document.getElementById('r-fat-sub').textContent = `25% of calories = ${fatCal} cal`;
+  document.getElementById('r-water').textContent = water + ' oz';
+
+  // Macro bar
+  const pPct = Math.round((proteinCal / targetCal) * 100);
+  const fPct = Math.round((fatCal / targetCal) * 100);
+  const cPct = 100 - pPct - fPct;
+  document.getElementById('macro-bar').innerHTML = `
+    <div class="bar-protein" style="width:${pPct}%">${pPct}%</div>
+    <div class="bar-carbs" style="width:${cPct}%">${cPct}%</div>
+    <div class="bar-fat" style="width:${fPct}%">${fPct}%</div>
+  `;
+
+  // Per meal breakdown
+  const numMeals = gender === 'male' ? 3 : 4;
+  const mealNames = gender === 'male'
+    ? ['Meal 1 (Break Fast)', 'Meal 2 (Afternoon)', 'Post-Workout Shake']
+    : ['Breakfast', 'Lunch', 'Dinner', 'Post-Workout Shake'];
+
+  // Distribute: biggest meal first, shake is fixed
+  const shakePro = gender === 'male' ? 60 : 30;
+  const shakeCarbs = 20;
+  const shakeFat = 5;
+  const shakeCal = (shakePro * 4) + (shakeCarbs * 4) + (shakeFat * 9);
+
+  const remainCal = targetCal - shakeCal;
+  const remainPro = protein - shakePro;
+  const remainCarbs = carbs - shakeCarbs;
+  const remainFat = fat - shakeFat;
+
+  const mealCount = numMeals - 1;
+  // First meal gets 45%, rest split evenly
+  const meal1Pct = 0.45;
+  const otherPct = (1 - meal1Pct) / Math.max(1, mealCount - 1);
+
+  let mealHtml = '';
+  document.getElementById('meal-note').innerHTML = `<strong>${numMeals} meals/day.</strong> Biggest meal when you break fast. Post-workout shake is non-negotiable. Spread protein across all meals for best absorption.`;
+
+  for (let i = 0; i < mealCount; i++) {
+    const pct = i === 0 ? meal1Pct : otherPct;
+    const mCal = Math.round(remainCal * pct);
+    const mPro = Math.round(remainPro * pct);
+    const mCarbs = Math.round(remainCarbs * pct);
+    const mFat = Math.round(remainFat * pct);
+    mealHtml += `<div class="meal-card">
+      <div class="meal-name">${mealNames[i]}</div>
+      <div class="meal-macros">
+        <span><strong>${mCal}</strong> cal</span>
+        <span><strong>${mPro}g</strong> protein</span>
+        <span><strong>${mCarbs}g</strong> carbs</span>
+        <span><strong>${mFat}g</strong> fat</span>
+      </div>
+    </div>`;
+  }
+  // Shake
+  mealHtml += `<div class="meal-card" style="border-left:3px solid #534AB7">
+    <div class="meal-name">${mealNames[numMeals - 1]}</div>
+    <div class="meal-macros">
+      <span><strong>${shakeCal}</strong> cal</span>
+      <span><strong>${shakePro}g</strong> protein</span>
+      <span><strong>${shakeCarbs}g</strong> carbs</span>
+      <span><strong>${shakeFat}g</strong> fat</span>
+    </div>
+  </div>`;
+  document.getElementById('meal-list').innerHTML = mealHtml;
+
+  // Pre-workout carbs
+  const preCarbs = Math.round(weightKg * 0.5);
+  document.getElementById('preworkout-title').textContent = `${preCarbs}-${preCarbs + 10}g carbs, 60-90 min before gym`;
+  document.getElementById('preworkout-macros').innerHTML = `
+    <span>~${Math.round(preCarbs/25 * 100)/100} mangos worth</span>
+    <span>or 1 banana + rice cake</span>
+  `;
+
+  // Creatine
+  const creatineG = Math.round(weightKg * 0.03 * 10) / 10;
+  const scoops = Math.round(creatineG / 5 * 10) / 10;
+  document.getElementById('creatine-dose').textContent = `${Math.ceil(scoops)} scoop${Math.ceil(scoops) > 1 ? 's' : ''} (${Math.ceil(scoops) * 5}g) daily`;
+  document.getElementById('creatine-detail').innerHTML = `
+    <span>Formula: 0.03g × ${weightKg.toFixed(0)}kg = ${creatineG}g minimum</span>
+    <span>1 scoop ON Creatine = 5g</span>
+  `;
+
+  document.getElementById('results').className = 'results show';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
