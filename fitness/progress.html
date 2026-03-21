@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Progress Tracker — Gym Partners</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;padding:16px;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto}
+.back{display:inline-block;font-size:12px;color:#534AB7;text-decoration:none;margin-bottom:1.5rem}
+.back:hover{text-decoration:underline}
+h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.sub{font-size:13px;color:#666;line-height:1.6;margin-bottom:2rem}
+h2{font-size:16px;font-weight:700;margin:2rem 0 .75rem;padding-bottom:6px;border-bottom:2px solid #EEEDFE}
+p{font-size:13px;color:#444;line-height:1.6;margin-bottom:.75rem}
+.note{padding:12px 14px;border-radius:10px;font-size:12px;margin-bottom:10px}
+.note-purple{background:#EEEDFE;color:#3C3489}
+.note-orange{background:#FFF3E0;color:#7A4A00}
+
+/* Tabs */
+.tabs{display:flex;gap:6px;margin-bottom:1.5rem}
+.tab{flex:1;padding:10px;text-align:center;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:2px solid #e5e5e5;background:#fff;transition:all .15s}
+.tab.active-his{border-color:#F57C00;background:#FFF3E0;color:#7A4A00}
+.tab.active-hers{border-color:#43A047;background:#E1F5EE;color:#04342C}
+
+/* Form */
+.form-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+@media(max-width:400px){.form-row{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:4px}
+.form-group label{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group textarea{padding:10px 12px;border:1px solid #e5e5e5;border-radius:8px;font-size:14px;font-family:inherit;outline:none;transition:border .15s}
+.form-group input:focus,.form-group textarea:focus{border-color:#534AB7}
+.form-group textarea{resize:vertical;min-height:60px}
+.btn{padding:12px 20px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .15s;width:100%}
+.btn-primary{background:#534AB7;color:#fff}
+.btn-primary:hover{background:#3C3489}
+.btn-danger{background:#fff;color:#e53935;border:1px solid #e53935;margin-top:8px}
+.btn-danger:hover{background:#FFEBEE}
+.btn-export{background:#fff;color:#534AB7;border:1px solid #534AB7;margin-top:8px}
+.btn-export:hover{background:#EEEDFE}
+
+/* History */
+.entry{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:14px 16px;margin-bottom:8px;position:relative}
+.entry-date{font-size:12px;font-weight:700;color:#534AB7;margin-bottom:6px}
+.entry-stats{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:#555}
+.entry-stat{display:flex;flex-direction:column}
+.entry-stat-label{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px}
+.entry-stat-value{font-size:14px;font-weight:600;color:#1a1a1a}
+.entry-notes{font-size:12px;color:#666;margin-top:8px;font-style:italic;line-height:1.4}
+.entry-delete{position:absolute;top:12px;right:14px;font-size:16px;color:#ccc;cursor:pointer;background:none;border:none;padding:4px}
+.entry-delete:hover{color:#e53935}
+.empty{text-align:center;padding:2rem;color:#999;font-size:13px}
+.change{font-size:11px;margin-left:4px}
+.change-down{color:#43A047}
+.change-up{color:#e53935}
+
+/* Summary */
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem}
+@media(max-width:400px){.summary{grid-template-columns:1fr}}
+.summary-card{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:12px;text-align:center}
+.summary-num{font-size:22px;font-weight:700;color:#534AB7}
+.summary-label{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px}
+
+.footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="back">&larr; Back to Gym Partners</a>
+  <h1>Progress Tracker</h1>
+  <div class="sub">Log weight, measurements, and notes. Watch the numbers move. Everything saves to your phone.</div>
+
+  <!-- Who's logging -->
+  <div class="tabs">
+    <div class="tab active-his" id="tab-his" onclick="switchPerson('his')">His Progress</div>
+    <div class="tab" id="tab-hers" onclick="switchPerson('hers')">Her Progress</div>
+  </div>
+
+  <!-- Summary -->
+  <div id="summary" class="summary"></div>
+
+  <!-- Log Form -->
+  <div class="form-card">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="f-date">
+      </div>
+      <div class="form-group">
+        <label>Weight (lbs)</label>
+        <input type="number" id="f-weight" placeholder="285" step="0.1">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Waist (inches)</label>
+        <input type="number" id="f-waist" placeholder="40" step="0.1">
+      </div>
+      <div class="form-group">
+        <label>Chest (inches)</label>
+        <input type="number" id="f-chest" placeholder="46" step="0.1">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Arms (inches)</label>
+        <input type="number" id="f-arms" placeholder="16" step="0.1">
+      </div>
+      <div class="form-group">
+        <label>Hips/Glutes (inches)</label>
+        <input type="number" id="f-hips" placeholder="—" step="0.1">
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom:12px">
+      <label>Notes (energy, PRs, how you feel)</label>
+      <textarea id="f-notes" placeholder="Hit a new PR on chest press. Energy was good today."></textarea>
+    </div>
+    <button class="btn btn-primary" onclick="saveEntry()">Log Entry</button>
+  </div>
+
+  <div class="note note-purple">
+    <strong>Measure weekly, same day, same time.</strong> Weigh yourself Sunday morning before eating. Measurements too. Weight fluctuates daily — the weekly trend is what matters.
+  </div>
+
+  <!-- History -->
+  <h2>History</h2>
+  <div id="history"></div>
+
+  <!-- Actions -->
+  <button class="btn btn-export" onclick="exportData()">Export All Data (CSV)</button>
+  <button class="btn btn-danger" onclick="clearData()">Clear All Entries</button>
+
+  <div class="footer">Two Latinos &middot; Gym Partners</div>
+</div>
+
+<script>
+let currentPerson = 'his';
+
+function getKey() { return `gym-progress-${currentPerson}`; }
+function getData() { try { return JSON.parse(localStorage.getItem(getKey())) || []; } catch { return []; } }
+function saveData(d) { localStorage.setItem(getKey(), JSON.stringify(d)); }
+
+function switchPerson(who) {
+  currentPerson = who;
+  document.getElementById('tab-his').className = who === 'his' ? 'tab active-his' : 'tab';
+  document.getElementById('tab-hers').className = who === 'hers' ? 'tab active-hers' : 'tab';
+  render();
+}
+
+function saveEntry() {
+  const entry = {
+    date: document.getElementById('f-date').value,
+    weight: parseFloat(document.getElementById('f-weight').value) || null,
+    waist: parseFloat(document.getElementById('f-waist').value) || null,
+    chest: parseFloat(document.getElementById('f-chest').value) || null,
+    arms: parseFloat(document.getElementById('f-arms').value) || null,
+    hips: parseFloat(document.getElementById('f-hips').value) || null,
+    notes: document.getElementById('f-notes').value.trim()
+  };
+  if (!entry.date) { alert('Pick a date'); return; }
+  if (!entry.weight && !entry.waist && !entry.chest) { alert('Log at least one measurement'); return; }
+  const data = getData();
+  data.unshift(entry);
+  data.sort((a, b) => new Date(b.date) - new Date(a.date));
+  saveData(data);
+  // Clear form
+  ['f-weight','f-waist','f-chest','f-arms','f-hips','f-notes'].forEach(id => document.getElementById(id).value = '');
+  render();
+}
+
+function deleteEntry(i) {
+  if (!confirm('Delete this entry?')) return;
+  const data = getData();
+  data.splice(i, 1);
+  saveData(data);
+  render();
+}
+
+function changeTag(current, previous, field, inverse) {
+  if (!current || !previous || !current[field] || !previous[field]) return '';
+  const diff = (current[field] - previous[field]).toFixed(1);
+  if (diff == 0) return '';
+  const isDown = diff < 0;
+  const cls = (inverse ? !isDown : isDown) ? 'change-up' : 'change-down';
+  const arrow = isDown ? '↓' : '↑';
+  return `<span class="change ${cls}">${arrow}${Math.abs(diff)}</span>`;
+}
+
+function renderSummary(data) {
+  const el = document.getElementById('summary');
+  if (data.length === 0) { el.innerHTML = ''; return; }
+  const latest = data[0];
+  const first = data[data.length - 1];
+  const totalChange = (latest.weight && first.weight) ? (latest.weight - first.weight).toFixed(1) : '—';
+  const entries = data.length;
+  const weeks = data.length > 1 ? Math.max(1, Math.round((new Date(data[0].date) - new Date(data[data.length-1].date)) / (7*24*60*60*1000))) : 0;
+
+  el.innerHTML = `
+    <div class="summary-card">
+      <div class="summary-num">${latest.weight || '—'}</div>
+      <div class="summary-label">Current Weight</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num" style="color:${parseFloat(totalChange) <= 0 ? '#43A047' : '#F57C00'}">${totalChange !== '—' ? (totalChange > 0 ? '+' : '') + totalChange : '—'}</div>
+      <div class="summary-label">Total Change (lbs)</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num">${entries}</div>
+      <div class="summary-label">Entries (${weeks} wk${weeks !== 1 ? 's' : ''})</div>
+    </div>
+  `;
+}
+
+function render() {
+  const data = getData();
+  renderSummary(data);
+  const el = document.getElementById('history');
+  if (data.length === 0) {
+    el.innerHTML = '<div class="empty">No entries yet. Log your first weigh-in above.</div>';
+    return;
+  }
+  let html = '';
+  data.forEach((entry, i) => {
+    const prev = data[i + 1] || null;
+    const d = new Date(entry.date + 'T12:00:00');
+    const dateStr = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    html += `<div class="entry">
+      <button class="entry-delete" onclick="deleteEntry(${i})">&times;</button>
+      <div class="entry-date">${dateStr}</div>
+      <div class="entry-stats">
+        ${entry.weight ? `<div class="entry-stat"><div class="entry-stat-label">Weight</div><div class="entry-stat-value">${entry.weight} lbs ${changeTag(entry, prev, 'weight', false)}</div></div>` : ''}
+        ${entry.waist ? `<div class="entry-stat"><div class="entry-stat-label">Waist</div><div class="entry-stat-value">${entry.waist}" ${changeTag(entry, prev, 'waist', false)}</div></div>` : ''}
+        ${entry.chest ? `<div class="entry-stat"><div class="entry-stat-label">Chest</div><div class="entry-stat-value">${entry.chest}" ${changeTag(entry, prev, 'chest', true)}</div></div>` : ''}
+        ${entry.arms ? `<div class="entry-stat"><div class="entry-stat-label">Arms</div><div class="entry-stat-value">${entry.arms}" ${changeTag(entry, prev, 'arms', true)}</div></div>` : ''}
+        ${entry.hips ? `<div class="entry-stat"><div class="entry-stat-label">Hips</div><div class="entry-stat-value">${entry.hips}" ${changeTag(entry, prev, 'hips', true)}</div></div>` : ''}
+      </div>
+      ${entry.notes ? `<div class="entry-notes">"${entry.notes}"</div>` : ''}
+    </div>`;
+  });
+  el.innerHTML = html;
+}
+
+function exportData() {
+  const hisData = JSON.parse(localStorage.getItem('gym-progress-his') || '[]');
+  const hersData = JSON.parse(localStorage.getItem('gym-progress-hers') || '[]');
+  let csv = 'Person,Date,Weight,Waist,Chest,Arms,Hips,Notes\n';
+  const addRows = (data, who) => {
+    data.forEach(e => {
+      const notes = (e.notes || '').replace(/"/g, '""');
+      csv += `${who},${e.date},${e.weight||''},${e.waist||''},${e.chest||''},${e.arms||''},${e.hips||''},"${notes}"\n`;
+    });
+  };
+  addRows(hisData, 'Him');
+  addRows(hersData, 'Her');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `gym-progress-${new Date().toISOString().split('T')[0]}.csv`;
+  a.click();
+}
+
+function clearData() {
+  if (!confirm(`Clear ALL entries for ${currentPerson === 'his' ? 'Him' : 'Her'}? This cannot be undone.`)) return;
+  saveData([]);
+  render();
+}
+
+// Init
+document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
+render();
+</script>
+</body>
+</html>

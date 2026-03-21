@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Meal Prep — Gym Partners</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;padding:16px;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto}
+.back{display:inline-block;font-size:12px;color:#534AB7;text-decoration:none;margin-bottom:1.5rem}
+.back:hover{text-decoration:underline}
+h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.sub{font-size:13px;color:#666;line-height:1.6;margin-bottom:2rem}
+h2{font-size:16px;font-weight:700;margin:2rem 0 .75rem;padding-bottom:6px;border-bottom:2px solid #FFF3E0}
+h3{font-size:14px;font-weight:600;margin:1.25rem 0 .5rem}
+p{font-size:13px;color:#444;line-height:1.6;margin-bottom:.75rem}
+.note{padding:12px 14px;border-radius:10px;font-size:12px;margin-bottom:10px}
+.note-orange{background:#FFF3E0;color:#7A4A00}
+.note-purple{background:#EEEDFE;color:#3C3489}
+.note-green{background:#E1F5EE;color:#04342C}
+.card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:14px 18px;margin-bottom:10px}
+.card-title{font-size:14px;font-weight:600;margin-bottom:6px}
+.card-detail{font-size:12px;color:#666;line-height:1.6}
+.tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;padding:2px 7px;border-radius:6px;margin-bottom:6px}
+.tag-his{background:#FFF3E0;color:#7A4A00}
+.tag-hers{background:#E1F5EE;color:#04342C}
+.tag-both{background:#EEEDFE;color:#3C3489}
+.tag-step{background:#E8EAF6;color:#283593}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+@media(max-width:500px){.split{grid-template-columns:1fr}}
+.his{border-left:3px solid #F57C00}
+.hers{border-left:3px solid #43A047}
+.recipe{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.recipe-name{font-size:15px;font-weight:700;margin-bottom:4px}
+.recipe-meta{font-size:11px;color:#999;margin-bottom:10px}
+.recipe-section{font-size:12px;font-weight:600;color:#1a1a1a;margin:10px 0 4px}
+ul{margin:0 0 .75rem 18px;font-size:12px;color:#555;line-height:1.8}
+ol{margin:0 0 .75rem 18px;font-size:12px;color:#555;line-height:1.8}
+.timeline{position:relative;padding-left:24px;margin:1rem 0}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#e5e5e5}
+.step{position:relative;margin-bottom:16px}
+.step::before{content:'';position:absolute;left:-20px;top:4px;width:12px;height:12px;border-radius:50%;background:#F57C00;border:2px solid #fff}
+.step-time{font-size:11px;font-weight:700;color:#F57C00;margin-bottom:2px}
+.step-text{font-size:13px;color:#444;line-height:1.5}
+.footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="back">&larr; Back to Gym Partners</a>
+  <h1>Meal Prep Sunday</h1>
+  <div class="sub">Cook once, eat all week. Everything comes from the <a href="grocery-list.html" style="color:#534AB7">grocery list</a>. ~2 hours, both of you, done.</div>
+
+  <div class="note note-purple">
+    <strong>The system:</strong> Prep 5 days of containers. His are bigger portions, hers are smaller. Same base meals, just scaled. Label them or use different colored containers.
+  </div>
+
+  <!-- PREP TIMELINE -->
+  <h2>The 2-Hour Prep Flow</h2>
+  <p>Do this together on Sunday. Put on some music, knock it out.</p>
+
+  <div class="timeline">
+    <div class="step">
+      <div class="step-time">0:00 — Start the Rice</div>
+      <div class="step-text">Rinse 4 cups jasmine rice, add to rice cooker with water. Set it and forget it. This makes enough for both of you all week.</div>
+    </div>
+    <div class="step">
+      <div class="step-time">0:05 — Season & Bake Chicken</div>
+      <div class="step-text">3 lbs chicken breast + 2 lbs thighs. Season with garlic powder, paprika, salt, pepper, olive oil. Bake at 400°F for 25 min. Breasts for her (leaner), thighs for him (more flavor/fat).</div>
+    </div>
+    <div class="step">
+      <div class="step-time">0:10 — Sweet Potatoes In</div>
+      <div class="step-text">Cube 5 sweet potatoes, toss with olive oil + salt. Spread on a sheet pan, into the oven alongside chicken. Same temp, same time.</div>
+    </div>
+    <div class="step">
+      <div class="step-time">0:15 — Brown the Turkey</div>
+      <div class="step-text">2 lbs ground turkey in a large skillet. Season with cumin, chili powder, garlic, onion powder. This becomes taco bowls for 3-4 days.</div>
+    </div>
+    <div class="step">
+      <div class="step-time">0:25 — Cook Eggs</div>
+      <div class="step-text">Hard-boil a dozen eggs. Easy grab-and-go protein. 6 min boil → ice bath → peel → container.</div>
+    </div>
+    <div class="step">
+      <div class="step-time">0:30 — Prep Veggies</div>
+      <div class="step-text">Steam 2 bags of broccoli. Wash and bag spinach for salads. Slice avocados day-of (they brown). Portion berries into snack bags.</div>
+    </div>
+    <div class="step">
+      <div class="step-time">0:45 — Make Overnight Oats (5 jars)</div>
+      <div class="step-text">Each jar: ½ cup oats + ¾ cup oat milk (him) or almond milk (her) + 1 scoop protein + berries. Fridge. Grab and eat for breakfast/break-fast.</div>
+    </div>
+    <div class="step">
+      <div class="step-time">1:00 — Everything's Done Cooking</div>
+      <div class="step-text">Pull chicken, sweet potatoes out. Let cool 10 min. Slice chicken into strips.</div>
+    </div>
+    <div class="step">
+      <div class="step-time">1:15 — Container Assembly</div>
+      <div class="step-text">Build the containers (see portions below). 5 lunch containers + 5 dinner containers each = 20 total.</div>
+    </div>
+    <div class="step">
+      <div class="step-time">1:45 — Clean Up & Done</div>
+      <div class="step-text">Wash everything. Stack containers in fridge. You're set for the week.</div>
+    </div>
+  </div>
+
+  <!-- RECIPES -->
+  <h2>The 5 Meals You're Rotating</h2>
+
+  <div class="recipe">
+    <span class="tag tag-both">Both</span>
+    <div class="recipe-name">1. Chicken & Rice Bowl</div>
+    <div class="recipe-meta">Simple. Effective. The bodybuilder classic.</div>
+    <div class="split">
+      <div class="card his">
+        <div class="card-detail"><strong>His:</strong> 8 oz chicken thigh + 1.5 cups rice + 1 cup broccoli + hot sauce</div>
+      </div>
+      <div class="card hers">
+        <div class="card-detail"><strong>Hers:</strong> 5 oz chicken breast + 1 cup rice + 1 cup broccoli + squeeze of lime</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <span class="tag tag-both">Both</span>
+    <div class="recipe-name">2. Turkey Taco Bowl</div>
+    <div class="recipe-meta">Seasoned ground turkey over rice with all the fixings.</div>
+    <div class="split">
+      <div class="card his">
+        <div class="card-detail"><strong>His:</strong> 8 oz turkey + 1.5 cups rice + black beans + salsa + ½ avocado</div>
+      </div>
+      <div class="card hers">
+        <div class="card-detail"><strong>Hers:</strong> 5 oz turkey + 1 cup rice + black beans + salsa + ¼ avocado + Greek yogurt (sour cream sub)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <span class="tag tag-both">Both</span>
+    <div class="recipe-name">3. Sweet Potato & Salmon Plate</div>
+    <div class="recipe-meta">Omega-3 powerhouse. Great for recovery and skin health.</div>
+    <div class="split">
+      <div class="card his">
+        <div class="card-detail"><strong>His:</strong> 8 oz salmon fillet + 1 large sweet potato + spinach salad + olive oil drizzle</div>
+      </div>
+      <div class="card hers">
+        <div class="card-detail"><strong>Hers:</strong> 5 oz salmon fillet + 1 medium sweet potato + spinach salad + lemon squeeze</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <span class="tag tag-both">Both</span>
+    <div class="recipe-name">4. Egg & Oat Power Breakfast</div>
+    <div class="recipe-meta">Break-fast meal (noon for him) or morning fuel (for her).</div>
+    <div class="split">
+      <div class="card his">
+        <div class="card-detail"><strong>His:</strong> 4 eggs scrambled + overnight oats jar + ½ avocado + hot sauce</div>
+      </div>
+      <div class="card hers">
+        <div class="card-detail"><strong>Hers:</strong> 3 eggs scrambled + overnight oats jar + berries</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe">
+    <span class="tag tag-both">Both</span>
+    <div class="recipe-name">5. PB Protein Wrap</div>
+    <div class="recipe-meta">Quick grab when you don't feel like reheating. 3 min, no microwave needed.</div>
+    <div class="split">
+      <div class="card his">
+        <div class="card-detail"><strong>His:</strong> 2 whole wheat tortillas + 3 tbsp PB + banana slices + honey drizzle</div>
+      </div>
+      <div class="card hers">
+        <div class="card-detail"><strong>Hers:</strong> 1 tortilla + 2 tbsp PB + banana slices + berries</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SNACKS -->
+  <h2>Grab-and-Go Snacks</h2>
+  <p>Pre-portioned during Sunday prep. Keep these in the fridge for between meals.</p>
+
+  <div class="split">
+    <div class="card his">
+      <span class="tag tag-his">His Snacks</span>
+      <div class="card-detail">
+        • 2 hard-boiled eggs<br>
+        • Greek yogurt + honey<br>
+        • Rice cake + PB + banana<br>
+        • Handful of almonds<br>
+        • Protein shake (Vega)
+      </div>
+    </div>
+    <div class="card hers">
+      <span class="tag tag-hers">Her Snacks</span>
+      <div class="card-detail">
+        • 1 hard-boiled egg + fruit<br>
+        • Greek yogurt + berries<br>
+        • Rice cake + PB<br>
+        • Apple + almonds<br>
+        • Protein shake (Whey)
+      </div>
+    </div>
+  </div>
+
+  <!-- STORAGE TIPS -->
+  <h2>Storage Tips</h2>
+  <div class="note note-green">
+    <strong>Fridge life:</strong> Cooked chicken/turkey = 4 days. Rice = 5 days. Hard-boiled eggs = 5 days. Overnight oats = 4 days. Prep Sunday, eat through Thursday, Friday = fresh cook or eat out night. Sweet potatoes = 5 days. Salmon = 3 days (eat those containers first).
+  </div>
+
+  <div class="note note-orange">
+    <strong>Containers:</strong> Get a 20-pack of glass meal prep containers from Aldi or Amazon. Glass > plastic (no microwave chemicals, easier to clean). Label with masking tape: "His - Lunch" / "Hers - Dinner" etc.
+  </div>
+
+  <div class="footer">Two Latinos &middot; Gym Partners</div>
+</div>
+</body>
+</html>

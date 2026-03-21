@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Eating Guide — Gym Partners</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;padding:16px;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto}
+.back{display:inline-block;font-size:12px;color:#534AB7;text-decoration:none;margin-bottom:1.5rem}
+.back:hover{text-decoration:underline}
+h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.sub{font-size:13px;color:#666;line-height:1.6;margin-bottom:2rem}
+h2{font-size:16px;font-weight:700;margin:2rem 0 .75rem;padding-bottom:6px;border-bottom:2px solid #FFF3E0}
+h3{font-size:14px;font-weight:600;margin:1.25rem 0 .5rem}
+p{font-size:13px;color:#444;line-height:1.6;margin-bottom:.75rem}
+.note{padding:12px 14px;border-radius:10px;font-size:12px;margin-bottom:10px}
+.note-orange{background:#FFF3E0;color:#7A4A00}
+.note-purple{background:#EEEDFE;color:#3C3489}
+.note-green{background:#E1F5EE;color:#04342C}
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:13px}
+th{padding:10px 12px;text-align:left;font-size:12px;font-weight:600;color:#fff}
+.th-his{background:#F57C00}
+.th-hers{background:#43A047}
+.th-purple{background:#534AB7}
+td{padding:10px 12px;border-bottom:1px solid #e5e5e5;background:#fff;font-size:12px}
+tr:last-child td{border-bottom:none}
+.card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:14px 18px;margin-bottom:10px}
+.card-title{font-size:14px;font-weight:600;margin-bottom:6px}
+.card-detail{font-size:12px;color:#666;line-height:1.6}
+.tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;padding:2px 7px;border-radius:6px;margin-bottom:6px}
+.tag-his{background:#FFF3E0;color:#7A4A00}
+.tag-hers{background:#E1F5EE;color:#04342C}
+.tag-both{background:#EEEDFE;color:#3C3489}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+@media(max-width:500px){.split{grid-template-columns:1fr}}
+.his{border-left:3px solid #F57C00}
+.hers{border-left:3px solid #43A047}
+.big-num{font-size:28px;font-weight:700;margin-bottom:2px}
+.big-label{font-size:11px;color:#999}
+.schedule{background:#fff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;margin-bottom:16px}
+.schedule-header{padding:12px 16px;font-weight:700;font-size:13px;color:#fff}
+.schedule-row{display:flex;padding:10px 16px;border-bottom:1px solid #f0f0f0;font-size:12px;align-items:flex-start;gap:12px}
+.schedule-row:last-child{border-bottom:none}
+.schedule-time{font-weight:700;min-width:70px;flex-shrink:0;color:#1a1a1a}
+.schedule-meal{color:#555;line-height:1.5}
+.schedule-cals{font-size:10px;color:#999;margin-top:2px}
+.footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="back">&larr; Back to Gym Partners</a>
+  <h1>Eating Guide</h1>
+  <div class="sub">When to eat, how much, what — like a recipe for results. Follow this and the workouts handle themselves.</div>
+
+  <!-- DAILY TARGETS -->
+  <h2>Daily Targets</h2>
+
+  <div class="split">
+    <div class="card his">
+      <span class="tag tag-his">Him — 285 lbs, recomp</span>
+      <div style="text-align:center;margin:8px 0">
+        <div class="big-num" style="color:#F57C00">~2,200</div>
+        <div class="big-label">calories/day</div>
+      </div>
+      <div class="card-detail">
+        <strong>Protein:</strong> 180-200g<br>
+        <strong>Carbs:</strong> 200-220g<br>
+        <strong>Fat:</strong> 65-75g<br>
+        <strong>Water:</strong> 100+ oz<br>
+        <strong>Window:</strong> IF 12 PM – 8 PM
+      </div>
+    </div>
+    <div class="card hers">
+      <span class="tag tag-hers">Her — 145 lbs, toning</span>
+      <div style="text-align:center;margin:8px 0">
+        <div class="big-num" style="color:#43A047">~1,600</div>
+        <div class="big-label">calories/day</div>
+      </div>
+      <div class="card-detail">
+        <strong>Protein:</strong> 110-130g<br>
+        <strong>Carbs:</strong> 150-170g<br>
+        <strong>Fat:</strong> 45-55g<br>
+        <strong>Water:</strong> 80+ oz<br>
+        <strong>Window:</strong> Regular meals, 3 + snacks
+      </div>
+    </div>
+  </div>
+
+  <div class="note note-purple">
+    <strong>Why these numbers?</strong> His calories = ~500 under maintenance for slow fat loss while preserving muscle. Her calories = slight surplus/maintenance to fuel muscle building for shape. Both prioritize protein above everything else.
+  </div>
+
+  <!-- WEEKDAY EVENING GYM -->
+  <h2>Weekday Schedule (Evening Gym)</h2>
+  <p>Most days you train in the evening. Here's how the eating maps around that:</p>
+
+  <div class="schedule">
+    <div class="schedule-header" style="background:#F57C00">His Day — IF (12-8 PM Window)</div>
+    <div class="schedule-row">
+      <div class="schedule-time">6-11 AM</div>
+      <div class="schedule-meal"><strong>Fasting.</strong> Black coffee or water only. Stay hydrated.<div class="schedule-cals">0 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">12:00 PM</div>
+      <div class="schedule-meal"><strong>Meal 1 — Break Fast (biggest meal).</strong> 4 eggs scrambled + chicken & rice bowl + avocado. Hit 50-60g protein here.<div class="schedule-cals">~700-800 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">3:30 PM</div>
+      <div class="schedule-meal"><strong>Meal 2 — Afternoon fuel.</strong> Turkey taco bowl or PB wrap + hard-boiled eggs. Moderate carbs, high protein.<div class="schedule-cals">~500-600 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">5:00 PM</div>
+      <div class="schedule-meal"><strong>Pre-workout snack.</strong> Whole mango or banana + rice cake + honey. Quick carbs only. See <a href="nutrition.html" style="color:#534AB7">Nutrition</a>.<div class="schedule-cals">~150-200 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">6-7:30 PM</div>
+      <div class="schedule-meal"><strong>GYM.</strong> Core Four + Your Finishers + cooldown walk.</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">7:30 PM</div>
+      <div class="schedule-meal"><strong>Post-workout shake.</strong> 2 scoops Vega + 5-10g creatine + banana. Non-negotiable.<div class="schedule-cals">~300 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">8:00 PM</div>
+      <div class="schedule-meal"><strong>Meal 3 — Final meal (if still in window).</strong> Salmon + sweet potato + spinach. Keep it clean, close the window after.<div class="schedule-cals">~500-600 cal</div></div>
+    </div>
+  </div>
+
+  <div class="schedule">
+    <div class="schedule-header" style="background:#43A047">Her Day — Regular Eating</div>
+    <div class="schedule-row">
+      <div class="schedule-time">8:00 AM</div>
+      <div class="schedule-meal"><strong>Breakfast.</strong> Overnight oats jar (prepped Sunday) + berries. Optional: 1 scoop whey in the oats.<div class="schedule-cals">~350-400 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">10:30 AM</div>
+      <div class="schedule-meal"><strong>Snack.</strong> Greek yogurt + handful of almonds, or hard-boiled egg + fruit.<div class="schedule-cals">~150-200 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">1:00 PM</div>
+      <div class="schedule-meal"><strong>Lunch.</strong> Chicken breast & rice bowl with broccoli + lime. From meal prep containers.<div class="schedule-cals">~400-450 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">4:00 PM</div>
+      <div class="schedule-meal"><strong>Pre-workout snack.</strong> Half mango + few grapes, or small banana. Light carbs only.<div class="schedule-cals">~100-150 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">6-7:30 PM</div>
+      <div class="schedule-meal"><strong>GYM.</strong> Core Four + Her Finishers + cooldown.</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">7:30 PM</div>
+      <div class="schedule-meal"><strong>Post-workout shake.</strong> 1.5 scoops whey + 3-5g creatine + berries.<div class="schedule-cals">~200 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">8:30 PM</div>
+      <div class="schedule-meal"><strong>Dinner.</strong> Salmon + sweet potato + spinach salad. Last big meal of the day.<div class="schedule-cals">~400-450 cal</div></div>
+    </div>
+  </div>
+
+  <!-- WEEKEND DAY GYM -->
+  <h2>Weekend Schedule (Daytime Gym)</h2>
+  <p>Some days you hit the gym during the day. Here's the adjustment:</p>
+
+  <div class="schedule">
+    <div class="schedule-header" style="background:#F57C00">His Weekend — IF + Morning/Afternoon Gym</div>
+    <div class="schedule-row">
+      <div class="schedule-time">10:00 AM</div>
+      <div class="schedule-meal"><strong>Pre-workout (fasted option).</strong> If you train before noon, go fasted — just water + black coffee. Your body has glycogen stored from last night.<div class="schedule-cals">0 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">10-11:30</div>
+      <div class="schedule-meal"><strong>GYM.</strong> Hit it hard. Fasted training burns more fat. Muscles are fine — they're fueled from yesterday.</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">12:00 PM</div>
+      <div class="schedule-meal"><strong>Break-fast + Post-workout.</strong> This is your biggest meal. Eggs + chicken + rice + avocado + shake. Smash 60-70g protein here. Window opens NOW.<div class="schedule-cals">~900-1000 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">4:00 PM</div>
+      <div class="schedule-meal"><strong>Meal 2.</strong> Turkey taco bowl or salmon plate. Keep protein high.<div class="schedule-cals">~600 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">7:30 PM</div>
+      <div class="schedule-meal"><strong>Meal 3.</strong> Lighter — PB wrap or chicken + greens. Close window by 8.<div class="schedule-cals">~400-500 cal</div></div>
+    </div>
+  </div>
+
+  <div class="schedule">
+    <div class="schedule-header" style="background:#43A047">Her Weekend — Daytime Gym</div>
+    <div class="schedule-row">
+      <div class="schedule-time">9:00 AM</div>
+      <div class="schedule-meal"><strong>Breakfast.</strong> Overnight oats + banana. Fuel up before gym.<div class="schedule-cals">~400 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">10:30 AM</div>
+      <div class="schedule-meal"><strong>Pre-workout snack.</strong> Half mango or rice cake + PB. 30 min before gym.<div class="schedule-cals">~100-150 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">11-12:30</div>
+      <div class="schedule-meal"><strong>GYM.</strong> Core Four + Her Finishers.</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">12:30 PM</div>
+      <div class="schedule-meal"><strong>Post-workout shake.</strong> 1.5 scoops whey + creatine + berries.<div class="schedule-cals">~200 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">1:30 PM</div>
+      <div class="schedule-meal"><strong>Lunch.</strong> Chicken & rice bowl. Biggest meal of the day — muscles are hungry.<div class="schedule-cals">~450 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">5:00 PM</div>
+      <div class="schedule-meal"><strong>Snack.</strong> Greek yogurt + almonds or PB wrap.<div class="schedule-cals">~200 cal</div></div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">7:30 PM</div>
+      <div class="schedule-meal"><strong>Dinner.</strong> Salmon + sweet potato + salad. Done for the day.<div class="schedule-cals">~400 cal</div></div>
+    </div>
+  </div>
+
+  <!-- RULES -->
+  <h2>The Non-Negotiable Rules</h2>
+
+  <div class="card">
+    <div class="card-title">1. Protein first, always</div>
+    <div class="card-detail">Every meal starts with protein. If you only have time for one thing, eat the protein. Carbs and fats are supporting actors — protein is the lead.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">2. Post-workout shake within 30 min</div>
+    <div class="card-detail">This is the one meal you can't skip or delay. Your muscles are primed to absorb nutrients right after training. Shake + creatine, every time.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">3. Pre-workout = carbs only, keep it light</div>
+    <div class="card-detail">No fat, no heavy protein before gym. Just quick carbs (fruit, rice cake, honey). Fat slows digestion — you'll feel sluggish. See <a href="nutrition.html" style="color:#534AB7">Nutrition</a>.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">4. Water > everything</div>
+    <div class="card-detail">Him: 100+ oz/day. Her: 80+ oz/day. Dehydrated = weak workouts, bad recovery, worse skin. Carry a bottle everywhere. No excuses.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">5. One cheat meal per week, not a cheat day</div>
+    <div class="card-detail">Saturday dinner? Go enjoy. Eat what you want. But it's ONE meal — not a 24-hour free-for-all. Then Sunday you're back on prep.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">6. If you miss a meal, don't double up</div>
+    <div class="card-detail">Missed your afternoon meal? Just eat normal at the next one. Doubling up = bloating + wasted calories. Stay consistent, not perfect.</div>
+  </div>
+
+  <!-- REST DAY -->
+  <h2>Rest Day Eating</h2>
+  <div class="note note-green">
+    <strong>Same meals, slightly less carbs.</strong> On rest days, drop carbs by ~25% (skip the rice cake snack, smaller rice portions). Keep protein the same. Your body is recovering, not performing — it needs protein for repair, not extra carbs for energy. Still take creatine with any meal.
+  </div>
+
+  <div class="footer">Two Latinos &middot; Gym Partners</div>
+</div>
+</body>
+</html>
