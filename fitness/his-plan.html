@@ -24,10 +24,13 @@ p{font-size:13px;color:#444;line-height:1.6;margin-bottom:.75rem}
 .note-orange{background:#FFF3E0;color:#7A4A00}
 .note-purple{background:#EEEDFE;color:#3C3489}
 .note-green{background:#E1F5EE;color:#04342C}
+.note-red{background:#FCE4EC;color:#880E4F}
 .tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;padding:2px 7px;border-radius:6px;margin-bottom:8px}
 .tag-his{background:#FFF3E0;color:#7A4A00}
 .tag-skin{background:#FCE4EC;color:#880E4F}
 .tag-timing{background:#E8EAF6;color:#283593}
+.tag-cardio{background:#E1F5EE;color:#04342C}
+.tag-mistake{background:#FFEBEE;color:#B71C1C}
 table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:13px}
 th{background:#F57C00;color:#fff;padding:10px 12px;text-align:left;font-size:12px;font-weight:600}
 td{padding:10px 12px;border-bottom:1px solid #e5e5e5;background:#fff}
@@ -40,153 +43,339 @@ ul{margin:0 0 .75rem 18px;font-size:13px;color:#444;line-height:1.8}
 .big-label{font-size:11px;color:#999}
 .phase{border-left:3px solid #F57C00;padding-left:14px;margin-bottom:1.5rem}
 .footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
+.schedule-table td:first-child{font-weight:600;white-space:nowrap;width:60px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <a href="index.html" class="back">&larr; Back to Gym Partners</a>
   <h1>His Plan</h1>
-  <div class="sub">Body recomposition — lose fat, build muscle, fill out the frame. No flying squirrel. Built for 285 lbs with evening gym sessions and IF.</div>
+  <div class="sub">Research-backed body recomposition: 285 lbs to 185-200 lbs. Heavy lifting, high protein, slow deficit. Built for 5'7" with evening gym sessions. No flying squirrel.</div>
 
   <!-- THE MISSION -->
   <h2>The Mission</h2>
   <div class="note note-orange">
-    <strong>Body recomposition, not just weight loss.</strong> You already have a solid frame from carrying 285. The goal: strip the fat, keep the muscle, give the skin something to wrap around. Cardio alone = skinny-fat. Heavy lifting + high protein = filled out, strong, and aesthetic.
+    <strong>Body recomposition, not just weight loss.</strong> At 285 lbs and 5'7", you're estimated at 35-40% body fat. The target: 185-200 lbs at 12-15% BF. That's losing ~100 lbs of fat while building muscle. Realistic timeline: 14-18 months. Loose skin is expected at this level of loss — muscle building + slow loss rate is the #1 strategy to minimize it.
   </div>
 
   <div class="compare">
     <div class="card">
-      <div class="big-num">1-2</div>
-      <div class="big-label">lbs lost per week (max)</div>
+      <div class="big-num">185-200</div>
+      <div class="big-label">goal weight (lbs)</div>
     </div>
     <div class="card">
-      <div class="big-num">500</div>
-      <div class="big-label">calorie deficit (not more)</div>
+      <div class="big-num">700-800</div>
+      <div class="big-label">calorie deficit per day</div>
     </div>
     <div class="card">
-      <div class="big-num">0.8-1g</div>
-      <div class="big-label">protein per lb of goal weight</div>
+      <div class="big-num">200g</div>
+      <div class="big-label">protein per day</div>
     </div>
     <div class="card">
-      <div class="big-num">8-12</div>
-      <div class="big-label">rep range (heavy-ish)</div>
+      <div class="big-num">4-20</div>
+      <div class="big-label">rep range (mixed — strength + hypertrophy)</div>
     </div>
   </div>
 
-  <!-- YOUR SOLO FINISHERS -->
-  <h2>Your Solo Finishers</h2>
-  <p>After the <a href="hybrid-workout.html" style="color:#534AB7;font-weight:600">Core Four</a> you do together, these are YOUR moves. Upper mass, width, V-taper, and midsection tightening. 3 sets of 12-15 reps each.</p>
+  <!-- WORKOUT SPLIT -->
+  <h2>Workout Split: Upper/Lower 4x/Week</h2>
+  <div class="note note-purple">
+    <strong>Why Upper/Lower?</strong> A 2021 meta-analysis (Schoenfeld et al.) found that training each muscle group 2x per week produces significantly greater hypertrophy than 1x per week. Upper/Lower is the ideal split for intermediate lifters — enough volume per session, enough frequency per muscle.
+  </div>
+
+  <table class="schedule-table">
+    <tr><th>Day</th><th>Session</th><th>Time</th></tr>
+    <tr><td><strong>Mon</strong></td><td>Upper A — Chest & Back Focus</td><td>8:30-10:30 PM</td></tr>
+    <tr><td><strong>Tue</strong></td><td>Lower A — Squat Focus</td><td>8:30-10:30 PM</td></tr>
+    <tr><td><strong>Wed</strong></td><td>OFF — 10K steps + mobility work</td><td>—</td></tr>
+    <tr><td><strong>Thu</strong></td><td>Upper B — Shoulders & Arms Focus</td><td>8:30-10:30 PM</td></tr>
+    <tr><td><strong>Fri</strong></td><td>Lower B — Deadlift Focus</td><td>8:30-10:30 PM</td></tr>
+    <tr><td><strong>Sat</strong></td><td>Active recovery or HIIT</td><td>5:00-7:00 PM</td></tr>
+    <tr><td><strong>Sun</strong></td><td>OFF — full rest</td><td>—</td></tr>
+  </table>
+
+  <!-- UPPER A -->
+  <h3>Upper A — Chest & Back Focus</h3>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Chest Mass — #1 Activator</span>
+    <div class="card-title">Flat Barbell Bench Press — 4x6 heavy <a href="https://www.youtube.com/results?search_query=flat+barbell+bench+press+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">The #1 chest activator per ACE EMG research. Heavy compound pressing builds overall chest mass and prevents sag during fat loss. Full range of motion, controlled negative.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Back Thickness</span>
+    <div class="card-title">Barbell Rows (overhand) — 4x8 <a href="https://www.youtube.com/results?search_query=barbell+row+overhand+grip+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Builds back thickness through the rhomboids and mid-traps. Pull to lower chest, squeeze shoulder blades together. Keep core tight — no momentum.</div>
+  </div>
 
   <div class="card" style="border-left:3px solid #F57C00">
     <span class="tag tag-his">Upper Chest — Prevent Sag</span>
-    <div class="card-title">Incline Dumbbell Press <a href="https://www.youtube.com/results?search_query=incline+dumbbell+press+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">Bench at 30-45°. 3 × 12, 25-40 lb each. Hits the upper chest specifically — fills out the area most prone to sagging during weight loss. Squeeze at the top.</div>
+    <div class="card-title">30&deg; Incline Dumbbell Press — 3x10 <a href="https://www.youtube.com/results?search_query=30+degree+incline+dumbbell+press+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Studies show 30&deg; beats 45&deg; for clavicular head (upper chest) activation. Fills out the area most prone to sagging. Squeeze at the top, slow eccentric.</div>
   </div>
 
   <div class="card" style="border-left:3px solid #F57C00">
-    <span class="tag tag-his">V-Taper — Width</span>
-    <div class="card-title">Lat Pulldowns <a href="https://www.youtube.com/results?search_query=lat+pulldown+form+wide+grip" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">Wide grip, pull to upper chest (not behind neck). 3 × 12. Creates the V-taper look — wide back, narrow waist illusion. Lean back slightly, squeeze lats at bottom.</div>
+    <span class="tag tag-his">V-Taper — Lat Width</span>
+    <div class="card-title">Lat Pulldowns (wide grip) — 3x10 <a href="https://www.youtube.com/results?search_query=lat+pulldown+wide+grip+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Highest lat activation per EMG studies. Wide grip, pull to upper chest (not behind neck). Creates the V-taper look — wide back makes waist look narrower.</div>
   </div>
 
   <div class="card" style="border-left:3px solid #F57C00">
-    <span class="tag tag-his">Arms — Fill Them Out</span>
-    <div class="card-title">Hammer Curls <a href="https://www.youtube.com/results?search_query=hammer+curl+proper+form+tips" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12, 20-30 lb. Thumbs-up grip. Hits the brachialis (outer arm) — makes arms look thicker from the front. No swinging, control the negative.</div>
+    <span class="tag tag-his">Inner Chest — Constant Tension</span>
+    <div class="card-title">Cable Crossovers (low-to-high) — 3x15 <a href="https://www.youtube.com/results?search_query=cable+crossover+low+to+high+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Targets upper/inner chest with constant cable tension throughout the range. Light weight, squeeze hard at the top. Great chest finisher.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Posture — Non-Negotiable</span>
+    <div class="card-title">Face Pulls — 3x15 <a href="https://www.youtube.com/results?search_query=face+pull+cable+rear+delt+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Rear delts + external rotation. Fixes rounded-shoulder posture from all the pressing. Pull to ears, rotate hands outward at the end. Every single session.</div>
+  </div>
+
+  <!-- UPPER B -->
+  <h3>Upper B — Shoulders & Arms Focus</h3>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Shoulder Mass — Heavy Pressing</span>
+    <div class="card-title">Overhead Press (barbell or DB) — 4x6 heavy <a href="https://www.youtube.com/results?search_query=overhead+press+barbell+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">The king of shoulder exercises. Builds boulder shoulders and overall pressing strength. Brace core hard, no excessive back lean.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Mid-Back Density</span>
+    <div class="card-title">Seated Cable Rows (wide grip) — 4x10 <a href="https://www.youtube.com/results?search_query=seated+cable+row+wide+grip+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Builds mid-back density and thickness. Wide grip emphasizes rhomboids and rear delts. Pull to lower chest, squeeze for 1 second.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Shoulder Caps — V-Taper</span>
+    <div class="card-title">Lateral Raises — 3x15 <a href="https://www.youtube.com/results?search_query=lateral+raise+form+tips+shoulders" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Light weight, high reps. Builds the medial delt caps that make the V-taper pop. Slow on the way up AND down. Ego check this one — 15 lb dumbbells done right beat 30s with momentum.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Arms — Thickness</span>
+    <div class="card-title">Hammer Curls — 3x12 <a href="https://www.youtube.com/results?search_query=hammer+curl+proper+form+tips" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Thumbs-up grip hits the brachialis (outer arm) — makes arms look thicker from the front. No swinging, control the negative. Fills out the arm skin.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Arms — Tricep Mass</span>
+    <div class="card-title">Tricep Dips or Pushdowns — 3x12 <a href="https://www.youtube.com/results?search_query=tricep+pushdown+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Triceps are 2/3 of arm size. Dips if you can handle bodyweight, pushdowns if not. Full extension, squeeze at the bottom. Builds the horseshoe shape.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Lat Isolation</span>
+    <div class="card-title">Straight-Arm Pulldowns — 3x12 <a href="https://www.youtube.com/results?search_query=straight+arm+pulldown+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Isolates the lats with peak contraction at the bottom. Keep arms straight, hinge slightly at hips. Great mind-muscle connection builder.</div>
+  </div>
+
+  <!-- LOWER A -->
+  <h3>Lower A — Squat Focus</h3>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">King of Lower Body</span>
+    <div class="card-title">Barbell Back Squat — 4x6 heavy <a href="https://www.youtube.com/results?search_query=barbell+back+squat+form+tutorial+beginner" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">The most effective lower body exercise. If hip/ankle mobility is an issue at 285, start with goblet squats for 2-4 weeks first. Depth: at least parallel. Brace hard.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Hamstrings + Glutes</span>
+    <div class="card-title">Romanian Deadlifts (RDL) — 3x10 <a href="https://www.youtube.com/results?search_query=romanian+deadlift+RDL+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Hinge at hips, slight knee bend, feel the stretch in hamstrings. Bar stays close to legs. Builds the posterior chain without the spinal load of conventional deads.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Quad Volume</span>
+    <div class="card-title">Leg Press — 3x12 <a href="https://www.youtube.com/results?search_query=leg+press+form+tutorial+proper" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">High-volume quad work without spinal loading. Feet shoulder-width, press through the full foot. Don't lock out knees at the top. Great for adding volume after heavy squats.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Balance + Single-Leg</span>
+    <div class="card-title">Walking Lunges — 3x12 each leg <a href="https://www.youtube.com/results?search_query=walking+lunges+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Builds single-leg strength and fixes left/right imbalances. Keep torso upright, front knee tracks over toes. Bodyweight first, add dumbbells when ready.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Calves</span>
+    <div class="card-title">Calf Raises — 4x15 <a href="https://www.youtube.com/results?search_query=calf+raise+standing+seated+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Standing or seated — do both over the week. Full range: stretch at the bottom, squeeze at the top. Hold the top for 1 second. Calves need high volume and frequency.</div>
   </div>
 
   <div class="card" style="border-left:3px solid #F57C00">
     <span class="tag tag-his">Midsection — Tighten Up</span>
-    <div class="card-title">Hanging Knee Raises <a href="https://www.youtube.com/results?search_query=hanging+knee+raise+form+beginner" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12. Hang from a bar, bring knees to chest. Slow and controlled — no swinging. Tightens the lower abs and builds the foundation under the midsection.</div>
+    <div class="card-title">Hanging Knee Raises — 3x12 <a href="https://www.youtube.com/results?search_query=hanging+knee+raise+form+beginner" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Hang from a bar, bring knees to chest. Slow and controlled — no swinging. Tightens the lower abs and builds the foundation under the midsection. Curl the pelvis up at the top.</div>
+  </div>
+
+  <!-- LOWER B -->
+  <h3>Lower B — Deadlift Focus</h3>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Full Body Builder</span>
+    <div class="card-title">Conventional Deadlift — 4x5 heavy <a href="https://www.youtube.com/results?search_query=conventional+deadlift+form+tutorial+beginner" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">The ultimate posterior chain mass builder. Engages everything from traps to calves. Hip-width stance, grip just outside knees. Brace core, push the floor away. Reset each rep.</div>
   </div>
 
   <div class="card" style="border-left:3px solid #F57C00">
-    <span class="tag tag-his">Shoulders — Cap Them Off</span>
-    <div class="card-title">Lateral Raises <a href="https://www.youtube.com/results?search_query=lateral+raise+form+tips+shoulders" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 15, 15-20 lb. Slow on the way up AND down. Builds the shoulder caps that make the V-taper pop. Light weight, high reps — ego check this one.</div>
+    <span class="tag tag-his">Single-Leg — Fix Imbalances</span>
+    <div class="card-title">Bulgarian Split Squats — 3x10 each <a href="https://www.youtube.com/results?search_query=bulgarian+split+squat+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Rear foot elevated on bench. Builds single-leg strength and exposes imbalances. Lean slightly forward for more glute, upright for more quad. These are humbling — start with bodyweight.</div>
   </div>
 
   <div class="card" style="border-left:3px solid #F57C00">
-    <span class="tag tag-his">Posture — Pull It All Together</span>
-    <div class="card-title">Face Pulls <a href="https://www.youtube.com/results?search_query=face+pull+cable+rear+delt+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 15. Cable at face height, pull to ears with external rotation. Fixes the rounded-shoulder look and balances out all the pressing. Non-negotiable.</div>
+    <span class="tag tag-his">Hamstring Isolation</span>
+    <div class="card-title">Leg Curls — 3x12 <a href="https://www.youtube.com/results?search_query=leg+curl+machine+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Lying or seated — isolates the hamstrings. Slow eccentric (3 seconds down). Prevents the quad-dominant imbalance that causes knee issues.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Quad Volume + Mobility</span>
+    <div class="card-title">Goblet Squats — 3x12 <a href="https://www.youtube.com/results?search_query=goblet+squat+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Hold a dumbbell at chest. Natural squat pattern that builds quad volume while improving hip mobility. Great counterbalance to heavy deads.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Core — Highest Ab Activation</span>
+    <div class="card-title">Ab Wheel Rollouts — 3x10 <a href="https://www.youtube.com/results?search_query=ab+wheel+rollout+form+tutorial+beginner" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Highest rectus abdominis activation per EMG research. Start from knees, roll out as far as you can control. If too hard, do plank walkouts first. Builds a steel midsection.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #F57C00">
+    <span class="tag tag-his">Anti-Rotation — Obliques</span>
+    <div class="card-title">Pallof Press — 3x12 each side <a href="https://www.youtube.com/results?search_query=pallof+press+form+tutorial+cable" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Cable at chest height, press out and resist the rotation. Builds oblique thickness and core stability. Tightens the waist from the inside out. Hold the extended position for 2 seconds.</div>
+  </div>
+
+  <!-- CARDIO PROTOCOL -->
+  <h2>Cardio Protocol</h2>
+  <span class="tag tag-cardio">Fat Loss Without Muscle Loss</span>
+
+  <div class="note note-green">
+    <strong>Cardio supports the deficit — it doesn't create it.</strong> The deficit comes from diet. Cardio is for heart health, recovery, and a small caloric bonus. Don't "earn" food through cardio.
+  </div>
+
+  <div class="card" style="border-left:3px solid #04342C">
+    <div class="card-title">10,000 Steps Daily</div>
+    <div class="card-detail">Non-negotiable baseline. NEAT (non-exercise activity thermogenesis) accounts for more daily calories than any gym session. Walk during calls, take stairs, park far. This alone burns 300-500 extra calories.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #04342C">
+    <div class="card-title">15-20 Min Incline Treadmill Walk — After Every Lifting Session</div>
+    <div class="card-detail">3.0-3.5 mph, 10-12% incline. Low-impact, burns fat without cortisol spike. Do this immediately after lifting when glycogen is depleted and fat oxidation is highest.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #04342C">
+    <div class="card-title">1-2 HIIT Sessions Per Week (Saturday or added to a lift day)</div>
+    <div class="card-detail">Bike or rower ONLY — NO running at 285 lbs. The joint stress from running at this weight risks knee and ankle injury. 20-30 seconds all-out, 60-90 seconds easy. 15-20 minutes total.</div>
   </div>
 
   <!-- PROGRESSION -->
-  <h2>Weekly Progression</h2>
+  <h2>Progression Plan</h2>
   <div class="note note-purple">
-    <strong>The rule:</strong> Every week, try to add 5% more weight OR 1 more rep to each exercise. Don't jump weight until you can do all 3 sets at the top of the rep range with solid form. Ego lifting = injuries = setbacks.
+    <strong>The rule:</strong> Add 5 lbs or 1 rep each session. If you can hit all sets at the top of the rep range with good form, increase weight next session. This is called progressive overload — the single most important principle in strength training.
   </div>
 
   <table>
-    <tr><th>Week</th><th>Focus</th><th>What Changes</th></tr>
-    <tr><td><strong>1-2</strong></td><td>Learn the form</td><td>Light weight, nail the movement pattern. Film yourself.</td></tr>
-    <tr><td><strong>3-4</strong></td><td>Build the habit</td><td>Start pushing weight up. You'll feel stronger fast.</td></tr>
-    <tr><td><strong>5-8</strong></td><td>Progressive overload</td><td>+5 lbs or +1 rep each session. This is where changes start showing.</td></tr>
-    <tr><td><strong>9-12</strong></td><td>Reassess</td><td>Take progress photos. Adjust weights, check protein intake.</td></tr>
+    <tr><th>Weeks</th><th>Phase</th><th>What Happens</th></tr>
+    <tr><td><strong>1-4</strong></td><td>Learn Form</td><td>Light weight only. Nail the movement patterns. Film yourself from the side. Don't chase weight — chase perfect reps. Your CNS is adapting.</td></tr>
+    <tr><td><strong>5-8</strong></td><td>Progressive Overload Begins</td><td>Start adding 5 lbs per session on compounds. You'll feel dramatically stronger — these are "newbie gains." Strength will jump fast.</td></tr>
+    <tr><td><strong>9-12</strong></td><td>Push Intensity</td><td>RPE 8-9 on working sets (1-2 reps from failure). Take progress photos. Adjust protein if needed. You should be visibly different by now.</td></tr>
+    <tr><td><strong>13+</strong></td><td>Reassess & Adjust</td><td>Deload week every 6-8 weeks (50% weight). Reassess calories, photos, measurements. Adjust split if needed. This is a marathon.</td></tr>
   </table>
-
-  <!-- IF + EVENING TIMING -->
-  <h2>IF + Late Night Gym Timing</h2>
-  <span class="tag tag-timing">Your Schedule — Weekdays (Gym after 8:30 PM)</span>
-
-  <table>
-    <tr><th>Time</th><th>What</th></tr>
-    <tr><td><strong>12:00 PM</strong></td><td>Break fast — high protein meal (eggs, chicken, rice). Biggest meal of the day.</td></tr>
-    <tr><td><strong>4:00 PM</strong></td><td>Second meal — turkey taco bowl or salmon plate. High protein + complex carbs. This is your main fuel for tonight's gym.</td></tr>
-    <tr><td><strong>7:00 PM</strong></td><td>Pre-workout snack — fruit (see <a href="nutrition.html" style="color:#534AB7">Nutrition</a>). Whole mango or banana + rice cake. ~1 hr before gym.</td></tr>
-    <tr><td><strong>8:30-10:30 PM</strong></td><td>Gym — Core Four + Your Finishers + 10-min cooldown walk.</td></tr>
-    <tr><td><strong>~10:30 PM</strong></td><td>Post-workout shake — 2 scoops Vega + 5-10g creatine (see <a href="supplements.html" style="color:#534AB7">Supplements</a>). This closes your eating window.</td></tr>
-    <tr><td><strong>10:30 PM →</strong></td><td>Window closed. Water only until noon tomorrow. 14-hour fast.</td></tr>
-  </table>
-  <p style="font-size:11px;color:#999">IF window = 12–10:30 PM (~13.5 hr fast). Shorter than classic 16:8 but you NEVER skip post-workout protein — that matters way more than an extra 2.5 hours of fasting.</p>
 
   <!-- SKIN MANAGEMENT -->
   <h2>Skin Management Strategy</h2>
-  <span class="tag tag-skin">The Real Talk</span>
+  <span class="tag tag-skin">The Real Talk — Research-Backed</span>
 
   <div class="note note-orange">
-    <strong>You already know the deal.</strong> At 285, significant weight loss will likely mean some loose skin. But you're doing everything right to minimize it. Here's the protocol:
+    <strong>At 285, significant loose skin is expected.</strong> But the research is clear: the combination of slow loss rate, muscle building, and targeted nutrition gives skin the best possible chance to retract. Here's the full protocol.
   </div>
 
   <div class="phase">
-    <h3>1. Slow & Steady Wins</h3>
-    <p>1-2 lbs per week MAX. Losing faster = skin can't keep up = more sagging. The 500-cal deficit is your speed limit. Trust the process.</p>
+    <h3>1. Slow Loss Rate — 1.5 lbs/Week</h3>
+    <p>Research shows 1-1.5 lbs/week is the sweet spot for skin retraction. Faster loss = skin can't remodel fast enough = more sagging. The 700-800 cal deficit hits this rate at your weight. As you get lighter, reduce the deficit to maintain 1-1.5 lbs/week.</p>
   </div>
 
   <div class="phase">
-    <h3>2. Fill the Frame</h3>
-    <p>This is why the lifting matters more than cardio. Muscle gives skin something to wrap around. Every pound of muscle you build while losing fat = less "empty" skin. Your finishers (incline press, lat pulldowns) specifically target the areas most affected.</p>
+    <h3>2. Muscle Building — Your #1 Weapon</h3>
+    <p>Muscle fills the space that fat leaves. Every pound of muscle you build = less "empty" loose skin. This is why heavy lifting matters more than cardio. The Upper/Lower split specifically targets chest, lats, shoulders, and arms — the areas most affected by skin laxity.</p>
   </div>
 
   <div class="phase">
-    <h3>3. Skin Health Protocol</h3>
+    <h3>3. Skin Health Supplements</h3>
     <ul>
-      <li><strong>Hydration:</strong> Minimum 100 oz water daily. Skin elasticity depends on it.</li>
-      <li><strong>Collagen peptides:</strong> Add to your morning coffee or shake. Supports skin repair.</li>
-      <li><strong>Vitamin C & E:</strong> Citrus fruits, berries, spinach, avocados — all on the <a href="grocery-list.html" style="color:#534AB7">grocery list</a>.</li>
-      <li><strong>Moisturize daily:</strong> Cocoa butter or collagen lotion on chest, arms, midsection. Won't prevent it entirely, but helps elasticity and comfort.</li>
+      <li><strong>Collagen peptides:</strong> 10-15g/day. Meta-analyses show improved skin elasticity after 8+ weeks of supplementation. Add to your morning coffee or post-workout shake.</li>
+      <li><strong>Vitamin C:</strong> 500-1000mg/day. Required for collagen synthesis. Without adequate Vitamin C, your body literally cannot produce new collagen.</li>
+      <li><strong>Zinc:</strong> 15-30mg/day. Critical for skin cell turnover and repair. Most people are deficient.</li>
+      <li><strong>Omega-3s:</strong> 2-3g EPA/DHA daily. Reduces inflammation and supports skin barrier function. Fish oil or algae-based.</li>
     </ul>
   </div>
 
   <div class="phase">
-    <h3>4. The Surgery Timeline</h3>
-    <p>Most surgeons say: maintain your goal weight for <strong>6-12 months</strong> before pursuing panniculectomy or abdominoplasty. This gives skin maximum time to tighten naturally. Some areas will surprise you — arms and chest often tighten more than expected when there's muscle underneath.</p>
+    <h3>4. Hydration</h3>
+    <p><strong>1 gallon (128 oz) per day minimum.</strong> Skin elasticity is directly linked to hydration status. Dehydrated skin loses elasticity and appears worse. Spread intake throughout the day — don't chug it all at once.</p>
   </div>
 
-  <!-- WHY NOT CARDIO ONLY -->
-  <h2>Why This Works Better Than Cardio</h2>
+  <div class="phase">
+    <h3>5. Surgery Timeline — Be Patient</h3>
+    <p>Most plastic surgeons recommend maintaining goal weight for <strong>12-24 months</strong> before assessing surgery needs. Skin continues to retract for up to 2 years after reaching goal weight.</p>
+    <ul>
+      <li><strong>Lower abdomen:</strong> Very likely needs surgery (panniculectomy/abdominoplasty). This area has the least elastic recoil.</li>
+      <li><strong>Chest:</strong> Moderate — depends heavily on how much muscle you build underneath. Heavy bench + incline work is your best bet.</li>
+      <li><strong>Arms & thighs:</strong> May tighten naturally with enough muscle mass and time. These areas respond well to recomposition.</li>
+    </ul>
+  </div>
+
+  <!-- WHY THIS WORKS BETTER -->
+  <h2>Why This Works Better</h2>
 
   <table>
-    <tr><th>Approach</th><th>Result</th></tr>
-    <tr><td><strong>Cardio Only</strong></td><td>Fast scale drop. But you lose muscle too. Higher risk of the "flying squirrel" look. Metabolism slows down. You plateau hard.</td></tr>
-    <tr><td><strong>Lifting + High Protein</strong></td><td>Scale moves slower, but clothes fit better faster. You fill out the frame. Metabolism stays high. Skin has something to wrap around. Better long-term aesthetic.</td></tr>
-    <tr><td><strong>This Plan (Hybrid)</strong></td><td>Lifting for mass + 10-min post-lift walks for fat burning + high protein + slow deficit. Best of both worlds. The scale lies — the mirror and the tape measure don't.</td></tr>
+    <tr><th>Approach</th><th>What Research Shows</th></tr>
+    <tr><td><strong>Cardio Only</strong></td><td>Loses muscle AND fat. A 2018 study in Obesity Reviews found cardio-only dieters lost 20-30% of weight as lean mass. Higher loose skin risk. Metabolism drops. Plateau by month 3.</td></tr>
+    <tr><td><strong>Lifting + High Protein</strong></td><td>A 2016 McMaster study showed high-protein (2.4g/kg) + resistance training preserved 100% of lean mass during a deficit. Some subjects GAINED muscle while losing fat.</td></tr>
+    <tr><td><strong>This Plan (Hybrid)</strong></td><td>Heavy compounds for mass + incline walking for fat oxidation + 200g protein + 700-800 cal deficit. Targets 1.5 lbs/week fat loss while building muscle. Best outcome for body composition AND skin.</td></tr>
   </table>
 
   <div class="note note-green">
-    <strong>Remember:</strong> You've got a massive advantage — your body already has lean mass from carrying 285 every day. You're not starting from zero. You're uncovering what's already there.
+    <strong>Your hidden advantage:</strong> At 285, your body already has significant lean mass from carrying that weight daily. Your legs and back are stronger than most beginners. You're not starting from zero — you're uncovering what's already there.
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <h2>Common Mistakes Big Guys Make</h2>
+  <p>Avoid these and you're already ahead of 90% of people starting at this weight.</p>
+
+  <div class="card" style="border-left:3px solid #B71C1C">
+    <span class="tag tag-mistake">Mistake #1</span>
+    <div class="card-title">Too Much Cardio, Not Enough Lifting</div>
+    <div class="card-detail">Cardio burns calories but doesn't build muscle. Without muscle, you end up skinny-fat with loose skin. Lifting should be your priority — cardio is the side dish, not the main course.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #B71C1C">
+    <span class="tag tag-mistake">Mistake #2</span>
+    <div class="card-title">Cutting Calories Too Aggressively</div>
+    <div class="card-detail">Going below 2,000 calories at your size tanks your metabolism, kills testosterone, and accelerates muscle loss. A 700-800 cal deficit is aggressive enough. Patience > starvation. Crash diets = crash results.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #B71C1C">
+    <span class="tag tag-mistake">Mistake #3</span>
+    <div class="card-title">Not Tracking Progressive Overload</div>
+    <div class="card-detail">If you're not adding weight or reps over time, you're not growing. Use a notebook or app. Write down every set, every rep, every weight. If last week was 135x6, this week should be 135x7 or 140x6.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #B71C1C">
+    <span class="tag tag-mistake">Mistake #4</span>
+    <div class="card-title">Avoiding Heavy Compound Lifts</div>
+    <div class="card-detail">Machines and isolation work have their place, but squats, deadlifts, bench, and rows build the most muscle per minute. Compound lifts release more testosterone and growth hormone. Don't skip them.</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #B71C1C">
+    <span class="tag tag-mistake">Mistake #5</span>
+    <div class="card-title">Scale Obsession</div>
+    <div class="card-detail">The scale lies during recomp. You can lose 5 lbs of fat and gain 3 lbs of muscle — the scale says -2 but you look dramatically different. Track these instead: waist measurement (weekly), progress photos (biweekly), strength numbers (every session).</div>
   </div>
 
   <div class="footer">Two Latinos &middot; Gym Partners</div>

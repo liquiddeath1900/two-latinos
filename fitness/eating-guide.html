@@ -37,6 +37,8 @@ tr:last-child td{border-bottom:none}
 @media(max-width:500px){.split{grid-template-columns:1fr}}
 .his{border-left:3px solid #F57C00}
 .hers{border-left:3px solid #43A047}
+.watch{font-size:11px;color:#534AB7;text-decoration:none;font-weight:600;margin-left:6px}
+.watch:hover{text-decoration:underline}
 .big-num{font-size:28px;font-weight:700;margin-bottom:2px}
 .big-label{font-size:11px;color:#999}
 .schedule{background:#fff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;margin-bottom:16px}
@@ -69,15 +71,15 @@ tr:last-child td{border-bottom:none}
 
   <div class="his-content">
     <div class="card his">
-      <span class="tag tag-his">Him — 285 lbs, recomp</span>
+      <span class="tag tag-his">Him — 285 lbs, fat loss</span>
       <div style="text-align:center;margin:8px 0">
-        <div class="big-num" style="color:#F57C00">~2,800</div>
+        <div class="big-num" style="color:#F57C00">~2,200</div>
         <div class="big-label">calories/day</div>
       </div>
       <div class="card-detail">
-        <strong>Protein:</strong> 200-230g<br>
-        <strong>Carbs:</strong> 270-300g<br>
-        <strong>Fat:</strong> 75-90g<br>
+        <strong>Protein:</strong> 200g<br>
+        <strong>Carbs:</strong> 170g<br>
+        <strong>Fat:</strong> 70g<br>
         <strong>Water:</strong> 100+ oz<br>
         <strong>Window:</strong> IF 12 PM – 8 PM
       </div>
@@ -102,7 +104,7 @@ tr:last-child td{border-bottom:none}
   </div>
 
   <div class="note note-purple">
-    <strong>Why these numbers?</strong> His calories = ~500 under maintenance (~3,300) for slow fat loss while preserving muscle. Going lower than 2,800 risks muscle loss and metabolic slowdown — exactly what we're avoiding. Her calories = ~200-300 above maintenance to fuel muscle growth — she's building, not cutting. Both prioritize protein above everything else.
+    <strong>Why these numbers?</strong> His calories = ~700-800 under TDEE (~3,000) for steady fat loss while preserving muscle. Research shows obese beginners can handle larger deficits without muscle loss. Going below 2,000 risks energy crashes and gym performance — 2,200 is the sweet spot. Her calories = ~200-300 above maintenance to fuel muscle growth — she's building, not cutting. Both prioritize protein above everything else.
   </div>
 
   <!-- WEEKDAY EVENING GYM -->
@@ -118,11 +120,11 @@ tr:last-child td{border-bottom:none}
     </div>
     <div class="schedule-row">
       <div class="schedule-time">12:00 PM</div>
-      <div class="schedule-meal"><strong>Meal 1 — Break Fast (biggest meal).</strong> 4 eggs scrambled + chicken & rice bowl + avocado. Hit 60-70g protein here.<div class="schedule-cals">~900-1,000 cal</div></div>
+      <div class="schedule-meal"><strong>Meal 1 — Break Fast (biggest meal).</strong> 4 eggs scrambled + chicken & rice bowl + avocado. Hit 50-60g protein here.<div class="schedule-cals">~700 cal</div></div>
     </div>
     <div class="schedule-row">
       <div class="schedule-time">4:00 PM</div>
-      <div class="schedule-meal"><strong>Meal 2 — Afternoon fuel.</strong> Turkey taco bowl or PB wrap + hard-boiled eggs. This meal fuels tonight's gym — don't skimp.<div class="schedule-cals">~700-800 cal</div></div>
+      <div class="schedule-meal"><strong>Meal 2 — Afternoon fuel.</strong> Turkey taco bowl or PB wrap + hard-boiled eggs. This meal fuels tonight's gym — don't skimp.<div class="schedule-cals">~550-600 cal</div></div>
     </div>
     <div class="schedule-row">
       <div class="schedule-time">7:00 PM</div>
@@ -138,7 +140,7 @@ tr:last-child td{border-bottom:none}
     </div>
     <div class="schedule-row">
       <div class="schedule-time">10:30 PM</div>
-      <div class="schedule-meal"><strong>Window closes after the shake.</strong> Don't eat a full meal this late — the shake IS your final intake. Sleep within 1-2 hours. Your big meals already covered ~1,600-1,800 cal, the snack + shake handle the rest.<div class="schedule-cals">Window closed</div></div>
+      <div class="schedule-meal"><strong>Window closes after the shake.</strong> Don't eat a full meal this late — the shake IS your final intake. Sleep within 1-2 hours. Your big meals already covered ~1,250-1,300 cal, the snack + shake handle the rest.<div class="schedule-cals">Window closed</div></div>
     </div>
   </div>
 
@@ -190,11 +192,11 @@ tr:last-child td{border-bottom:none}
     <div class="schedule-header" style="background:#F57C00">His Weekend — IF + 5-7 PM Gym</div>
     <div class="schedule-row">
       <div class="schedule-time">12:00 PM</div>
-      <div class="schedule-meal"><strong>Break-fast (biggest meal).</strong> 4 eggs scrambled + chicken & rice bowl + avocado. Same opener as weekdays — window opens NOW.<div class="schedule-cals">~900-1,000 cal</div></div>
+      <div class="schedule-meal"><strong>Break-fast (biggest meal).</strong> 4 eggs scrambled + chicken & rice bowl + avocado. Same opener as weekdays — window opens NOW.<div class="schedule-cals">~700 cal</div></div>
     </div>
     <div class="schedule-row">
       <div class="schedule-time">3:30 PM</div>
-      <div class="schedule-meal"><strong>Meal 2.</strong> Turkey taco bowl or salmon plate. Keep protein high — this is your main gym fuel.<div class="schedule-cals">~700-800 cal</div></div>
+      <div class="schedule-meal"><strong>Meal 2.</strong> Turkey taco bowl or salmon plate. Keep protein high — this is your main gym fuel.<div class="schedule-cals">~550-600 cal</div></div>
     </div>
     <div class="schedule-row">
       <div class="schedule-time">4:30 PM</div>
@@ -259,18 +261,18 @@ tr:last-child td{border-bottom:none}
   <div class="card his">
     <span class="tag tag-his">Meal 1 — 12 PM (Break-Fast)</span>
     <div class="card-detail" style="display:grid;gap:8px">
-      <div><strong>A.</strong> 4 eggs scrambled + chicken & rice + avocado <span style="color:#999;font-size:10px">~900 cal</span></div>
-      <div><strong>B.</strong> Ground turkey taco bowl — turkey, rice, black beans, salsa, avocado <span style="color:#999;font-size:10px">~850 cal</span></div>
-      <div><strong>C.</strong> Chicken wrap — tortilla, chicken, spinach, PB drizzle, rice side <span style="color:#999;font-size:10px">~900 cal</span></div>
+      <div><strong>A.</strong> 4 eggs scrambled + chicken & rice + avocado <a href="https://www.youtube.com/results?search_query=high+protein+chicken+rice+bowl+meal+prep" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~700 cal</span></div>
+      <div><strong>B.</strong> Ground turkey taco bowl — turkey, rice, black beans, salsa, avocado <a href="https://www.youtube.com/results?search_query=ground+beef+taco+bowl+high+protein" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~650 cal</span></div>
+      <div><strong>C.</strong> Chicken wrap — tortilla, chicken, spinach, PB drizzle, rice side <a href="https://www.youtube.com/results?search_query=chicken+peanut+butter+wrap+high+protein" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~700 cal</span></div>
     </div>
   </div>
 
   <div class="card his">
     <span class="tag tag-his">Meal 2 — 4 PM (Afternoon Fuel)</span>
     <div class="card-detail" style="display:grid;gap:8px">
-      <div><strong>A.</strong> Turkey taco bowl with rice & beans <span style="color:#999;font-size:10px">~750 cal</span></div>
-      <div><strong>B.</strong> Tuna + rice + broccoli + olive oil drizzle <span style="color:#999;font-size:10px">~700 cal</span></div>
-      <div><strong>C.</strong> Eggs (3) + sweet potato + spinach + hot sauce <span style="color:#999;font-size:10px">~700 cal</span></div>
+      <div><strong>A.</strong> Turkey taco bowl with rice & beans <a href="https://www.youtube.com/results?search_query=beef+taco+bowl+rice+beans+meal+prep" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~600 cal</span></div>
+      <div><strong>B.</strong> Tuna + rice + broccoli + olive oil drizzle <a href="https://www.youtube.com/results?search_query=tuna+rice+broccoli+meal+prep" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~550 cal</span></div>
+      <div><strong>C.</strong> Eggs (3) + sweet potato + spinach + hot sauce <a href="https://www.youtube.com/results?search_query=eggs+sweet+potato+spinach+healthy+meal" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~550 cal</span></div>
     </div>
   </div>
 
@@ -286,27 +288,27 @@ tr:last-child td{border-bottom:none}
   <div class="card hers">
     <span class="tag tag-hers">Breakfast — 8 AM</span>
     <div class="card-detail" style="display:grid;gap:8px">
-      <div><strong>A.</strong> Overnight oats + berries + 1 scoop whey <span style="color:#999;font-size:10px">~400 cal</span></div>
-      <div><strong>B.</strong> 2 eggs + sweet potato hash + spinach <span style="color:#999;font-size:10px">~350 cal</span></div>
-      <div><strong>C.</strong> Greek yogurt bowl — full-fat yogurt + oats + banana + honey <span style="color:#999;font-size:10px">~400 cal</span></div>
+      <div><strong>A.</strong> Overnight oats + berries + 1 scoop whey <a href="https://www.youtube.com/results?search_query=overnight+oats+protein+berries+easy" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~400 cal</span></div>
+      <div><strong>B.</strong> 2 eggs + sweet potato hash + spinach <a href="https://www.youtube.com/results?search_query=eggs+sweet+potato+hash+healthy+breakfast" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~350 cal</span></div>
+      <div><strong>C.</strong> Greek yogurt bowl — full-fat yogurt + oats + banana + honey <a href="https://www.youtube.com/results?search_query=greek+yogurt+bowl+oats+banana+healthy" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~400 cal</span></div>
     </div>
   </div>
 
   <div class="card hers">
     <span class="tag tag-hers">Lunch — 1 PM</span>
     <div class="card-detail" style="display:grid;gap:8px">
-      <div><strong>A.</strong> Chicken thighs + rice + broccoli <span style="color:#999;font-size:10px">~450 cal</span></div>
-      <div><strong>B.</strong> Ground beef bowl — beef, rice, spinach, avocado <span style="color:#999;font-size:10px">~500 cal</span></div>
-      <div><strong>C.</strong> Quinoa + black beans + chicken + salsa <span style="color:#999;font-size:10px">~400 cal</span></div>
+      <div><strong>A.</strong> Chicken thighs + rice + broccoli <a href="https://www.youtube.com/results?search_query=chicken+thighs+rice+broccoli+meal+prep" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~450 cal</span></div>
+      <div><strong>B.</strong> Ground beef bowl — beef, rice, spinach, avocado <a href="https://www.youtube.com/results?search_query=ground+beef+rice+bowl+spinach+avocado" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~500 cal</span></div>
+      <div><strong>C.</strong> Quinoa + black beans + chicken + salsa <a href="https://www.youtube.com/results?search_query=quinoa+black+beans+chicken+salsa+bowl" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~400 cal</span></div>
     </div>
   </div>
 
   <div class="card hers">
     <span class="tag tag-hers">Dinner — 6 PM weekday / 8 PM weekend</span>
     <div class="card-detail" style="display:grid;gap:8px">
-      <div><strong>A.</strong> Salmon + sweet potato + spinach salad <span style="color:#999;font-size:10px">~450 cal</span></div>
-      <div><strong>B.</strong> Chicken thighs + asparagus + rice <span style="color:#999;font-size:10px">~400 cal</span></div>
-      <div><strong>C.</strong> Ground beef + zucchini + sweet potato <span style="color:#999;font-size:10px">~450 cal</span></div>
+      <div><strong>A.</strong> Salmon + sweet potato + spinach salad <a href="https://www.youtube.com/results?search_query=salmon+sweet+potato+spinach+salad+dinner" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~450 cal</span></div>
+      <div><strong>B.</strong> Chicken thighs + asparagus + rice <a href="https://www.youtube.com/results?search_query=chicken+thighs+asparagus+rice+dinner" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~400 cal</span></div>
+      <div><strong>C.</strong> Ground beef + zucchini + sweet potato <a href="https://www.youtube.com/results?search_query=ground+beef+zucchini+sweet+potato+dinner" target="_blank" style="color:#534AB7;font-size:10px">recipe ➜</a> <span style="color:#999;font-size:10px">~450 cal</span></div>
     </div>
   </div>
 
