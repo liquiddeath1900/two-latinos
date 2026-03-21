@@ -16,12 +16,12 @@ h1{font-size:24px;font-weight:700;margin-bottom:6px}
 .tab{flex:1;padding:10px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#666;transition:all .15s;border:none}
 .tab.active-his{background:#F57C00;color:#fff}
 .tab.active-hers{background:#43A047;color:#fff}
-.toolbar{display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap}
+.toolbar{display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap}
 .toolbar button{font-size:12px;padding:8px 14px;border-radius:8px;border:1px solid #e5e5e5;background:#fff;color:#1a1a1a;cursor:pointer;font-weight:600;transition:all .15s}
 .toolbar button:hover{border-color:#534AB7;background:#EEEDFE}
 .toolbar button.active{background:#534AB7;color:#fff;border-color:#534AB7}
-h2{font-size:14px;font-weight:700;margin:1.5rem 0 .5rem;padding-bottom:4px;border-bottom:2px solid #FFF3E0;text-transform:uppercase;letter-spacing:1px;font-size:11px;color:#999}
-.item{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border:1px solid #e5e5e5;border-radius:10px;margin-bottom:6px;cursor:pointer;transition:all .15s;-webkit-user-select:none;user-select:none}
+h2{font-size:11px;font-weight:700;margin:1.5rem 0 .5rem;padding-bottom:4px;border-bottom:2px solid #FFF3E0;text-transform:uppercase;letter-spacing:1px;color:#999}
+.item{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border:1px solid #e5e5e5;border-radius:10px;margin-bottom:6px;cursor:pointer;transition:all .15s;-webkit-user-select:none;user-select:none;flex-wrap:wrap}
 .item:hover{border-color:#F57C00}
 .item.checked{opacity:.5;text-decoration:line-through;background:#fafafa}
 .item.checked .checkbox{background:#F57C00;border-color:#F57C00}
@@ -29,15 +29,41 @@ h2{font-size:14px;font-weight:700;margin:1.5rem 0 .5rem;padding-bottom:4px;borde
 .item-hers:hover{border-color:#43A047}
 .item-hers.checked .checkbox{background:#43A047;border-color:#43A047}
 .checkbox{width:22px;height:22px;border:2px solid #ccc;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
-.item-text{font-size:13px;flex:1}
+.item-text{font-size:13px;flex:1;min-width:100px}
 .item-qty{font-size:11px;color:#F57C00;font-weight:600;white-space:nowrap}
 .item-hers .item-qty{color:#43A047}
-.item-note{font-size:11px;color:#999}
-.counter{font-size:12px;color:#666;margin-bottom:1.5rem}
+.item-meta{width:100%;display:flex;gap:8px;padding-left:32px;margin-top:2px;flex-wrap:wrap}
+.item-note{font-size:10px;color:#999}
+.item-store{font-size:9px;font-weight:700;letter-spacing:.3px;padding:1px 5px;border-radius:4px;white-space:nowrap}
+.store-aldi{background:#003DA5;color:#fff}
+.store-costco{background:#E31837;color:#fff}
+.store-amazon{background:#FF9900;color:#000}
+.store-snp{background:#D32F2F;color:#fff}
+.item-price{font-size:10px;color:#666;font-weight:600}
+.item-life{font-size:9px;padding:1px 5px;border-radius:4px;white-space:nowrap}
+.life-freeze{background:#E3F2FD;color:#0D47A1}
+.life-week1{background:#E8F5E9;color:#2E7D32}
+.life-long{background:#F3E5F5;color:#6A1B9A}
+.counter{font-size:12px;color:#666;margin-bottom:1rem}
 .note{padding:12px 14px;border-radius:10px;font-size:12px;margin-bottom:1rem}
 .note-green{background:#E1F5EE;color:#04342C}
 .note-purple{background:#EEEDFE;color:#3C3489}
 .note-orange{background:#FFF3E0;color:#7A4A00}
+.note-blue{background:#E3F2FD;color:#0D47A1}
+.budget-bar{display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap}
+.budget-card{flex:1;min-width:120px;background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:12px;text-align:center}
+.budget-num{font-size:22px;font-weight:700;margin-bottom:2px}
+.budget-label{font-size:10px;color:#999}
+.section-toggle{display:flex;gap:0;margin-bottom:1rem;border-radius:8px;overflow:hidden;border:1px solid #e5e5e5}
+.section-btn{flex:1;padding:8px;text-align:center;font-size:11px;font-weight:600;cursor:pointer;background:#fff;color:#666;transition:all .15s;border:none}
+.section-btn.active{background:#534AB7;color:#fff}
+.quality-card{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.quality-card .label-name{font-size:13px;font-weight:700}
+.quality-card .label-verdict{font-size:11px;font-weight:700;margin-left:6px}
+.verdict-real{color:#2E7D32}
+.verdict-bs{color:#D32F2F}
+.verdict-weak{color:#E65100}
+.quality-card .label-detail{font-size:11px;color:#666;margin-top:4px;line-height:1.5}
 .footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
 </style>
 </head>
@@ -45,122 +71,268 @@ h2{font-size:14px;font-weight:700;margin:1.5rem 0 .5rem;padding-bottom:4px;borde
 <div class="wrap">
   <a href="index.html" class="back">&larr; Back to Gym Partners</a>
   <h1>Grocery List</h1>
-  <div class="sub">2-week bulk buy — your own list, your own amounts. Tap to check off.</div>
+  <div class="sub">Smart shopping — what to buy, where, how much, and what's real vs marketing BS. Tap to check off.</div>
 
   <div class="tabs">
     <button class="tab active-his" id="tab-his" onclick="switchList('his')">His List</button>
     <button class="tab" id="tab-hers" onclick="switchList('hers')">Her List</button>
   </div>
 
-  <div class="toolbar">
-    <button class="active" onclick="filterItems('all')">All</button>
-    <button onclick="filterItems('unchecked')">Remaining</button>
-    <button onclick="clearAll()">Reset All</button>
+  <!-- Budget at a glance -->
+  <div class="budget-bar" id="budget-bar">
+    <div class="budget-card"><div class="budget-num" style="color:#F57C00" id="budget-food">$201</div><div class="budget-label">food / 2 weeks</div></div>
+    <div class="budget-card"><div class="budget-num" style="color:#534AB7" id="budget-supps">$135</div><div class="budget-label">supplements</div></div>
+    <div class="budget-card"><div class="budget-num" id="budget-total">$336</div><div class="budget-label">total / 2 weeks</div></div>
   </div>
-  <div class="counter" id="counter"></div>
 
-  <div id="list"></div>
+  <!-- Section toggles -->
+  <div class="section-toggle">
+    <button class="section-btn active" onclick="showSection('list')">Shopping List</button>
+    <button class="section-btn" onclick="showSection('schedule')">When to Buy</button>
+    <button class="section-btn" onclick="showSection('quality')">Quality Guide</button>
+  </div>
+
+  <!-- SHOPPING LIST SECTION -->
+  <div id="section-list">
+    <div class="toolbar">
+      <button class="active" onclick="filterItems('all')">All</button>
+      <button onclick="filterItems('unchecked')">Remaining</button>
+      <button onclick="clearAll()">Reset All</button>
+    </div>
+    <div class="counter" id="counter"></div>
+    <div id="list"></div>
+  </div>
+
+  <!-- WHEN TO BUY SECTION -->
+  <div id="section-schedule" style="display:none">
+    <div class="note note-orange">
+      <strong>Don't buy everything at once.</strong> Raw meat lasts 1-2 days in the fridge. Spinach lasts 5-7 days. Avocados need timing. Here's the smart split:
+    </div>
+
+    <h2>Day 1 — Big Haul (Costco + Aldi)</h2>
+    <div class="note note-blue">
+      <strong>Costco first, then Aldi.</strong> Buy bulk proteins, freeze immediately when you get home. Portion meat into meal-sized bags before freezing.
+    </div>
+    <div class="quality-card">
+      <div class="label-name">Freeze Immediately</div>
+      <div class="label-detail">
+        <strong>All raw meat</strong> — chicken, beef, turkey. Portion into 1-lb bags or single-meal amounts. Lasts 3-12 months frozen.<br>
+        <strong>Bread</strong> — slice first, freeze. Toast straight from frozen.<br>
+        <strong>Extra tortillas</strong> — separate with parchment paper, freeze.
+      </div>
+    </div>
+    <div class="quality-card">
+      <div class="label-name">Buy for Full 2 Weeks</div>
+      <div class="label-detail">
+        <strong>Pantry staples:</strong> Rice, oats, PB, honey, olive oil, canned goods, hot sauce — months of shelf life.<br>
+        <strong>Eggs:</strong> 3-5 weeks in fridge (back of fridge, not door).<br>
+        <strong>Sweet potatoes:</strong> 3-5 weeks in cool dark spot (not fridge).<br>
+        <strong>Onions:</strong> 2-3 months in cool dark spot. NOT near potatoes.<br>
+        <strong>Garlic:</strong> 3-6 months whole unpeeled.<br>
+        <strong>Frozen berries:</strong> 8-12 months freezer.<br>
+        <strong>Supplements, milk (unopened shelf-stable):</strong> Months.
+      </div>
+    </div>
+
+    <h2>Day 7 — Week 2 Fresh Restock (Aldi Only)</h2>
+    <div class="note note-green">
+      <strong>Quick 15-min Aldi run.</strong> Just the stuff that doesn't last. Thaw week 2 meat from freezer the night before you need it (fridge thaw overnight).
+    </div>
+    <div class="quality-card">
+      <div class="label-name">Week 2 Fresh Run</div>
+      <div class="label-detail">
+        <strong>Baby spinach</strong> — only lasts 5-7 days even with paper towel trick<br>
+        <strong>Avocados</strong> — buy hard, they ripen in 4-7 days. Week 1: buy ripe. Week 2: buy hard ones on day 7<br>
+        <strong>Bananas</strong> — split the buy. Week 1 bunch + week 2 bunch (or freeze ripe ones for shakes)<br>
+        <strong>Broccoli</strong> — 4-7 days fresh. Buy week 1 fresh + week 2 fresh (or buy frozen for week 2)<br>
+        <strong>Asparagus/zucchini</strong> — 3-5 days max. Week 2 buy only<br>
+        <strong>Greek yogurt</strong> — 1-2 weeks past sell-by. Buy 1 tub each week<br>
+        <strong>Oat/almond milk (opened)</strong> — 7-10 days. Open 1 carton per week
+      </div>
+    </div>
+
+    <div class="quality-card">
+      <div class="label-name">Pro Tips</div>
+      <div class="label-detail">
+        <strong>Paper towel trick:</strong> Put one in your spinach container — absorbs moisture, adds 2-3 days.<br>
+        <strong>Avocado hack:</strong> Once they give to gentle pressure → fridge to pause ripening.<br>
+        <strong>Banana hack:</strong> Peel ripe ones, freeze for smoothies/shakes. 2-3 months frozen.<br>
+        <strong>Thawing meat:</strong> Fridge overnight (safest). Cold water bath in sealed bag = 30 min per lb. Never counter-thaw.<br>
+        <strong>Cooked rice:</strong> Batch cook, freeze in portions. 4-6 months frozen.
+      </div>
+    </div>
+  </div>
+
+  <!-- QUALITY GUIDE SECTION -->
+  <div id="section-quality" style="display:none">
+    <div class="note note-purple">
+      <strong>No greenwashing.</strong> Here's what meat labels actually mean — legally — and which ones are just marketing designed to charge you more for the same product.
+    </div>
+
+    <h2>Labels That Actually Mean Something</h2>
+
+    <div class="quality-card">
+      <div><span class="label-name">USDA Organic</span><span class="label-verdict verdict-real">REAL</span></div>
+      <div class="label-detail">Federally regulated + third-party inspected annually. No synthetic pesticides in feed, no antibiotics, no growth hormones, outdoor access required, 100% organic non-GMO feed. One of the strongest labels that exists.</div>
+    </div>
+
+    <div class="quality-card">
+      <div><span class="label-name">No Antibiotics Ever (NAE)</span><span class="label-verdict verdict-real">REAL</span></div>
+      <div class="label-detail">USDA-verified with documentation. Look for the USDA Process Verified shield alongside it. "Raised Without Antibiotics" is the same thing. Different from just "Antibiotic Free" which has no verification.</div>
+    </div>
+
+    <div class="quality-card">
+      <div><span class="label-name">Grass Finished (not just Grass Fed)</span><span class="label-verdict verdict-real">REAL</span></div>
+      <div class="label-detail">Means the animal ate grass its ENTIRE life. "Grass Fed" alone means it ate grass at SOME point — many switch to grain for the last 3-5 months. Look for AGA (American Grassfed Association) certification for the real deal.</div>
+    </div>
+
+    <div class="quality-card">
+      <div><span class="label-name">Certified Humane / Animal Welfare Approved</span><span class="label-verdict verdict-real">REAL</span></div>
+      <div class="label-detail">Third-party audited. AWA is the gold standard (pasture-based, strictest audits). Certified Humane is solid too. The actual logos on the packaging matter — the words alone don't.</div>
+    </div>
+
+    <h2>Labels That Are Marketing BS</h2>
+
+    <div class="quality-card">
+      <div><span class="label-name">"Natural"</span><span class="label-verdict verdict-bs">BS</span></div>
+      <div class="label-detail">Legally means "minimally processed, no artificial ingredients." This applies to virtually ALL fresh meat. A factory-farmed chicken breast qualifies as "natural." Completely meaningless — ignore it.</div>
+    </div>
+
+    <div class="quality-card">
+      <div><span class="label-name">"No Hormones" on Chicken or Pork</span><span class="label-verdict verdict-bs">BS</span></div>
+      <div class="label-detail">Federal law ALREADY prohibits hormones in ALL poultry and pork. Every chicken in America is hormone-free. It's like labeling water "gluten free." On BEEF this label actually matters since hormones are allowed in cattle.</div>
+    </div>
+
+    <div class="quality-card">
+      <div><span class="label-name">"Humanely Raised" (no certification logo)</span><span class="label-verdict verdict-bs">BS</span></div>
+      <div class="label-detail">No legal definition, no USDA standard, no inspection. Any company can print this. ONLY trust it if there's a third-party certification logo (Certified Humane, AWA, GAP Step 3+).</div>
+    </div>
+
+    <div class="quality-card">
+      <div><span class="label-name">"Antibiotic Free"</span><span class="label-verdict verdict-bs">BS</span></div>
+      <div class="label-detail">NOT a USDA-approved term. No verification required. The real version is "No Antibiotics Ever" (NAE) or "Raised Without Antibiotics" with the USDA Process Verified shield.</div>
+    </div>
+
+    <h2>Labels That Are Weak</h2>
+
+    <div class="quality-card">
+      <div><span class="label-name">"Free Range"</span><span class="label-verdict verdict-weak">WEAK</span></div>
+      <div class="label-detail">Requires "access to outdoors" — but the outdoor area can be a 3×3 ft concrete porch. No minimum space per bird. No time-outside requirement. Better than conventional but the bar is extremely low.</div>
+    </div>
+
+    <div class="quality-card">
+      <div><span class="label-name">"Cage Free"</span><span class="label-verdict verdict-weak">WEAK</span></div>
+      <div class="label-detail">Not in cages — but usually packed wall-to-wall in enclosed barns. ~1 sq ft per bird, no outdoor access required. Marginally better than caged (67 sq inches) but not what you picture.</div>
+    </div>
+
+    <div class="quality-card">
+      <div><span class="label-name">"Grass Fed" (alone)</span><span class="label-verdict verdict-weak">WEAK</span></div>
+      <div class="label-detail">USDA withdrew its grass-fed standard in 2016. Now self-regulated. Many "grass fed" cattle are grain-finished for the last 3-5 months. Need "Grass FINISHED" or AGA certification for the real thing.</div>
+    </div>
+
+    <h2>Budget Move</h2>
+    <div class="note note-green">
+      <strong>Best bang for buck:</strong> Costco Kirkland Organic chicken (legit USDA Organic, ~$5.99/lb) OR Aldi store-brand organic when on sale. If you can only splurge on ONE thing — make it chicken. Conventional chicken production has the worst welfare and highest antibiotic use of all common meats. For beef, USDA Organic ground beef is a solid compromise if grass-finished is too pricey.
+    </div>
+  </div>
 
   <div class="footer">Two Latinos &middot; Gym Partners</div>
 </div>
 
 <script>
-const HIS_ITEMS = [
-  { cat: "Proteins", name: "Chicken thighs", qty: "5 lbs", note: "8 oz portions — bowls, wraps (~9 meals)" },
-  { cat: "Proteins", name: "Ground beef 85/15", qty: "3 lbs", note: "Taco bowls — preferred ground meat (~6 meals)" },
-  { cat: "Proteins", name: "Ground turkey 93/7", qty: "2.5 lbs", note: "Taco bowl rotation (~4 meals)" },
-  { cat: "Proteins", name: "Eggs", qty: "5 dozen", note: "4 at break-fast + Meal 2C + snacks" },
-  { cat: "Proteins", name: "Canned tuna (5 oz)", qty: "10 cans", note: "Meal 2B — 2 cans per meal, ~5 meals" },
-  { cat: "Proteins", name: "Greek yogurt (plain)", qty: "2 large tubs", note: "Daily protein snack" },
-  { cat: "Proteins", name: "Black beans (canned)", qty: "6 cans", note: "Taco bowls — ~10 meals" },
+var HIS_ITEMS = [
+  { cat: "Proteins — Freeze Day 1", name: "Chicken thighs (boneless)", qty: "5 lbs", note: "Portion into 8oz bags, freeze", price: "$12.45", store: "aldi", life: "freeze" },
+  { cat: "Proteins — Freeze Day 1", name: "Ground beef 85/15", qty: "3 lbs", note: "1-lb bags, freeze", price: "$14.97", store: "aldi", life: "freeze" },
+  { cat: "Proteins — Freeze Day 1", name: "Ground turkey 93/7", qty: "2.5 lbs", note: "1-lb bags, freeze", price: "$8.73", store: "aldi", life: "freeze" },
 
-  { cat: "Produce", name: "Mangos", qty: "7", note: "Whole mango pre-workout, alternating days" },
-  { cat: "Produce", name: "Bananas", qty: "3 bunches (~21)", note: "1/day in shake + pre-workout rotation" },
-  { cat: "Produce", name: "Pineapple", qty: "1", note: "Anti-inflammatory" },
-  { cat: "Produce", name: "Mixed berries (frozen)", qty: "1 bag", note: "Shakes" },
-  { cat: "Produce", name: "Broccoli", qty: "4 lbs", note: "1 cup/meal, ~10 meals" },
-  { cat: "Produce", name: "Spinach (baby)", qty: "2 large bags", note: "Wraps, salads, bowls" },
-  { cat: "Produce", name: "Sweet potatoes", qty: "5 lbs", note: "Meal 2C + salmon plates (~6 meals)" },
-  { cat: "Produce", name: "Avocados", qty: "6", note: "Half avocado at break-fast, ~10 meals" },
-  { cat: "Produce", name: "Onions", qty: "2 lbs", note: "Cooking base" },
-  { cat: "Produce", name: "Garlic", qty: "2 heads", note: "Cooking base — higher volume" },
-  { cat: "Produce", name: "Limes", qty: "4-5", note: "Flavor everything" },
+  { cat: "Proteins — Fridge", name: "Eggs", qty: "5 dozen", note: "3-5 weeks in back of fridge", price: "$12.99", store: "costco", life: "long" },
+  { cat: "Proteins — Fridge", name: "Canned tuna (5 oz)", qty: "10 cans", note: "2 cans per meal, ~5 meals", price: "$7.90", store: "aldi", life: "long" },
+  { cat: "Proteins — Fridge", name: "Black beans (canned)", qty: "6 cans", note: "Taco bowls — ~10 meals", price: "$5.34", store: "aldi", life: "long" },
+  { cat: "Proteins — Fridge", name: "Greek yogurt (plain 32oz)", qty: "1 tub", note: "Buy 1 now, 1 on week 2 restock", price: "$3.85", store: "aldi", life: "week1" },
 
-  { cat: "Carbs & Pantry", name: "Jasmine rice", qty: "10 lb bag", note: "1.5 cups cooked × ~24 meals" },
-  { cat: "Carbs & Pantry", name: "Oats", qty: "1 large canister", note: "Overnight oats" },
-  { cat: "Carbs & Pantry", name: "Rice cakes", qty: "2 packs", note: "Pre-workout daily × 14 days" },
-  { cat: "Carbs & Pantry", name: "Whole wheat tortillas", qty: "2 packs", note: "Wraps — 2 per meal, ~4 meals" },
-  { cat: "Carbs & Pantry", name: "Peanut butter (natural)", qty: "1 large jar", note: "Wraps, rice cakes, snacks" },
-  { cat: "Carbs & Pantry", name: "Honey", qty: "1 bottle", note: "Pre-workout drizzle" },
-  { cat: "Carbs & Pantry", name: "Olive oil", qty: "1 bottle", note: "Cooking staple" },
-  { cat: "Carbs & Pantry", name: "Oat milk", qty: "3 cartons", note: "Overnight oats + shake base" },
-  { cat: "Carbs & Pantry", name: "Hot sauce / Salsa", qty: "1 each", note: "Flavor, zero cal" },
-  { cat: "Carbs & Pantry", name: "Bread (Powerseed)", qty: "1 loaf", note: "Quick toast option" },
-  { cat: "Carbs & Pantry", name: "Zevia", qty: "24-pack", note: "Zero sugar soda swap" },
+  { cat: "Produce — Buy Week 1 + 2", name: "Bananas", qty: "2 bunches", note: "1 now, 1 on week 2. Freeze ripe ones for shakes", price: "$2.64", store: "aldi", life: "week1" },
+  { cat: "Produce — Buy Week 1 + 2", name: "Avocados", qty: "3 + 3", note: "Week 1: buy ripe. Week 2: buy hard", price: "$5.34", store: "aldi", life: "week1" },
+  { cat: "Produce — Buy Week 1 + 2", name: "Baby spinach", qty: "1 + 1 bag", note: "5-7 days max. Paper towel trick. Restock week 2", price: "$5.70", store: "aldi", life: "week1" },
+  { cat: "Produce — Buy Week 1 + 2", name: "Broccoli", qty: "2 + 2 lbs", note: "Or buy frozen for week 2", price: "$6.60", store: "aldi", life: "week1" },
 
-  { cat: "Supplements", name: "Creatine Monohydrate (micronized)", qty: "1 tub", note: "5-10g daily — lasts 2+ weeks" },
-  { cat: "Supplements", name: "Vega Sport Premium Plant Protein", qty: "2 tubs", note: "2 scoops/day × 14 = 28 scoops (~20/tub)" },
-  { cat: "Supplements", name: "Collagen peptides", qty: "1 tub", note: "10-15g/day — skin elasticity" },
-  { cat: "Supplements", name: "Vitamin C (500mg)", qty: "1 bottle", note: "Collagen synthesis cofactor" },
-  { cat: "Supplements", name: "Zinc (15mg)", qty: "1 bottle", note: "Skin repair + collagen cross-linking" },
+  { cat: "Produce — Full 2 Weeks", name: "Sweet potatoes", qty: "5 lbs", note: "3-5 weeks in cool dark spot, NOT fridge", price: "$6.45", store: "aldi", life: "long" },
+  { cat: "Produce — Full 2 Weeks", name: "Onions", qty: "3 lb bag", note: "2-3 months. Cool, dark, NOT near potatoes", price: "$2.99", store: "aldi", life: "long" },
+  { cat: "Produce — Full 2 Weeks", name: "Garlic", qty: "2 heads", note: "3-6 months whole unpeeled", price: "$1.00", store: "aldi", life: "long" },
+  { cat: "Produce — Full 2 Weeks", name: "Limes", qty: "5", note: "3-4 weeks in fridge (whole)", price: "$1.25", store: "aldi", life: "long" },
+  { cat: "Produce — Full 2 Weeks", name: "Mangos", qty: "7", note: "Buy unripe, they ripen over 1-2 weeks", price: "$6.93", store: "aldi", life: "long" },
+  { cat: "Produce — Full 2 Weeks", name: "Mixed berries (frozen)", qty: "1 bag", note: "8-12 months freezer. Don't refreeze once thawed", price: "$3.49", store: "aldi", life: "freeze" },
 
-  { cat: "Cat Food (2 cats, 2 weeks)", name: "Ground turkey (for cats)", qty: "5 lbs", note: "75% of their mix" },
-  { cat: "Cat Food (2 cats, 2 weeks)", name: "Chicken thighs (for cats)", qty: "2 lbs", note: "25% of their mix — dice small" },
-  { cat: "Cat Food (2 cats, 2 weeks)", name: "Taurine powder", qty: "1 container", note: "Essential — cats can't make their own" },
-  { cat: "Cat Food (2 cats, 2 weeks)", name: "Eggshell powder", qty: "1 container", note: "Calcium source" },
-  { cat: "Cat Food (2 cats, 2 weeks)", name: "Krill oil", qty: "1 bottle", note: "Omega-3s, coat health" }
+  { cat: "Carbs & Pantry", name: "Jasmine rice", qty: "10 lb bag", note: "Years of shelf life. Batch cook + freeze portions", price: "$7.60", store: "costco", life: "long" },
+  { cat: "Carbs & Pantry", name: "Oats", qty: "1 canister", note: "1-2 years shelf life", price: "$3.29", store: "aldi", life: "long" },
+  { cat: "Carbs & Pantry", name: "Rice cakes", qty: "2 packs", note: "Pre-workout daily", price: "$5.38", store: "aldi", life: "long" },
+  { cat: "Carbs & Pantry", name: "Whole wheat tortillas", qty: "2 packs", note: "Freeze extra pack with parchment between", price: "$4.38", store: "aldi", life: "freeze" },
+  { cat: "Carbs & Pantry", name: "Bread (Powerseed)", qty: "1 loaf", note: "Slice + freeze. Toast from frozen", price: "$3.99", store: "aldi", life: "freeze" },
+  { cat: "Carbs & Pantry", name: "Peanut butter (natural)", qty: "1 large jar", note: "6-9 months opened", price: "$9.99", store: "costco", life: "long" },
+  { cat: "Carbs & Pantry", name: "Honey", qty: "1 bottle", note: "Literally never expires", price: "$4.99", store: "aldi", life: "long" },
+  { cat: "Carbs & Pantry", name: "Olive oil", qty: "1 bottle (2L)", note: "3-6 months opened. Dark cool cabinet", price: "$21.99", store: "costco", life: "long" },
+  { cat: "Carbs & Pantry", name: "Oat milk", qty: "2 cartons", note: "Open 1/week. 7-10 days once opened", price: "$5.98", store: "aldi", life: "week1" },
+  { cat: "Carbs & Pantry", name: "Hot sauce / Salsa", qty: "1 each", note: "Months in fridge", price: "$4.14", store: "aldi", life: "long" },
+  { cat: "Carbs & Pantry", name: "Zevia", qty: "24-pack", note: "Zero sugar soda swap", price: "$16.76", store: "amazon", life: "long" },
+
+  { cat: "Supplements", name: "Creatine Monohydrate", qty: "1 tub", note: "5-10g daily. Lasts 30+ days", price: "$16.99", store: "costco", life: "long" },
+  { cat: "Supplements", name: "Vega Sport Premium Protein", qty: "1 tub", note: "2 scoops/day × 14 = 28 scoops", price: "$54.99", store: "amazon", life: "long" },
+  { cat: "Supplements", name: "Collagen peptides", qty: "1 tub", note: "10-15g/day — skin elasticity", price: "$26.99", store: "costco", life: "long" },
+  { cat: "Supplements", name: "Vitamin C (500mg)", qty: "1 bottle", note: "Collagen synthesis cofactor", price: "$8.99", store: "amazon", life: "long" },
+  { cat: "Supplements", name: "Zinc (15-30mg)", qty: "1 bottle", note: "With food — skin repair", price: "$7.99", store: "amazon", life: "long" },
+  { cat: "Supplements", name: "Krill oil / Fish oil", qty: "1 bottle", note: "Omega-3, skin + anti-inflammatory", price: "$18.99", store: "amazon", life: "long" },
+
+  { cat: "Cat Food (2 cats)", name: "Ground turkey (for cats)", qty: "5 lbs", note: "75% of mix. Portion + freeze", price: "$8.73", store: "aldi", life: "freeze" },
+  { cat: "Cat Food (2 cats)", name: "Chicken thighs (for cats)", qty: "2 lbs", note: "25% of mix. Dice small, freeze", price: "$4.98", store: "aldi", life: "freeze" },
+  { cat: "Cat Food (2 cats)", name: "Taurine powder", qty: "1 container", note: "Essential — cats can't make their own", price: "$12.99", store: "amazon", life: "long" },
+  { cat: "Cat Food (2 cats)", name: "Eggshell powder", qty: "1 container", note: "Calcium source", price: "$9.99", store: "amazon", life: "long" },
+  { cat: "Cat Food (2 cats)", name: "Krill oil (shared w/ his)", qty: "—", note: "Same bottle as his supplement", price: "—", store: "amazon", life: "long" }
 ];
 
-const HERS_ITEMS = [
-  { cat: "Proteins", name: "Chicken thighs", qty: "8 lbs", note: "Higher cal — muscle fuel" },
-  { cat: "Proteins", name: "Chicken breast", qty: "4 lbs", note: "Lean option for bowls" },
-  { cat: "Proteins", name: "Ground beef 85/15", qty: "6 lbs", note: "Calorie-dense, iron-rich" },
-  { cat: "Proteins", name: "Eggs", qty: "5 dozen", note: "Breakfast, snacks, shakes" },
-  { cat: "Proteins", name: "Greek yogurt (full-fat)", qty: "2 large tubs", note: "Extra calories + protein" },
-  { cat: "Proteins", name: "Canned tuna", qty: "4 cans", note: "Quick protein" },
-  { cat: "Proteins", name: "Black beans (canned)", qty: "4 cans", note: "Rice bowls, tacos" },
+var HERS_ITEMS = [
+  { cat: "Proteins — Freeze Day 1", name: "Chicken thighs (boneless)", qty: "8 lbs", note: "Portion into meal bags, freeze", price: "$19.92", store: "aldi", life: "freeze" },
+  { cat: "Proteins — Freeze Day 1", name: "Ground beef 85/15", qty: "6 lbs", note: "1-lb portions, freeze", price: "$35.94", store: "costco", life: "freeze" },
 
-  { cat: "Produce", name: "Mangos", qty: "3-4", note: "Pre-workout — half mango" },
-  { cat: "Produce", name: "Bananas", qty: "2 bunches (~14)", note: "Shakes, snacks, pre-workout" },
-  { cat: "Produce", name: "Grapes", qty: "2 bags", note: "Quick carbs" },
-  { cat: "Produce", name: "Pineapple", qty: "1", note: "Anti-inflammatory" },
-  { cat: "Produce", name: "Mixed berries (frozen)", qty: "2 bags", note: "Shakes, oats, gains shake" },
-  { cat: "Produce", name: "Broccoli", qty: "2 lbs", note: "Dinner side" },
-  { cat: "Produce", name: "Spinach / kale", qty: "2 large bags", note: "Salads, smoothies, bowls" },
-  { cat: "Produce", name: "Sweet potatoes", qty: "10 lbs", note: "Dense energy source" },
-  { cat: "Produce", name: "Avocados", qty: "6", note: "Healthy fats — calorie boost" },
-  { cat: "Produce", name: "Asparagus or zucchini", qty: "4-5 bundles", note: "Dinner veggie rotation" },
-  { cat: "Produce", name: "Onions", qty: "2 lbs", note: "Cooking base" },
-  { cat: "Produce", name: "Garlic", qty: "1 head", note: "Cooking base" },
-  { cat: "Produce", name: "Limes", qty: "3-4", note: "Flavor everything" },
+  { cat: "Proteins — Fridge", name: "Eggs", qty: "3 dozen", note: "3-5 weeks in back of fridge", price: "$6.57", store: "aldi", life: "long" },
+  { cat: "Proteins — Fridge", name: "Greek yogurt full-fat (32oz)", qty: "1 tub", note: "Buy 1 now, 1 on week 2 restock", price: "$3.85", store: "aldi", life: "week1" },
 
-  { cat: "Carbs & Pantry", name: "Jasmine rice", qty: "5 lb bag", note: "Meal prep base" },
-  { cat: "Carbs & Pantry", name: "Quinoa or brown rice", qty: "2 lb bag", note: "Variety option" },
-  { cat: "Carbs & Pantry", name: "Oats", qty: "1 large canister", note: "Overnight oats, gains shake" },
-  { cat: "Carbs & Pantry", name: "Rice cakes", qty: "1 pack", note: "Pre-workout snack" },
-  { cat: "Carbs & Pantry", name: "Whole wheat tortillas", qty: "1 pack", note: "Wraps, quick meals" },
-  { cat: "Carbs & Pantry", name: "Nut butter (almond or PB)", qty: "1 large jar", note: "Snack, gains shake, rice cakes" },
-  { cat: "Carbs & Pantry", name: "Honey", qty: "1 bottle", note: "Yogurt bowls, oats" },
-  { cat: "Carbs & Pantry", name: "Olive oil / avocado oil", qty: "1 bottle", note: "Cooking staple" },
-  { cat: "Carbs & Pantry", name: "Almond milk", qty: "2 cartons", note: "Shake base" },
-  { cat: "Carbs & Pantry", name: "Hot sauce / Salsa", qty: "1 each", note: "Flavor, zero cal" },
+  { cat: "Produce — Buy Week 1 + 2", name: "Bananas", qty: "1 bunch + restock", note: "Freeze ripe ones for gains shake", price: "$1.32", store: "aldi", life: "week1" },
+  { cat: "Produce — Buy Week 1 + 2", name: "Avocados", qty: "3 + 2", note: "Week 1: ripe. Week 2: hard", price: "$4.45", store: "aldi", life: "week1" },
+  { cat: "Produce — Buy Week 1 + 2", name: "Baby spinach / kale", qty: "1 + 1 bag", note: "5-7 days max. Paper towel trick", price: "$5.98", store: "aldi", life: "week1" },
+  { cat: "Produce — Buy Week 1 + 2", name: "Asparagus or zucchini", qty: "2 + 2 bundles", note: "3-5 days max. Must split across weeks", price: "$11.96", store: "aldi", life: "week1" },
 
-  { cat: "Supplements", name: "Creatine Monohydrate (micronized)", qty: "1 tub", note: "Daily — training + rest days" },
-  { cat: "Supplements", name: "Whey Protein Isolate", qty: "1 tub", note: "Post-workout + mid-day scoop" }
+  { cat: "Produce — Full 2 Weeks", name: "Sweet potatoes", qty: "10 lbs", note: "3-5 weeks in cool dark spot", price: "$12.90", store: "aldi", life: "long" },
+  { cat: "Produce — Full 2 Weeks", name: "Frozen berries", qty: "2 bags (3 lb)", note: "Gains shake, oats. 8-12 months freezer", price: "$17.98", store: "costco", life: "freeze" },
+  { cat: "Produce — Full 2 Weeks", name: "Quinoa or brown rice", qty: "2 lb bag", note: "Years of shelf life", price: "$4.49", store: "aldi", life: "long" },
+
+  { cat: "Carbs & Pantry", name: "Nut butter (almond or PB)", qty: "1 large jar", note: "Gains shake, rice cakes, snacks", price: "$4.99", store: "aldi", life: "long" },
+  { cat: "Carbs & Pantry", name: "Almond milk", qty: "2 cartons", note: "Open 1/week. 7-10 days once opened", price: "$4.98", store: "aldi", life: "week1" },
+
+  { cat: "Supplements — Gym", name: "Creatine Monohydrate", qty: "1 tub", note: "5g daily. Training + rest days", price: "$16.99", store: "costco", life: "long" },
+  { cat: "Supplements — Gym", name: "Whey Protein Isolate", qty: "1 tub", note: "Post-workout + mid-day scoop", price: "$26.99", store: "costco", life: "long" },
+
+  { cat: "Supplements — Sleep & CT", name: "Lion's Mane (fruiting body)", qty: "1 bottle", note: "500-1000mg/day. Start week 1", price: "$19.99", store: "amazon", life: "long" },
+  { cat: "Supplements — Sleep & CT", name: "Magnesium Glycinate", qty: "1 bottle", note: "200-400mg before bed. Start week 2", price: "$14.99", store: "amazon", life: "long" },
+  { cat: "Supplements — Sleep & CT", name: "Ashwagandha KSM-66", qty: "1 bottle", note: "300-600mg w/ dinner. Start week 3", price: "$16.99", store: "amazon", life: "long" },
+  { cat: "Supplements — Sleep & CT", name: "Turmeric/Curcumin (w/ piperine)", qty: "1 bottle", note: "500-1000mg/day. Anti-inflammatory for CT", price: "$14.99", store: "amazon", life: "long" },
+  { cat: "Supplements — Sleep & CT", name: "Vitamin B6", qty: "1 bottle", note: "50-100mg/day. Nerve health for CT. DO NOT exceed 200mg", price: "$7.99", store: "amazon", life: "long" }
 ];
 
-const STORAGE_HIS = 'gym-grocery-his';
-const STORAGE_HERS = 'gym-grocery-hers';
+var HIS_BUDGET = { food: 201, supps: 135, total: 336 };
+var HERS_BUDGET = { food: 141, supps: 119, total: 260 };
 
-let currentList = 'his';
-let currentFilter = 'all';
+var STORAGE_HIS = 'gym-grocery-his-v2';
+var STORAGE_HERS = 'gym-grocery-hers-v2';
+
+var currentList = 'his';
+var currentFilter = 'all';
 
 function getItems() { return currentList === 'his' ? HIS_ITEMS : HERS_ITEMS; }
 function getKey() { return currentList === 'his' ? STORAGE_HIS : STORAGE_HERS; }
+function getBudget() { return currentList === 'his' ? HIS_BUDGET : HERS_BUDGET; }
 
 function getChecked() {
   try { return JSON.parse(localStorage.getItem(getKey())) || []; }
-  catch { return []; }
+  catch(e) { return []; }
 }
 function saveChecked(arr) { localStorage.setItem(getKey(), JSON.stringify(arr)); }
 
@@ -169,46 +341,80 @@ function switchList(list) {
   currentFilter = 'all';
   document.getElementById('tab-his').className = list === 'his' ? 'tab active-his' : 'tab';
   document.getElementById('tab-hers').className = list === 'hers' ? 'tab active-hers' : 'tab';
-  document.querySelectorAll('.toolbar button').forEach((b, i) => {
+  document.querySelectorAll('.toolbar button').forEach(function(b, i) {
     b.classList.toggle('active', i === 0);
   });
+  updateBudget();
   render();
 }
 
-function render() {
-  const items = getItems();
-  const checked = getChecked();
-  const list = document.getElementById('list');
-  const isHers = currentList === 'hers';
-  let html = '';
-  let currentCat = '';
-  let total = items.length;
-  let done = checked.length;
+function updateBudget() {
+  var b = getBudget();
+  var color = currentList === 'his' ? '#F57C00' : '#43A047';
+  document.getElementById('budget-food').textContent = '$' + b.food;
+  document.getElementById('budget-food').style.color = color;
+  document.getElementById('budget-supps').textContent = '$' + b.supps;
+  document.getElementById('budget-total').textContent = '$' + b.total;
+}
 
-  items.forEach((item, i) => {
-    const isChecked = checked.includes(i);
+function showSection(section) {
+  document.getElementById('section-list').style.display = section === 'list' ? '' : 'none';
+  document.getElementById('section-schedule').style.display = section === 'schedule' ? '' : 'none';
+  document.getElementById('section-quality').style.display = section === 'quality' ? '' : 'none';
+  document.querySelectorAll('.section-btn').forEach(function(b) {
+    b.classList.toggle('active', b.textContent.toLowerCase().indexOf(section) !== -1 ||
+      (section === 'list' && b.textContent === 'Shopping List') ||
+      (section === 'schedule' && b.textContent === 'When to Buy') ||
+      (section === 'quality' && b.textContent === 'Quality Guide'));
+  });
+}
+
+function render() {
+  var items = getItems();
+  var checked = getChecked();
+  var list = document.getElementById('list');
+  var isHers = currentList === 'hers';
+  var html = '';
+  var currentCat = '';
+  var total = items.length;
+  var done = checked.length;
+
+  items.forEach(function(item, i) {
+    var isChecked = checked.indexOf(i) !== -1;
     if (currentFilter === 'unchecked' && isChecked) return;
 
     if (item.cat !== currentCat) {
       currentCat = item.cat;
-      html += `<h2>${currentCat}</h2>`;
+      html += '<h2>' + currentCat + '</h2>';
     }
-    html += `<div class="item ${isHers ? 'item-hers' : ''} ${isChecked ? 'checked' : ''}" onclick="toggle(${i})">
-      <div class="checkbox"></div>
-      <div class="item-text">${item.name}</div>
-      <div class="item-qty">${item.qty}</div>
-      <div class="item-note">${item.note}</div>
-    </div>`;
+
+    var storeClass = 'store-' + item.store;
+    var storeLabel = item.store === 'snp' ? 'S&S' : item.store.charAt(0).toUpperCase() + item.store.slice(1);
+    var lifeClass = item.life === 'freeze' ? 'life-freeze' : item.life === 'week1' ? 'life-week1' : 'life-long';
+    var lifeLabel = item.life === 'freeze' ? 'Freeze' : item.life === 'week1' ? 'Restock Wk2' : 'Lasts';
+
+    html += '<div class="item ' + (isHers ? 'item-hers ' : '') + (isChecked ? 'checked' : '') + '" onclick="toggle(' + i + ')">' +
+      '<div class="checkbox"></div>' +
+      '<div class="item-text">' + item.name + '</div>' +
+      '<div class="item-qty">' + item.qty + '</div>' +
+      '<div class="item-meta">' +
+        '<span class="item-store ' + storeClass + '">' + storeLabel + '</span>' +
+        '<span class="item-price">' + item.price + '</span>' +
+        '<span class="item-life ' + lifeClass + '">' + lifeLabel + '</span>' +
+        '<span class="item-note">' + item.note + '</span>' +
+      '</div>' +
+    '</div>';
   });
 
   list.innerHTML = html;
-  document.getElementById('counter').textContent = `${done} of ${total} items checked`;
+  document.getElementById('counter').textContent = done + ' of ' + total + ' items checked';
 }
 
 function toggle(index) {
-  let checked = getChecked();
-  if (checked.includes(index)) {
-    checked = checked.filter(i => i !== index);
+  var checked = getChecked();
+  var pos = checked.indexOf(index);
+  if (pos !== -1) {
+    checked.splice(pos, 1);
   } else {
     checked.push(index);
   }
@@ -218,7 +424,7 @@ function toggle(index) {
 
 function filterItems(filter) {
   currentFilter = filter;
-  document.querySelectorAll('.toolbar button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.toolbar button').forEach(function(b) { b.classList.remove('active'); });
   event.target.classList.add('active');
   render();
 }
@@ -230,6 +436,7 @@ function clearAll() {
   }
 }
 
+updateBudget();
 render();
 </script>
 <!-- Supabase Sync -->
@@ -239,18 +446,18 @@ render();
 <script src="../js/supabase-auth-ui.js"></script>
 <script>
 async function onAuthSync() {
-  const r1 = await syncChecklist(STORAGE_HIS);
-  const r2 = await syncChecklist(STORAGE_HERS);
+  var r1 = await syncChecklist(STORAGE_HIS);
+  var r2 = await syncChecklist(STORAGE_HERS);
   if (r1 === 'pulled' || r2 === 'pulled') render();
 }
 
-const _origSaveChecked = saveChecked;
+var _origSaveChecked = saveChecked;
 saveChecked = function(arr) {
   _origSaveChecked(arr);
-  pushChecklist(getKey(), arr).catch(() => {});
+  pushChecklist(getKey(), arr).catch(function() {});
 };
 
-getSession().then(s => { if (s?.user) onAuthSync(); });
+getSession().then(function(s) { if (s && s.user) onAuthSync(); });
 </script>
 </body>
 </html>
