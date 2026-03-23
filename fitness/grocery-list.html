@@ -81,7 +81,7 @@ h2{font-size:11px;font-weight:700;margin:1.5rem 0 .5rem;padding-bottom:4px;borde
   <!-- Budget at a glance -->
   <div class="budget-bar" id="budget-bar">
     <div class="budget-card"><div class="budget-num" style="color:#F57C00" id="budget-food">$201</div><div class="budget-label">food / 2 weeks</div></div>
-    <div class="budget-card"><div class="budget-num" style="color:#534AB7" id="budget-supps">$135</div><div class="budget-label">supplements</div></div>
+    <div class="budget-card"><div class="budget-num" style="color:#534AB7" id="budget-supps">$135</div><div class="budget-label">supplements / 2 weeks</div></div>
     <div class="budget-card"><div class="budget-num" id="budget-total">$336</div><div class="budget-label">total / 2 weeks</div></div>
   </div>
 
@@ -236,7 +236,7 @@ h2{font-size:11px;font-weight:700;margin:1.5rem 0 .5rem;padding-bottom:4px;borde
     </div>
   </div>
 
-  <div class="footer">Two Latinos &middot; Gym Partners</div>
+  <div class="footer">yerramazing &middot; Gym Partners</div>
 </div>
 
 <script>
@@ -244,6 +244,7 @@ var HIS_ITEMS = [
   { cat: "Proteins — Freeze Day 1", name: "Chicken thighs (boneless)", qty: "5 lbs", note: "Portion into 8oz bags, freeze", price: "$12.45", store: "aldi", life: "freeze" },
   { cat: "Proteins — Freeze Day 1", name: "Ground beef 85/15", qty: "3 lbs", note: "1-lb bags, freeze", price: "$14.97", store: "aldi", life: "freeze" },
   { cat: "Proteins — Freeze Day 1", name: "Ground turkey 93/7", qty: "2.5 lbs", note: "1-lb bags, freeze", price: "$8.73", store: "aldi", life: "freeze" },
+  { cat: "Proteins — Freeze Day 1", name: "Salmon fillets (frozen)", qty: "1.5 lbs", note: "Wed Prep 2 — Thu/Fri meals. Keep frozen until Wed", price: "$8.99", store: "aldi", life: "freeze" },
 
   { cat: "Proteins — Fridge", name: "Eggs", qty: "5 dozen", note: "3-5 weeks in back of fridge", price: "$10.95", store: "aldi", life: "long" },
   { cat: "Proteins — Fridge", name: "Canned tuna (5 oz)", qty: "10 cans", note: "2 cans per meal, ~5 meals", price: "$7.90", store: "aldi", life: "long" },
@@ -274,23 +275,24 @@ var HIS_ITEMS = [
   { cat: "Carbs & Pantry", name: "Hot sauce / Salsa", qty: "1 each", note: "Months in fridge", price: "$4.14", store: "aldi", life: "long" },
   { cat: "Carbs & Pantry", name: "Zevia", qty: "24-pack", note: "Zero sugar soda swap", price: "$16.76", store: "amazon", life: "long" },
 
-  { cat: "Supplements", name: "Creatine Monohydrate", qty: "1 tub", note: "5-10g daily. Lasts 30+ days", price: "$16.99", store: "amazon", life: "long" },
-  { cat: "Supplements", name: "Vega Sport Premium Protein", qty: "1 tub", note: "2 scoops/day × 14 = 28 scoops", price: "$54.99", store: "amazon", life: "long" },
-  { cat: "Supplements", name: "Collagen peptides", qty: "1 tub", note: "10-15g/day — skin elasticity", price: "$26.99", store: "amazon", life: "long" },
-  { cat: "Supplements", name: "Vitamin C (500mg)", qty: "1 bottle", note: "Collagen synthesis cofactor", price: "$8.99", store: "amazon", life: "long" },
-  { cat: "Supplements", name: "Zinc (15-30mg)", qty: "1 bottle", note: "With food — skin repair", price: "$7.99", store: "amazon", life: "long" },
-  { cat: "Supplements", name: "Krill oil / Fish oil", qty: "1 bottle", note: "Omega-3, skin + anti-inflammatory", price: "$18.99", store: "amazon", life: "long" },
+  { cat: "Supplements", name: "Creatine Monohydrate", qty: "1 tub", note: "5-10g daily. ~2 month supply (reorder when low)", price: "$16.99", store: "amazon", life: "long" },
+  { cat: "Supplements", name: "Vega Sport Premium Protein", qty: "1 tub", note: "2 scoops/day × 14 = 28 scoops. Reorder every 2-3 weeks", price: "$54.99", store: "amazon", life: "long" },
+  { cat: "Supplements", name: "Collagen peptides", qty: "1 tub", note: "10-15g/day — skin elasticity. ~1 month supply (reorder monthly)", price: "$26.99", store: "amazon", life: "long" },
+  { cat: "Supplements", name: "Vitamin C (500mg)", qty: "1 bottle", note: "Collagen synthesis cofactor. ~3 month supply (reorder when low)", price: "$8.99", store: "amazon", life: "long" },
+  { cat: "Supplements", name: "Zinc (15-30mg)", qty: "1 bottle", note: "With food — skin repair. ~3 month supply (reorder when low)", price: "$7.99", store: "amazon", life: "long" },
+  { cat: "Supplements", name: "Krill oil / Fish oil", qty: "1 bottle", note: "Omega-3, skin + anti-inflammatory. ~3 month supply (reorder when low)", price: "$18.99", store: "amazon", life: "long" },
 
   { cat: "Cat Food (2 cats)", name: "Ground turkey (for cats)", qty: "5 lbs", note: "75% of mix. Portion + freeze", price: "$8.73", store: "aldi", life: "freeze" },
   { cat: "Cat Food (2 cats)", name: "Chicken thighs (for cats)", qty: "2 lbs", note: "25% of mix. Dice small, freeze", price: "$4.98", store: "aldi", life: "freeze" },
-  { cat: "Cat Food (2 cats)", name: "Taurine powder", qty: "1 container", note: "Essential — cats can't make their own", price: "$12.99", store: "amazon", life: "long" },
-  { cat: "Cat Food (2 cats)", name: "Eggshell powder", qty: "1 container", note: "Calcium source", price: "$9.99", store: "amazon", life: "long" },
+  { cat: "Cat Food (2 cats)", name: "Taurine powder", qty: "1 container", note: "Essential — cats can't make their own. ~3-4 month supply (reorder when low)", price: "$12.99", store: "amazon", life: "long" },
+  { cat: "Cat Food (2 cats)", name: "Eggshell powder", qty: "1 container", note: "Calcium source. ~3-4 month supply (reorder when low)", price: "$9.99", store: "amazon", life: "long" },
   { cat: "Cat Food (2 cats)", name: "Krill oil (shared w/ his)", qty: "—", note: "Same bottle as his supplement", price: "—", store: "amazon", life: "long" }
 ];
 
 var HERS_ITEMS = [
   { cat: "Proteins — Freeze Day 1", name: "Chicken thighs (boneless)", qty: "8 lbs", note: "Portion into meal bags, freeze", price: "$19.92", store: "aldi", life: "freeze" },
   { cat: "Proteins — Freeze Day 1", name: "Ground beef 85/15", qty: "6 lbs", note: "1-lb portions, freeze", price: "$35.94", store: "aldi", life: "freeze" },
+  { cat: "Proteins — Freeze Day 1", name: "Salmon fillets (frozen)", qty: "1.25 lbs", note: "Wed Prep 2 — Thu/Fri meals. Keep frozen until Wed", price: "$7.49", store: "aldi", life: "freeze" },
 
   { cat: "Proteins — Fridge", name: "Eggs", qty: "3 dozen", note: "3-5 weeks in back of fridge", price: "$6.57", store: "aldi", life: "long" },
   { cat: "Proteins — Fridge", name: "Greek yogurt full-fat (32oz)", qty: "1 tub", note: "Buy 1 now, 1 on week 2 restock", price: "$3.85", store: "aldi", life: "week1" },
@@ -298,27 +300,35 @@ var HERS_ITEMS = [
   { cat: "Produce — Buy Week 1 + 2", name: "Bananas", qty: "1 bunch + restock", note: "Freeze ripe ones for gains shake", price: "$1.32", store: "aldi", life: "week1" },
   { cat: "Produce — Buy Week 1 + 2", name: "Avocados", qty: "3 + 2", note: "Week 1: ripe. Week 2: hard", price: "$4.45", store: "aldi", life: "week1" },
   { cat: "Produce — Buy Week 1 + 2", name: "Baby spinach / kale", qty: "1 + 1 bag", note: "5-7 days max. Paper towel trick", price: "$5.98", store: "aldi", life: "week1" },
+  { cat: "Produce — Buy Week 1 + 2", name: "Broccoli", qty: "2 + 2 lbs", note: "Or buy frozen for week 2", price: "$6.60", store: "aldi", life: "week1" },
   { cat: "Produce — Buy Week 1 + 2", name: "Asparagus or zucchini", qty: "2 + 2 bundles", note: "3-5 days max. Must split across weeks", price: "$11.96", store: "aldi", life: "week1" },
 
   { cat: "Produce — Full 2 Weeks", name: "Sweet potatoes", qty: "10 lbs", note: "3-5 weeks in cool dark spot", price: "$12.90", store: "aldi", life: "long" },
   { cat: "Produce — Full 2 Weeks", name: "Frozen berries", qty: "6x 12oz bags", note: "Gains shake, oats. 8-12 months freezer", price: "$17.94", store: "aldi", life: "freeze" },
-  { cat: "Produce — Full 2 Weeks", name: "Quinoa or brown rice", qty: "2 lb bag", note: "Years of shelf life", price: "$4.49", store: "aldi", life: "long" },
+  { cat: "Produce — Full 2 Weeks", name: "Limes", qty: "5", note: "3-4 weeks in fridge (whole)", price: "$1.25", store: "aldi", life: "long" },
+  { cat: "Produce — Full 2 Weeks", name: "Garlic", qty: "2 heads", note: "3-6 months whole unpeeled", price: "$1.00", store: "aldi", life: "long" },
 
+  { cat: "Carbs & Pantry", name: "Jasmine rice", qty: "1x 5-lb bag", note: "Years of shelf life. Batch cook + freeze portions", price: "$4.49", store: "aldi", life: "long" },
+  { cat: "Carbs & Pantry", name: "Oats", qty: "1 canister", note: "Overnight oats — 6 jars/week", price: "$3.29", store: "aldi", life: "long" },
   { cat: "Carbs & Pantry", name: "Nut butter (almond or PB)", qty: "1 large jar", note: "Gains shake, rice cakes, snacks", price: "$4.99", store: "aldi", life: "long" },
+  { cat: "Carbs & Pantry", name: "Honey", qty: "1 bottle", note: "Literally never expires", price: "$4.99", store: "aldi", life: "long" },
+  { cat: "Carbs & Pantry", name: "Olive oil", qty: "1x 1L bottle", note: "Cooking chicken, sweet potatoes", price: "$5.49", store: "aldi", life: "long" },
   { cat: "Carbs & Pantry", name: "Almond milk", qty: "2 cartons", note: "Open 1/week. 7-10 days once opened", price: "$4.98", store: "aldi", life: "week1" },
+  { cat: "Carbs & Pantry", name: "Rice cakes", qty: "1 pack", note: "Snack — PB + banana", price: "$2.69", store: "aldi", life: "long" },
+  { cat: "Carbs & Pantry", name: "Almonds", qty: "1 bag", note: "Snack — yogurt + almonds", price: "$4.99", store: "aldi", life: "long" },
 
-  { cat: "Supplements — Gym", name: "Creatine Monohydrate", qty: "1 tub", note: "5g daily. Training + rest days", price: "$16.99", store: "amazon", life: "long" },
-  { cat: "Supplements — Gym", name: "Whey Protein Isolate", qty: "1 tub", note: "Post-workout + mid-day scoop", price: "$26.99", store: "amazon", life: "long" },
+  { cat: "Supplements — Gym", name: "Creatine Monohydrate", qty: "1 tub", note: "5g daily. Training + rest days. ~2 month supply (reorder when low)", price: "$16.99", store: "amazon", life: "long" },
+  { cat: "Supplements — Gym", name: "Whey Protein Isolate", qty: "1 tub", note: "Post-workout + mid-day scoop. Reorder every 2-3 weeks", price: "$26.99", store: "amazon", life: "long" },
 
-  { cat: "Supplements — Sleep & CT", name: "Lion's Mane (fruiting body)", qty: "1 bottle", note: "500-1000mg/day. Start week 1", price: "$19.99", store: "amazon", life: "long" },
-  { cat: "Supplements — Sleep & CT", name: "Magnesium Glycinate", qty: "1 bottle", note: "200-400mg before bed. Start week 2", price: "$14.99", store: "amazon", life: "long" },
-  { cat: "Supplements — Sleep & CT", name: "Ashwagandha KSM-66", qty: "1 bottle", note: "300-600mg w/ dinner. Start week 3", price: "$16.99", store: "amazon", life: "long" },
-  { cat: "Supplements — Sleep & CT", name: "Turmeric/Curcumin (w/ piperine)", qty: "1 bottle", note: "500-1000mg/day. Anti-inflammatory for CT", price: "$14.99", store: "amazon", life: "long" },
-  { cat: "Supplements — Sleep & CT", name: "Vitamin B6", qty: "1 bottle", note: "50-100mg/day. Nerve health for CT. DO NOT exceed 200mg", price: "$7.99", store: "amazon", life: "long" }
+  { cat: "Supplements — Sleep & CT", name: "Lion's Mane (fruiting body)", qty: "1 bottle", note: "500-1000mg/day. Start week 1. ~3 month supply (reorder when low)", price: "$19.99", store: "amazon", life: "long" },
+  { cat: "Supplements — Sleep & CT", name: "Magnesium Glycinate", qty: "1 bottle", note: "200-400mg before bed. Start week 2. ~3 month supply (reorder when low)", price: "$14.99", store: "amazon", life: "long" },
+  { cat: "Supplements — Sleep & CT", name: "Ashwagandha KSM-66", qty: "1 bottle", note: "300-600mg w/ dinner. Start week 3. ~3 month supply (reorder when low)", price: "$16.99", store: "amazon", life: "long" },
+  { cat: "Supplements — Sleep & CT", name: "Turmeric/Curcumin (w/ piperine)", qty: "1 bottle", note: "500-1000mg/day. Anti-inflammatory for CT. ~3 month supply (reorder when low)", price: "$14.99", store: "amazon", life: "long" },
+  { cat: "Supplements — Sleep & CT", name: "Vitamin B6", qty: "1 bottle", note: "50-100mg/day. Nerve health for CT. DO NOT exceed 200mg. ~3 month supply (reorder when low)", price: "$7.99", store: "amazon", life: "long" }
 ];
 
-var HIS_BUDGET = { food: 183, supps: 135, total: 318 };
-var HERS_BUDGET = { food: 141, supps: 119, total: 260 };
+var HIS_BUDGET = { food: 201, supps: 135, total: 336 };
+var HERS_BUDGET = { food: 173, supps: 119, total: 292 };
 
 var STORAGE_HIS = 'gym-grocery-his-v2';
 var STORAGE_HERS = 'gym-grocery-hers-v2';

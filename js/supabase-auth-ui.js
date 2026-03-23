@@ -1,4 +1,4 @@
-// Two Latinos — Auth UI Overlay
+// yerramazing — Auth UI Overlay
 // Adds login/logout UI to any page that includes this script
 
 function createAuthUI() {

@@ -1,4 +1,4 @@
-// Two Latinos — Supabase Sync Library
+// yerramazing — Supabase Sync Library
 // Offline-first: localStorage is primary, Supabase syncs in background
 
 let _sb = null;
