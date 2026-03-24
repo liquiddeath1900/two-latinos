@@ -8,7 +8,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;padding:16px;min-height:100vh}
 .wrap{max-width:640px;margin:0 auto}
-.back{display:inline-block;font-size:12px;color:#534AB7;text-decoration:none;margin-bottom:1.5rem}
+.back{display:inline-block;font-size:12px;color:#534AB7;text-decoration:none;margin-bottom:1.5rem;padding:10px 0}
 .back:hover{text-decoration:underline}
 h1{font-size:24px;font-weight:700;margin-bottom:6px}
 .sub{font-size:13px;color:#666;line-height:1.6;margin-bottom:1.5rem}
@@ -25,14 +25,14 @@ h1{font-size:24px;font-weight:700;margin-bottom:6px}
 .q{margin-bottom:14px}
 .q:last-child{margin-bottom:0}
 .q label{display:block;font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:6px}
-.q .hint{font-weight:400;font-size:11px;color:#888}
+.q .hint{font-weight:400;font-size:12px;color:#888}
 .q input[type="text"],.q textarea{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;background:#fafafa;transition:border-color .15s}
 .q input[type="text"]:focus,.q textarea:focus{outline:none;border-color:#534AB7;background:#fff}
 .q textarea{resize:vertical;min-height:60px}
 
 /* Checkbox group */
 .check-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.check-group label{font-weight:400;font-size:13px;display:flex;align-items:center;gap:6px;padding:6px 12px;background:#fafafa;border:1px solid #e5e5e5;border-radius:8px;cursor:pointer;transition:all .15s}
+.check-group label{font-weight:400;font-size:13px;display:flex;align-items:center;gap:6px;padding:10px 14px;background:#fafafa;border:1px solid #e5e5e5;border-radius:8px;cursor:pointer;transition:all .15s}
 .check-group label:has(input:checked){background:#EEEDFE;border-color:#534AB7;color:#3C3489}
 .check-group input[type="checkbox"]{width:16px;height:16px;accent-color:#534AB7}
 
@@ -40,14 +40,14 @@ h1{font-size:24px;font-weight:700;margin-bottom:6px}
 .scale{display:flex;align-items:center;gap:6px;margin-top:6px;flex-wrap:wrap}
 .scale .label{font-size:11px;color:#888;flex-shrink:0}
 .scale-circles{display:flex;gap:4px}
-.scale-btn{width:32px;height:32px;border-radius:50%;border:2px solid #ddd;background:#fff;font-size:12px;font-weight:600;color:#888;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.scale-btn{width:44px;height:44px;border-radius:50%;border:2px solid #ddd;background:#fff;font-size:12px;font-weight:600;color:#888;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center}
 .scale-btn.selected{background:#534AB7;border-color:#534AB7;color:#fff}
 .scale-btn:hover{border-color:#534AB7}
 
 /* Progress bar */
 .progress-bar{background:#e5e5e5;border-radius:20px;height:6px;margin-bottom:1.5rem;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(90deg,#534AB7,#7c3aed);border-radius:20px;transition:width .3s}
-.progress-text{font-size:11px;color:#888;margin-bottom:6px;text-align:right}
+.progress-text{font-size:12px;color:#888;margin-bottom:6px;text-align:right}
 
 /* Bottom buttons */
 .btn{display:block;width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;margin-bottom:10px;font-family:inherit}
@@ -70,11 +70,11 @@ h1{font-size:24px;font-weight:700;margin-bottom:6px}
 
 /* Section nav dots */
 .section-nav{display:flex;justify-content:center;gap:8px;margin-bottom:1rem}
-.dot{width:10px;height:10px;border-radius:50%;background:#ddd;transition:background .2s;cursor:pointer}
+.dot{width:10px;height:10px;padding:8px;box-sizing:content-box;border-radius:50%;background:#ddd;transition:background .2s;cursor:pointer}
 .dot.active{background:#534AB7}
 .dot.done{background:#43A047}
 
-.footer{margin-top:2rem;font-size:11px;color:#999;text-align:center;line-height:1.6}
+0;color:#999;text-align:center;line-height:1.6}
 </style>
 </head>
 <body>

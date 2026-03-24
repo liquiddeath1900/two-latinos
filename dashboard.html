@@ -14,7 +14,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .header{display:flex;align-items:center;justify-content:space-between;padding:16px 0;margin-bottom:8px}
 .header-left{display:flex;align-items:center;gap:12px}
 .logo{font-size:20px;font-weight:700}
-.header-tag{background:var(--green-bg);color:var(--green-dark);font-size:10px;font-weight:600;padding:2px 8px;border-radius:6px}
+.header-tag{background:var(--green-bg);color:var(--green-dark);font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px}
 .header-right{display:flex;gap:8px}
 .btn{padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:var(--card);font-size:12px;font-weight:600;color:var(--text);cursor:pointer;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .btn:hover{border-color:var(--purple);background:var(--purple-bg)}
@@ -38,7 +38,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .panel.active{display:block}
 
 /* Table */
-.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow-x:auto}
 .table-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border)}
 .table-title{font-size:14px;font-weight:600}
 .table-count{font-size:11px;color:var(--dim);background:var(--bg);padding:2px 8px;border-radius:6px}
@@ -47,7 +47,7 @@ th{background:var(--bg);padding:10px 14px;text-align:left;font-size:11px;font-we
 td{padding:12px 14px;border-bottom:1px solid #f0f0f0;font-size:12px;color:var(--text);vertical-align:top}
 tr:last-child td{border-bottom:none}
 tr:hover{background:#fafafe}
-.tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:6px;font-weight:600}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600}
 .tag-comped{background:var(--green-bg);color:var(--green-dark)}
 .tag-paid{background:var(--orange-bg);color:var(--orange-dark)}
 .tag-points{background:var(--purple-bg);color:var(--purple-dark)}
@@ -122,7 +122,7 @@ tr:hover{background:#fafafe}
   .header-right{width:100%}
   .header-right .btn{flex:1;justify-content:center}
   .form-row{grid-template-columns:1fr}
-  table{font-size:11px}
+  table{font-size:12px}
   th,td{padding:8px 10px}
   .nav{gap:2px;padding:3px}
   .nav-tab{padding:6px 10px;font-size:11px}
@@ -503,7 +503,7 @@ tr:hover{background:#fafafe}
 
 <!-- FUTURE: MEMBERSHIP SITE NOTE -->
 <div style="background:var(--purple-bg);border:1px solid #c9c4e8;border-radius:12px;padding:16px 18px;margin-top:20px">
-  <div style="font-size:9px;background:var(--purple);color:#fff;padding:2px 8px;border-radius:6px;font-weight:700;letter-spacing:.5px;display:inline-block;margin-bottom:6px">COMING SOON</div>
+  <div style="font-size:11px;background:var(--purple);color:#fff;padding:2px 8px;border-radius:6px;font-weight:700;letter-spacing:.5px;display:inline-block;margin-bottom:6px">COMING SOON</div>
   <div style="font-size:14px;font-weight:700;color:var(--purple-dark);margin-bottom:4px">Membership Site</div>
   <div style="font-size:12px;color:var(--purple-dark);line-height:1.5;opacity:.8">
     Everything logged here becomes content for our future membership platform — trip itineraries, budget guides, restaurant lists, and comp playbooks. Members pay for the exact info we're tracking now.
@@ -777,7 +777,7 @@ function render() {
         <td><strong>${esc(e.cost || '-')}</strong></td>
         <td><span class="tag ${getTagClass(e.comped)}">${esc(e.comped || '-')}</span></td>
         <td><span class="tag ${getTagClass(e.return)}">${esc(e.return || '-')}</span></td>
-        <td><button class="btn" onclick="deleteEntry('trips',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+        <td><button class="btn" onclick="deleteEntry('trips',${e.id})" style="padding:8px;font-size:12px;min-width:44px;min-height:44px">x</button></td>
       </tr>`).join('')}
     </table>`;
   }
@@ -796,7 +796,7 @@ function render() {
         <td><span class="tag ${getTagClass(e.rate)}">${esc(e.rate || '-')}</span></td>
         <td>${e.rating ? `<span class="rating ${ratingClass(e.rating)}">${e.rating}/10</span>` : '-'}</td>
         <td><div class="cell-sub">${esc(e.manager || '-')}</div></td>
-        <td><button class="btn" onclick="deleteEntry('hotels',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+        <td><button class="btn" onclick="deleteEntry('hotels',${e.id})" style="padding:8px;font-size:12px;min-width:44px;min-height:44px">x</button></td>
       </tr>`).join('')}
     </table>`;
   }
@@ -815,7 +815,7 @@ function render() {
         <td><strong>${esc(e.cost || '-')}</strong></td>
         <td>${e.rating ? `<span class="rating ${ratingClass(e.rating)}">${e.rating}/10</span>` : '-'}</td>
         <td><span class="tag ${getTagClass(e.comped)}">${esc(e.comped || '-')}</span></td>
-        <td><button class="btn" onclick="deleteEntry('food',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+        <td><button class="btn" onclick="deleteEntry('food',${e.id})" style="padding:8px;font-size:12px;min-width:44px;min-height:44px">x</button></td>
       </tr>`).join('')}
     </table>`;
   }
@@ -834,7 +834,7 @@ function render() {
         <td><div class="cell-sub">${esc(e.email || '')}</div><div class="cell-sub">${esc(e.phone_ig || '')}</div></td>
         <td><span class="tag ${getTagClass(e.status)}">${esc(e.status || '-')}</span></td>
         <td class="cell-sub">${esc(e.followup || '-')}</td>
-        <td><button class="btn" onclick="deleteEntry('people',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+        <td><button class="btn" onclick="deleteEntry('people',${e.id})" style="padding:8px;font-size:12px;min-width:44px;min-height:44px">x</button></td>
       </tr>`).join('')}
     </table>`;
   }
@@ -859,7 +859,7 @@ function render() {
         <td><strong>$${esc(e.amount || '0')}</strong></td>
         <td>${esc(e.deductible || '-')}</td>
         <td class="cell-mono">${esc(e.payment || '-')}</td>
-        <td><button class="btn" onclick="deleteEntry('expenses',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+        <td><button class="btn" onclick="deleteEntry('expenses',${e.id})" style="padding:8px;font-size:12px;min-width:44px;min-height:44px">x</button></td>
       </tr>`).join('')}
     </table>`;
   }
@@ -877,7 +877,7 @@ function render() {
         <td><span class="tag tag-idea">${esc(e.pillar || '-')}</span></td>
         <td>${esc(e.views || '-')}</td>
         <td><span class="tag ${getTagClass(e.status)}">${esc(e.status || '-')}</span></td>
-        <td><button class="btn" onclick="deleteEntry('content',${e.id})" style="padding:4px 8px;font-size:10px">x</button></td>
+        <td><button class="btn" onclick="deleteEntry('content',${e.id})" style="padding:8px;font-size:12px;min-width:44px;min-height:44px">x</button></td>
       </tr>`).join('')}
     </table>`;
   }
