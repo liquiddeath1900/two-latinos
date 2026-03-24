@@ -3,80 +3,329 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<title>yerramazing — Travel Content Business</title>
+<title>YERRAMAZING — NYC Meets the World</title>
+<meta name="description" content="Two NYC Latinos taking street culture global. Getting locals worldwide to say YERR on camera. Travel, food, fitness, and the business behind it all.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;padding:16px;min-height:100vh;display:flex;align-items:center;justify-content:center}
-.wrap{max-width:480px;width:100%;text-align:center}
-.logo{font-size:28px;font-weight:700;margin-bottom:6px}
-.sub{font-size:13px;color:#666;line-height:1.6;margin-bottom:2rem}
-.section-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#999;font-weight:600;margin:24px 0 10px;text-align:left}
-.section-label:first-of-type{margin-top:0}
-.links{display:flex;flex-direction:column;gap:10px}
-a{display:block;padding:14px 18px;background:#fff;border:1px solid #e5e5e5;border-radius:12px;text-decoration:none;color:#1a1a1a;transition:all .15s;text-align:left}
-a:hover{border-color:#534AB7;background:#EEEDFE}
-.link-title{font-size:14px;font-weight:600;margin-bottom:3px;display:flex;align-items:center;gap:8px}
-.link-desc{font-size:12px;color:#666;line-height:1.4}
-.link-badge{font-size:9px;padding:2px 7px;border-radius:6px;font-weight:700;letter-spacing:.5px}
-.badge-new{background:#E1F5EE;color:#04342C}
-.badge-core{background:#EEEDFE;color:#3C3489}
-.footer{margin-top:2rem;font-size:11px;color:#999;line-height:1.6}
+:root{
+  --purple:#534AB7;--purple-dark:#3C3489;--purple-light:#EEEDFE;
+  --green:#43A047;--green-light:#E1F5EE;
+  --orange:#F57C00;--orange-light:#FFF3E0;
+  --dark:#0a0a0a;--gray:#666;--light:#f7f7f8;
+  --radius:16px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--dark);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#fff;overflow-x:hidden}
+
+/* ══════ HERO ══════ */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(83,74,183,.25) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--dark));pointer-events:none}
+
+/* Floating YERR background text */
+.bg-yerr{position:absolute;font-size:clamp(120px,20vw,280px);font-weight:900;color:rgba(83,74,183,.06);letter-spacing:-.02em;user-select:none;pointer-events:none;white-space:nowrap}
+.bg-yerr:nth-child(1){top:8%;left:-5%;animation:float1 20s ease-in-out infinite}
+.bg-yerr:nth-child(2){bottom:12%;right:-5%;animation:float2 25s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-20px) rotate(-1deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(15px) rotate(4deg)}}
+
+.hero-content{position:relative;z-index:2;max-width:680px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(83,74,183,.15);border:1px solid rgba(83,74,183,.3);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;color:var(--purple);letter-spacing:1px;text-transform:uppercase;margin-bottom:24px;backdrop-filter:blur(8px)}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.hero-title{font-size:clamp(42px,8vw,72px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:16px}
+.hero-title .yerr{background:linear-gradient(135deg,#7c6cf0,#a78bfa,#c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(15px,2.5vw,19px);color:rgba(255,255,255,.6);line-height:1.7;max-width:520px;margin:0 auto 32px}
+.hero-sub strong{color:rgba(255,255,255,.9);font-weight:600}
+
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{padding:14px 28px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:var(--purple);color:#fff}
+.btn-primary:hover{background:var(--purple-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(83,74,183,.4)}
+.btn-ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.12)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+
+/* Scroll indicator */
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.3);font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.scroll-arrow{width:20px;height:20px;border-right:2px solid rgba(255,255,255,.3);border-bottom:2px solid rgba(255,255,255,.3);transform:rotate(45deg);animation:bounce 2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(6px)}}
+
+/* ══════ IDENTITY SECTION ══════ */
+.identity{padding:80px 24px;background:var(--dark)}
+.identity-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.id-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px;transition:all .3s;opacity:0;transform:translateY(30px)}
+.id-card.visible{opacity:1;transform:translateY(0)}
+.id-card:hover{border-color:rgba(83,74,183,.3);background:rgba(83,74,183,.06)}
+.id-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:12px}
+.id-title{font-size:20px;font-weight:700;margin-bottom:8px;line-height:1.3}
+.id-text{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7}
+
+/* ══════ YERR GREETINGS STRIP ══════ */
+.greetings{padding:40px 0;overflow:hidden;background:rgba(83,74,183,.06);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.greet-track{display:flex;gap:40px;animation:scroll-x 30s linear infinite;width:max-content}
+.greet-item{font-size:18px;font-weight:700;white-space:nowrap;color:rgba(255,255,255,.15);display:flex;align-items:center;gap:12px}
+.greet-item .flag{font-size:24px}
+.greet-item .word{font-size:20px}
+@keyframes scroll-x{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══════ HUBS SECTION ══════ */
+.hubs{padding:80px 24px;background:linear-gradient(180deg,var(--dark) 0%,#0f0f14 100%)}
+.section-head{text-align:center;max-width:600px;margin:0 auto 48px}
+.section-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--purple);font-weight:700;margin-bottom:12px}
+.section-title{font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+.section-sub{font-size:14px;color:rgba(255,255,255,.45);line-height:1.6}
+
+.hub-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.hub-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:24px;text-decoration:none;color:#fff;transition:all .3s;position:relative;overflow:hidden;opacity:0;transform:translateY(30px)}
+.hub-card.visible{opacity:1;transform:translateY(0)}
+.hub-card:hover{border-color:rgba(83,74,183,.4);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.hub-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--purple);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.hub-card:hover::before{transform:scaleX(1)}
+.hub-icon{font-size:28px;margin-bottom:12px;display:block}
+.hub-name{font-size:16px;font-weight:700;margin-bottom:6px}
+.hub-desc{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6}
+.hub-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;padding:3px 8px;border-radius:6px;margin-top:10px}
+.tag-strategy{background:rgba(83,74,183,.15);color:#a78bfa}
+.tag-fitness{background:rgba(67,160,71,.15);color:#81c784}
+.tag-tools{background:rgba(245,124,0,.15);color:#ffb74d}
+.tag-outreach{background:rgba(239,83,80,.15);color:#ef9a9a}
+
+/* Featured hub (full width) */
+.hub-featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;overflow:hidden}
+.hub-featured .hub-visual{background:linear-gradient(135deg,rgba(83,74,183,.2),rgba(67,160,71,.1));padding:32px;display:flex;flex-direction:column;justify-content:center}
+.hub-featured .hub-content{padding:28px}
+.hub-featured .hub-name{font-size:20px}
+.hub-featured .hub-desc{font-size:13px}
+.hub-featured .stat-row{display:flex;gap:20px;margin-top:14px}
+.hub-featured .stat{text-align:center}
+.hub-featured .stat-num{font-size:22px;font-weight:800;color:var(--purple)}
+.hub-featured .stat-label{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+
+/* ══════ STATS STRIP ══════ */
+.stats{padding:60px 24px;background:rgba(83,74,183,.04);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.stats-grid{max-width:800px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat-big{font-size:clamp(28px,4vw,36px);font-weight:800;background:linear-gradient(135deg,#7c6cf0,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-desc{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;line-height:1.4}
+
+/* ══════ FOOTER ══════ */
+.footer{padding:40px 24px;text-align:center;color:rgba(255,255,255,.25);font-size:11px;line-height:1.8}
+.footer a{color:var(--purple);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+
+/* ══════ RESPONSIVE ══════ */
+@media(max-width:640px){
+  .identity-grid,.hub-grid{grid-template-columns:1fr}
+  .hub-featured{grid-column:1}
+  .hub-featured .hub-visual{display:none}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+  .hero-cta{flex-direction:column;align-items:center}
+  .btn{width:100%;max-width:280px;justify-content:center}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="logo">yerramazing</div>
-  <div class="sub">Two NYC Latinos turning everyday life into a travel content business.</div>
 
-  <div class="section-label">Strategy & Planning</div>
-  <div class="links">
-    <a href="partner-pitch.html">
-      <div class="link-title">The Business Plan <span class="link-badge badge-core">Core</span></div>
-      <div class="link-desc">LLC, credit strategy, comp playbook, tax write-offs, growth roadmap — with interactive checklist</div>
-    </a>
-    <a href="content-roadmap.html">
-      <div class="link-title">Content Roadmap <span class="link-badge badge-core">Core</span></div>
-      <div class="link-desc">50 video ideas, 90-day week-by-week calendar, posting schedule, monetization timeline</div>
-    </a>
-    <a href="accounts.html">
-      <div class="link-title">Accounts to Create <span class="link-badge badge-new">New</span></div>
-      <div class="link-desc">Every social media, travel platform, affiliate program, and creator network to sign up for — with checklist</div>
-    </a>
-    <a href="growth-funnel.html">
-      <div class="link-title">Growth Funnel <span class="link-badge badge-new">New</span></div>
-      <div class="link-desc">The 5-stage scaling strategy — from first video to membership site, with real lessons from creators who've done it</div>
-    </a>
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <span class="bg-yerr">YERR</span>
+  <span class="bg-yerr">YERR</span>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> NYC to the world</div>
+    <h1 class="hero-title"><span class="yerr">YERR</span>AMAZING</h1>
+    <p class="hero-sub">A <strong>Dominican</strong> and a <strong>Rican-American</strong> from NYC, seeing the world for the first time — getting locals everywhere to say <strong>YERR</strong> on camera.</p>
+    <div class="hero-cta">
+      <a href="partner-pitch.html" class="btn btn-primary">The Business Plan</a>
+      <a href="fitness/index.html" class="btn btn-ghost">Gym Partners Hub</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Explore</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ══════ IDENTITY ══════ -->
+<section class="identity">
+  <div class="identity-grid">
+    <div class="id-card">
+      <div class="id-label">The word</div>
+      <div class="id-title">"Yerr" — one syllable, infinite connections</div>
+      <div class="id-text">NYC slang for "what's up" — rooted in African American Vernacular English, Puerto Rican Spanish, and Yiddish. The city's entire multicultural DNA in one sound. Simple enough for anyone to say, foreign enough to create genuine comedy abroad.</div>
+    </div>
+    <div class="id-card">
+      <div class="id-label">The format</div>
+      <div class="id-title">Teach locals your greeting, learn theirs</div>
+      <div class="id-text">Every country has their own "yerr" — klk in DR, wagwan in Jamaica, ossu in Japan, g'day in Australia. We teach them ours, they teach us theirs. Infinite episodes, infinite reactions, infinite content.</div>
+    </div>
+    <div class="id-card">
+      <div class="id-label">The gap</div>
+      <div class="id-title">Zero NYC Latino travel duos exist</div>
+      <div class="id-text">65M+ Latinos in the US, $56B/year spent on travel — and nobody is making travel content from the perspective of two NYC Latinos seeing the world for the first time. We're not competing. We're creating the lane.</div>
+    </div>
+    <div class="id-card">
+      <div class="id-label">The proof</div>
+      <div class="id-title">The format already works — at scale</div>
+      <div class="id-text">Xiaomanyc (6.4M subs) — NYC guy speaking foreign languages. Kieran Murray — Aussie teaching locals "G'day." Drew Binsky — $114K/mo. Same formula, different culture. Nobody's done it with NYC slang yet.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ GREETINGS TICKER ══════ -->
+<section class="greetings">
+  <div class="greet-track" id="greetTrack">
+    <div class="greet-item"><span class="flag">🇺🇸</span><span class="word">YERR</span></div>
+    <div class="greet-item"><span class="flag">🇩🇴</span><span class="word">KLK</span></div>
+    <div class="greet-item"><span class="flag">🇵🇷</span><span class="word">QUE ES LA QUE</span></div>
+    <div class="greet-item"><span class="flag">🇯🇲</span><span class="word">WAH GWAAN</span></div>
+    <div class="greet-item"><span class="flag">🇬🇧</span><span class="word">WAGWAN</span></div>
+    <div class="greet-item"><span class="flag">🇯🇵</span><span class="word">OSSU</span></div>
+    <div class="greet-item"><span class="flag">🇦🇺</span><span class="word">G'DAY</span></div>
+    <div class="greet-item"><span class="flag">🇧🇷</span><span class="word">E AI</span></div>
+    <div class="greet-item"><span class="flag">🇩🇪</span><span class="word">WAS GEHT</span></div>
+    <div class="greet-item"><span class="flag">🇮🇹</span><span class="word">CHE SUCCEDE</span></div>
+    <div class="greet-item"><span class="flag">🇨🇴</span><span class="word">QUE MAS</span></div>
+    <div class="greet-item"><span class="flag">🇳🇬</span><span class="word">HOW FAR</span></div>
+    <div class="greet-item"><span class="flag">🇲🇽</span><span class="word">QUE ONDA</span></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="greet-item"><span class="flag">🇺🇸</span><span class="word">YERR</span></div>
+    <div class="greet-item"><span class="flag">🇩🇴</span><span class="word">KLK</span></div>
+    <div class="greet-item"><span class="flag">🇵🇷</span><span class="word">QUE ES LA QUE</span></div>
+    <div class="greet-item"><span class="flag">🇯🇲</span><span class="word">WAH GWAAN</span></div>
+    <div class="greet-item"><span class="flag">🇬🇧</span><span class="word">WAGWAN</span></div>
+    <div class="greet-item"><span class="flag">🇯🇵</span><span class="word">OSSU</span></div>
+    <div class="greet-item"><span class="flag">🇦🇺</span><span class="word">G'DAY</span></div>
+    <div class="greet-item"><span class="flag">🇧🇷</span><span class="word">E AI</span></div>
+    <div class="greet-item"><span class="flag">🇩🇪</span><span class="word">WAS GEHT</span></div>
+    <div class="greet-item"><span class="flag">🇮🇹</span><span class="word">CHE SUCCEDE</span></div>
+    <div class="greet-item"><span class="flag">🇨🇴</span><span class="word">QUE MAS</span></div>
+    <div class="greet-item"><span class="flag">🇳🇬</span><span class="word">HOW FAR</span></div>
+    <div class="greet-item"><span class="flag">🇲🇽</span><span class="word">QUE ONDA</span></div>
+  </div>
+</section>
+
+<!-- ══════ HUBS ══════ -->
+<section class="hubs">
+  <div class="section-head">
+    <div class="section-tag">Everything in one place</div>
+    <h2 class="section-title">The Hub</h2>
+    <p class="section-sub">Business plan, content strategy, fitness, and all the tools — organized and ready to go.</p>
   </div>
 
-  <div class="section-label">Tools & Tracking</div>
-  <div class="links">
-    <a href="dashboard.html">
-      <div class="link-title">Travel Dashboard <span class="link-badge badge-new">New</span></div>
-      <div class="link-desc">Track trips, hotels, restaurants, contacts, expenses, and content — shared log for both of you on the road</div>
+  <div class="hub-grid">
+    <!-- Featured: Gym Partners -->
+    <a href="fitness/index.html" class="hub-card hub-featured">
+      <div class="hub-visual">
+        <div class="stat-row">
+          <div class="stat"><div class="stat-num">14</div><div class="stat-label">Pages</div></div>
+          <div class="stat"><div class="stat-num">His</div><div class="stat-label">Plan</div></div>
+          <div class="stat"><div class="stat-num">Hers</div><div class="stat-label">Plan</div></div>
+        </div>
+      </div>
+      <div class="hub-content">
+        <span class="hub-icon">💪</span>
+        <div class="hub-name">Gym Partners Hub</div>
+        <div class="hub-desc">Full workout plans, meal prep, grocery lists, eating guides, supplements, progress tracking — separate His/Hers tabs on everything. Research-backed, budget-optimized.</div>
+        <span class="hub-tag tag-fitness">Fitness & Nutrition</span>
+      </div>
     </a>
-    <a href="travel-log.html">
-      <div class="link-title">Google Sheets Template <span class="link-badge badge-new">New</span></div>
-      <div class="link-desc">Column-by-column template for setting up a shared Google Sheet — trips, food, people, expenses, content</div>
+
+    <!-- Business Plan -->
+    <a href="partner-pitch.html" class="hub-card">
+      <span class="hub-icon">📋</span>
+      <div class="hub-name">The Business Plan</div>
+      <div class="hub-desc">LLC formation, credit card strategy, comp playbook, tax write-offs, YERR content strategy, growth roadmap with revenue targets — interactive checklist.</div>
+      <span class="hub-tag tag-strategy">Strategy</span>
+    </a>
+
+    <!-- Content Roadmap -->
+    <a href="content-roadmap.html" class="hub-card">
+      <span class="hub-icon">🎬</span>
+      <div class="hub-name">Content Roadmap</div>
+      <div class="hub-desc">50 video ideas, 90-day week-by-week calendar, posting schedule, platform priorities, monetization timeline.</div>
+      <span class="hub-tag tag-strategy">Strategy</span>
+    </a>
+
+    <!-- Growth Funnel -->
+    <a href="growth-funnel.html" class="hub-card">
+      <span class="hub-icon">📈</span>
+      <div class="hub-name">Growth Funnel</div>
+      <div class="hub-desc">5-stage scaling strategy — from first video to membership site, with real lessons from creators who've done it.</div>
+      <span class="hub-tag tag-strategy">Strategy</span>
+    </a>
+
+    <!-- Accounts -->
+    <a href="accounts.html" class="hub-card">
+      <span class="hub-icon">🔑</span>
+      <div class="hub-name">Accounts to Create</div>
+      <div class="hub-desc">Every social media, travel platform, affiliate program, and creator network — with checklist.</div>
+      <span class="hub-tag tag-tools">Tools</span>
+    </a>
+
+    <!-- Dashboard -->
+    <a href="dashboard.html" class="hub-card">
+      <span class="hub-icon">📊</span>
+      <div class="hub-name">Travel Dashboard</div>
+      <div class="hub-desc">Track trips, hotels, restaurants, contacts, expenses, and content — shared log for both of you.</div>
+      <span class="hub-tag tag-tools">Tools</span>
+    </a>
+
+    <!-- Sheets Template -->
+    <a href="travel-log.html" class="hub-card">
+      <span class="hub-icon">📑</span>
+      <div class="hub-name">Google Sheets Template</div>
+      <div class="hub-desc">Column-by-column template for trips, food, people, expenses, content tracking.</div>
+      <span class="hub-tag tag-tools">Tools</span>
+    </a>
+
+    <!-- Media Kit -->
+    <a href="media-kit.html" class="hub-card">
+      <span class="hub-icon">🤝</span>
+      <div class="hub-name">Media Kit</div>
+      <div class="hub-desc">3-page template showing hotels and cruise lines exactly what they want to see — with annotations.</div>
+      <span class="hub-tag tag-outreach">Outreach</span>
     </a>
   </div>
+</section>
 
-  <div class="section-label">Pitching & Outreach</div>
-  <div class="links">
-    <a href="media-kit.html">
-      <div class="link-title">Media Kit Example <span class="link-badge badge-new">New</span></div>
-      <div class="link-desc">3-page template showing exactly what hotels and cruise lines want to see — with annotations explaining why each section matters</div>
-    </a>
+<!-- ══════ STATS ══════ -->
+<section class="stats">
+  <div class="stats-grid">
+    <div><div class="stat-big">65M+</div><div class="stat-desc">US Latinos — our built-in audience</div></div>
+    <div><div class="stat-big">$56B</div><div class="stat-desc">Latino leisure travel spend/year</div></div>
+    <div><div class="stat-big">0</div><div class="stat-desc">Competitors in our exact lane</div></div>
+    <div><div class="stat-big">∞</div><div class="stat-desc">Countries with a local "YERR"</div></div>
   </div>
+</section>
 
-  <div class="section-label">Fitness & Nutrition</div>
-  <div class="links">
-    <a href="fitness/index.html">
-      <div class="link-title">Gym Partners Hub <span class="link-badge badge-new">New</span></div>
-      <div class="link-desc">Shared workout plans, warm-ups, nutrition timing, supplement dosing & grocery list — built for both of you</div>
-    </a>
-  </div>
+<!-- ══════ FOOTER ══════ -->
+<footer class="footer">
+  YERRAMAZING &middot; Built March 2026<br>
+  Two NYC Latinos. One syllable. Every country.
+</footer>
 
-  <div class="footer">Built March 2026 &middot; Everything in one place</div>
-</div>
+<!-- ══════ ANIMATIONS ══════ -->
+<script>
+// Intersection Observer for fade-in animations
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.id-card, .hub-card').forEach(function(el, i) {
+  el.style.transitionDelay = (i % 4) * 0.1 + 's';
+  observer.observe(el);
+});
+</script>
+
+<!-- Supabase Sync -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-sync.js"></script>
+<script src="js/supabase-auth-ui.js"></script>
 </body>
 </html>
