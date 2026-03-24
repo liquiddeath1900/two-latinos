@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Health Profile — Gym Partners</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;padding:16px;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto}
+.back{display:inline-block;font-size:12px;color:#534AB7;text-decoration:none;margin-bottom:1.5rem}
+.back:hover{text-decoration:underline}
+h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.sub{font-size:13px;color:#666;line-height:1.6;margin-bottom:1.5rem}
+.intro-box{background:#EEEDFE;border-left:4px solid #534AB7;padding:12px 14px;border-radius:0 10px 10px 0;margin-bottom:1.5rem;font-size:12px;color:#3C3489;line-height:1.6}
+.intro-box strong{font-size:13px}
+
+/* Sections */
+.section{margin-bottom:16px}
+.section-header{background:#534AB7;color:#fff;padding:10px 14px;border-radius:12px 12px 0 0;font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px}
+.section-header .num{background:#fff;color:#534AB7;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.section-body{background:#fff;border:1px solid #e5e5e5;border-top:none;border-radius:0 0 12px 12px;padding:14px 16px}
+
+/* Questions */
+.q{margin-bottom:14px}
+.q:last-child{margin-bottom:0}
+.q label{display:block;font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:6px}
+.q .hint{font-weight:400;font-size:11px;color:#888}
+.q input[type="text"],.q textarea{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;background:#fafafa;transition:border-color .15s}
+.q input[type="text"]:focus,.q textarea:focus{outline:none;border-color:#534AB7;background:#fff}
+.q textarea{resize:vertical;min-height:60px}
+
+/* Checkbox group */
+.check-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.check-group label{font-weight:400;font-size:13px;display:flex;align-items:center;gap:6px;padding:6px 12px;background:#fafafa;border:1px solid #e5e5e5;border-radius:8px;cursor:pointer;transition:all .15s}
+.check-group label:has(input:checked){background:#EEEDFE;border-color:#534AB7;color:#3C3489}
+.check-group input[type="checkbox"]{width:16px;height:16px;accent-color:#534AB7}
+
+/* Scale */
+.scale{display:flex;align-items:center;gap:6px;margin-top:6px;flex-wrap:wrap}
+.scale .label{font-size:11px;color:#888;flex-shrink:0}
+.scale-circles{display:flex;gap:4px}
+.scale-btn{width:32px;height:32px;border-radius:50%;border:2px solid #ddd;background:#fff;font-size:12px;font-weight:600;color:#888;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.scale-btn.selected{background:#534AB7;border-color:#534AB7;color:#fff}
+.scale-btn:hover{border-color:#534AB7}
+
+/* Progress bar */
+.progress-bar{background:#e5e5e5;border-radius:20px;height:6px;margin-bottom:1.5rem;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#534AB7,#7c3aed);border-radius:20px;transition:width .3s}
+.progress-text{font-size:11px;color:#888;margin-bottom:6px;text-align:right}
+
+/* Bottom buttons */
+.btn{display:block;width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;margin-bottom:10px;font-family:inherit}
+.btn-primary{background:#534AB7;color:#fff}
+.btn-primary:hover{background:#3C3489}
+.btn-primary:disabled{background:#ccc;cursor:not-allowed}
+.btn-secondary{background:#E1F5EE;color:#04342C;border:1px solid #b2dfdb}
+.btn-secondary:hover{background:#c8e6c9}
+.btn-share{background:#25D366;color:#fff}
+.btn-share:hover{background:#1da851}
+.btn-copy{background:#FFF3E0;color:#7A4A00;border:1px solid #ffe0b2}
+.btn-copy:hover{background:#ffe0b2}
+
+/* Results */
+.results{display:none;background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:16px;margin-bottom:16px}
+.results h2{font-size:16px;margin-bottom:8px}
+.results pre{font-size:12px;line-height:1.6;white-space:pre-wrap;word-wrap:break-word;background:#fafafa;padding:12px;border-radius:8px;max-height:400px;overflow-y:auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.copied-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:600;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.copied-toast.show{opacity:1}
+
+/* Section nav dots */
+.section-nav{display:flex;justify-content:center;gap:8px;margin-bottom:1rem}
+.dot{width:10px;height:10px;border-radius:50%;background:#ddd;transition:background .2s;cursor:pointer}
+.dot.active{background:#534AB7}
+.dot.done{background:#43A047}
+
+.footer{margin-top:2rem;font-size:11px;color:#999;text-align:center;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="back">&larr; Back to Gym Partners</a>
+  <h1>Health Profile</h1>
+  <div class="sub">Fill this out so we can tailor your workouts, supplements, meals & grocery list to YOUR body.</div>
+
+  <div class="intro-box">
+    <strong>Why this matters:</strong> Your carpal tunnel, sleep issues, sweating, and mood can all be connected. One root cause can trigger all of them. The more honest you are, the better we can figure out what's actually going on.
+  </div>
+
+  <div class="progress-text"><span id="progressLabel">0 of 10</span></div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+  <div class="section-nav" id="sectionNav"></div>
+
+  <form id="healthForm" autocomplete="off">
+
+  <!-- SECTION 1 -->
+  <div class="section form-section" data-section="1">
+    <div class="section-header"><span class="num">1</span> Basics</div>
+    <div class="section-body">
+      <div class="q"><label>Full age + birthday</label><input type="text" name="age_birthday" placeholder="e.g. 37, March 15"></div>
+      <div class="q"><label>Height / Current weight / Goal weight <span class="hint">(or body comp goal)</span></label><input type="text" name="height_weight" placeholder="e.g. 5'7, 145 lbs, want to gain muscle"></div>
+      <div class="q"><label>Blood type <span class="hint">(if you know it)</span></label><input type="text" name="blood_type" placeholder="e.g. O+, A-, don't know"></div>
+      <div class="q"><label>Ethnicity / Heritage <span class="hint">(some conditions have genetic patterns)</span></label><input type="text" name="ethnicity" placeholder="e.g. Puerto Rican, Dominican, etc."></div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section form-section" data-section="2" style="display:none">
+    <div class="section-header"><span class="num">2</span> Menstrual Cycle</div>
+    <div class="section-body">
+      <div class="q"><label>How regular is your cycle? <span class="hint">(every ___ days, or irregular)</span></label><input type="text" name="cycle_regularity" placeholder="e.g. every 28 days, irregular"></div>
+      <div class="q">
+        <label>How heavy are your periods?</label>
+        <div class="check-group">
+          <label><input type="checkbox" name="period_heavy" value="Light"> Light</label>
+          <label><input type="checkbox" name="period_heavy" value="Normal"> Normal</label>
+          <label><input type="checkbox" name="period_heavy" value="Heavy"> Heavy</label>
+          <label><input type="checkbox" name="period_heavy" value="Very heavy"> Very heavy</label>
+          <label><input type="checkbox" name="period_heavy" value="Varies"> Varies</label>
+        </div>
+      </div>
+      <div class="q"><label>How many days does it last?</label><input type="text" name="period_days" placeholder="e.g. 5 days"></div>
+      <div class="q">
+        <label>Cramping / bloating / mood swings — how bad?</label>
+        <div class="scale"><span class="label">None</span><div class="scale-circles" data-name="cramp_scale"></div><span class="label">Worst</span></div>
+      </div>
+      <div class="q"><label>On birth control? <span class="hint">(What kind? How long?)</span></label><input type="text" name="birth_control" placeholder="e.g. IUD for 2 years, pill, none"></div>
+      <div class="q"><label>History of PCOS, endometriosis, fibroids, irregular periods?</label><input type="text" name="repro_history" placeholder="Anything diagnosed or suspected"></div>
+      <div class="q"><label>Ever had hormones tested? <span class="hint">(estrogen, progesterone, testosterone, thyroid)</span></label><input type="text" name="hormone_tests" placeholder="e.g. thyroid checked last year — normal"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section form-section" data-section="3" style="display:none">
+    <div class="section-header"><span class="num">3</span> The Sweating</div>
+    <div class="section-body">
+      <div class="q"><label>When did the excessive sweating start? <span class="hint">(always or started at a certain time)</span></label><input type="text" name="sweat_onset" placeholder="e.g. always been like this, started 2 years ago"></div>
+      <div class="q">
+        <label>Where do you sweat the most?</label>
+        <div class="check-group">
+          <label><input type="checkbox" name="sweat_where" value="All over"> All over</label>
+          <label><input type="checkbox" name="sweat_where" value="Palms"> Palms</label>
+          <label><input type="checkbox" name="sweat_where" value="Underarms"> Underarms</label>
+          <label><input type="checkbox" name="sweat_where" value="Face/head"> Face/head</label>
+          <label><input type="checkbox" name="sweat_where" value="Back"> Back</label>
+          <label><input type="checkbox" name="sweat_where" value="Feet"> Feet</label>
+          <label><input type="checkbox" name="sweat_where" value="Chest"> Chest</label>
+        </div>
+      </div>
+      <div class="q"><label>At rest or only during activity?</label><input type="text" name="sweat_rest" placeholder="e.g. even sitting on the couch"></div>
+      <div class="q"><label>Happens in cool/AC rooms?</label><input type="text" name="sweat_cool" placeholder="Yes / No / Sometimes"></div>
+      <div class="q"><label>Night sweats? <span class="hint">(waking up drenched)</span></label><input type="text" name="night_sweats" placeholder="e.g. yes, sheets are soaked"></div>
+      <div class="q"><label>Family members with excessive sweating?</label><input type="text" name="sweat_family" placeholder="e.g. my mom sweats a lot too"></div>
+      <div class="q"><label>Doctor ever mention hyperhidrosis?</label><input type="text" name="hyperhidrosis" placeholder="Yes / No / Never asked"></div>
+      <div class="q"><label>Caffeine, spicy food, or stress make it worse?</label><input type="text" name="sweat_triggers" placeholder="e.g. coffee definitely makes it worse"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section form-section" data-section="4" style="display:none">
+    <div class="section-header"><span class="num">4</span> Sleep Issues</div>
+    <div class="section-body">
+      <div class="q"><label>Bedtime? Wake time?</label><input type="text" name="sleep_times" placeholder="e.g. bed at 12am, up at 7am"></div>
+      <div class="q"><label>How long to fall asleep? <span class="hint">(minutes)</span></label><input type="text" name="fall_asleep" placeholder="e.g. 45 minutes, takes forever"></div>
+      <div class="q"><label>Wake up during the night? How many times?</label><input type="text" name="night_waking" placeholder="e.g. 2-3 times, can't fall back asleep"></div>
+      <div class="q">
+        <label>How rested do you feel waking up?</label>
+        <div class="scale"><span class="label">Dead</span><div class="scale-circles" data-name="rest_scale"></div><span class="label">Fully charged</span></div>
+      </div>
+      <div class="q"><label>Snoring? Anyone say you stop breathing?</label><input type="text" name="snoring" placeholder="e.g. no snoring, idk"></div>
+      <div class="q"><label>Screen time before bed? <span class="hint">(how close to bedtime)</span></label><input type="text" name="screen_time" placeholder="e.g. phone in bed until I pass out"></div>
+      <div class="q"><label>Wired at night but exhausted in the morning?</label><input type="text" name="wired_tired" placeholder="e.g. YES, exactly that"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section form-section" data-section="5" style="display:none">
+    <div class="section-header"><span class="num">5</span> Mood</div>
+    <div class="section-body">
+      <div class="q">
+        <label>What does "mood issues" look like for you?</label>
+        <div class="check-group">
+          <label><input type="checkbox" name="mood_type" value="Irritability"> Irritability</label>
+          <label><input type="checkbox" name="mood_type" value="Sadness"> Sadness</label>
+          <label><input type="checkbox" name="mood_type" value="Anxiety"> Anxiety</label>
+          <label><input type="checkbox" name="mood_type" value="Low motivation"> Low motivation</label>
+          <label><input type="checkbox" name="mood_type" value="Brain fog"> Brain fog</label>
+          <label><input type="checkbox" name="mood_type" value="Mood swings"> Mood swings</label>
+          <label><input type="checkbox" name="mood_type" value="Numbness/flat"> Numbness/flat</label>
+        </div>
+      </div>
+      <div class="q"><label>Constant or comes in waves/cycles?</label><input type="text" name="mood_pattern" placeholder="e.g. comes and goes, worse some weeks"></div>
+      <div class="q"><label>Worse the week before your period?</label><input type="text" name="mood_period" placeholder="e.g. definitely worse before my period"></div>
+      <div class="q"><label>Better or worse after exercise?</label><input type="text" name="mood_exercise" placeholder="e.g. usually better after working out"></div>
+      <div class="q"><label>Ever diagnosed with depression, anxiety, or ADHD?</label><input type="text" name="mood_diagnosis" placeholder="e.g. anxiety, never officially diagnosed"></div>
+      <div class="q"><label>Medications for mood? <span class="hint">(current or past)</span></label><input type="text" name="mood_meds" placeholder="e.g. tried Lexapro, currently nothing"></div>
+      <div class="q"><label>Crave sugar/carbs when mood dips?</label><input type="text" name="mood_cravings" placeholder="e.g. yes, I destroy candy when I'm down"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section form-section" data-section="6" style="display:none">
+    <div class="section-header"><span class="num">6</span> Carpal Tunnel</div>
+    <div class="section-body">
+      <div class="q"><label>When diagnosed? By who? <span class="hint">(doctor, self-diagnosed)</span></label><input type="text" name="ct_diagnosis" placeholder="e.g. doctor diagnosed 2023"></div>
+      <div class="q"><label>Both hands — which is worse?</label><input type="text" name="ct_worse_hand" placeholder="e.g. right is way worse"></div>
+      <div class="q">
+        <label>What do you feel?</label>
+        <div class="check-group">
+          <label><input type="checkbox" name="ct_symptoms" value="Numbness"> Numbness</label>
+          <label><input type="checkbox" name="ct_symptoms" value="Tingling"> Tingling</label>
+          <label><input type="checkbox" name="ct_symptoms" value="Pain"> Pain</label>
+          <label><input type="checkbox" name="ct_symptoms" value="Weakness"> Weakness</label>
+          <label><input type="checkbox" name="ct_symptoms" value="Dropping things"> Dropping things</label>
+        </div>
+      </div>
+      <div class="q"><label>Which fingers?</label><input type="text" name="ct_fingers" placeholder="e.g. thumb, index, middle"></div>
+      <div class="q"><label>Does it wake you up at night?</label><input type="text" name="ct_night" placeholder="e.g. yes, hands go numb"></div>
+      <div class="q"><label>What do you do for work? <span class="hint">(desk, phone, physical, etc.)</span></label><input type="text" name="ct_work" placeholder="e.g. desk job, on computer all day"></div>
+      <div class="q"><label>Wear wrist splints? When?</label><input type="text" name="ct_splints" placeholder="e.g. at night only, don't have any"></div>
+      <div class="q"><label>Had an EMG/nerve conduction test?</label><input type="text" name="ct_emg" placeholder="Yes / No / Don't know what that is"></div>
+      <div class="q"><label>Any neck or shoulder pain? <span class="hint">(can mimic carpal tunnel)</span></label><input type="text" name="ct_neck" placeholder="e.g. yeah my neck is always tight"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section form-section" data-section="7" style="display:none">
+    <div class="section-header"><span class="num">7</span> Medical History</div>
+    <div class="section-body">
+      <div class="q">
+        <label>Any diagnosed conditions?</label>
+        <div class="check-group">
+          <label><input type="checkbox" name="conditions" value="Thyroid"> Thyroid</label>
+          <label><input type="checkbox" name="conditions" value="Diabetes/pre-diabetes"> Diabetes</label>
+          <label><input type="checkbox" name="conditions" value="Anemia"> Anemia</label>
+          <label><input type="checkbox" name="conditions" value="Autoimmune"> Autoimmune</label>
+          <label><input type="checkbox" name="conditions" value="PCOS"> PCOS</label>
+          <label><input type="checkbox" name="conditions" value="Asthma"> Asthma</label>
+        </div>
+        <input type="text" name="conditions_other" placeholder="Other conditions..." style="margin-top:8px">
+      </div>
+      <div class="q"><label>Any surgeries?</label><input type="text" name="surgeries" placeholder="e.g. appendix removed 2019"></div>
+      <div class="q"><label>Current medications or supplements? <span class="hint">(list everything)</span></label><textarea name="current_meds" placeholder="e.g. multivitamin, birth control, ibuprofen when needed"></textarea></div>
+      <div class="q"><label>Allergies? <span class="hint">(food or environmental)</span></label><input type="text" name="allergies" placeholder="e.g. seasonal allergies, no food allergies"></div>
+      <div class="q"><label>Last bloodwork? What was checked?</label><input type="text" name="bloodwork" placeholder="e.g. 6 months ago, basic panel"></div>
+      <div class="q"><label>Known vitamin deficiencies? <span class="hint">(iron, B12, D, etc.)</span></label><input type="text" name="deficiencies" placeholder="e.g. low vitamin D, iron was borderline"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="section form-section" data-section="8" style="display:none">
+    <div class="section-header"><span class="num">8</span> Family History</div>
+    <div class="section-body">
+      <div class="q">
+        <label>Do your parents or siblings have any of these?</label>
+        <div class="check-group">
+          <label><input type="checkbox" name="family" value="Diabetes"> Diabetes</label>
+          <label><input type="checkbox" name="family" value="Thyroid issues"> Thyroid</label>
+          <label><input type="checkbox" name="family" value="Heart disease"> Heart disease</label>
+          <label><input type="checkbox" name="family" value="High blood pressure"> High BP</label>
+          <label><input type="checkbox" name="family" value="Autoimmune"> Autoimmune</label>
+          <label><input type="checkbox" name="family" value="Depression/anxiety"> Depression/anxiety</label>
+          <label><input type="checkbox" name="family" value="PCOS"> PCOS</label>
+          <label><input type="checkbox" name="family" value="Excessive sweating"> Excessive sweating</label>
+        </div>
+        <input type="text" name="family_other" placeholder="Other details..." style="margin-top:8px">
+      </div>
+      <div class="q"><label>Family history of early menopause?</label><input type="text" name="early_menopause" placeholder="e.g. mom hit menopause at 42"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="section form-section" data-section="9" style="display:none">
+    <div class="section-header"><span class="num">9</span> Digestion & Energy</div>
+    <div class="section-body">
+      <div class="q">
+        <label>How's your digestion?</label>
+        <div class="check-group">
+          <label><input type="checkbox" name="digestion" value="Good / no issues"> No issues</label>
+          <label><input type="checkbox" name="digestion" value="Bloating"> Bloating</label>
+          <label><input type="checkbox" name="digestion" value="Gas"> Gas</label>
+          <label><input type="checkbox" name="digestion" value="Constipation"> Constipation</label>
+          <label><input type="checkbox" name="digestion" value="Diarrhea"> Diarrhea</label>
+          <label><input type="checkbox" name="digestion" value="Acid reflux"> Acid reflux</label>
+        </div>
+      </div>
+      <div class="q"><label>Energy crashes? When?</label><input type="text" name="energy_crashes" placeholder="e.g. after lunch, random 3pm crash"></div>
+      <div class="q"><label>How much water daily? <span class="hint">(be honest)</span></label><input type="text" name="water_intake" placeholder="e.g. maybe 3 glasses, not enough"></div>
+      <div class="q"><label>Caffeine? <span class="hint">(how much, how late)</span></label><input type="text" name="caffeine" placeholder="e.g. 2 coffees, last one at 2pm"></div>
+      <div class="q"><label>Alcohol? How often?</label><input type="text" name="alcohol" placeholder="e.g. weekends only, rarely, none"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="section form-section" data-section="10" style="display:none">
+    <div class="section-header"><span class="num">10</span> Current Lifestyle</div>
+    <div class="section-body">
+      <div class="q">
+        <label>Stress level?</label>
+        <div class="scale"><span class="label">Zen</span><div class="scale-circles" data-name="stress_scale"></div><span class="label">Losing it</span></div>
+      </div>
+      <div class="q"><label>Main sources of stress?</label><input type="text" name="stress_sources" placeholder="e.g. work, money, family"></div>
+      <div class="q"><label>How active outside gym? <span class="hint">(steps, job type)</span></label><input type="text" name="daily_activity" placeholder="e.g. desk job, maybe 3000 steps"></div>
+      <div class="q"><label>Foods you won't eat or allergic to?</label><input type="text" name="food_restrictions" placeholder="e.g. no seafood, lactose intolerant"></div>
+      <div class="q"><label>Cook or eat out/takeout mostly?</label><input type="text" name="cooking_habits" placeholder="e.g. cook most days, takeout weekends"></div>
+      <div class="q"><label>How consistent with working out?</label><input type="text" name="workout_consistency" placeholder="e.g. just starting, on and off for years"></div>
+      <div class="q"><label>Anything else we should know?</label><textarea name="anything_else" placeholder="Symptoms, goals, stuff that bugs you — anything"></textarea></div>
+    </div>
+  </div>
+
+  </form>
+
+  <!-- Navigation buttons -->
+  <div style="display:flex;gap:10px;margin-top:16px" id="navButtons">
+    <button class="btn btn-secondary" id="prevBtn" style="flex:1;display:none" onclick="navigate(-1)">Back</button>
+    <button class="btn btn-primary" id="nextBtn" style="flex:1" onclick="navigate(1)">Next</button>
+  </div>
+
+  <!-- Results area (hidden until submit) -->
+  <div class="results" id="results">
+    <h2>Your Answers</h2>
+    <p style="font-size:12px;color:#666;margin-bottom:12px">Copy this text and send it over. We'll use it to rebuild your plan.</p>
+    <pre id="resultText"></pre>
+  </div>
+
+  <div id="shareButtons" style="display:none">
+    <button class="btn btn-copy" onclick="copyResults()">Copy All Text</button>
+    <button class="btn btn-share" onclick="shareResults()">Share via Text / iMessage</button>
+    <button class="btn btn-secondary" onclick="startOver()">Start Over</button>
+  </div>
+
+  <div class="copied-toast" id="toast">Copied!</div>
+  <div class="footer">yerramazing &middot; Gym Partners Hub<br>This info stays between us — only used to build your personalized plan.</div>
+</div>
+
+<script>
+var TOTAL = 10;
+var current = 1;
+var scaleValues = {};
+
+// Build scale circles
+document.querySelectorAll('.scale-circles').forEach(function(container) {
+  var name = container.dataset.name;
+  for (var i = 1; i <= 10; i++) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'scale-btn';
+    btn.textContent = i;
+    btn.dataset.value = i;
+    btn.dataset.scaleName = name;
+    btn.addEventListener('click', function() {
+      var n = this.dataset.scaleName;
+      scaleValues[n] = this.dataset.value;
+      this.parentNode.querySelectorAll('.scale-btn').forEach(function(b) { b.classList.remove('selected'); });
+      this.classList.add('selected');
+    });
+    container.appendChild(btn);
+  }
+});
+
+// Build section nav dots
+var nav = document.getElementById('sectionNav');
+for (var d = 1; d <= TOTAL; d++) {
+  var dot = document.createElement('span');
+  dot.className = 'dot' + (d === 1 ? ' active' : '');
+  dot.dataset.section = d;
+  dot.addEventListener('click', function() { goTo(parseInt(this.dataset.section)); });
+  nav.appendChild(dot);
+}
+
+// Auto-save to localStorage on input
+document.querySelectorAll('input, textarea').forEach(function(el) {
+  var key = 'yerramazing-hp-' + (el.name || el.closest('.q').querySelector('label').textContent.trim().slice(0,20));
+  var saved = localStorage.getItem(key);
+  if (saved) {
+    if (el.type === 'checkbox') { el.checked = saved === 'true'; } else { el.value = saved; }
+  }
+  el.addEventListener('change', function() {
+    localStorage.setItem(key, el.type === 'checkbox' ? el.checked : el.value);
+  });
+  el.addEventListener('input', function() {
+    if (el.type !== 'checkbox') localStorage.setItem(key, el.value);
+  });
+});
+
+// Scale values from localStorage
+Object.keys(scaleValues).length === 0 && document.querySelectorAll('.scale-circles').forEach(function(c) {
+  var n = c.dataset.name;
+  var saved = localStorage.getItem('yerramazing-hp-scale-' + n);
+  if (saved) {
+    scaleValues[n] = saved;
+    c.querySelectorAll('.scale-btn').forEach(function(b) {
+      if (b.dataset.value === saved) b.classList.add('selected');
+    });
+  }
+});
+
+function saveScales() {
+  Object.keys(scaleValues).forEach(function(k) { localStorage.setItem('yerramazing-hp-scale-' + k, scaleValues[k]); });
+}
+
+function updateUI() {
+  document.querySelectorAll('.form-section').forEach(function(s) {
+    s.style.display = parseInt(s.dataset.section) === current ? '' : 'none';
+  });
+  document.getElementById('prevBtn').style.display = current > 1 ? '' : 'none';
+  document.getElementById('nextBtn').textContent = current === TOTAL ? 'Generate Summary' : 'Next';
+  document.getElementById('progressLabel').textContent = current + ' of ' + TOTAL;
+  document.getElementById('progressFill').style.width = (current / TOTAL * 100) + '%';
+  document.querySelectorAll('.dot').forEach(function(d) {
+    var s = parseInt(d.dataset.section);
+    d.className = 'dot' + (s === current ? ' active' : '') + (s < current ? ' done' : '');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function navigate(dir) {
+  saveScales();
+  if (dir === 1 && current === TOTAL) { generateSummary(); return; }
+  current = Math.max(1, Math.min(TOTAL, current + dir));
+  updateUI();
+}
+
+function goTo(s) { current = s; updateUI(); }
+
+function generateSummary() {
+  var sections = [
+    { title: '1. BASICS', fields: ['age_birthday','height_weight','blood_type','ethnicity'] },
+    { title: '2. MENSTRUAL CYCLE', fields: ['cycle_regularity','period_heavy','period_days','birth_control','repro_history','hormone_tests'], scales: ['cramp_scale'] },
+    { title: '3. THE SWEATING', fields: ['sweat_onset','sweat_where','sweat_rest','sweat_cool','night_sweats','sweat_family','hyperhidrosis','sweat_triggers'] },
+    { title: '4. SLEEP', fields: ['sleep_times','fall_asleep','night_waking','snoring','screen_time','wired_tired'], scales: ['rest_scale'] },
+    { title: '5. MOOD', fields: ['mood_type','mood_pattern','mood_period','mood_exercise','mood_diagnosis','mood_meds','mood_cravings'] },
+    { title: '6. CARPAL TUNNEL', fields: ['ct_diagnosis','ct_worse_hand','ct_symptoms','ct_fingers','ct_night','ct_work','ct_splints','ct_emg','ct_neck'] },
+    { title: '7. MEDICAL HISTORY', fields: ['conditions','conditions_other','surgeries','current_meds','allergies','bloodwork','deficiencies'] },
+    { title: '8. FAMILY HISTORY', fields: ['family','family_other','early_menopause'] },
+    { title: '9. DIGESTION & ENERGY', fields: ['digestion','energy_crashes','water_intake','caffeine','alcohol'] },
+    { title: '10. LIFESTYLE', fields: ['stress_sources','daily_activity','food_restrictions','cooking_habits','workout_consistency','anything_else'], scales: ['stress_scale'] }
+  ];
+
+  var lines = ['YERRAMAZING — HEALTH PROFILE ANSWERS', '=====================================', ''];
+  sections.forEach(function(sec) {
+    lines.push(sec.title);
+    lines.push('-'.repeat(sec.title.length));
+    sec.fields.forEach(function(name) {
+      var els = document.querySelectorAll('[name="' + name + '"]');
+      if (!els.length) return;
+      var label = els[0].closest('.q').querySelector('label').childNodes[0].textContent.trim();
+      var val = '';
+      if (els[0].type === 'checkbox') {
+        var checked = [];
+        els.forEach(function(cb) { if (cb.checked) checked.push(cb.value); });
+        val = checked.join(', ') || '(not answered)';
+      } else {
+        val = els[0].value.trim() || '(not answered)';
+      }
+      lines.push(label + ': ' + val);
+    });
+    if (sec.scales) {
+      sec.scales.forEach(function(s) {
+        var container = document.querySelector('[data-name="' + s + '"]');
+        var label = container.closest('.q').querySelector('label').childNodes[0].textContent.trim();
+        lines.push(label + ': ' + (scaleValues[s] || '(not answered)') + '/10');
+      });
+    }
+    lines.push('');
+  });
+
+  var text = lines.join('\n');
+  document.getElementById('resultText').textContent = text;
+  document.getElementById('results').style.display = '';
+  document.getElementById('shareButtons').style.display = '';
+  document.getElementById('navButtons').style.display = 'none';
+  document.querySelectorAll('.form-section').forEach(function(s) { s.style.display = 'none'; });
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressLabel').textContent = 'Done!';
+  document.querySelectorAll('.dot').forEach(function(d) { d.className = 'dot done'; });
+}
+
+function copyResults() {
+  var text = document.getElementById('resultText').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(function() { toast.classList.remove('show'); }, 2000);
+  });
+}
+
+function shareResults() {
+  var text = document.getElementById('resultText').textContent;
+  if (navigator.share) {
+    navigator.share({ title: 'Health Profile Answers', text: text });
+  } else {
+    // Fallback: open SMS with pre-filled text (works on iPhone)
+    window.location.href = 'sms:?&body=' + encodeURIComponent(text);
+  }
+}
+
+function startOver() {
+  // Clear saved data
+  Object.keys(localStorage).forEach(function(k) { if (k.startsWith('yerramazing-hp-')) localStorage.removeItem(k); });
+  document.querySelectorAll('input, textarea').forEach(function(el) {
+    if (el.type === 'checkbox') el.checked = false; else el.value = '';
+  });
+  document.querySelectorAll('.scale-btn').forEach(function(b) { b.classList.remove('selected'); });
+  scaleValues = {};
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('shareButtons').style.display = 'none';
+  document.getElementById('navButtons').style.display = 'flex';
+  current = 1;
+  updateUI();
+}
+</script>
+</body>
+</html>
