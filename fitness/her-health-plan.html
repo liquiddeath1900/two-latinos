@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Her Health Plan — Gym Partners</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f7f7f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;padding:16px;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto}
+.back{display:inline-block;font-size:12px;color:#534AB7;text-decoration:none;margin-bottom:1.5rem}
+.back:hover{text-decoration:underline}
+h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.sub{font-size:13px;color:#666;line-height:1.6;margin-bottom:2rem}
+h2{font-size:16px;font-weight:700;margin:2rem 0 .75rem;padding-bottom:6px;border-bottom:2px solid #E8D5F5}
+h3{font-size:14px;font-weight:600;margin:1.25rem 0 .5rem;color:#7B1FA2}
+p{font-size:13px;color:#444;line-height:1.7;margin-bottom:.75rem}
+.card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:14px 18px;margin-bottom:10px}
+.card-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.card-detail{font-size:12px;color:#666;line-height:1.6}
+.note{padding:12px 14px;border-radius:10px;font-size:12px;margin-bottom:10px;line-height:1.6}
+.note-purple{background:#EEEDFE;color:#3C3489}
+.note-green{background:#E1F5EE;color:#04342C}
+.note-amber{background:#FFF8E1;color:#E65100}
+.note-blue{background:#E3F2FD;color:#0D47A1}
+.note-red{background:#FCE4EC;color:#880E4F}
+.tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.5px;padding:2px 7px;border-radius:6px;margin-bottom:8px}
+.tag-urgent{background:#FCE4EC;color:#880E4F}
+.tag-important{background:#FFF8E1;color:#E65100}
+.tag-lifestyle{background:#E1F5EE;color:#04342C}
+.tag-medical{background:#E3F2FD;color:#0D47A1}
+.tag-supplement{background:#EEEDFE;color:#3C3489}
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:12px}
+th{background:#7B1FA2;color:#fff;padding:10px 12px;text-align:left;font-size:11px;font-weight:600}
+td{padding:10px 12px;border-bottom:1px solid #e5e5e5;background:#fff;line-height:1.5}
+tr:last-child td{border-bottom:none}
+ul,ol{margin:0 0 .75rem 18px;font-size:13px;color:#444;line-height:1.8}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.5rem}
+@media(max-width:500px){.stats{grid-template-columns:1fr 1fr}}
+.stat-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:12px;text-align:center}
+.stat-num{font-size:24px;font-weight:700;color:#7B1FA2}
+.stat-label{font-size:10px;color:#999;margin-top:2px}
+.timeline{border-left:3px solid #7B1FA2;padding-left:16px;margin:1rem 0 1.5rem}
+.timeline-item{margin-bottom:16px}
+.timeline-week{font-size:11px;font-weight:700;color:#7B1FA2;margin-bottom:4px}
+.timeline-content{font-size:12px;color:#444;line-height:1.6}
+.spiral{background:linear-gradient(135deg,#FCE4EC 0%,#FFF8E1 50%,#E8EAF6 100%);border-radius:12px;padding:16px;margin-bottom:1.5rem;font-size:12px;line-height:1.8;color:#333}
+.spiral strong{color:#880E4F}
+.checklist{list-style:none;margin-left:0;padding:0}
+.checklist li{padding:8px 0 8px 28px;border-bottom:1px solid #f0f0f0;position:relative;font-size:13px}
+.checklist li::before{content:'☐';position:absolute;left:0;font-size:16px}
+.checklist li:last-child{border-bottom:none}
+.link-card{display:block;background:#EEEDFE;border:2px solid #534AB7;border-radius:12px;padding:14px 18px;text-decoration:none;color:#3C3489;font-size:13px;font-weight:600;margin-bottom:10px;transition:background .15s}
+.link-card:hover{background:#DDD9FE}
+.link-card span{display:block;font-weight:400;font-size:11px;color:#666;margin-top:4px}
+.footer{margin-top:2rem;font-size:11px;color:#999;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="back">&larr; Back to Gym Partners</a>
+  <h1>Her Health Action Plan</h1>
+  <div class="sub">The full picture — perimenopause, hyperhidrosis, sleep, mood, carpal tunnel, and how they all connect. Research-backed, doctor-ready. Built from her health profile answers (March 2026).</div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num">38</div><div class="stat-label">age</div></div>
+    <div class="stat-card"><div class="stat-num">5'7"</div><div class="stat-label">height</div></div>
+    <div class="stat-card"><div class="stat-num">145</div><div class="stat-label">lbs</div></div>
+    <div class="stat-card"><div class="stat-num">3/10</div><div class="stat-label">sleep quality</div></div>
+    <div class="stat-card"><div class="stat-num">8/10</div><div class="stat-label">stress level</div></div>
+    <div class="stat-card"><div class="stat-num">10+yr</div><div class="stat-label">carpal tunnel</div></div>
+  </div>
+
+  <div class="note note-purple">
+    <strong>This isn't 5 separate problems.</strong> Her hyperhidrosis, perimenopause, sleep issues, mood swings, and carpal tunnel are all feeding each other. Fix the root causes and multiple symptoms improve at once. This plan attacks the connections, not just the symptoms.
+  </div>
+
+  <!-- THE SPIRAL -->
+  <h2>The Spiral — How Everything Connects</h2>
+
+  <div class="spiral">
+    <strong>Perimenopause</strong> (progesterone dropping) disrupts sleep &rarr;
+    <strong>Poor sleep</strong> (3/10) raises cortisol all day &rarr;
+    <strong>High cortisol</strong> causes anxiety, irritability, brain fog &rarr;
+    <strong>Stress (8/10)</strong> keeps cortisol elevated at night &rarr;
+    <strong>Wired at midnight</strong>, can't fall asleep &rarr;
+    <strong>Night sweats</strong> (hyperhidrosis + perimenopause) wake her up &rarr;
+    <strong>Dehydration</strong> (not drinking enough + sweating all day) &rarr;
+    brain fog, fatigue, faster heart rate that feels like anxiety &rarr;
+    <strong>No exercise</strong> (too exhausted, just started) &rarr;
+    no endorphins, no BDNF, no cortisol regulation &rarr;
+    <strong>Mood dips</strong> &rarr; low motivation &rarr; cycle repeats
+  </div>
+
+  <p><strong>The good news:</strong> Breaking the loop at ANY point improves everything downstream. The highest-leverage points are sleep, hydration, and exercise — all things she controls starting today.</p>
+
+  <!-- ===== SECTION 1: HYDRATION ===== -->
+  <h2>1. Hydration — The Emergency Fix</h2>
+
+  <div class="note note-red">
+    <strong>This is priority #1.</strong> She sweats excessively AND doesn't drink enough water. This combination causes brain fog, fatigue, anxiety-like symptoms, faster heart rate, muscle cramps, and worse exercise tolerance. Every other intervention works better on a hydrated body.
+  </div>
+
+  <div class="card" style="border-left:3px solid #880E4F">
+    <span class="tag tag-urgent">START TODAY</span>
+    <div class="card-title">Daily Hydration Protocol</div>
+    <div class="card-detail">
+      <strong>Baseline:</strong> 80+ oz (2.4L) per day MINIMUM — before accounting for sweat loss<br>
+      <strong>Gym days:</strong> Add 16-24 oz per hour of exercise<br>
+      <strong>Electrolytes:</strong> Non-negotiable. Plain water alone dilutes what's left after sweating. Add daily:<br>
+      &bull; LMNT packets (no sugar) OR Liquid IV OR DIY (¼ tsp salt + lemon + water)<br>
+      &bull; Avoid Gatorade — too much sugar, not enough sodium<br>
+      <strong>Timing:</strong> 16 oz + electrolytes 30 min before gym. Sip during. 16 oz after.<br>
+      <strong>Nightstand:</strong> Water + electrolytes every night. If she wakes up sweaty, replace what was lost before morning.<br>
+      <strong>Track it:</strong> Urine should be pale straw. Dark = dehydrated.
+    </div>
+  </div>
+
+  <h3>Signs She's Probably Dehydrated Right Now</h3>
+  <ul>
+    <li>Dark urine (especially morning)</li>
+    <li>Headaches that caffeine doesn't fix</li>
+    <li>Dizziness when standing up fast</li>
+    <li>Muscle cramps</li>
+    <li>Dry lips/mouth despite sweating everywhere</li>
+    <li>Fatigue that coffee barely touches</li>
+    <li>Brain fog (yes — the brain is 75% water)</li>
+  </ul>
+
+  <!-- ===== SECTION 2: HYPERHIDROSIS ===== -->
+  <h2>2. Hyperhidrosis — Lifelong Sweating</h2>
+
+  <div class="note note-blue">
+    <strong>Key distinction:</strong> She's had excessive sweating since early childhood. This is <strong>primary hyperhidrosis</strong> — a nervous system condition, NOT caused by perimenopause. The sweating happens at rest, in AC, at night, everywhere. A doctor who hears "night sweats" + "38yo woman" will default to menopause. She needs to clearly say: <em>"This has been my entire life, since childhood."</em>
+  </div>
+
+  <h3>What's Happening</h3>
+  <p>Overactive cholinergic sympathetic nerves are firing the sweat glands way beyond what thermoregulation needs. The sweat glands themselves are normal — the signaling is the problem. It's genetic (30-65% of patients have family history) and it is NOT caused by anxiety, though stress can make it worse.</p>
+
+  <h3>Dietary Triggers to Track</h3>
+  <table>
+    <tr><th>Trigger</th><th>Why</th><th>Action</th></tr>
+    <tr><td>Spicy food</td><td>Activates heat receptors</td><td>Reduce or time around low-activity</td></tr>
+    <tr><td>Hot drinks</td><td>Raises core temp</td><td>Room temp or iced</td></tr>
+    <tr><td>High-sugar meals</td><td>Insulin spike = thermic effect</td><td>Favor protein + fat + fiber</td></tr>
+    <tr><td>Alcohol</td><td>Vasodilator, raises skin temp</td><td>Minimize; wine/beer worse than spirits</td></tr>
+    <tr><td>Processed food</td><td>MSG can trigger flushing</td><td>Track and eliminate if correlated</td></tr>
+  </table>
+
+  <h3>Management Strategies</h3>
+  <div class="card">
+    <div class="card-title">Clinical-Strength Antiperspirant</div>
+    <div class="card-detail">Apply at <strong>NIGHT on dry skin</strong> (not morning — this is the #1 mistake). Aluminum chloride needs 6-8 hours on dry skin to plug sweat ducts. Certain Dri or SweatBlock. Can be used on torso, back, under-breast — not just armpits.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Sage Tea or Extract</div>
+    <div class="card-detail">The most studied herb for hyperhidrosis. A 2011 study showed 50% reduction in sweating intensity within 2 weeks. <strong>Dose:</strong> 300-600mg dried sage leaf extract daily, or strong sage tea 2-3x/day. Start low — high doses can cause GI upset.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Clothing Strategy</div>
+    <div class="card-detail">
+      <strong>Fabric:</strong> Merino wool or moisture-wicking synthetics. <strong>Never cotton</strong> — it holds moisture.<br>
+      <strong>Bras:</strong> Moisture-wicking sports bras even on non-gym days. Mesh panels help.<br>
+      <strong>Colors:</strong> Black, navy, patterns hide sweat. Gray is the worst.<br>
+      <strong>Sleepwear:</strong> Moisture-wicking PJs (Cool-jams, Under Armour) or nothing.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Cooling Strategies</div>
+    <div class="card-detail">
+      <strong>Pulse points:</strong> Ice water on wrists, cold cloth on neck — hits surface blood vessels fast<br>
+      <strong>Pre-cool before gym:</strong> Cold water 15-20 min before. Lowers starting core temp, delays sweat onset<br>
+      <strong>Cooling mattress pad:</strong> ChiliSleep or Eight Sleep — circulates cool water under you. Game-changer for night sweats.
+    </div>
+  </div>
+
+  <h3>Get a Dermatology Referral</h3>
+  <div class="note note-amber">
+    <strong>Script for the doctor:</strong> <em>"I have had excessive sweating my entire life, since childhood, at rest, in air conditioning, and at night. It is not related to menopause. I would like a referral to dermatology for evaluation of primary generalized hyperhidrosis."</em>
+  </div>
+  <p>A dermatologist can prescribe <strong>glycopyrrolate</strong> (oral, gold standard), <strong>Qbrexza wipes</strong> (FDA-approved), or <strong>Botox</strong> (insurance often covers after failed antiperspirant trial). Find a specialist at <strong>sweathelp.org</strong>.</p>
+
+  <!-- ===== SECTION 3: PERIMENOPAUSE ===== -->
+  <h2>3. Perimenopause at 38</h2>
+
+  <div class="note note-blue">
+    <strong>38 is early but not abnormal.</strong> Average onset is 40-44. Starting earlier means more years of estrogen decline, so monitoring bone density and cardiovascular health is more important, not less. Her hormones have been tested — perimenopause is confirmed.
+  </div>
+
+  <h3>What's Actually Happening</h3>
+  <p>Ovarian reserve is declining. Estrogen and progesterone are <strong>fluctuating unpredictably</strong> — not just dropping. Progesterone drops first, and it's the calming hormone (it converts to allopregnanolone, which activates GABA receptors = natural sedation). Less progesterone = more anxiety, worse sleep, more irritability.</p>
+
+  <h3>The IUD Factor</h3>
+  <div class="card">
+    <div class="card-title">She Needs to Confirm Which IUD</div>
+    <div class="card-detail">
+      <strong>If hormonal</strong> (Mirena, Liletta, Kyleena): It releases progesterone locally, which can lighten/stop periods — masking the most obvious perimenopause signal. She can't use her cycle to track what stage she's in. Bloodwork becomes essential.<br>
+      <strong>If copper</strong> (Paragard): No hormones, periods remain a reliable tracking signal. Can make periods heavier.
+    </div>
+  </div>
+
+  <h3>Family History Red Flags</h3>
+  <div class="card" style="border-left:3px solid #D32F2F">
+    <span class="tag tag-urgent">HIGH PRIORITY</span>
+    <div class="card-title">Thyroid + Autoimmune + High BP in Family</div>
+    <div class="card-detail">
+      <strong>Thyroid:</strong> Hashimoto's and perimenopause share nearly identical symptoms (fatigue, brain fog, mood, weight). She could have BOTH. Hashimoto's is 5-8x more common in women, often surfaces in late 30s-40s. Italian + Puerto Rican heritage = higher risk.<br>
+      <strong>Autoimmune:</strong> Perimenopause destabilizes immune regulation. Hispanic women have higher lupus rates. Mediterranean ancestry = higher autoimmune rates broadly. ANA screening is warranted.<br>
+      <strong>High BP:</strong> Estrogen decline removes cardiovascular protection. Buy a home BP monitor ($30-40), track 2-3x/week before coffee.
+    </div>
+  </div>
+
+  <h3>Heritage Considerations (Italian + Puerto Rican)</h3>
+  <ul>
+    <li><strong>Vitamin D:</strong> Darker skin tones produce less from sun. 40-60% of Hispanic women in NYC are deficient. She's almost certainly low.</li>
+    <li><strong>Bone density:</strong> Early perimenopause = more years of low estrogen. Request a baseline DEXA scan now, not at 65.</li>
+    <li><strong>MTHFR:</strong> Gene variants more common in Mediterranean + Hispanic populations — impair folic acid conversion. Use methylated B vitamins.</li>
+    <li><strong>Metabolic:</strong> Higher baseline risk for type 2 diabetes. Makes glucose/HbA1c testing more important.</li>
+  </ul>
+
+  <h3>Discuss with OB/GYN: Bioidentical Progesterone</h3>
+  <p>Micronized progesterone (Prometrium, 100-200mg at bedtime) is evidence-based for perimenopausal sleep disruption, night sweats, AND anxiety. It metabolizes into the same GABA-activating compound her body is losing. The 2022 NAMS position statement supports its use. Worth discussing — this addresses the root cause, not just symptoms.</p>
+
+  <!-- ===== SECTION 4: SLEEP ===== -->
+  <h2>4. Sleep — Fixing the 3/10</h2>
+
+  <div class="note note-red">
+    <strong>"Wired but tired" = flipped cortisol curve.</strong> Normal cortisol peaks in the morning and drops at midnight. Hers is likely doing the opposite — low in the morning (exhaustion), rising at night (wired). Chronic stress, perimenopause, and screen stimulation all drive this.
+  </div>
+
+  <h3>Tier 1 — Non-Negotiables (Start Now)</h3>
+  <table>
+    <tr><th>Change</th><th>Why</th></tr>
+    <tr><td><strong>Fixed 7:30am wake</strong> — every day, weekends too</td><td>Anchors circadian rhythm more than any other single change</td></tr>
+    <tr><td><strong>Sunlight within 15 min</strong> of waking — outside, no sunglasses</td><td>Triggers the cortisol spike you WANT, suppresses melatonin, resets body clock</td></tr>
+    <tr><td><strong>Bedroom: 65°F</strong></td><td>Core temp must drop 2-3°F to initiate sleep. Critical with night sweats</td></tr>
+    <tr><td><strong>Coffee before 10am only</strong></td><td>She's already doing this — just keep it locked in</td></tr>
+  </table>
+
+  <h3>Tier 2 — High Impact (Week 3+)</h3>
+  <table>
+    <tr><th>Change</th><th>How</th></tr>
+    <tr><td><strong>Transition hour at 11pm</strong></td><td>Not "no screens" — that won't stick. Switch to low-stimulation content: Kindle, ambient videos, calm podcasts. Dim brightness to minimum.</td></tr>
+    <tr><td><strong>Bed = sleep only</strong></td><td>If not asleep in 20 min, get up, sit somewhere dim, return when sleepy</td></tr>
+    <tr><td><strong>10-min body scan in bed</strong></td><td>YouTube: "NSDR Andrew Huberman" (free, ~10 min). Not meditation — just listen. Activates parasympathetic nervous system.</td></tr>
+    <tr><td><strong>Cool-to-warm shower 60-90 min before bed</strong></td><td>Brings blood to skin surface → rapid heat loss → accelerates core temp drop needed for sleep onset</td></tr>
+  </table>
+
+  <h3>Sleep Study — Get One</h3>
+  <div class="note note-amber">
+    <strong>Waking "too many times to count" at 38 with unknown snoring/apnea status needs objective measurement.</strong> Sleep apnea in women is massively underdiagnosed because women present differently (insomnia + mood changes vs. classic loud snoring). Perimenopause increases risk — progesterone is a respiratory stimulant, and declining levels increase airway collapsibility. An at-home sleep study (WatchPAT or Lofta, $150-300) is enough to screen. Ask her PCP for a referral.
+  </div>
+
+  <!-- ===== SECTION 5: MOOD + BRAIN FOG ===== -->
+  <h2>5. Mood + Brain Fog</h2>
+
+  <h3>Symptoms: Irritability, Anxiety, Low Motivation, Brain Fog, Mood Swings</h3>
+  <p>These come and go — not constant. No formal diagnosis. No medications. This pattern is consistent with the hormonal + sleep + stress + dehydration combination, NOT necessarily a psychiatric condition.</p>
+
+  <h3>Brain Fog — Likely Causes (Ranked)</h3>
+  <ol>
+    <li><strong>Sleep deprivation</strong> — 3/10 quality alone causes measurable cognitive impairment</li>
+    <li><strong>Perimenopause</strong> — estrogen facilitates acetylcholine (the "focus" neurotransmitter). Fluctuating = intermittent fog</li>
+    <li><strong>Dehydration</strong> — even 1-2% dehydration impairs memory and concentration</li>
+    <li><strong>Thyroid (subclinical)</strong> — family history is a red flag. TSH can be "normal" but suboptimal</li>
+    <li><strong>Inflammation</strong> — poor sleep + stress + processed food = chronic low-grade inflammation</li>
+    <li><strong>Low ferritin</strong> — common in perimenopause with varying periods. Causes fatigue + fog even with "normal" hemoglobin</li>
+  </ol>
+
+  <h3>Exercise as Antidepressant</h3>
+  <div class="card" style="border-left:3px solid #43A047">
+    <div class="card-title">The Evidence Is Strong</div>
+    <div class="card-detail">
+      2023 BMJ meta-analysis (218 studies, 14,170 people): Exercise is as effective as SSRIs for mild-to-moderate depression and anxiety. 150 min/week moderate activity is the dose.<br><br>
+      <strong>Timeline:</strong><br>
+      Weeks 1-2: Slight mood lift after sessions (endorphins)<br>
+      Weeks 3-4: Sleep quality begins improving<br>
+      Weeks 6-8: Noticeable reduction in anxiety + brain fog<br>
+      Week 12+: New baseline mood is significantly better<br>
+      3-6 months: Full antidepressant effect
+    </div>
+  </div>
+
+  <h3>When to See a Therapist</h3>
+  <p>Optimize sleep, exercise, hydration, and supplements for 8-12 weeks first. If mood doesn't improve at least 30-40% by then, add a CBT therapist. If she has persistent negative self-talk, unresolved trauma, or uses food/avoidance as coping — start therapy now in parallel. It can't hurt.</p>
+
+  <h3>Gut-Brain Connection</h3>
+  <p>90-95% of serotonin is made in the gut. Half takeout means high omega-6 (pro-inflammatory seed oils), low fiber (starves good bacteria), and high sodium (worsens dehydration). Quick wins:</p>
+  <ul>
+    <li>Add 25-30g fiber daily (beans, oats, berries — even added to takeout)</li>
+    <li>Fermented foods daily: yogurt, kimchi, sauerkraut (Stanford study: 6 servings/day for 10 weeks significantly reduced inflammatory markers)</li>
+    <li>Cook 4-5 meals/week minimum, reduce takeout to 3x/week</li>
+  </ul>
+
+  <!-- ===== SECTION 6: CARPAL TUNNEL ===== -->
+  <h2>6. Carpal Tunnel — The 10-Year Conversation</h2>
+
+  <div class="note note-amber">
+    <strong>Real talk:</strong> 10 years of bilateral CTS with progression to weakness and dropping things is past conservative-only management. She needs a hand surgeon evaluation — not to rush into surgery, but to get a current EMG and know where she stands. Prolonged severe compression causes permanent nerve damage that doesn't reverse, even after surgery.
+  </div>
+
+  <h3>The Neck/Shoulder Connection</h3>
+  <p>Her occasional neck/shoulder pain could be <strong>double crush syndrome</strong> — when the median nerve is compressed at both the wrist AND the neck, symptoms are worse than either alone. Three possibilities:</p>
+  <ul>
+    <li><strong>Cervical radiculopathy (C6-C7):</strong> Does turning her head to one side and looking up reproduce hand symptoms?</li>
+    <li><strong>Thoracic outlet syndrome:</strong> Arms feel heavy/cold overhead? Numbness in ring/pinky (not just thumb/pointer/middle)?</li>
+    <li><strong>Poor posture (most likely):</strong> Forward head + rounded shoulders = chronic nerve tension from neck to hand. Desk job makes this worse.</li>
+  </ul>
+
+  <h3>Desk Ergonomics Quick Wins</h3>
+  <div class="card">
+    <div class="card-detail">
+      <strong>1. Keyboard flat or negative tilt</strong> — wrists must be neutral (straight line forearm to knuckles). Most desks force wrist extension.<br>
+      <strong>2. Vertical mouse</strong> — Logitech MX Vertical or Anker ($25-45). Keeps forearm neutral, huge reduction in median nerve compression.<br>
+      <strong>3. Wrist rest is for RESTING, not typing</strong> — hands should float during typing. Rest between bursts.<br>
+      <strong>4. Monitor at eye level</strong> — prevents forward head posture (feeds into neck/shoulder component).<br>
+      <strong>5. Microbreaks every 30 min</strong> — 30 seconds of hand shaking + finger spreading. Set a timer.
+    </div>
+  </div>
+
+  <h3>Night Splints — EVERY Night</h3>
+  <div class="note note-red">
+    <strong>Not "sometimes" — every single night, both wrists.</strong> Rigid splints, wrist at 0° (neutral). Most nighttime numbness/waking is from wrist flexion during sleep. Studies show 80% symptom improvement with consistent night splinting over 4 weeks. This is the single highest-impact conservative treatment she's underusing.
+  </div>
+
+  <h3>Exercises: Safe vs. Avoid</h3>
+  <p>Full gym plan with CT modifications: <a href="her-plan.html" style="color:#534AB7;font-weight:600">Her Gym Plan &rarr;</a></p>
+  <p>Posture exercises to ADD to gym routine: face pulls, band pull-aparts, prone Y-raises — these open the chest and decompress the thoracic outlet.</p>
+
+  <!-- ===== SECTION 7: BLOODWORK ===== -->
+  <h2>7. Bloodwork — The Non-Negotiable Panel</h2>
+
+  <div class="note note-blue">
+    <strong>Step 1:</strong> Call the doctor's office THIS WEEK and get copies of whatever was tested 6 months ago. She's legally entitled to her results. This avoids re-testing things already covered.
+  </div>
+
+  <h3>Request This Panel By Name</h3>
+  <table>
+    <tr><th>Category</th><th>Tests</th><th>Why</th></tr>
+    <tr>
+      <td><strong>Hormones</strong></td>
+      <td>FSH, Estradiol, AMH, Progesterone (day 21)</td>
+      <td>Confirms perimenopause stage. AMH is the best single marker of ovarian reserve.</td>
+    </tr>
+    <tr>
+      <td><strong>Thyroid (FULL)</strong></td>
+      <td>TSH, Free T4, Free T3, TPO antibodies, Thyroglobulin antibodies</td>
+      <td>Standard TSH-only testing misses Hashimoto's. Family history makes full panel mandatory.</td>
+    </tr>
+    <tr>
+      <td><strong>Nutrients</strong></td>
+      <td>Vitamin D (25-OH), B12, Ferritin, Folate, Magnesium RBC</td>
+      <td>Target D: 40-60 ng/mL. B12: >500. Ferritin: >50. Magnesium RBC (NOT serum — serum is useless).</td>
+    </tr>
+    <tr>
+      <td><strong>Metabolic</strong></td>
+      <td>Fasting lipid panel, Fasting glucose, HbA1c, hsCRP</td>
+      <td>Perimenopause increases insulin resistance. hsCRP = inflammation marker.</td>
+    </tr>
+    <tr>
+      <td><strong>Autoimmune</strong></td>
+      <td>ANA, CBC with differential</td>
+      <td>Family history of autoimmune warrants screening.</td>
+    </tr>
+  </table>
+
+  <div class="note note-purple">
+    <strong>What to say:</strong> <em>"I have confirmed early perimenopause, family history of thyroid, autoimmune, and hypertension. I want a comprehensive hormone, thyroid, nutrient, and metabolic panel to establish baselines."</em> If the doctor pushes back, she can order through Ulta Lab Tests, Quest Direct, or Walk-In Lab ($200-400 out of pocket).
+  </div>
+
+  <h3>Also Request</h3>
+  <ul>
+    <li><strong>DEXA scan</strong> — bone density baseline. Early perimenopause = more years of estrogen decline = higher fracture risk long-term. Having a baseline at 38 is medically justified.</li>
+    <li><strong>Salivary cortisol test (4-point)</strong> — DUTCH test or ZRT Labs, ~$150-250. Measures cortisol at morning/noon/evening/night. Confirms the flipped cortisol pattern. Ask PCP or order through a functional medicine provider.</li>
+    <li><strong>Sleep study</strong> — at-home (WatchPAT/Lofta) is enough to screen. Given the wake-ups + unknown apnea status, this is warranted regardless.</li>
+  </ul>
+
+  <!-- ===== SECTION 8: SUPPLEMENT STACK ===== -->
+  <h2>8. Unified Supplement Stack</h2>
+
+  <div class="note note-green">
+    <strong>One at a time.</strong> Add each supplement 1 week apart to identify what works and rule out reactions. This is the combined stack addressing sleep, mood, perimenopause, hyperhidrosis, carpal tunnel, and brain fog simultaneously.
+  </div>
+
+  <table>
+    <tr><th>Time</th><th>Supplement</th><th>Dose</th><th>Targets</th></tr>
+    <tr>
+      <td><strong>Morning</strong></td>
+      <td>Vitamin D3 + K2</td>
+      <td>2,000-4,000 IU D3 + 100-200mcg K2 (MK-7)</td>
+      <td>Bones, mood, brain fog, immune</td>
+    </tr>
+    <tr>
+      <td><strong>Morning</strong></td>
+      <td>Omega-3 (EPA-dominant)</td>
+      <td>1,000-2,000mg EPA+DHA</td>
+      <td>Mood, inflammation, brain, heart, CT nerve health</td>
+    </tr>
+    <tr>
+      <td><strong>Morning</strong></td>
+      <td>Lion's Mane</td>
+      <td>500-1,000mg (fruiting body)</td>
+      <td>Brain fog, anxiety, nerve growth. Brand: Real Mushrooms</td>
+    </tr>
+    <tr>
+      <td><strong>Morning</strong></td>
+      <td>B-Complex (methylated)</td>
+      <td>1/day</td>
+      <td>Energy, serotonin, brain fog. Methylated forms for MTHFR variants.</td>
+    </tr>
+    <tr>
+      <td><strong>Morning</strong></td>
+      <td>Ashwagandha KSM-66</td>
+      <td>300mg</td>
+      <td>Cortisol regulation (daytime dose normalizes curve)</td>
+    </tr>
+    <tr>
+      <td><strong>Morning</strong></td>
+      <td>Sage extract</td>
+      <td>300mg</td>
+      <td>Hyperhidrosis — 50% sweat reduction in studies</td>
+    </tr>
+    <tr>
+      <td><strong>~10:30pm</strong></td>
+      <td>Magnesium glycinate</td>
+      <td>300-400mg</td>
+      <td>Sleep, anxiety, muscle tension, cortisol</td>
+    </tr>
+    <tr>
+      <td><strong>~10:30pm</strong></td>
+      <td>L-Theanine</td>
+      <td>200mg</td>
+      <td>Alpha brain waves → calm. No grogginess.</td>
+    </tr>
+    <tr>
+      <td><strong>~10:30pm</strong></td>
+      <td>Ashwagandha KSM-66</td>
+      <td>300mg</td>
+      <td>Evening cortisol reduction, sleep onset</td>
+    </tr>
+    <tr>
+      <td><strong>~10:30pm</strong></td>
+      <td>Tart Cherry</td>
+      <td>8oz juice or 480mg capsule</td>
+      <td>Natural melatonin source, anti-inflammatory (helps CT too)</td>
+    </tr>
+  </table>
+
+  <h3>Roll-Out Schedule</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-week">WEEK 1</div>
+      <div class="timeline-content">Magnesium glycinate 200mg at bedtime + hydration protocol + electrolytes</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">WEEK 2</div>
+      <div class="timeline-content">Increase magnesium to 400mg. Add L-Theanine 200mg at bedtime. Add Vitamin D 2,000 IU morning.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">WEEK 3</div>
+      <div class="timeline-content">Add Omega-3 morning. Add Sage extract morning. Add Tart Cherry evening.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">WEEK 4</div>
+      <div class="timeline-content">Add Ashwagandha 300mg morning + 300mg evening. <strong>Only if thyroid panel is clear.</strong></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">WEEK 5</div>
+      <div class="timeline-content">Add Lion's Mane morning. Add B-Complex morning. Full stack active.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">WEEK 8</div>
+      <div class="timeline-content">Reassess: sleep quality, mood, sweating, energy. Adjust doses. If sleep still &lt;5/10, sleep study results are critical.</div>
+    </div>
+  </div>
+
+  <div class="note note-amber">
+    <strong>Ashwagandha + thyroid warning:</strong> Ashwagandha mildly stimulates thyroid function. With family history of thyroid issues, get the full thyroid panel BEFORE starting ashwagandha. If Hashimoto's is found, skip it and discuss alternatives with her doctor.
+  </div>
+
+  <!-- ===== SECTION 9: MASTER CHECKLIST ===== -->
+  <h2>9. Master Action Checklist</h2>
+
+  <h3>This Week</h3>
+  <ul class="checklist">
+    <li>Start hydration: 80+ oz/day, buy electrolytes (LMNT or Liquid IV)</li>
+    <li>Start magnesium glycinate 200mg at bedtime</li>
+    <li>Night splints EVERY night, both wrists, rigid, neutral position</li>
+    <li>Nerve gliding exercises 2x daily (morning + before bed)</li>
+    <li>Set fixed 7:30am wake time — including weekends</li>
+    <li>Morning sunlight: 10-15 min outside within 15 min of waking</li>
+    <li>Bedroom temp to 65°F, fan on</li>
+    <li>Call doctor: get copies of bloodwork from 6 months ago</li>
+    <li>Confirm which IUD she has (hormonal vs copper)</li>
+  </ul>
+
+  <h3>This Month</h3>
+  <ul class="checklist">
+    <li>Schedule bloodwork: full panel from Section 7</li>
+    <li>Buy: vertical mouse, lifting straps, ab straps, water bottle she carries everywhere</li>
+    <li>Buy: clinical-strength antiperspirant (Certain Dri), apply at night</li>
+    <li>Buy: home blood pressure monitor, track 2-3x/week</li>
+    <li>Start gym: 3x/week using <a href="her-plan.html" style="color:#534AB7">Her Plan</a> (start easy, build over 4-6 weeks)</li>
+    <li>Roll out supplements per the Week 1-5 schedule above</li>
+    <li>Request dermatology referral for hyperhidrosis (use script from Section 2)</li>
+    <li>Request sleep study referral</li>
+    <li>Track mood daily (1-10 + sleep quality + cycle day) for 30 days</li>
+  </ul>
+
+  <h3>Month 2-3</h3>
+  <ul class="checklist">
+    <li>Bloodwork results: adjust Vitamin D dose, check thyroid, start ashwagandha if clear</li>
+    <li>Dermatology appointment: discuss glycopyrrolate, Qbrexza, or Botox</li>
+    <li>Sleep study results: address findings</li>
+    <li>Schedule hand surgeon consultation for CTS evaluation + current EMG</li>
+    <li>Request DEXA scan for bone density baseline</li>
+    <li>Discuss bioidentical progesterone with OB/GYN</li>
+    <li>Reassess mood at 8-week mark — if &lt;30% improvement, add CBT therapist</li>
+    <li>Reduce takeout to 3x/week, add fermented foods daily</li>
+  </ul>
+
+  <!-- LINKS -->
+  <h2>Related Pages</h2>
+  <a href="her-plan.html" class="link-card">Her Gym Plan &rarr;<span>Full 4-day split with carpal tunnel modifications, progressive overload, and wrist rehab protocol</span></a>
+  <a href="supplements.html" class="link-card">Supplement Guide &rarr;<span>Brands, doses, and what to look for on labels</span></a>
+  <a href="eating-guide.html" class="link-card">Eating Guide &rarr;<span>2,350 calorie muscle gain plan, protein targets, meal ideas</span></a>
+
+  <div class="footer">
+    <p>yerramazing &middot; Gym Partners</p>
+    <p style="margin-top:6px;font-size:10px;color:#bbb">This is a research-based wellness plan, not medical advice. Discuss all supplements and changes with a healthcare provider, especially given the perimenopause, family history, and carpal tunnel progression.</p>
+  </div>
+</div>
+</body>
+</html>
