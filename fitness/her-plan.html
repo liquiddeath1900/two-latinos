@@ -25,11 +25,15 @@ p{font-size:13px;color:#444;line-height:1.6;margin-bottom:.75rem}
 .note-purple{background:#EEEDFE;color:#3C3489}
 .note-blue{background:#E3F2FD;color:#0D47A1}
 .note-amber{background:#FFF8E1;color:#E65100}
+.note-red{background:#FCE4EC;color:#880E4F}
 .day-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;padding:3px 8px;border-radius:6px;background:#E1F5EE;color:#04342C;margin-bottom:10px}
 .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.5px;padding:2px 7px;border-radius:6px;margin-bottom:8px}
 .tag-ct{background:#FFF3E0;color:#E65100}
 .tag-sleep{background:#E8EAF6;color:#283593}
 .tag-wrist{background:#FCE4EC;color:#880E4F}
+.tag-warmup{background:#FFF8E1;color:#E65100}
+.tag-swap{background:#FCE4EC;color:#880E4F}
+.tag-optional{background:#E3F2FD;color:#0D47A1}
 table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:13px}
 th{background:#43A047;color:#fff;padding:10px 12px;text-align:left;font-size:12px;font-weight:600}
 td{padding:10px 12px;border-bottom:1px solid #e5e5e5;background:#fff}
@@ -41,48 +45,51 @@ ul{margin:0 0 .75rem 18px;font-size:13px;color:#444;line-height:1.8}
 .big-num{font-size:28px;font-weight:700;color:#43A047;margin-bottom:2px}
 .big-label{font-size:12px;color:#999}
 .phase{border-left:3px solid #43A047;padding-left:14px;margin-bottom:1.5rem}
-0;color:#999;text-align:center}
-.schedule-table td:first-child{font-weight:600;white-space:nowrap;width:60px}
+.warmup-box{background:#FFF8E1;border:1px solid #FFE082;border-radius:10px;padding:12px 14px;margin-bottom:14px}
+.warmup-box .card-title{color:#E65100;font-size:13px}
+.warmup-box .card-detail{font-size:12px;color:#7A4A00}
+.swap-box{background:#FCE4EC;border:2px dashed #E91E63;border-radius:12px;padding:14px 18px;margin:1.5rem 0}
+.optional-banner{background:linear-gradient(135deg,#E3F2FD,#EEEDFE);border:2px dashed #534AB7;border-radius:12px;padding:14px 18px;margin:2rem 0 1rem;text-align:center}
+.optional-banner h2{border:none;margin:0 0 6px;padding:0;color:#534AB7}
+.optional-banner p{font-size:12px;color:#534AB7;margin:0}
+.footer{margin-top:3rem;padding:1.5rem 0;font-size:12px;color:#999;text-align:center}
 </style>
 </head>
 <body>
 <div class="wrap">
   <a href="index.html" class="back">&larr; Back to Gym Partners</a>
-  <div style="margin-bottom:12px"><a href="her-health-plan.html" style="display:inline-block;font-size:11px;font-weight:600;color:#fff;background:#7B1FA2;padding:6px 12px;border-radius:8px;text-decoration:none">New: Full Health Action Plan &rarr;</a></div>
+  <div style="margin-bottom:12px"><a href="her-health-plan.html" style="display:inline-block;font-size:11px;font-weight:600;color:#fff;background:#7B1FA2;padding:6px 12px;border-radius:8px;text-decoration:none">Full Health Action Plan &rarr;</a></div>
   <h1>Her Plan</h1>
-  <div class="sub">Research-backed muscle gain program — 4 days/week Upper/Lower split with carpal tunnel modifications. Built for her stats: 38 yo, 145 lbs, 5'7". Goal: thick thighs, glutes, strong core, balanced upper body.</div>
+  <div class="sub">3-day base, glute/thigh priority, all carpal tunnel-modified. 2 of 3 workouts are lower body because that's where the goals are. Optional 4th day when the schedule works. No fixed weekdays — just A → B → C in order.</div>
 
-  <!-- Stats at a glance -->
   <div class="compare">
     <div class="card"><div class="big-num">145</div><div class="big-label">current lbs</div></div>
     <div class="card"><div class="big-num">155+</div><div class="big-label">year 1 target</div></div>
   </div>
 
   <div class="note note-green">
-    <strong>The science:</strong> Women at 38 can gain 8-12 lbs of lean muscle in year one. Estrogen is still anabolic at this age — the window is still open. Lower body days are prioritized for glute/thigh growth with extra volume. 4 days/week training, 145g protein, 2,350 calories. That's the formula for healthy weight in the right places.
+    <strong>The science:</strong> Women at 38 can gain 8-12 lbs of lean muscle in year one. Estrogen is still anabolic. Lower body days are doubled because that's where the goals live — thick thighs, glutes, flat core. 3 days/week, 145g protein, 2,350 calories.
   </div>
 
-  <!-- WHY THIS SPLIT -->
-  <h2>Why Upper/Lower 4x/Week?</h2>
-  <p>Schoenfeld 2016 meta-analysis: training each muscle group 2x/week is optimal for hypertrophy. Upper/Lower hits everything twice while giving 48-72 hours recovery between sessions. At 38, recovery matters more — 4 days is the sweet spot, not 5-6.</p>
+  <!-- HOW IT WORKS -->
+  <h2>How the 3-Day Base Works</h2>
 
-  <!-- WEEKLY SCHEDULE -->
-  <h2>Weekly Schedule</h2>
-  <table class="schedule-table">
-    <tr><th>Day</th><th>Session</th></tr>
-    <tr><td><strong>Mon</strong></td><td>Upper A — Push Focus</td></tr>
-    <tr><td><strong>Tue</strong></td><td>Lower A — Quad Focus</td></tr>
-    <tr><td><strong>Wed</strong></td><td>Rest + Wrist Rehab</td></tr>
-    <tr><td><strong>Thu</strong></td><td>Upper B — Pull Focus</td></tr>
-    <tr><td><strong>Fri</strong></td><td>Lower B — Glute/Ham Focus</td></tr>
-    <tr><td><strong>Sat</strong></td><td>Light cardio or rest</td></tr>
-    <tr><td><strong>Sun</strong></td><td>Rest</td></tr>
+  <table>
+    <tr><th>Workout</th><th>Focus</th><th>Wrist Demand</th></tr>
+    <tr><td><strong>A</strong></td><td>Lower Body — Glute & Quad Focus</td><td>Minimal</td></tr>
+    <tr><td><strong>B</strong></td><td>Upper Body (CT-Modified)</td><td>Low (straps + wraps)</td></tr>
+    <tr><td><strong>C</strong></td><td>Lower Body — Glute/Ham + Core</td><td>Minimal</td></tr>
+    <tr><td><strong>D</strong></td><td><em>Optional — Upper B or Wrist Swap Day</em></td><td>Depends</td></tr>
   </table>
 
+  <div class="note note-purple">
+    <strong>No fixed days.</strong> Train A → B → C in order. Rest at least 1 day between sessions. If wrists are flaring on Workout B day — swap to the Wrist Flare-Up Day (see below). Lower body days are always available because they barely need your hands.
+  </div>
+
   <!-- CARPAL TUNNEL RULES -->
-  <h2>Carpal Tunnel Rules</h2>
+  <h2>Carpal Tunnel Rules (Every Session)</h2>
   <div class="note note-amber">
-    <strong>Every exercise below is CT-modified.</strong> Neutral grips, straps for pulling, wraps for pressing, machines where possible. No heavy barbell gripping, no wrist curls, no power cleans. These modifications are non-negotiable — they protect the median nerve while still building muscle.
+    <strong>Every exercise is CT-modified.</strong> Neutral grips, straps for pulling, wraps for pressing, machines where possible. No heavy barbell gripping, no wrist curls, no power cleans. These protect the median nerve while still building muscle.
   </div>
 
   <div class="card" style="border-left:3px solid #E65100">
@@ -91,183 +98,244 @@ ul{margin:0 0 .75rem 18px;font-size:13px;color:#444;line-height:1.8}
       <strong>Wrist wraps</strong> — wear during all pressing movements<br>
       <strong>Lifting straps</strong> — use for all pulling/deadlift movements<br>
       <strong>Fat grips</strong> — attach to dumbbells for curls (spreads load across palm)<br>
-      <strong>Night splints</strong> — wear every night (neutral position, 0-15° extension)
+      <strong>Night splints</strong> — wear every night (neutral position, 0-15&deg; extension)
     </div>
   </div>
 
-  <!-- DAY 1: UPPER A -->
-  <h2>Day 1 — Upper A (Push Focus)</h2>
-  <span class="day-tag">Monday</span>
+  <!-- ======================== WORKOUT A ======================== -->
+  <h2>Workout A — Lower Body: Glute & Quad Focus</h2>
 
-  <div class="card">
-    <div class="card-title">Machine Chest Press <a href="https://www.youtube.com/results?search_query=machine+chest+press+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12. Use neutral grip handles. Wrist wraps on. Keeps wrists straight while loading chest/tris.</div>
+  <div class="warmup-box">
+    <span class="tag tag-warmup">WARM-UP — 10 MIN (includes wrist rehab)</span>
+    <div class="card-title">Do this before every lower body session <a href="https://www.youtube.com/results?search_query=lower+body+warm+up+routine+glute+activation+women" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">
+      <strong>3 min:</strong> Light bike or incline walk<br>
+      <strong>2 min:</strong> Hip circles → leg swings (front + side, 10 each) → bodyweight squats (10 reps) <a href="https://www.youtube.com/results?search_query=hip+circles+leg+swings+warm+up+women" target="_blank" class="watch">Watch &rarr;</a><br>
+      <strong>2 min:</strong> Glute activation — banded monster walks + clamshells (10 each) <a href="https://www.youtube.com/results?search_query=banded+glute+activation+warm+up+monster+walk+clamshell" target="_blank" class="watch">Watch &rarr;</a><br>
+      <strong>2 min:</strong> Median nerve glides (5 reps each hand) + tendon glides (5 reps) — built into warm-up so they actually happen <a href="https://www.youtube.com/results?search_query=median+nerve+glide+carpal+tunnel+exercise" target="_blank" class="watch">Watch &rarr;</a><br>
+      <strong>1 min:</strong> 1 light warm-up set of first exercise
+    </div>
   </div>
-  <div class="card">
-    <div class="card-title">Incline DB Press (Neutral Grip) <a href="https://www.youtube.com/results?search_query=incline+dumbbell+press+neutral+grip" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12. Palms face each other (hammer grip). Wrist wraps. Targets upper chest without wrist extension.</div>
-  </div>
-  <div class="card">
-    <div class="card-title">Cable Lateral Raises <a href="https://www.youtube.com/results?search_query=cable+lateral+raise+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12-15. Open-hand cuff attachment if gym has it, otherwise light grip on handle. Elbow drives the movement.</div>
-  </div>
-  <div class="card">
-    <div class="card-title">Seated Cable Row (V-Bar) <a href="https://www.youtube.com/results?search_query=seated+cable+row+v+bar+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12. Neutral V-grip + straps. Squeeze shoulder blades at the back. Great for posture.</div>
-  </div>
-  <div class="card">
-    <div class="card-title">Face Pulls (Rope) <a href="https://www.youtube.com/results?search_query=face+pull+rope+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 15. Light grip — elbows drive the movement, not hands. Rear delts + rotator cuff health.</div>
-  </div>
-  <div class="card">
-    <div class="card-title">Tricep Pushdowns (Rope) <a href="https://www.youtube.com/results?search_query=tricep+pushdown+rope+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12-15. Let rope rest in palms, don't death-grip. Split the rope at the bottom for full contraction.</div>
-  </div>
-  <div class="card">
-    <div class="card-title">EZ-Bar Curls <a href="https://www.youtube.com/results?search_query=ez+bar+curl+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">2 × 12-15. Angled grip reduces wrist strain vs straight bar. Keep elbows pinned to sides.</div>
-  </div>
-
-  <!-- DAY 2: LOWER A -->
-  <h2>Day 2 — Lower A (Quad Focus)</h2>
-  <span class="day-tag">Tuesday</span>
 
   <div class="card">
     <div class="card-title">Leg Press <a href="https://www.youtube.com/results?search_query=leg+press+form+women+quad+focus" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">4 × 10-12. Feet shoulder-width, mid-platform. Hands just rest on the handles — zero grip demand. The #1 quad builder for CT.</div>
-  </div>
-  <div class="card">
-    <div class="card-title">Goblet Squat (Fat Grip on DB) <a href="https://www.youtube.com/results?search_query=goblet+squat+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12. Attach fat grip to dumbbell or hold by the plates instead of handle. Spreads load across palm.</div>
-  </div>
-  <div class="card">
-    <div class="card-title">Leg Extension <a href="https://www.youtube.com/results?search_query=leg+extension+machine+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12-15. No grip required. Squeeze quads at the top, 2-second hold. Control the negative.</div>
-  </div>
-  <div class="card">
-    <div class="card-title">Romanian Deadlift (DBs + Straps) <a href="https://www.youtube.com/results?search_query=dumbbell+romanian+deadlift+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12. Lifting straps + neutral grip. Hinge at hips, slight knee bend. Feel the hamstring stretch. No grip fatigue.</div>
-  </div>
-  <div class="card">
-    <div class="card-title">Lying Leg Curl <a href="https://www.youtube.com/results?search_query=lying+leg+curl+machine+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12-15. No grip required. Don't let the weight stack crash — control the eccentric.</div>
+    <div class="card-detail">4 &times; 10-12. Feet shoulder-width, mid-platform. Hands just rest on handles — zero grip demand. The #1 quad builder for CT.</div>
   </div>
   <div class="card">
     <div class="card-title">Hip Thrust (Smith Machine) <a href="https://www.youtube.com/results?search_query=smith+machine+hip+thrust+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12. Bar rests on hip pad, hands guide only. Squeeze glutes at top for 2 seconds. The #1 glute builder.</div>
+    <div class="card-detail">3 &times; 10-12. Bar rests on hip pad, hands guide only. Squeeze glutes at top for 2 seconds. The #1 glute builder.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Goblet Squat (Fat Grip on DB) <a href="https://www.youtube.com/results?search_query=goblet+squat+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 10-12. Attach fat grip to dumbbell or hold by the plates. Spreads load across palm.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Leg Extension <a href="https://www.youtube.com/results?search_query=leg+extension+machine+form" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 12-15. No grip required. Squeeze quads at top, 2-second hold.</div>
   </div>
   <div class="card">
     <div class="card-title">Cable Kickbacks <a href="https://www.youtube.com/results?search_query=cable+kickback+glutes+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12-15 each leg. Ankle cuff attachment — zero grip. Squeeze glute at the top. The isolation finisher for that roundness.</div>
+    <div class="card-detail">3 &times; 12-15 each leg. Ankle cuff attachment — zero grip. Squeeze glute at top. The isolation finisher for roundness.</div>
   </div>
   <div class="card">
     <div class="card-title">Seated Calf Raise <a href="https://www.youtube.com/results?search_query=seated+calf+raise+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 15-20. No grip required. Full range — stretch at bottom, pause at top.</div>
+    <div class="card-detail">3 &times; 15-20. No grip required. Full range — stretch at bottom, pause at top.</div>
   </div>
 
-  <!-- DAY 3: UPPER B -->
-  <h2>Day 3 — Upper B (Pull Focus)</h2>
-  <span class="day-tag">Thursday</span>
+  <div class="note note-green">
+    <strong>Core finisher (pick 2):</strong> Dead Bugs 3&times;10 each side <a href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+form" target="_blank" class="watch">Watch &rarr;</a> + Forearm Plank 3&times;30-45 sec <a href="https://www.youtube.com/results?search_query=forearm+plank+form+tips" target="_blank" class="watch">Watch &rarr;</a> — both are zero wrist load.
+  </div>
+
+  <!-- ======================== WORKOUT B ======================== -->
+  <h2>Workout B — Upper Body (CT-Modified)</h2>
+
+  <div class="warmup-box">
+    <span class="tag tag-warmup">WARM-UP — 10 MIN (includes wrist rehab)</span>
+    <div class="card-title">Do this before every upper body session <a href="https://www.youtube.com/results?search_query=upper+body+warm+up+routine+women+shoulder+mobility" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">
+      <strong>3 min:</strong> Light cardio (bike or walk)<br>
+      <strong>2 min:</strong> Arm circles → band pull-aparts (15 reps) → shoulder dislocates with band <a href="https://www.youtube.com/results?search_query=shoulder+dislocate+band+warm+up+mobility" target="_blank" class="watch">Watch &rarr;</a><br>
+      <strong>2 min:</strong> Chin tucks (10 reps, hold 5 sec each) + cervical nerve glides (5 each side) — posture + wrist rehab in one <a href="https://www.youtube.com/results?search_query=chin+tuck+exercise+cervical+spine+posture" target="_blank" class="watch">Watch &rarr;</a><br>
+      <strong>2 min:</strong> Median nerve glides (5 reps each hand) + tendon glides (5 reps) <a href="https://www.youtube.com/results?search_query=tendon+glide+exercises+carpal+tunnel" target="_blank" class="watch">Watch &rarr;</a><br>
+      <strong>1 min:</strong> 1 light warm-up set of first exercise with wraps on<br><br>
+      <em>Wrist check: If hands are numb/tingling before you even start — swap to the Wrist Flare-Up Day below.</em>
+    </div>
+  </div>
 
   <div class="card">
-    <div class="card-title">Lat Pulldown (Wide Neutral Grip) <a href="https://www.youtube.com/results?search_query=lat+pulldown+neutral+grip+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12. Neutral grip attachment + straps. Pull to upper chest, squeeze lats. No wrist rotation needed.</div>
+    <div class="card-title">Machine Chest Press <a href="https://www.youtube.com/results?search_query=machine+chest+press+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 10-12. Use neutral grip handles. Wrist wraps on. Keeps wrists straight while loading chest/tris.</div>
   </div>
   <div class="card">
-    <div class="card-title">Machine-Supported Row <a href="https://www.youtube.com/results?search_query=chest+supported+row+machine+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12. Chest-supported, neutral handles + straps. Takes grip completely out of the equation.</div>
+    <div class="card-title">Lat Pulldown (Neutral Grip) <a href="https://www.youtube.com/results?search_query=lat+pulldown+neutral+grip+form" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 10-12. Neutral grip attachment + straps. Pull to upper chest, squeeze lats.</div>
   </div>
   <div class="card">
     <div class="card-title">DB Overhead Press (Neutral Grip) <a href="https://www.youtube.com/results?search_query=dumbbell+overhead+press+neutral+grip+seated" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12. Seated, hammer grip (palms face each other). Wrist wraps on. Builds shoulders without wrist extension.</div>
+    <div class="card-detail">3 &times; 10-12. Seated, hammer grip (palms face each other). Wrist wraps on. Shoulders without wrist extension.</div>
   </div>
   <div class="card">
-    <div class="card-title">Cable Chest Fly <a href="https://www.youtube.com/results?search_query=cable+chest+fly+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12-15. Forearm cuff attachments eliminate grip entirely. If gym doesn't have cuffs, very light open grip on handles.</div>
+    <div class="card-title">Seated Cable Row (V-Bar) <a href="https://www.youtube.com/results?search_query=seated+cable+row+v+bar+form" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 10-12. Neutral V-grip + straps. Squeeze shoulder blades at the back.</div>
   </div>
   <div class="card">
-    <div class="card-title">Rear Delt Machine <a href="https://www.youtube.com/results?search_query=rear+delt+machine+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 15. Pad-based, minimal grip. Just push outward with arms. Rear delts + upper back posture.</div>
+    <div class="card-title">Face Pulls (Rope) <a href="https://www.youtube.com/results?search_query=face+pull+rope+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 15. Light grip — elbows drive the movement, not hands. Rear delts + rotator cuff + posture.</div>
   </div>
   <div class="card">
-    <div class="card-title">Hammer Curls (Fat Grips) <a href="https://www.youtube.com/results?search_query=hammer+curl+fat+grips+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">2 × 12-15. Neutral grip reduces wrist torque. Fat grips spread load across palm. Don't squeeze — let gravity help.</div>
+    <div class="card-title">Tricep Pushdowns (Rope) <a href="https://www.youtube.com/results?search_query=tricep+pushdown+rope+form" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 12-15. Let rope rest in palms, don't death-grip. Split rope at bottom for full contraction.</div>
   </div>
   <div class="card">
-    <div class="card-title">Overhead Tricep Extension (Cable) <a href="https://www.youtube.com/results?search_query=overhead+tricep+extension+cable+rope" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">2 × 12-15. Rope attachment, light open grip. Step forward for stretch at the bottom.</div>
+    <div class="card-title">EZ-Bar Curls <a href="https://www.youtube.com/results?search_query=ez+bar+curl+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">2 &times; 12-15. Angled grip reduces wrist strain vs straight bar. Keep elbows pinned to sides.</div>
   </div>
 
-  <!-- DAY 4: LOWER B -->
-  <h2>Day 4 — Lower B (Glute/Ham Focus)</h2>
-  <span class="day-tag">Friday</span>
+  <div class="note note-green">
+    <strong>Posture work (do 2 of these):</strong> Band Pull-Aparts 3&times;15 <a href="https://www.youtube.com/results?search_query=band+pull+apart+posture+exercise" target="_blank" class="watch">Watch &rarr;</a> + Prone Y-Raises 3&times;12 <a href="https://www.youtube.com/results?search_query=prone+Y+raise+lower+trap+exercise" target="_blank" class="watch">Watch &rarr;</a> — fixes the desk-job posture that makes carpal tunnel worse.
+  </div>
+
+  <!-- ======================== WORKOUT C ======================== -->
+  <h2>Workout C — Lower Body: Glute/Ham + Core</h2>
+
+  <div class="warmup-box">
+    <span class="tag tag-warmup">WARM-UP — 10 MIN (includes wrist rehab)</span>
+    <div class="card-title">Same lower body warm-up as Workout A <a href="https://www.youtube.com/results?search_query=glute+activation+warm+up+hip+thrust+day+women" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">
+      <strong>3 min:</strong> Light bike or incline walk<br>
+      <strong>2 min:</strong> Hip circles → leg swings → bodyweight squats <a href="https://www.youtube.com/results?search_query=dynamic+lower+body+warm+up+hip+hamstring" target="_blank" class="watch">Watch &rarr;</a><br>
+      <strong>2 min:</strong> Glute activation — fire hydrants + glute bridges (10 each) <a href="https://www.youtube.com/results?search_query=fire+hydrant+glute+bridge+warm+up+activation" target="_blank" class="watch">Watch &rarr;</a><br>
+      <strong>2 min:</strong> Median nerve glides + tendon glides (5 reps each) <a href="https://www.youtube.com/results?search_query=median+nerve+glide+tendon+glide+carpal+tunnel" target="_blank" class="watch">Watch &rarr;</a><br>
+      <strong>1 min:</strong> 1 light warm-up set of first exercise
+    </div>
+  </div>
 
   <div class="card">
     <div class="card-title">Barbell Hip Thrust (Pad + Straps) <a href="https://www.youtube.com/results?search_query=barbell+hip+thrust+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">4 × 8-10. Bar on hip pad, hands guide only — no gripping. Drive through heels, squeeze glutes 2 sec at top.</div>
+    <div class="card-detail">4 &times; 8-10. Bar on hip pad, hands guide only — no gripping. Drive through heels, squeeze glutes 2 sec at top.</div>
   </div>
   <div class="card">
     <div class="card-title">Bulgarian Split Squat (DBs + Straps) <a href="https://www.youtube.com/results?search_query=bulgarian+split+squat+dumbbell+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12 each leg. Straps eliminate grip demand. Rear foot on bench. Lean slightly forward for more glute activation.</div>
+    <div class="card-detail">3 &times; 10-12 each leg. Straps eliminate grip demand. Lean slightly forward for more glute activation.</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Romanian Deadlift (DBs + Straps) <a href="https://www.youtube.com/results?search_query=dumbbell+romanian+deadlift+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 10-12. Lifting straps + neutral grip. Hinge at hips, feel the hamstring stretch. No grip fatigue.</div>
   </div>
   <div class="card">
     <div class="card-title">Seated Leg Curl <a href="https://www.youtube.com/results?search_query=seated+leg+curl+machine+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10-12. No grip required. Slow eccentric (3 sec). Builds hamstrings safely.</div>
+    <div class="card-detail">3 &times; 10-12. No grip required. Slow eccentric (3 sec). Builds hamstrings safely.</div>
   </div>
   <div class="card">
     <div class="card-title">Leg Press (Narrow Stance, High Feet) <a href="https://www.youtube.com/results?search_query=leg+press+narrow+stance+high+feet+glutes" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12. Feet high and narrow shifts emphasis to glutes + hamstrings. Hands rest.</div>
-  </div>
-  <div class="card">
-    <div class="card-title">Cable Pull-Through <a href="https://www.youtube.com/results?search_query=cable+pull+through+form+glutes" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12-15. Rope with light open grip. Hip hinge pattern — squeeze glutes at top. Great alternative to kettlebell swings.</div>
+    <div class="card-detail">3 &times; 12. Feet high and narrow shifts emphasis to glutes + hamstrings. Hands rest.</div>
   </div>
   <div class="card">
     <div class="card-title">Adductor Machine <a href="https://www.youtube.com/results?search_query=adductor+machine+form+inner+thigh" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 15. No grip. Inner thigh strength + hip stability.</div>
+    <div class="card-detail">3 &times; 15. No grip. Inner thigh strength + hip stability.</div>
   </div>
   <div class="card">
     <div class="card-title">Banded Hip Abduction (Seated) <a href="https://www.youtube.com/results?search_query=banded+hip+abduction+seated+glutes" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 20. Resistance band above knees on a bench. Push knees outward, hold 2 sec. Targets upper glutes (the "shelf" look). Zero grip.</div>
+    <div class="card-detail">3 &times; 20. Band above knees. Push knees outward, hold 2 sec. Targets upper glutes (the "shelf" look). Zero grip.</div>
   </div>
   <div class="card">
     <div class="card-title">Standing Calf Raise (Machine) <a href="https://www.youtube.com/results?search_query=standing+calf+raise+machine+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 15-20. Shoulder pad machine, no grip. Full range of motion — stretch + squeeze.</div>
+    <div class="card-detail">3 &times; 15-20. Shoulder pad machine, no grip. Full range.</div>
   </div>
 
-  <!-- CORE FINISHER -->
-  <h2>Core Finisher (Add to Any Day)</h2>
-  <p>Pick 2-3 of these after your main workout. Rotate them. Strong core = better posture, tighter waist, and more power in hip thrusts and squats.</p>
+  <div class="note note-green">
+    <strong>Core finisher (pick 2-3):</strong> Pallof Press 3&times;10 each side <a href="https://www.youtube.com/results?search_query=pallof+press+cable+core+form" target="_blank" class="watch">Watch &rarr;</a> + Hanging Knee Raises (ab straps) 3&times;12-15 <a href="https://www.youtube.com/results?search_query=hanging+knee+raise+ab+straps" target="_blank" class="watch">Watch &rarr;</a> + Cable Woodchops 3&times;12 each <a href="https://www.youtube.com/results?search_query=cable+woodchop+obliques+form" target="_blank" class="watch">Watch &rarr;</a> — all wrist-friendly, all build the flat tummy.
+  </div>
 
-  <div class="card">
-    <div class="card-title">Dead Bugs <a href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10 each side. Back pressed into floor, opposite arm + leg extend. Zero wrist load. The #1 CT-friendly core exercise.</div>
+  <!-- ======================== WRIST FLARE-UP SWAP ======================== -->
+  <div class="swap-box">
+    <span class="tag tag-swap">WRIST FLARE-UP SWAP DAY</span>
+    <h3 style="color:#880E4F;margin-top:6px">When wrists say no — do this instead of Workout B</h3>
+    <p style="font-size:12px;color:#880E4F">Hands numb? Tingling worse than usual? Pain during warm-up? Don't push through it — swap to this. You still get a full session, still build the goals, and your wrists get a break. This is NOT skipping a workout — it's training smarter.</p>
   </div>
-  <div class="card">
-    <div class="card-title">Pallof Press (Cable) <a href="https://www.youtube.com/results?search_query=pallof+press+cable+core+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10 each side. Anti-rotation = deep core activation. Light cable, press straight out, hold 2 sec. Builds that tight waistline.</div>
+
+  <div class="card" style="border-left:3px solid #E91E63">
+    <div class="card-title">Leg Press — 4 &times; 10-12 <a href="https://www.youtube.com/results?search_query=leg+press+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Zero grip. Different foot positions each set: normal, wide, narrow-high, single-leg.</div>
   </div>
-  <div class="card">
-    <div class="card-title">Hanging Knee Raises (Straps) <a href="https://www.youtube.com/results?search_query=hanging+knee+raise+ab+straps" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12-15. Ab straps hang from elbows, not hands — no grip needed. Curl knees to chest, control the swing.</div>
+  <div class="card" style="border-left:3px solid #E91E63">
+    <div class="card-title">Hip Thrust (Smith Machine) — 3 &times; 10-12 <a href="https://www.youtube.com/results?search_query=smith+machine+hip+thrust+women" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Hands guide only. Extra glute volume never hurts.</div>
   </div>
-  <div class="card">
-    <div class="card-title">Forearm Plank <a href="https://www.youtube.com/results?search_query=forearm+plank+form+tips" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 30-45 sec. On forearms (wrist-neutral). Squeeze everything — glutes, abs, quads. Don't sag.</div>
+  <div class="card" style="border-left:3px solid #E91E63">
+    <div class="card-title">Leg Extension — 3 &times; 12-15 <a href="https://www.youtube.com/results?search_query=leg+extension+machine+form" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">No grip. Squeeze quads at the top.</div>
   </div>
-  <div class="card">
-    <div class="card-title">Cable Woodchops <a href="https://www.youtube.com/results?search_query=cable+woodchop+obliques+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12 each side. Light weight, control the rotation. Obliques + waist definition. Use rope with open grip.</div>
+  <div class="card" style="border-left:3px solid #E91E63">
+    <div class="card-title">Lying Leg Curl — 3 &times; 12-15 <a href="https://www.youtube.com/results?search_query=lying+leg+curl+machine+form" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">No grip. Slow eccentric.</div>
   </div>
+  <div class="card" style="border-left:3px solid #E91E63">
+    <div class="card-title">Cable Pull-Through — 3 &times; 12-15 <a href="https://www.youtube.com/results?search_query=cable+pull+through+form+glutes" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Rope with minimal grip. Hip hinge, squeeze glutes at top.</div>
+  </div>
+  <div class="card" style="border-left:3px solid #E91E63">
+    <div class="card-title">Adductor + Abductor Machines — 3 &times; 15 each <a href="https://www.youtube.com/results?search_query=adductor+abductor+machine+women" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Both machines, back to back. Inner + outer thigh. Zero grip.</div>
+  </div>
+
+  <div class="note note-red">
+    <strong>Core circuit (always do on swap day):</strong> Dead Bugs 3&times;10 + Forearm Plank 3&times;45sec + Hanging Knee Raises (ab straps) 3&times;12 + Pallof Press 3&times;10 each side. Flat tummy work needs zero hands.
+  </div>
+
+  <div class="note note-amber">
+    <strong>Wrist care after swap day:</strong> Ice wrists 10 min each after the session. Do full nerve glide set before bed. Wear night splints. This buys time for the next Workout B attempt.
+  </div>
+
+  <!-- ======================== OPTIONAL D ======================== -->
+  <div class="optional-banner">
+    <h2>Optional Workout D</h2>
+    <p>When you can squeeze in a 4th day. Pick whichever version fits how the wrists feel.</p>
+  </div>
+
+  <h3>Option 1: Upper B (If Wrists Feel Good)</h3>
+
+  <div class="warmup-box">
+    <span class="tag tag-warmup">WARM-UP — 10 MIN</span>
+    <div class="card-title">Same upper body warm-up as Workout B <a href="https://www.youtube.com/results?search_query=upper+body+warm+up+women+shoulder+mobility" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Light cardio → arm circles → band pull-aparts → chin tucks → nerve glides → 1 warm-up set</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid #0D47A1">
+    <div class="card-title">Incline DB Press (Neutral Grip) <a href="https://www.youtube.com/results?search_query=incline+dumbbell+press+neutral+grip" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 10-12. Palms face each other. Wrist wraps. Upper chest without wrist extension.</div>
+  </div>
+  <div class="card" style="border-left:3px solid #0D47A1">
+    <div class="card-title">Machine-Supported Row <a href="https://www.youtube.com/results?search_query=chest+supported+row+machine+form" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 10-12. Chest-supported, neutral handles + straps. Zero grip demand.</div>
+  </div>
+  <div class="card" style="border-left:3px solid #0D47A1">
+    <div class="card-title">Cable Lateral Raises <a href="https://www.youtube.com/results?search_query=cable+lateral+raise+form" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 12-15. Open-hand cuff attachment or light grip. Elbow drives the movement.</div>
+  </div>
+  <div class="card" style="border-left:3px solid #0D47A1">
+    <div class="card-title">Cable Chest Fly <a href="https://www.youtube.com/results?search_query=cable+chest+fly+form+women" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 12-15. Forearm cuff attachments eliminate grip entirely.</div>
+  </div>
+  <div class="card" style="border-left:3px solid #0D47A1">
+    <div class="card-title">Rear Delt Machine <a href="https://www.youtube.com/results?search_query=rear+delt+machine+form+tutorial" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">3 &times; 15. Pad-based, minimal grip. Rear delts + upper back posture.</div>
+  </div>
+  <div class="card" style="border-left:3px solid #0D47A1">
+    <div class="card-title">Hammer Curls (Fat Grips) + Overhead Tricep Extension <a href="https://www.youtube.com/results?search_query=hammer+curl+fat+grips+form" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">2 &times; 12-15 each. Superset them. Neutral grip on curls, light rope grip on extensions.</div>
+  </div>
+
+  <h3>Option 2: Extra Glutes & Abs (If Wrists Hurt)</h3>
+  <p style="font-size:12px;color:#666">Same structure as the Wrist Flare-Up Swap Day above. More lower body + more core = more progress on the main goals with zero wrist demand.</p>
 
   <!-- PROGRESSIVE OVERLOAD -->
   <h2>Progressive Overload</h2>
-  <p>This is how you get stronger over time. Don't just go through the motions.</p>
 
   <div class="card" style="border-left:3px solid #43A047">
     <div class="card-title">The Rule</div>
     <div class="card-detail">
-      <strong>Step 1:</strong> Hit the TOP of the rep range on all sets (e.g., 3×12 when range is 10-12)<br>
+      <strong>Step 1:</strong> Hit the TOP of the rep range on all sets (e.g., 3&times;12 when range is 10-12)<br>
       <strong>Step 2:</strong> Next session, add weight (+5 lbs lower body, +2.5 lbs upper body)<br>
       <strong>Step 3:</strong> Drop back to bottom of rep range with new weight<br>
       <strong>Step 4:</strong> Build back up to top of range. Repeat forever.
@@ -275,38 +343,30 @@ ul{margin:0 0 .75rem 18px;font-size:13px;color:#444;line-height:1.8}
   </div>
 
   <div class="note note-green">
-    <strong>Realistic timeline:</strong> Weeks 1-4 = neurological adaptation (you'll get stronger fast but that's your brain, not muscle yet). Weeks 8-12 = visible muscle changes begin. Months 3-6 = peak "newbie gains" — the best window of your training career. Month by month, expect ~0.5-1 lb of lean muscle.
+    <strong>Realistic timeline:</strong> Weeks 1-4 = neurological adaptation (stronger fast, but that's your brain, not muscle yet). Weeks 8-12 = visible muscle changes begin. Months 3-6 = peak "newbie gains." Month by month: ~0.5-1 lb of lean muscle.
   </div>
 
   <!-- POSTURE & CERVICAL SPINE -->
-  <h2>Posture & Cervical Spine (Critical)</h2>
+  <h2>Posture & Cervical Spine</h2>
   <div class="note note-amber">
-    <strong>Why this matters:</strong> Cervical spine dysfunction likely connects her carpal tunnel AND tinnitus. A compressed cervical spine irritates the median nerve (wrists) and can cause somatosensory tinnitus (ringing). These exercises target the root cause, not just symptoms. Do 2-3x/week — add to any upper body day.
+    <strong>Why this matters:</strong> Cervical spine dysfunction likely connects her carpal tunnel AND tinnitus. These exercises are built INTO the warm-ups above so they happen automatically. If she wants extra credit, add these on rest days — but the warm-ups already cover the essentials.
   </div>
 
   <div class="card" style="border-left:3px solid #7B1FA2">
-    <div class="card-title">Face Pulls (Rope) <a href="https://www.youtube.com/results?search_query=face+pull+posture+correction+form" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 15-20. Light weight, high reps. Pull rope to forehead level, elbows high. External rotation at the end. Fixes rounded shoulders + upper back posture.</div>
+    <div class="card-title">Chin Tucks — 3 &times; 10, hold 5 sec <a href="https://www.youtube.com/results?search_query=chin+tuck+exercise+cervical+spine" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Pull chin straight back (make a double chin). Decompresses cervical spine. Do at desk hourly if possible. Zero equipment.</div>
   </div>
   <div class="card" style="border-left:3px solid #7B1FA2">
-    <div class="card-title">Band Pull-Aparts <a href="https://www.youtube.com/results?search_query=band+pull+apart+posture+exercise" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 15-20. Light resistance band at chest height. Pull apart until band touches chest. Squeeze shoulder blades. Great between sets of any exercise.</div>
+    <div class="card-title">Cervical Nerve Glides — 2 &times; 10 each side <a href="https://www.youtube.com/results?search_query=cervical+nerve+glide+exercise+carpal+tunnel" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Tilt head away from affected side, extend arm, open/close hand. Glides the nerve from neck through arm. Gently — never force into pain.</div>
   </div>
   <div class="card" style="border-left:3px solid #7B1FA2">
-    <div class="card-title">Chin Tucks <a href="https://www.youtube.com/results?search_query=chin+tuck+exercise+cervical+spine" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 10, hold 5 sec each. Pull chin straight back (make a double chin). Decompresses cervical spine. Do at desk hourly if possible. Zero equipment.</div>
-  </div>
-  <div class="card" style="border-left:3px solid #7B1FA2">
-    <div class="card-title">Cervical Nerve Glides <a href="https://www.youtube.com/results?search_query=cervical+nerve+glide+exercise+carpal+tunnel" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">2 × 10 each side. Tilt head away from affected side, extend arm, open/close hand. Glides the nerve from neck through arm. Do gently — never force into pain.</div>
-  </div>
-  <div class="card" style="border-left:3px solid #7B1FA2">
-    <div class="card-title">Prone Y-Raises <a href="https://www.youtube.com/results?search_query=prone+Y+raise+lower+trap+exercise" target="_blank" class="watch">Watch &rarr;</a></div>
-    <div class="card-detail">3 × 12. Lie face down on incline bench. Arms in Y position, thumbs up. Lift with lower traps, not momentum. Fixes forward head posture at the root.</div>
+    <div class="card-title">Prone Y-Raises — 3 &times; 12 <a href="https://www.youtube.com/results?search_query=prone+Y+raise+lower+trap+exercise" target="_blank" class="watch">Watch &rarr;</a></div>
+    <div class="card-detail">Lie face down on incline bench. Arms in Y, thumbs up. Lift with lower traps. Fixes forward head posture at the root.</div>
   </div>
 
   <div class="note note-green">
-    <strong>Tinnitus connection:</strong> If her ringing changes when she moves her jaw or turns her neck — that's somatosensory tinnitus. Cervical PT (these exercises + manual therapy) has shown significant improvement in studies. Ask the ENT specifically about this.
+    <strong>Tinnitus connection:</strong> If the ringing changes when she moves her jaw or turns her neck — that's somatosensory tinnitus. Cervical PT (these exercises + manual therapy) has shown significant improvement in studies.
   </div>
 
   <!-- GYM HYDRATION -->
@@ -317,18 +377,20 @@ ul{margin:0 0 .75rem 18px;font-size:13px;color:#444;line-height:1.8}
       <strong>Pre-gym (30 min before):</strong> 16oz electrolyte water (salt + NoSalt + trace minerals + lemon)<br>
       <strong>During:</strong> Sip electrolyte water every 10-15 min. Don't chug.<br>
       <strong>Post-gym:</strong> 16oz electrolyte water + post-workout shake<br>
-      <strong>Why electrolytes matter more for her:</strong> Primary hyperhidrosis = she loses more minerals than average. Gym sweating on top of that = double depletion. DIY electrolytes replace what Gatorade/Liquid IV can't (trace minerals).<br>
-      <em>Recipe: 1 gallon water + 1 tsp salt + ½ tsp NoSalt + 160 drops ConcenTrace + juice of 2 lemons. Batch it Sunday.</em>
+      <strong>Why electrolytes matter more for her:</strong> Primary hyperhidrosis = she loses more minerals than average. Gym sweating on top of that = double depletion.<br>
+      <em>Recipe: 1 gallon water + 1 tsp salt + &frac12; tsp NoSalt + 160 drops ConcenTrace + juice of 2 lemons. Batch it Sunday.</em>
     </div>
   </div>
 
   <!-- WRIST REHAB -->
   <h2>Wrist Rehab Protocol</h2>
-  <p>Do these 2-3x daily (morning, lunch, before bed). 5-10 reps each, hold 3-5 seconds per position. A 2023 RCT showed these combined with night splinting significantly reduced CT symptoms.</p>
+  <div class="note note-amber">
+    <strong>The honest truth:</strong> The nerve glides are already baked into every warm-up above — so even on autopilot, the rehab happens. But doing them 2-3x daily (morning + before bed) would speed things up significantly. Below is the full protocol for when she's ready to commit to it.
+  </div>
 
   <h3>Median Nerve Glides</h3>
   <div class="card" style="border-left:3px solid #E91E63">
-    <span class="tag tag-wrist">DO DAILY — 5-10 REPS</span>
+    <span class="tag tag-wrist">5-10 REPS EACH HAND</span>
     <div class="card-detail">
       <strong>1.</strong> Fist — wrist neutral, fingers and thumb curled <a href="https://www.youtube.com/results?search_query=median+nerve+glide+carpal+tunnel+exercise" target="_blank" class="watch">Watch &rarr;</a><br>
       <strong>2.</strong> Fingers straight — wrist neutral (table-top)<br>
@@ -342,7 +404,7 @@ ul{margin:0 0 .75rem 18px;font-size:13px;color:#444;line-height:1.8}
 
   <h3>Tendon Glides</h3>
   <div class="card" style="border-left:3px solid #E91E63">
-    <span class="tag tag-wrist">DO DAILY — 5-10 REPS</span>
+    <span class="tag tag-wrist">5-10 REPS</span>
     <div class="card-detail">
       <strong>1.</strong> Straight fingers (full extension) <a href="https://www.youtube.com/results?search_query=tendon+glide+exercises+carpal+tunnel" target="_blank" class="watch">Watch &rarr;</a><br>
       <strong>2.</strong> Hook fist (bend at middle + end joints, base straight)<br>
@@ -354,7 +416,7 @@ ul{margin:0 0 .75rem 18px;font-size:13px;color:#444;line-height:1.8}
   </div>
 
   <div class="note note-purple">
-    <strong>Night splints:</strong> Wear neutral-position wrist splints every night. A Cochrane review confirmed they improve CT symptoms. Keep wrist at 0-15° extension. Night-only wear is effective — no need for full-time. Use <strong>wrist wraps</strong> (not splints) during workouts for support.
+    <strong>Night splints:</strong> Wear neutral-position wrist splints every night. A Cochrane review confirmed they improve CT symptoms. Keep wrist at 0-15&deg; extension. Use <strong>wrist wraps</strong> (not splints) during workouts.
   </div>
 
   <!-- SLEEP PROTOCOL -->
@@ -364,43 +426,42 @@ ul{margin:0 0 .75rem 18px;font-size:13px;color:#444;line-height:1.8}
   <div class="card" style="border-left:3px solid #283593">
     <span class="tag tag-sleep">Lion's Mane</span>
     <div class="card-title">500-1,000 mg/day</div>
-    <div class="card-detail">Fruiting body extract, standardized. Take with dinner or 1-2 hours before bed. Not a sedative — works through anxiety/stress reduction and nerve growth factor (NGF) stimulation. Studies on women showed improved sleep quality after 4 weeks on the PSQI scale. Start at 500 mg, titrate to 1,000 mg over 2 weeks.</div>
+    <div class="card-detail">Fruiting body extract, standardized. Take with dinner. Not a sedative — works through anxiety/stress reduction and nerve growth factor (NGF). Studies showed improved sleep quality after 4 weeks. Start at 500 mg, titrate to 1,000 mg over 2 weeks.</div>
   </div>
 
   <div class="card" style="border-left:3px solid #283593">
     <span class="tag tag-sleep">Magnesium Glycinate</span>
     <div class="card-title">200-400 mg before bed</div>
-    <div class="card-detail">Glycinate form for bioavailability + calming effect. Activates parasympathetic nervous system, regulates melatonin, binds GABA receptors. Start at 200 mg, work up to 400 mg. If stools get loose = back off the dose. Take 1-2 hours before bed, consistently.</div>
+    <div class="card-detail">Activates parasympathetic nervous system, regulates melatonin, binds GABA receptors. Start at 200 mg, work up to 400 mg. If stools get loose = back off the dose.</div>
   </div>
 
   <div class="card" style="border-left:3px solid #283593">
     <span class="tag tag-sleep">Ashwagandha (KSM-66)</span>
     <div class="card-title">300-600 mg with dinner</div>
-    <div class="card-detail">Root extract standardized to 5% withanolides. Multiple trials show improved sleep quality + efficiency. A 2025 study on female athletes found significant improvement. Bonus: reduces cortisol ~20% at 60 days — lower cortisol = less muscle breakdown, better recovery. <strong>Dual win: sleep + gains.</strong></div>
+    <div class="card-detail">Root extract standardized to 5% withanolides. Reduces cortisol ~20% at 60 days — less muscle breakdown, better recovery. A 2025 study on female athletes found significant improvement.</div>
   </div>
 
   <div class="card" style="border-left:3px solid #283593">
     <span class="tag tag-sleep">Optional Additions</span>
     <div class="card-title">L-Theanine + Tart Cherry</div>
-    <div class="card-detail"><strong>L-Theanine:</strong> 200 mg before bed. Promotes alpha brain waves, no grogginess. Found in green tea.<br><strong>Tart cherry juice:</strong> 8 oz before bed. Natural melatonin source + anti-inflammatory (also helps with CT).</div>
+    <div class="card-detail"><strong>L-Theanine:</strong> 200 mg before bed. Alpha brain waves, no grogginess.<br><strong>Tart cherry juice:</strong> 8 oz before bed. Natural melatonin + anti-inflammatory (also helps CT).</div>
   </div>
 
   <div class="note note-blue">
-    <strong>Start one at a time.</strong> Add each supplement 1 week apart to identify what works and rule out reactions. Expected improvement: 2-6 weeks of consistent use. Lion's mane first → magnesium week 2 → ashwagandha week 3.
+    <strong>Start one at a time.</strong> Add each supplement 1 week apart. Lion's mane first → magnesium week 2 → ashwagandha week 3.
   </div>
 
-  <!-- ANTI-INFLAMMATORY NUTRITION FOR CT -->
+  <!-- ANTI-INFLAMMATORY NUTRITION -->
   <h2>Anti-Inflammatory Nutrition (CT Support)</h2>
-  <p>What she eats directly affects carpal tunnel inflammation. These aren't random — they're from systematic reviews on CTS nutrition.</p>
 
   <div class="card" style="border-left:3px solid #43A047">
     <div class="card-title">Add to Diet</div>
     <div class="card-detail">
       <strong>Omega-3s:</strong> Salmon 2x/week, walnuts, flaxseed — reduces nerve inflammation<br>
-      <strong>Turmeric/curcumin:</strong> 500-1,000 mg/day with black pepper for absorption — neuroprotective<br>
-      <strong>Vitamin B6:</strong> 50-100 mg/day (chicken, bananas, potatoes — or supplement). Deficiency linked to CTS. <em>Do not exceed 200 mg — neurotoxic at high doses.</em><br>
-      <strong>Vitamin D:</strong> 2,000-4,000 IU/day if deficient — studies show benefits for CT<br>
-      <strong>Alpha-lipoic acid:</strong> 300-600 mg/day — antioxidant with neuroprotective properties
+      <strong>Turmeric/curcumin:</strong> 500-1,000 mg/day with black pepper — neuroprotective<br>
+      <strong>Vitamin B6:</strong> 50-100 mg/day. Deficiency linked to CTS. <em>Do not exceed 200 mg — neurotoxic.</em><br>
+      <strong>Vitamin D:</strong> 2,000-4,000 IU/day if deficient<br>
+      <strong>Alpha-lipoic acid:</strong> 300-600 mg/day — antioxidant, neuroprotective
     </div>
   </div>
 
@@ -408,8 +469,8 @@ ul{margin:0 0 .75rem 18px;font-size:13px;color:#444;line-height:1.8}
     <div class="card-title">Reduce / Avoid</div>
     <div class="card-detail">
       <strong>Refined sugar + processed foods</strong> — promote inflammation<br>
-      <strong>Excess sodium</strong> — increases fluid retention → more swelling in the carpal tunnel<br>
-      <strong>Excessive alcohol</strong> — neurotoxic, disrupts sleep (defeats the whole protocol)
+      <strong>Excess sodium</strong> — increases fluid retention → more swelling in carpal tunnel<br>
+      <strong>Excessive alcohol</strong> — neurotoxic, disrupts sleep
     </div>
   </div>
 
@@ -418,31 +479,31 @@ ul{margin:0 0 .75rem 18px;font-size:13px;color:#444;line-height:1.8}
 
   <div class="card">
     <div class="card-title">Gripping too hard</div>
-    <div class="card-detail">If your hands are white-knuckled, you're compressing the median nerve. Straps and wraps exist for a reason. Use them every session, not just when it hurts.</div>
+    <div class="card-detail">If your hands are white-knuckled, you're compressing the median nerve. Straps and wraps every session, not just when it hurts.</div>
   </div>
   <div class="card">
-    <div class="card-title">Skipping lower body</div>
-    <div class="card-detail">Lower body days are CT-friendly by default — most leg exercises need zero grip. Don't skip them because your wrists hurt. They're your best training days.</div>
+    <div class="card-title">Skipping the workout because wrists hurt</div>
+    <div class="card-detail">That's what the Wrist Flare-Up Swap Day is for. 2 of 3 base workouts are lower body — barely need your hands. Don't let wrists be the excuse to skip entirely.</div>
   </div>
   <div class="card">
     <div class="card-title">Not eating enough</div>
-    <div class="card-detail">You can't build muscle in a deficit. 2,350 calories is the target — not 1,600, not 1,800. See the <a href="eating-guide.html" style="color:#534AB7;font-weight:600">Eating Guide</a>. Track for at least 4 weeks to calibrate.</div>
+    <div class="card-detail">You can't build muscle in a deficit. 2,350 calories is the target — not 1,600, not 1,800. See the <a href="eating-guide.html" style="color:#534AB7;font-weight:600">Eating Guide</a>.</div>
   </div>
   <div class="card">
     <div class="card-title">Expecting overnight results</div>
-    <div class="card-detail">Visible changes start week 8-12. Peak newbie gains are months 3-6. Realistic year 1: 8-10 lbs of lean muscle. Trust the process and track progress monthly.</div>
+    <div class="card-detail">Visible changes start week 8-12. Peak newbie gains are months 3-6. Realistic year 1: 8-10 lbs of lean muscle. Trust the process.</div>
   </div>
 
   <!-- KEY TIPS -->
   <h2>Key Tips</h2>
   <div class="note note-green">
-    <strong>Form over weight, always.</strong> It's better to do 8 perfect reps than 15 sloppy ones. Record yourself to check form — you'd be surprised what you see.
+    <strong>Form over weight, always.</strong> 8 perfect reps > 15 sloppy ones. Record yourself to check form.
   </div>
   <div class="note note-green">
     <strong>Protein matters.</strong> Hit 145g daily. Whey shake post-workout is the easiest win. See the <a href="supplements.html" style="color:#04342C;font-weight:600">Supplement Guide</a>.
   </div>
   <div class="note note-green">
-    <strong>Track everything.</strong> Log weights, reps, and body measurements monthly on the <a href="progress.html" style="color:#04342C;font-weight:600">Progress Tracker</a>. What gets measured gets managed.
+    <strong>Track everything.</strong> Log weights, reps, and body measurements monthly on the <a href="progress.html" style="color:#04342C;font-weight:600">Progress Tracker</a>.
   </div>
 
   <div class="footer">yerramazing &middot; Gym Partners</div>
